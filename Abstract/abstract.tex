@@ -1,0 +1,28 @@
+% ************************** Thesis Abstract *****************************
+% Use `abstract' as an option in the document class to print only the titlepage and the abstract.
+\begin{abstract}
+A major challenge in biology is to unravel the genotype-phenotype map, or understand how DNA variants can shape observable traits, and cause complex diseases. Genome-wide association studies (GWAS) aim to find such genotype-phenotype associations and have successfully identified thousands of significant associations. The interpretability of those GWAS hits, however, is often far from trivial, especially when the DNA variants are found in non-coding areas of the genome. 
+
+To understand the mechanisms that link genotype to phenotype one can look at intermediate molecular traits, such as gene expression. For example, having one particular base at a certain locus can increase the affinity for some transcription factor to bind, and thus boost expression. Associations between genotype and gene expression are called eQTL (expression quantitative trait loci). 
+
+Traditional eQTL mapping uses data derived from bulk RNA-sequencing as a measure of gene expression, which means that all cells from a sample are pooled together prior to library generation and sequencing. This results in a single measure of expression for each sample, gene pair, which is essentially averaged across all cells. To link genotype to gene expression, linear mixed models (LMMs) represent a popular approach: the aim is to find a linear relationship between genotype and expression, whilst accounting for confounding effects such as the population structure between samples.
+
+Recent advances in experimental techniques have provided an unprecedented opportunity to measure molecular phenotypes at the single cell level, and the chance to study cellular heterogeneity. This represents a remarkable advance over traditional bulk sequencing methods, particularly to study lineage diversification and cell fate commitment events in heterogeneous biological processes, including the immune system, embryonic development and cancer.
+
+Here, I will investigate the computational challenges that arise when using single cell expression profiles for QTL mapping, focusing particularly on the expansion and development of analytical frameworks that are necessary to take advantage of such data.
+
+In Chapter 1 we provide an introduction that spans a brief history of human genetics and models for genetics associations, focuses on eQTL mapping and standard methods for it, touches on the tissue-specificity of eQTL and the GTEx project and highlights the potential of single cell QTL mapping as well as the technical challenges that it poses.
+
+In Chapter 2 we set the analytical foundations of linear mixed models, on which all subsequent methods described in this thesis will be based on.
+
+In Chapter 3 we present the two population-level single cell datasets that will be analysed in this thesis.
+
+In Chapter 4 we expand on adapting existing expression level QTL mapping methods to single cell expression profiles, and compare across technologies.
+
+In Chapter 5 we introduce new types of QTL mapping especially enabled by the single cell resolution.
+
+In Chapter 6 we present StructLMM-2, an extension on an existing method for multivariate GxE interactions which is significantly improved over the original and is especially suited for single cell data.
+
+Finally, Chapter 7 summarises this thesis and provides an outlook of future research.
+
+\end{abstract}
