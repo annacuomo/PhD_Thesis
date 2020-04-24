@@ -22,10 +22,10 @@ When using to information of this thesis, please cite the associated papers:
 
 **Introduction:** 
 
-Nils's as an example
-**Chapter 2:** [Aging increases cell-to-cell transcriptional variability upon immune stimulation](http://science.sciencemag.org/content/355/6332/1433)
+**Chapter 1:** [Chapter 1](https://www.nature.com/articles/s41467-020-14457-z)
 
 Anna S.E. Cuomo\*, Daniel D. Seaton\*, Davis J. McCarthy\*, Iker Martinez, Marc Jan Bonder, Jose Garcia-Bernardo, Shradha Amatya, Pedro Madrigal, Abigail Isaacson, Florian Buettner, Andrew Knights, Kedar Nath Natarajan, HipSci Consortium, Ludovic Vallier, John C. Marioni, Mariya Chhatriwala, Oliver Stegle.
+
 _.Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic effects on gene expression._ Nature Communications, 2020, (\* equal contributions)
 
 
