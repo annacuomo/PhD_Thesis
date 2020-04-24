@@ -25,8 +25,8 @@ When using to information of this thesis, please cite the associated papers:
 Nils's as an example
 **Chapter 2:** [Aging increases cell-to-cell transcriptional variability upon immune stimulation](http://science.sciencemag.org/content/355/6332/1433)
 
-Celia P. Martinez-Jimenez\*, Nils  Eling\*, Hung-Chang Chen, Catalina A. Vallejos, Aleksandra Kolodziejczyk, Frances Connor, Lovorka Stojic, Tim F. Rayner, Michael J. T. Stubbington, Sarah A. Teichmann, Maike de la Roche, John C. Marioni, Duncan T. Odom.
-_Ageing increases cell-to-cell transcriptional variability upon immune stimulation._ Science, 1436: 1433-1436, 2017, (\* equal contributions)
+Anna S.E. Cuomo\*, Daniel D. Seaton\*, Davis J. McCarthy\*, Iker Martinez, Marc Jan Bonder, Jose Garcia-Bernardo, Shradha Amatya, Pedro Madrigal, Abigail Isaacson, Florian Buettner, Andrew Knights, Kedar Nath Natarajan, HipSci Consortium, Ludovic Vallier, John C. Marioni, Mariya Chhatriwala, Oliver Stegle.
+_.Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic effects on gene expression._ Nature Communications, 2020, (\* equal contributions)
 
 
 The figures in the introduction are my own work. 
