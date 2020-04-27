@@ -13,7 +13,7 @@ Using single-cell RNA-seq to assess the effect of common genetic variants on cel
 
 ## How to compile this thesis
 
-to do 
+to do - or maybe just give link to pdf once it's uploaded to Cambridge system
 
 ## How to cite this thesis
 
@@ -26,7 +26,7 @@ When using to information of this thesis, please cite the associated papers:
 
 Anna S.E. Cuomo\*, Daniel D. Seaton\*, Davis J. McCarthy\*, Iker Martinez, Marc Jan Bonder, Jose Garcia-Bernardo, Shradha Amatya, Pedro Madrigal, Abigail Isaacson, Florian Buettner, Andrew Knights, Kedar Nath Natarajan, HipSci Consortium, Ludovic Vallier, John C. Marioni, Mariya Chhatriwala, Oliver Stegle.
 
-_.Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic effects on gene expression._ Nature Communications, 2020, (\* equal contributions)
+_Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic effects on gene expression._ Nature Communications, 2020, (\* equal contributions)
 
 
 The figures in the introduction are my own work. 
