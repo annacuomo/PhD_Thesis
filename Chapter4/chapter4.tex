@@ -5,35 +5,44 @@
 
 \chapter{Mean level eQTL mapping using single cell RNA-seq}
 
-In this chapter we continue the analyses on the datasets described in Chapter 3 and add in the genetic variation aspect; we can now adapt the LMM-based methods traditionally used for eQTL mapping (described in Chapter 2) to single cell data (section 4.1). In particular, we validate our method (focusing on the iPS cells) by systematically comparing eQTL results we obtained using single cells to eQTL identified using bulk RNA-sequencing (section 4.2). In addition, we compare eQTL results obtained when using two alternative single cell technologies: a plate-based (SmartSeq2) and a droplet-based (10X Genomics) technology, for a subset of lines (section 4.3). Finally, we perform eQTL maps of the mesendoderm and definitive endoderm stages, which are novel to this study to the best of our knowledge (section 4.4). The key results described in this chapter are contained in (Cuomo et al, 2020, Alvari, Cuomo et al, 2020, Jerber, Seaton, Cuomo et al, 2020).
+In this chapter we continue the analyses on the datasets described in Chapter 3 and add in the genetic variation aspect; we can now adapt the LMM-based methods traditionally used for eQTL mapping (described in Chapter 2) to single cell data (section 4.1). 
+In particular, we validate our method (focusing on the iPS cells) by systematically comparing eQTL results we obtained using single cells to eQTL identified using bulk RNA-sequencing (section 4.2). 
+In addition, we compare eQTL results obtained when using two alternative single cell technologies: a plate-based (SmartSeq2) and a droplet-based (10X Genomics) technology, for a subset of lines (section 4.3). 
+Finally, we perform eQTL maps of the mesendoderm and definitive endoderm stages (section 4.4), and of various stages of neuronal development (section 4.5) all of which are novel to this study to the best of our knowledge (section 4.4). 
+The key results described in this chapter are contained in (Cuomo et al, 2020, Alvari, Cuomo et al, 2020, Jerber, Seaton, Cuomo et al, 2020).
 
 \section{What is different in single cell data?}
 
 When we perform eQTL mapping, we are interested to find differences in expression level between individuals, as a function of their different genotypes as specific genomic loci. 
-
 Under the assumption that we are looking at an otherwise homogenous population of cells (e.g. cell type) it is reasonable to take the sum or the average expression per individual, across all cells.
+When we use bulk RNA sequencing expression profiles, that is essentially what happens. 
+All cells from an individual are pooled, the mRNA extracted and sequenced. 
+The resulting reads are and mapped onto a reference genome, and the "abundance" of each genes is quantified as the number of reads obtained from one donor that uniquely map to that gene. 
+A bulk RNA-seq experiment, therefore, results in one individual measure of “abundance” of each gene for each donor. 
+Such measure is the results of aggregating over XX cells [REF] and, at least for expressed genes (average TPM > YY) follows a distribution that can be approximated as Gaussian.
 
-When we use bulk RNA sequencing expression profiles, that is essentially what happens. All cells from an individual are pooled, the RNA extracted and sequenced. 
-The resulting reads are and mapped onto a reference genome, and the "abundance" of each genes is quantified as . A bulk RNA-seq experiment, therefore, results in one individual measure of “abundance” of each gene for each donor. Such measure is the results of aggregating over XX cells [REF] and, at least for expressed genes (average TPM > YY) follows a distribution that can be approximated as Gaussian (fig).
-
-pool of RNA transcripts from many genes (low probability for a given gene), get a sample to sequence. Poisson: sampling from large n, small p (samples are technical replicates)
+The intuition here is that 
+Pool of RNA transcripts from many genes (low probability for a given gene), get a sample to sequence. Poisson: sampling from large n, small p (samples are technical replicates)
 (biological replicates - NB > Poisson, larger variance )
 
 As discussed in section 1.3 of the Introduction, recent advances in experimental technologies have provided robust methods for single-cell RNA sequencing (scRNA-seq), allowing to assay the genome-wide transcriptome of hundreds to thousands of individual cells. 
 
 Whilst scRNA-seq data provides increased resolution and promises great insights into our understanding of cellular function, the data also is much sparser, and the amount of cells that can be assayed for an individual is limited compared to bulk.
-In general, we observe a smaller number of cells and therefore total reads for an individual as compared to bulk. In addition, the read distribution is far from Gaussian, with very different amount of reads coming from different donors. This is in part due to the "double sampling" that is inherent of the technology: there is a chance of not sampling any reads from one gene in one cell, and there is a chance of not sequencing any reads from that cell at all.
+In general, we observe a smaller number of cells and therefore total reads for an individual as compared to bulk. 
+In addition, the read distribution is far from Gaussian, with very different amount of reads coming from different donors. 
+This is in part due to the "double sampling" that is inherent of the technology: there is a chance of not sampling any reads from one gene in one cell, and there is a chance of not sequencing any reads from that cell at all.
 
 Add differences in number of total reads, read distribution, describe “double sampling” process.
 
-Two main approaches:
-Aggregating across cells (mean, median, sum)
-Use full single cell expression, with or without subsampling (potentially very different numbers of cells for different donors).
+\section{Methods}
 
+In order to produce bulk-like results, two main approaches can be used.
 
-\section{methods}
+Under the assumption that we are looking at a single cell type, we can i) aggregate counts across all cells from an individual (e.g. taking the average expression value) and generate a "pseudo-bulk" measure, and then run the test exactly as if it were bulk. Or ii) use full single cell expression, without aggregating.
 
 \section{eQTL mapping in iPSCs}
+
+To perform eQTL mapping 
 
 Introduction
 Effects of common genetic variation in development unknown

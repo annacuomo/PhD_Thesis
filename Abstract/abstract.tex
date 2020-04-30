@@ -1,13 +1,21 @@
 % ************************** Thesis Abstract *****************************
 % Use `abstract' as an option in the document class to print only the titlepage and the abstract.
 \begin{abstract}
-A major challenge in biology is to unravel the genotype-phenotype map, or understand how DNA variants can shape observable traits, and cause complex diseases. Genome-wide association studies (GWAS) aim to find such genotype-phenotype associations and have successfully identified thousands of significant associations. The interpretability of those GWAS hits, however, is often far from trivial, especially when the DNA variants are found in non-coding areas of the genome. 
 
-To understand the mechanisms that link genotype to phenotype one can look at intermediate molecular traits, such as gene expression. For example, having one particular base at a certain locus can increase the affinity for some transcription factor to bind, and thus boost expression. Associations between genotype and gene expression are called eQTL (expression quantitative trait loci). 
+A major challenge in biology is to unravel the genotype-phenotype map, or understand how DNA variants can shape observable traits, and cause complex diseases. 
+Genome-wide association studies (GWAS) aim to find such genotype-phenotype associations and have successfully identified thousands of significant associations. 
+The interpretability of those GWAS hits, however, is often far from trivial, especially when the DNA variants are found in non-coding areas of the genome.\ 
 
-Traditional eQTL mapping uses data derived from bulk RNA-sequencing as a measure of gene expression, which means that all cells from a sample are pooled together prior to library generation and sequencing. This results in a single measure of expression for each sample, gene pair, which is essentially averaged across all cells. To link genotype to gene expression, linear mixed models (LMMs) represent a popular approach: the aim is to find a linear relationship between genotype and expression, whilst accounting for confounding effects such as the population structure between samples.
+To understand the mechanisms that link genotype to phenotype one can look at intermediate molecular traits, such as gene expression. 
+For example, having one particular base at a certain locus can increase the affinity for some transcription factor to bind, and thus boost expression. 
+Associations between genotype and gene expression are called eQTL (expression quantitative trait loci). 
 
-Recent advances in experimental techniques have provided an unprecedented opportunity to measure molecular phenotypes at the single cell level, and the chance to study cellular heterogeneity. This represents a remarkable advance over traditional bulk sequencing methods, particularly to study lineage diversification and cell fate commitment events in heterogeneous biological processes, including the immune system, embryonic development and cancer.
+Traditional eQTL mapping uses data derived from bulk RNA-sequencing as a measure of gene expression, which means that all cells from a sample are pooled together prior to library generation and sequencing. 
+This results in a single measure of expression for each sample, gene pair, which is essentially averaged across all cells. 
+To link genotype to gene expression, linear mixed models (LMMs) represent a popular approach: the aim is to find a linear relationship between genotype and expression, whilst accounting for confounding effects such as the population structure between samples.
+
+Recent advances in experimental techniques have provided an unprecedented opportunity to measure molecular phenotypes at the single cell level, and the chance to study cellular heterogeneity. 
+This represents a remarkable advance over traditional bulk sequencing methods, particularly to study lineage diversification and cell fate commitment events in heterogeneous biological processes, including the immune system, embryonic development and cancer.
 
 Here, I will investigate the computational challenges that arise when using single cell expression profiles for QTL mapping, focusing particularly on the expansion and development of analytical frameworks that are necessary to take advantage of such data.
 

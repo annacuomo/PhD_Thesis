@@ -17,6 +17,9 @@
 %\usepackage{enumitem}
 %\setlist[enumerate,itemize,description]{topsep=0em}
 
+% No indent before paragraph
+\setlength\parindent{0pt}
+
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
 
@@ -39,29 +42,66 @@
   %  {libertine}
   %  % load font from system font
   %  \newfontfamily\libertinesystemfont{Linux Libertine O}
+  
+  % Use helvetica
+  \renewcommand{\familydefault}{\sfdefault}
+  \usepackage{helvet}
+  \usepackage{sansmathfonts}
 \fi
 
-% *****************************************************************************
-% **************************** Custom Packages ********************************
+% *********
+% ***** Custom Packages
 
-% ************************* Algorithms and Pseudocode **************************
+% define header 
+\usepackage{fancyhdr}
+\usepackage{adjustbox}
+\usepackage{etoolbox}
+\renewcommand{\headrulewidth}{1pt}
+\newcommand{\headrulecolor}[1]{\patchcmd{\headrule}{\hrule}{\color{#1}\hrule}{}{}}
+\headrulecolor{Mahogany}
+\fancyheadoffset[RE,LO]{0cm}
+\fancyheadoffset[LE,RO]{1.25cm}
+
+% For recoloring the section header
+\usepackage{sectsty}
+\definecolor{dark-gray}{gray}{0.30}
+\sectionfont{\color{dark-gray}}
+\subsectionfont{\color{dark-gray}}
+
+% Fancier section header
+\newcommand{\hsp}{\hspace{6pt}}
+\usepackage[explicit]{titlesec}
+\titleformat{\section}[hang]{\Large\bfseries}{\color{dark-gray}\thesection}{6pt}{\begin{tabular}[t]{@{\color{dark-gray}\vrule width 2pt}>{\hsp}l}#1\end{tabular}}
+\titleformat{\subsection}[hang]{\large\bfseries}{\color{dark-gray}\thesubsection}{6pt}{\begin{tabular}[t]{@{\color{dark-gray}\vrule width 2pt}>{\hsp}l}#1\end{tabular}}
+
+
+
+% **** Algorithms and Pseudocode 
 
 %\usepackage{algpseudocode}
 
 
-% ********************Captions and Hyperreferencing / URL **********************
+% **** Captions and Hyperreferencing / URL 
 
 % Captions: This makes captions of figures use a boldfaced small font.
-%\RequirePackage[small,bf]{caption}
+\usepackage[font=small,labelfont=bf]{caption}
 
-\RequirePackage[labelsep=space,tableposition=top]{caption}
+%\RequirePackage[labelsep=space,tableposition=top]{caption}
 \renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=Mahogany,
+}
 
 
 % *************************** Graphics and figures *****************************
 
 %\usepackage{rotating}
-%\usepackage{wrapfig}
+\usepackage{wrapfig}
 
 % Uncomment the following two lines to force Latex to place the figure.
 % Use [H] when including graphics. Note 'H' instead of 'h'
@@ -85,6 +125,7 @@
 
 % *********************************** SI Units *********************************
 \usepackage{siunitx} % use this package module for SI units
+\usepackage{textcomp} % for trademark
 
 
 % ******************************* Line Spacing *********************************
@@ -105,6 +146,10 @@
 
 %\usepackage[perpage]{footmisc} %Range of footnote options
 
+% Nicer heading
+\renewcommand{\chaptername}{}
+\usepackage[Lenny]{fncychap}
+
 
 % *****************************************************************************
 % *************************** Bibliography  and References ********************
@@ -118,7 +163,7 @@
 % If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
 
 %\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
-%\bibliography{References/references} %Location of references.bib only for biblatex
+%\addbibresource{References/references} %Location of references.bib only for biblatex, Do not omit the .bib extension from the filename.
 
 \fi
 
@@ -130,11 +175,34 @@
 % ************************* User Defined Commands ******************************
 % ******************************************************************************
 
-% *********** To change the name of Table of Contents / LOF and LOT ************
+% **** To change the name of Table of Contents / LOF and LOT 
+\usepackage{tocloft}
+\setlength\cftaftertoctitleskip{0pt}
+\setlength\cftafterloftitleskip{0pt}
+\setlength\cftafterlottitleskip{0pt}
+\renewcommand\cfttoctitlefont{\LARGE\bfseries\scshape\color{Mahogany}}
+\renewcommand\cftloftitlefont{\LARGE\bfseries\scshape\color{Mahogany}}
+\renewcommand\cftlottitlefont{\LARGE\bfseries\scshape\color{Mahogany}}
 
-%\renewcommand{\contentsname}{My Table of Contents}
-%\renewcommand{\listfigurename}{My List of Figures}
-%\renewcommand{\listtablename}{My List of Tables}
+%\renewcommand{\glossarysection}[2][\theglstoctitle]{%
+%  \def\theglstoctitle{#2}%
+%  \vspace{\cftbeforelottitleskip}%
+%  \par\noindent
+%  \addcontentsline{toc}{chapter}{\numberline{}#1}%
+%}
+
+%\renewcommand{\contentsname}{\textcolor{Mahogany}{\LARGE \textbf{\textsc{Table of contents}}}}
+%\renewcommand{\listfigurename}{\textcolor{Mahogany}{\LARGE \textbf{\textsc{List of figures}}}}
+%\renewcommand{\listtablename}{\textcolor{Mahogany}{\LARGE \textbf{\textsc{List of tables}}}}
+
+% Math abbreviations
+\newcommand{\iid}{\stackrel{\mbox{iid}}{\sim}}
+\newcommand{\ind}{\stackrel{\mbox{ind}}{\sim}}
+\newcommand{\Lagr}{\mathcal{L}}
+\newcommand{\plus}{\textsuperscript{+}}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
 
 
 % ********************** TOC depth and numbering depth *************************
@@ -143,14 +211,19 @@
 \setcounter{tocdepth}{2}
 
 
-% ******************************* Nomenclature *********************************
-
-% To change the name of the Nomenclature section, uncomment the following line
-
+% ******************************* Nomenclature 
+%\usepackage{nomencl}
 %\renewcommand{\nomname}{Symbols}
+%\makenomenclature
 
+\usepackage[acronym, nopostdot, nonumberlist, style=super]{glossaries}
+\setlength{\glsdescwidth}{5in}
 
-% ********************************* Appendix ***********************************
+\makeglossaries
+\glsdisablehyper
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+
+% ********************************* Appendix 
 
 % The default value of both \appendixtocname and \appendixpagename is `Appendices'. These names can all be changed via:
 
@@ -178,14 +251,96 @@
 
 
 % ******************************** Todo Notes **********************************
-%% Uncomment the following lines to have todonotes.
 
-%\ifsetDraft
-%	\usepackage[colorinlistoftodos]{todonotes}
-%	\newcommand{\mynote}[1]{\todo[author=kks32,size=\small,inline,color=green!40]{#1}}
-%\else
-%	\newcommand{\mynote}[1]{}
-%	\newcommand{\listoftodos}{}
-%\fi
+% Define colour for todo notes
+\newcommand{\todo}[1]{{\color{red}{#1}}}
+% Colour for corrections
+\newcommand{\cor}[1]{{\color{blue}{#1}}}
 
-% Example todo: \mynote{Hey! I have a note}
+% *****************************************************************************
+% ******************* Better enumeration my MB*************
+\usepackage{enumitem}
+
+% **********************************
+% Additional packages
+\usepackage{xcolor}
+\definecolor{green}{RGB}{32,157,148}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,nccmath,systeme} % For math equations, theorems, symbols, etc
+\usepackage{bm} % bold math 
+\usepackage{textgreek} % greek letters in text
+
+%----------------------------------------------------------------------------------------
+%	THEOREM STYLES
+%----------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% dedicated to boxed/framed environements %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheoremstyle{greennumbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\small}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{green}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{green}\thmname{}\nobreakspace} 
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+\newtheoremstyle{blacknumbox} % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily}% Theorem head font
+{}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\thmname{}\nobreakspace}
+
+% Defines the theorem text style for each type of theorem to one of the three styles above
+\theoremstyle{greennumbox}
+\newtheorem{abstractT}{}
+\theoremstyle{blacknumbox}
+\newtheorem{commentT}{}
+
+
+% Package to create coloured boxes
+\RequirePackage[framemethod=default]{mdframed}
+
+% Exercise box	  
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=green!10,
+linecolor=green,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt]{eBox}	
+
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=black!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{cBox}
+
+% Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
+\newenvironment{Abstract}{\begin{eBox}\begin{abstractT}}{\hfill{\color{green}\tiny\ensuremath{\blacksquare}}\end{abstractT}\end{eBox}}				  		
+\newenvironment{Comment}{\begin{cBox}\begin{commentT}}{\end{commentT}\end{cBox}}	

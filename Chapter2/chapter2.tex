@@ -5,165 +5,412 @@
 
 \chapter{Linear mixed models for quantitative genetics}
 
-In chapters 4-7 I describe various models for eQTL mapping using single cell expression profiles. All of these models build on a linear mixed model framework. I use this chapter to provide an overview of linear and linear mixed models and their application in quantitative genetics, with a focus on their use for eQTL mapping. I will also introduce LMM-based models to test for GxE interactions, to provide the necessary theoretical foundations for the analyses in chapters 6 and 7.
+In chapters 4-7 I describe various models for eQTL mapping using single cell expression profiles. 
+All of these models build on a linear mixed model framework. 
+I use this chapter to provide an overview of linear and linear mixed models and their application in quantitative genetics, with a focus on their use for eQTL mapping. 
+I will also introduce LMM-based models to test for GxE interactions, to provide the necessary theoretical foundations for the analyses in chapters 6 and 7.\\
 
-Linear mixed models (LMMs) are a very popular framework for many genetic analyses. They are especially appealing because they provide robust control for confounding factors. While inference using LMMs is in general computationally demanding, there exist efficient implementations of specific LMMs, which enable applications to large datasets. In this chapter, I give an overview of the use of LMMs in genetic association studies and efficient algorithmic implementations. In sections 2.1-2.2, I discuss linear models (also referred to as linear regressions) and basic applications for genome-wide association studies (GWAS) and quantitative trait loci (QTL) mapping. In section 2.3, I introduce the linear mixed model (LMM) and discuss applications in genetics, with a focus on LMMs for expression-QTL (eQTL) mapping. Finally, in Section 2.4, I discuss extensions of LMMs to genotype-environment (GxE) interactions.
+Linear mixed models (LMMs) are a very popular framework for many genetic analyses. 
+They are especially appealing because they provide robust control for confounding factors. 
+While inference using LMMs is in general computationally demanding, there exist efficient implementations of specific LMMs, which enable applications to large datasets. 
+In this chapter, I give an overview of the use of LMMs in genetic association studies and efficient algorithmic implementations. 
+In sections 2.1-2.2, I discuss linear models (also called linear regressions) and basic applications for genome-wide association studies (GWAS) and quantitative trait loci (QTL) mapping. 
+In section 2.3, I introduce the linear mixed model (LMM) and discuss applications in genetics, with a focus on the use of LMMs for expression-QTL (eQTL) mapping. 
+Finally, in Section 2.4, I discuss extensions of the LMM framework to test for genotype-environment (GxE) interactions.\\
 
-\section{Linear regression}
+\newpage
 
-In a linear model, or linear regression, a continuous output variable (also called outcome, or dependent variable) is described as a linear function of one or more input variables (features, or independent variables). For F features, the outcome variable for a single individual i is:
+For mathematical model descriptions throughout this thesis, I used the following notation: bold, small letters symbolise one-dimensional column vectors (e.g. $\mathbf{v}$) and bold capitalised letters matrices (e.g. $\mathbf{M}$). 
+A normal distribution is specified by $ N(\mu, \sigma^2)$, where $\mu$, $\sigma$ are two scalars representing the mean and standard deviation parameters.
+For simplicity, I use the same notation for multivariate normal (e.g. $ N(\boldsymbol{\mu}, \boldsymbol{\Sigma})$), noting that the specified parameters are a Nx1 mean vector, and a  NxN covariance matrix.
 
-\[ y_i = \sum_{f=1}^{F} x_{i,f}\beta_i + \psi_i  \]
+%********************************** %First Section  **************************************
 
-With $ \psi_i \sim N(0, \sigma_n^2)$
+\section{Linear regression} 
 
-\vspace{4mm}
+A linear model, or regression, is a statistical approach to modelling a continuous output variable (or outcome, dependent variable) as a linear function of one or more input variables (features, or independent variables). For F features, the outcome variable for a single individual i is:
 
-The noise term $\psi_i$ accounts for measurement noise of $y_i$, reflecting the non-deterministic relationship between $y_i$ and $x_{i,f}$, and is assumed to follow a Gaussian distribution with 0 mean and constant variance $\sigma_n^2$. Furthermore, the noise term is assumed to be independent across samples. For N samples, the model in (eq. 2.1) can be expressed in matrix form as:
-\[ \mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\psi}  \]
+\begin{equation} \label{eq1:Linear_regression_sample_i}
+ y_i = \sum_{f=1}^{F} x_{i,f}\beta_i + \psi_i
+\end{equation}
 
-With $ \boldsymbol{\psi} \sim N(\mathbf{0}, \sigma_n^2 \mathbf{I})$
+The noise term $\psi_i$ ($ \psi_i \sim N(0, \sigma_N^2)$) accounts for measurement noise of $y_i$, reflecting the non-deterministic relationship between $y_i$ and $x_{i,f}$, and is assumed to follow a Gaussian distribution with 0 mean and constant variance $\sigma_N^2$. Furthermore, the noise term is assumed to be independent across samples. For N samples, the model in (eq. 2.1) can be expressed in matrix form as:
 
-\vspace{4mm}
+\begin{equation} \label{eq2:Linear_regression_matrix_form}
+\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\psi} 
+\end{equation}
+
+With $ \boldsymbol{\psi} \sim N(\mathbf{0}, \sigma_N^2 \mathbf{I_N})$, where $\mathbf{I_N}$ denotes the N x N identity matrix. \\ 
 
 We can then write:
 
-\[ \mathbf{y} \sim N(\mathbf{X}\mathbf{\beta}, \sigma_n^2 \mathbf{I})  \]
+\begin{equation} \label{eq3:Linear_regression_MVN_form}
+\mathbf{y} \sim N(\mathbf{X}\mathbf{\beta}, \sigma_N^2 \mathbf{I_N}) 
+\end{equation}
+
+\newpage
 
 \subsection{Maximum likelihood solution}
 
-Equation (2.3) is a direct representation of the probability distribution of the data $p(\mathbf{y}| \mathbf{X}, \mathbf{\beta}, \sigma_n^2)$ given the input variables $\mathbf{X}$ and the model parameters $\boldsymbol{\beta}$ and $\sigma_n^2$. 
+Equation (2.3) is a direct representation of the probability distribution of the data $p(\mathbf{y}| \mathbf{X}, \mathbf{\beta}, \sigma_N^2)$ given the input variables $\mathbf{X}$ and the model parameters $\boldsymbol{\beta}$ and $\sigma_N^2$.
+This probability is known as the likelihood of the model and, for parameter inference, is typically regarded as a function of the model parameters and denoted as $L(\boldsymbol{\beta}, \sigma_N^2)$. 
+The model in (2.3) can thus be equivalently specified as:\\
 
-This probability is known as the likelihood of the model and, for parameter inference, is typically regarded as a function of the model parameters and denoted as $L(\boldsymbol{\beta}, \sigma_n^2)$. The model in (2.3) can thus be equivalently specified as:
+\begin{equation} \label{eq4:Linear_regression_likelihood}
+ L(\boldsymbol{\beta}, \sigma_N^2) = p(\mathbf{y}| \mathbf{X}, \boldsymbol{\beta}, \sigma_N^2) = N(\mathbf{y} | \mathbf{X}\boldsymbol{\beta}, \sigma_N^2 \mathbf{I}) 
+\end{equation}
 
-\[ L(\boldsymbol{\beta}, \sigma_n^2) = p(\mathbf{y}| \mathbf{X}, \boldsymbol{\beta}, \sigma_n^2) = N(\mathbf{y} | \mathbf{X}\boldsymbol{\beta}, \sigma_n^2 \mathbf{I}) \]
+The log marginal likelihood of the model can be explicitly expressed as:\\
 
-\vspace{2mm} 
-The log marginal likelihood of the model can be explicitly expressed as:
-\vspace{2mm} 
-\[ logL(\boldsymbol{\beta}, \sigma_n^2) = -\frac{1}{2} \bigg\{nlog(2\pi)\sigma_n^2) + log|I| \frac{1}{\sigma_n^2}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T\mathbf{I}^{-1}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta}) \bigg\}  =\]
-  
-\[= -\frac{n}{2}log(2\pi)) - \frac{n}{2}log(2\pi))- 0 - \frac{1}{2\sigma_n^2}(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X}\beta)  \]
+\begin{equation} \label{eq5:Linear_regression_log_likelihood}
+\begin{split}
+logL(\boldsymbol{\beta}, \sigma_N^2) = -\frac{1}{2} \bigg\{Nlog(2\pi)\sigma_N^2) + log|I| \frac{1}{\sigma_N^2}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T\mathbf{I_N}^{-1}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta}) \bigg\}  = \\
+= -\frac{N}{2}log(2\pi)) - \frac{N}{2}log(2\pi))- 0 - \frac{1}{2\sigma_N^2}(\mathbf{y}-\mathbf{X}\beta)^T(\mathbf{y}-\mathbf{X}\beta)  
+\end{split}
+\end{equation}
 
+The maximum likelihood estimator (MLE) of the model parameters is defined as the set of parameter values that maximise the likelihood (or its log). Denoting with $\hat{\boldsymbol{\beta}}$ and $\hat{\sigma_N^2}$ the MLE of $\boldsymbol{\beta}$ and $\sigma_N^2$ we can write:
 
-The maximum likelihood estimator (MLE) of the model parameters is defined as the set of parameter values that maximise the likelihood (or its log). Denoting with $\hat{\boldsymbol{\beta}}$ and $\hat{\sigma_n^2}$ the MLE of $\boldsymbol{\beta}$ and $\sigma_n^2$ we can write:
+\begin{equation} \label{eq6:Linear_regression_MLEs}
+\hat{\boldsymbol{\beta}},\hat{\sigma_N^2} = argmax_{\boldsymbol{\beta},\sigma_N^2}L(\boldsymbol{\beta}, \sigma_N^2) 
+\end{equation} 
 
-\[ \hat{\boldsymbol{\beta}},\hat{\sigma_n^2} = argmax_{\boldsymbol{\beta},\sigma_n^2}L(\boldsymbol{\beta}, \sigma_n^2) \]
+By setting the gradient of the log likelihood in (2.5) with respect with both parameters to 0, and solving the joint system:
 
-\vspace{2mm} 
-By setting the gradient of the log likelihood in (2.5) with respect with both parameters to 0, and solving the joint system: 
-
-
-\[ \dfrac{logL(\boldsymbol{\beta}, \sigma_n^2)}{\boldsymbol{\beta}} = \mathbf{0} \]
-
-\[ \dfrac{logL(\boldsymbol{\beta}, \sigma_n^2)}{\sigma_n^2} = 0 \]
-
+\begin{equation} \label{eq7:Linear_regression_MLE_system}
+\systeme{
+    \dfrac{\partial logL(\boldsymbol{\beta}, \sigma_N^2)}{\partial \boldsymbol{\beta}} = \mathbf{0},
+    \dfrac{\partial logL(\boldsymbol{\beta}, \sigma_N^2)}{\partial \sigma_N^2} = 0
+    }
+\end{equation}
 
 We find:
 
-\[ \hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y} \]
+\begin{equation} \label{eq8:Linear_regression_MLE_solution_beta}
+\hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y} 
+\end{equation}
 
-\[ \hat{\sigma_n^2}  = \frac{1}{N}(\mathbf{y}-\mathbf{X}\hat{\beta})^T(\mathbf{y}-\mathbf{X}\hat{\beta}) = \]
-\[ = \frac{1}{N}(\mathbf{y}-\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y})^T(\mathbf{y}-\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}) \]
+\begin{equation} \label{eq9:Linear_regression_MLE_solution_sigma}
+ \hat{\sigma_n^2} = \frac{1}{N}(\mathbf{y}-\mathbf{X}\hat{\beta})^T(\mathbf{y}-\mathbf{X}\hat{\beta}) = \frac{1}{N}(\mathbf{y}-\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y})^T(\mathbf{y}-\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}) 
+\end{equation}
 
-\vspace{5mm} 
-Note that the solution for $\hat{\boldsymbol{\beta}}$ (eq 2.8) is equivalent to the ordinary least squares (OLS) solution [ref].
+Note that the solution for $\hat{\boldsymbol{\beta}}$ (eq 2.8) is equivalent to the ordinary least squares (OLS) solution.
 
 
 \subsection{Restricted maximum likelihood}
 
-The MLE of variance parameters in Gaussian models is biased because the weights are estimated from the data, which entails a reduction of the effective number of degrees of freedom. Patterson and Thompson (1971) proposed to estimate variance parameters by maximising the restricted (or residual) maximum likelihood (REML), which can be obtained by projecting the output vector in a space that is orthogonal to X. Considering Eq (XX) for the model in (eq. 2.3), we obtain the following log restricted maximum likelihood (see Appendix XX):
+The MLE of variance parameters in Gaussian models is biased because the weights are estimated from the data, which entails a reduction of the effective number of degrees of freedom.
+Patterson and Thompson (1971) proposed to estimate variance parameters by maximising the restricted (or residual) maximum likelihood (REML), which can be obtained by projecting the output vector in a space that is orthogonal to X. 
+Considering eq. XX (add REML derivation in appendix) for the model in (eq. 2.3), we obtain the following log restricted maximum likelihood:
 
+\begin{equation} \label{eq10:Linear_regression_log_restricted_likelihood}
+\begin{split}
+logL(\sigma_N^2) = -\frac{N-F}{2}log(2\pi) - \frac{1}{2}log|\mathbf{X}^T\mathbf{X}| \\
+-  \frac{N-F}{2}log\sigma_N^2 - \frac{1}{2\sigma_N^2}(\mathbf{y}-\mathbf{X}\hat{\beta})^T(\mathbf{y}-\mathbf{X}\hat{\beta})  
+\end{split}
+\end{equation}
 
+which is maximised by
 
-Eq (sigma ML) is identical to Eq (sigma REML) with the exception that N is replaced by (N - F), which denotes the loss of F degrees of freedom.
+\begin{equation}\label{eq11:Linear_regression_REML_sigma}
+\hat{\sigma_n^2}_{REML} =  \frac{1}{N-F}(\mathbf{y}-\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y})^T(\mathbf{y}-\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y})
+\end{equation}\\
 
+Eq. (2.9) is identical to eq. (2.11) with the exception that N is replaced by (N - F), which denotes the loss of F degrees of freedom.
+
+%********************************** %Second Section  **************************************
 
 \section{Linear models for association studies}
 
-In genetic association studies, the outcome variable (y) is a phenotype (global or molecular), that can be measured at a sample level. In GWAS, these can be traits such as height and eye colour or disease status for illnesses such as diabetes and rheumatoid arthritis; in QTL mapping the phenotypes can be quantification of molecular traits such as gene expression, or protein level. The test then consists in assessing the effect of single nucleotide polymorphisms (SNPs), or single-base substitutions, onto such phenotype. We test the effect of one SNP (g) at the time, and assume all SNPs to be biallelic, that is that they can only assume two possible values. 
+In genetic association studies, the outcome variable ($\mathbf{y}$) is typically a phenotype, that is a characteristic that can be measured at a sample level. 
+In GWAS, we typically look at what are called "global phenotypes".
+These can be traits such as height and eye colour or disease status or risk for various illnesses (such as diabetes, or rheumatoid arthritis).
+In QTL mapping, we consider "molecular phenotypes". 
+Those can be quantification of molecular traits such as gene expression (i.e. eQTL), or protein level (pQTL), etcetera. 
+The test then consists in assessing the effect of single nucleotide polymorphisms (SNPs),  onto such phenotype. 
+We test the effect of one SNP ($\mathbf{g}$) at the time, and assume all SNPs to be biallelic, that is that they can only assume two possible values. 
 
-\[ \mathbf{y} = \mathbf{g}\beta + \boldsymbol{\epsilon} \]
+\begin{equation}\label{eq12:Linear_regression_genetics}
+ \mathbf{y} = \mathbf{g}\beta + \boldsymbol{\epsilon} 
+\end{equation}
 
-Let us consider a bi-allelic variant with major allele a and minor allele A. For the minor allele A, we can consider either a dominant model (aa = 0, Aa = 1, AA = 1; where only one copy of the allele is necessary to have a phenotypic effect), a recessive model, (aa = 0, Aa = 0, AA = 1; where two copies of the minor allele must be present for a phenotypic effect) or an additive model (aa = 0, Aa = 1, AA = 2; where the effect is proportional to the minor allele count). In this thesis, we will consider an additive genetic model, which is widely-used in the analysis of complex traits (Laird and Lange, 2010).
+Let us consider a bi-allelic variant with major allele a and minor allele A. 
+For the minor allele A, we can consider either a dominant model (aa = 0, Aa = 1, AA = 1; where only one copy of the allele is necessary to have a phenotypic effect), a recessive model, (aa = 0, Aa = 0, AA = 1; where two copies of the minor allele must be present for a phenotypic effect) or an additive model (aa = 0, Aa = 1, AA = 2; where the effect is proportional to the minor allele count). 
+In this thesis, we will consider an additive genetic model, which is widely-used in the analysis of complex traits.
 
 \subsection{Traits with binary outcomes}
 
-It is worth noting that linear regressions are well suited for continuous traits, that can be approximated to follow a normal distribution. Another widely used model for genetic analyses is the logistic regression (or logit regression), where a logit function is applied to a linear predictor (z) to better reflect the data in case of binary outcomes (y). This is very often used when the phenotype of interest reflects the presence or absence of a certain disease (so called case/control studies). In this case, the outcome can be thought of in terms of sampling from a binomial distribution, with a fixed number of samples N, and a probability p to have the disease. Then, the model becomes:
+It is worth noting that linear regressions are well suited for continuous traits, that can be approximated to follow a normal distribution. 
+Another widely used model for genetic analyses is the logistic regression (or logit regression), where a logit function is applied to a linear predictor ($\mathbf{x}$) to better reflect the data in case of binary outcomes ($\mathbf{y}$). 
+This is very often used when the phenotype of interest reflects the presence or absence of a certain disease (so called case/control studies).
+In this case, the outcome can be thought of in terms of sampling from a binomial distribution, with a fixed number of samples N, and a probability p to have the disease. Then, the model becomes:
 
- \[ \mathbf{z} = \mathbf{g}\beta + \boldsymbol{\epsilon} \]
+\begin{equation}\label{eq13:Logistic_regression_genetics_z}
+ logit(\mathbf{y}) = \mathbf{z} = \mathbf{g}\beta + \boldsymbol{\epsilon} 
+\end{equation}
 
-\[ E[\mathbf{y}] = logit(\mathbf{z})^{-1} \]
+Logistic regressions are a particular example of a larger class of models, the so called generalised linear models (GLMs). 
+GLMs are used when the distribution of the outcome variable cannot be approximated to a Gaussian distribution. 
+In the example above, a logit distribution is better suited to model a binary variable. 
+In other cases, we might have count data better approximated by a Poisson distribution, etc.
+The three requirements of a GLM are i) to have a linear predictor ($\mathbf{z}$), ii) that the distribution of $\mathbf{y}$  belongs to the exponential family (box on exponential family distributions?), and iii) that we can define a link function $g$ such that, similar to above:
 
-Logistic regressions are a particular example of a larger class of models, the so called generalised linear models (GLMs). The three requirements of a GLM are i) to have a linear predictor z, ii) that the distribution of y belongs to the exponential family [ref], and iii) that we can define a link function (g) such that, similar to above:
+\begin{equation*}
+ E[\mathbf{y}] = g(\mathbf{z})^{-1} 
+\end{equation*}
 
- \[ E[\mathbf{y}] = g(\mathbf{z})^{-1} \]
+In eq. (2.13), $ g = logit $.
+
+
+%****** Box on exponential family distributions ******
+
+\newpage
+
+\begin{Comment}
+\hspace{-2.5mm}\textbf{Box 2: Exponential Family distributions}\label{box2}\\
+% \small
+In probability and statistics, an exponential family is a parametric set of probability distributions of the form:
+
+\begin{equation*}
+    p(x) = h(x)e^{\theta^TT(x)-A(\theta)}
+\end{equation*}
+
+Members of the exponential family distributions include:
+\begin{itemize}
+    \item Normal distribution: $X \sim N(\mu,\sigma^2)$
+    \item Exponential distribution: $ X \sim Exp(\lambda)$
+    \item Gamma distribution: $ X \sim \Gamma(\alpha,\beta)$
+    \item Chi-squared distribution: $ X \sim \chi^2 (k)$ or $ X \sim \chi_k^2$
+    \item Beta distribution: $ X \sim Beta(\alpha,\beta)$
+    \item Dirichlet distribution: $ X \sim Dir(\alpha)$
+    \item Bernoulli distribution: $ X \sim Be(p)$ or $ X \sim Bernoulli(p)$
+    \item Poisson distribution: $ X \sim P(\lambda)$ or $ X \sim Pois(\lambda)$
+    \item Binomial distribution (with fixed number of trials): $ X \sim B(n,p)$
+    \item Negative Binomial distribution (with fixed number of failures): $ X \sim NB(r,p)$\\
+\end{itemize}
+
+For example, take the Bernoulli case: $x \in X \sim Be(p)$:
+
+\begin{equation*}
+\begin{split}
+    p(x) & = p^x(1-p)^{(1-x)}\\
+         & = e^{log(p^x(1-p)^{(1-x)})}\\
+         & = e^{xlogp + (1-x)log(1-p)}\\
+         & = e^{xlog\frac{p}{1-p}+log(1-p)}\\
+         & = e^{x\theta - log(1+e^\theta)}
+\end{split}
+\end{equation*}
+
+where: 
+
+\hfill $h(x)=1 \hfill T(x)=x \hfill \theta = log \frac{p}{1-p} \hfill A(\theta) = log(1+e^\theta)$ \hfill
+
+\end{Comment}
+
+%**************
+
+\newpage
 
 \subsection{Statistical hypothesis testing}
 
-We can test for an association between a genetic variant and a trait by comparing the hypothesis where the genetic variant has no effect on the trait (null hypothesis, H0) and the alternative hypothesis when the variant does have an effect (!=0,H1).
+We can test for an association between a genetic variant and a trait by comparing the hypothesis where the genetic variant has no effect on the trait (null hypothesis, H0) and the alternative hypothesis when the variant does have an effect (effect different from 0,H1).
+Formally, the association hypothesis test is:
 
-
- \[ H0:=0 \]
- \[ H1:!=0 \]
+\begin{equation}\label{eq14:null_hypothesis}
+ H_{0}: \beta=0 
+\end{equation}
+vs
+\begin{equation}\label{eq15:alternative_hypothesis}
+ H_{0}: \beta \neq 0 
+\end{equation}
 
 We are then comparing the following models:
- 
- \[H0: y \sim N(0, \sigma^{2} I_n) \]
- \[H1: y \sim N(g,\sigma^{2} I_{n}) \]
 
-Statistical testing consists of:
-1. Define a test statistic
-2. Obtain a P-value
-3. Upon a threshold on the P-value, reject or accept the null hypothesis. 
+\begin{equation}\label{eq16:null_hypothesis_regression}
+ H_0: \mathbf{y} \sim N(\mathbf{0}, \sigma_N^{2} \mathbf{I_N}) 
+\end{equation}
 
+\begin{equation}\label{eq17:alternative_hypothesis_regression}
+ H_1: \mathbf{y} \sim N(\mathbf{g},\sigma_N^{2} \mathbf{I_N}) 
+\end{equation}
+
+Statistical hypothesis testing consists of three fundamental steps:
+\begin{enumerate}
+  \item Define a test statistic
+  \item Obtain a P-value
+  \item Upon a threshold on the P-value, reject or accept the null hypothesis. 
+\end{enumerate}
+
+A test statistic is a random variable that quantifies the evidence that the alternative hypothesis $H_1$ is true. 
+Once we have a test statistic, we calculate a probability value (P value) as the probability, under the null hypothesis $H_0$, of sampling a test statistic at least as extreme as the observed one. 
+The P value is a function of the test statistic and, by definition, it is uniformly distributed under $H_0$.
+Finally, if this probability is low (under a defined threshold, e.g. P < 0.05) $H_0$ is rejected and $H_1$ accepted (positive result).
+Otherwise, we reject $H_1$ and accept $H_0$ (negative result).\\
+
+In statistical hypothesis testing, two types of errors can be made. 
+We can either reject $H_0$ when $H_0$ is true, thus generating a false positive (type I error), or reject $H_1$ when $H_1$ is true, generating a false negative (type II error).
+Other concepts that are central to statistical hypothesis testing are the significance level, defined as the type I error rate (i.e. the expected percentage of false positives), and the statistical power, which is the true positive rate under $H_1$ (i.e. the ability to recover true associations, see Box 3).
+
+%****** Box on confusion matrix ******
+
+\newpage
+
+\begin{Comment}
+\hspace{-2.5mm}\textbf{Box 3: Key concepts of statistical testing}\label{box3}\\
+% \small
+Confusion matrix:
+
+\begin{center}
+\begin{tabular}{l|l|c|c|}
+\multicolumn{2}{c}{}&\multicolumn{2}{c}{Test Result}\\
+\cline{3-4}
+\multicolumn{2}{c|}{}&$H_0$&$H_1$\\
+\cline{2-4}
+\multirow{2}{*}{Actual value}& $H_0$ & True Positive ($TP$) & False Negative ($FN$)\\
+\cline{2-4}
+& $H_1$ & False Positive ($FP$) & True Negative ($TN$)\\
+\cline{2-4}
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+    \item Type I error $= FP$
+    \item Type II error $= FN$
+    \item Sensitivity $=$ Recall $=$ True positive rate (TPR) $=$ Power $=\frac{TP}{TP+FN}$
+    \item Specificity $=$ True negative rate (TNR) $=\frac{TN}{TN+FP}$
+    \item Precision $=$ Positive predictive value (PPV) $=\frac{TP}{TP+FP}$
+    \item Accuracy $=\frac{TP+TN}{TP+TN+FP+FN}$
+    \item $F_1$ score $F_1=2 \frac{PPV*TPR}{PPV+TPR}=\frac{2TP}{2TP+FP+FN}$
+    \item Family-wise error rate (FWER) $=P(FP \geq 1)= 1 - P(FP=0)$
+    \item False discovery rate (FDR) $=\frac{FP}{TP+FP}= 1- $Precision
+\end{itemize}
+
+\vfill
+
+\end{Comment}
+
+%**************
+
+\vspace{5mm}
+
+In the following paragraphs I will describe two approaches commonly used for statistical testing in genetic association analyses: the likelihood ratio test and the score test.
 
 \subsubsection{Likelihood ratio test}
 
-Test statistic is a (log) likelihood ratio (LLR): LL(H1) - LL(H0)
-Wilks: under some assumptions, the LLR follows a chi squared distribution
+The likelihood ratio test was first introduced by XX. 
+Test statistic is a (log) likelihood ratio ($LLR$):
+
+\begin{equation}\label{eq18:log_likelihood_ratio}
+LLR = logL(H_1) - logL(H_0)
+\end{equation}
+
+Where we compare the value of the log-likelihood of the model under $H_0$ and $H_1$, by evaluating eq. 2.5 (or 2.10) using MLE parameters estimated under $H_0$ (0, $\sigma_0^2$) or $H_1$ ($\hat{\beta}$, $\hat{\sigma_1^2}$).  
+
+Under some assumptions, the Wilks theorem (1938) guarantees that $2LLR$ follows a chi-squared ($\chi^2$) distribution with number of degrees of freedom (dof) $d$ equal to the number of tested parameters ($2LLR \sim \chi^2(d)$).
+
+The P-value can be calculated as:
 
 \subsubsection{Score test}
 
 Test statistic is 
 Davies:
 
-\subsubsection{Intuition on differences and pros and cons}
+\subsubsection{Intuition on differences between LRT and score test}
 
-LRT is more accurate (ref)
+LRT is more accurate 
 
-Score does not need inference under H1
+Score does not need inference under $H_1$
 
-LRT only with Wilks assumptions (test far from boundaries on parameter, ok for beta not sigma)
+LRT only with Wilks assumptions (test far from boundaries on parameter, ok for beta not sigma always positive)
 
 
 \subsection{Multiple Testing Correction}
 
-Define type I and type II errors. 
+
+Hundreds of thousands or millions of variants may be individually tested within a typical human GWAS. 
+In eQTL mapping, we might test tens of thousands of genes, each essentially equivalent to a GWAS trait. 
+Even when we only test for \textit{cis} eQTL, we will still test hundreds of variants per gene, bringing the average number of tests performed well over 10 Millions [REF].  
+When performing such a large number of tests, controlling single test P values results in a high number of false positives (for example, for P < 0:01 and 10$^6$ tests we expect 10,000 false positives under the null hypothesis). 
+This problem is known as the multiple hypothesis testing problem. 
+In the following, I give a brief overview of the methods commonly used in genetic analysis to correct for multiple hypothesis testing, with a focus on methods used in eQTL mapping.
+
+\subsubsection{Controlling family-wise error rate} 
+
+One strategy is to control the probability of having at least one false positive in the experiment, which corresponds to an experiment-wise P value known as family-wise error rate (FWER, see Box 3).
+
+The widely used Bonferroni method follows this strategy assuming independence between tests. 
+Given a desired family-wise significance level $\alpha$, the method consists in calculating adjusted P values $P_{adj} = P*n $, where n is the number of tests, and setting $P_{adj} < \alpha$ . 
+This strategy ensures FWER < $\alpha$. 
+The Bonferroni correction strategy is conservative, as the consequence of the assumption of independence between test, which ignores correlations between genotypes due to linkage disequilibrium (LD). 
+An alternative strategy, which accounts for the dependency of the statistical tests, is to consider permutations. 
+For example, one way to control the FWER by using permutations is to perform the experiment M times, each time considering a different permutation of the genotype data across individuals.
+The minimum P values from these M additional experiments are then used to calculate an experiment-wise P value, as the fraction of the M minimum permutation P values that are lower than the minimum observed P value. 
+
+For test i, the adjusted P value after m permutations is calculated as:
+
+\begin{equation}\label{eq19:permutation_adjusted_pvalue}
+    P_{adj,i}^{perm} = \frac{1+\sum_{m=1}^{M} q_{i,m} \geq P_i}{1+M}
+\end{equation}
+
+Where $q_{i,m}$ is the P value obtained at the mth permutation run equivalent to test i.  
+
+This strategy accounts for local LD, thereby increasing the statistical power, and has been used in $cis$ molecular QTL mapping to estimate gene-level P values (Sudmant et al., 2015; GTEx Consortium, 2015).  
+However, as evident from eq. 2.19, a potentially very large number of permutations is needed to be able to detect any effects.
+For example, for M=1000, the smallest adjusted P value we can obtain is only $P_{adj}$=0.001 (when no permuted P value is smaller than the P value identified) which is unlikely to pass the significance threshold upon the second round of correction.
+M should be at least 100000, which entails a great computational burden and can become unpractical in molecular analyses of large cohorts.\\
+
+Recently, one method has been developed that uses permutation results for as little as 50-100 permutations to estimate a full distribution of background permuted P values, allowing to exploit the benefits of the assumption-free permutation approach without too much of the computational burden. 
+This is the method I will use throughout this Thesis to control for FWER at gene-level when performing large scale eQTL mapping.
+
+\subsubsection{Controlling false discovery rate}
+
+An alternative solution is to control the false discovery rate (FDR), i.e. the expected percentage of false discoveries (see Box 3).
+The most widely used FDR-based correction method is the Benjamini-Hochberg (BH) procedure (1995), which again assumes independence between tests. 
+Let us consider T tests with P values $p_1, p_2, ..., p_T$ and let $r_1, r_2, ..., r_T$ be their ranks (the smallest P value has rank 1, the highest has rank T), defining adjusted P values as $P_{adj,i} = \frac{Tp_i}{r_i} $ and setting $<\alpha$ ensures FDR < $\alpha$.
+
+The Storey procedure is very similar to BH, but..
+
+\subsubsection{Multiple testing correction for \textit{cis} eQTL mapping}
+
+A typical strategy to correct for multiple hypothesis testing in molecular  \textit{cis}-QTL mapping is to use a two-step procedure (Battle et al., 2014; Sudmant et al., 2015; GTEx
+Consortium, 2015). 
+First, for each gene an experiment-wise P value is obtained by correcting for multiple testing across variants using a FWER-based method. 
+These gene-level P values are probability values for the hypothesis of a gene having at least
+one QTL in the analysed region. 
+Second, the gene-level P values are corrected to control the FDR, typically using the Benjamini-Hochberg procedure.\\
+
+In this thesis, I adopt this two step approach.
+I use 1000 permutations and the method described in [] to correct P values at the gene level (I will call the P values obtained this way empirical feature P values).
+Then I select the top SNP per gene and correct the corresponding empirical feature P values a second time, using the Storey procedure
 
 \subsection{Calibration studies and distributions on P-values}
 
 \subsection{Accounting for confounding effects in linear model}
 
-It will then describe the concept of fixed effect (FE) terms and covariates, and touch on the use of PCs and PEER factors (Stegle et al. 2010) to control for global trends. In equation 2,  contains sample information such as age or gender or known batch effects, as is model as a FE.
+It will then describe the concept of fixed effect (FE) terms and covariates, and touch on the use of PCs and PEER factors (Stegle et al. 2010) to control for global trends. 
+In equation 2,  contains sample information such as age or gender or known batch effects, as is model as a FE.
+
+%********************************** %Third Section  **************************************
 
 \section{Population structure and linear mixed models}
 
-It was recognised, even before the first GWAS was conducted, that there was a
-possibility of identifying false positives or that true positives may be masked when
-using population based association studies instead of family based linkage studies,
-due to confounding effects. In particular, this is because both phenotypic
-prevalence and allele frequencies vary across different populations, which may result
-in the identification of variants that are indirectly associated with the phenotype of
-interest due to ethnicity or population substructure
+It was recognised, even before the first GWAS was conducted, that there was a possibility of identifying false positives or that true positives may be masked when using population based association studies instead of family based linkage studies, due to confounding effects. 
 
-It will then introduce the concept of confounding effects and particularly population structure and discuss the use of random effect (RE) terms, making the transition from linear models to linear mixed models (LMMs). In equation 3,  is a random variable used to account for population structure; note that in all three cases, we test whether..
+In particular, this is because both phenotypic prevalence and allele frequencies vary across different populations, which may result in the identification of variants that are indirectly associated with the phenotype of interest due to ethnicity or population substructure.
+
+It will then introduce the concept of confounding effects and particularly population structure and discuss the use of random effect (RE) terms, making the transition from linear models to linear mixed models (LMMs). 
+In equation 3,  is a random variable used to account for population structure; note that in all three cases, we test whether..
 
 \subsection{Linear mixed models for eQTL mapping}
 
 It will conclude with a focus on the application of linear mixed models to eQTL mapping, making a distinction between cis and trans models and providing an overview of both alternative methods for eQTL mapping and large consortia and studies performing eQTL mapping.
 
+%********************************** %Fourth Section  **************************************
+
 \section{LMM for GxE (and StructLMM)}
 
+\subsection{Stratified interaction test}
 \subsection{Single environment interaction test}
 \subsection{StructLMM}
+
+\section{Thesis outline}
