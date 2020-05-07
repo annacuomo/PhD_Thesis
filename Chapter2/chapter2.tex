@@ -213,7 +213,7 @@ where:
 
 \subsection{Statistical hypothesis testing}
 
-We can test for an association between a genetic variant and a trait by comparing the hypothesis where the genetic variant has no effect on the trait (null hypothesis, H0) and the alternative hypothesis when the variant does have an effect (effect different from 0,H1).
+We can test for an association between a genetic variant and a trait by comparing the hypothesis where the genetic variant has no effect on the trait (null hypothesis, $H_0$) and the alternative hypothesis when the variant does have an effect (effect different from 0, $H_1$).
 Formally, the association hypothesis test is:
 
 \begin{equation}\label{eq14:null_hypothesis}
@@ -301,7 +301,7 @@ The likelihood ratio test was first introduced by XX.
 Test statistic is a (log) likelihood ratio ($LLR$):
 
 \begin{equation}\label{eq18:log_likelihood_ratio}
-LLR = logL(H_1) - logL(H_0)
+LLR = logL(H_1) - logL(H_0) = log \frac{L(H_1)}{L(H_0)}
 \end{equation}
 
 Where we compare the value of the log-likelihood of the model under $H_0$ and $H_1$, by evaluating eq. 2.5 (or 2.10) using MLE parameters estimated under $H_0$ (0, $\sigma_0^2$) or $H_1$ ($\hat{\beta}$, $\hat{\sigma_1^2}$).  
@@ -312,7 +312,12 @@ The P-value can be calculated as:
 
 \subsubsection{Score test}
 
-Test statistic is 
+The score test, also known as Lagrange multiplier test, is an alternative hypothesis test.
+
+It was first developed by Rao (\cite{rao1948large})
+
+The test statistic employed in the score test 
+
 Davies:
 
 \subsubsection{Intuition on differences between LRT and score test}
@@ -385,10 +390,22 @@ Then I select the top SNP per gene and correct the corresponding empirical featu
 
 \subsection{Calibration studies and distributions on P-values}
 
+Under the assumption of no association between genetic variants and the analysed trait, an association model is expected to produce approximately uniform P values.
+In that case, the model is said to be calibrated.
+To verify that a model is calibrated we can disrupt the association between genotypes and phenotypes, typically by shuffling the genotypes. 
+A representation that is typically used to compare the observed (shuffled) and the expected distributions of P values is the quantile-quantile plot (QQ plot). 
+In a QQ plot the observed -log10P is plotted against the expected -log10P, where the expected value is obtained from the uniform distribution. 
+As confounding factors such as population structure and relatedness create spurious associations, inflated QQ plots are typically associated with the presence of confounding (Voight and Pritchard, 2005; Lin and Sullivan, 2009). 
+
 \subsection{Accounting for confounding effects in linear model}
 
 It will then describe the concept of fixed effect (FE) terms and covariates, and touch on the use of PCs and PEER factors (Stegle et al. 2010) to control for global trends. 
 In equation 2,  contains sample information such as age or gender or known batch effects, as is model as a FE.
+
+\begin{equation}\label{eq20:Linear_regression_genetics_covariates}
+ \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta + \boldsymbol{\epsilon} 
+\end{equation}
+
 
 %********************************** %Third Section  **************************************
 
@@ -401,6 +418,10 @@ In particular, this is because both phenotypic prevalence and allele frequencies
 It will then introduce the concept of confounding effects and particularly population structure and discuss the use of random effect (RE) terms, making the transition from linear models to linear mixed models (LMMs). 
 In equation 3,  is a random variable used to account for population structure; note that in all three cases, we test whether..
 
+\begin{equation}\label{eq21:Linear_mixed_model}
+ \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta + \mathbf{u} + \boldsymbol{\epsilon} 
+\end{equation}
+
 \subsection{Linear mixed models for eQTL mapping}
 
 It will conclude with a focus on the application of linear mixed models to eQTL mapping, making a distinction between cis and trans models and providing an overview of both alternative methods for eQTL mapping and large consortia and studies performing eQTL mapping.
@@ -411,6 +432,15 @@ It will conclude with a focus on the application of linear mixed models to eQTL 
 
 \subsection{Stratified interaction test}
 \subsection{Single environment interaction test}
+
+\begin{equation}\label{eq22:Interaction_test_FE_LMM}
+ \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{c}\gamma  + \mathbf{g}\beta_G + \mathbf{c}*\mathbf{g}\beta_{GxE} + \mathbf{u} + \boldsymbol{\epsilon} 
+\end{equation}
+
 \subsection{StructLMM}
+
+\begin{equation}\label{eq23:StructLMM-int}
+ \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \otimes \boldsymbol{\beta_{GxE}} + \mathbf{e} + \boldsymbol{\epsilon} 
+\end{equation}
 
 \section{Thesis outline}

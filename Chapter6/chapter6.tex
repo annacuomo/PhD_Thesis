@@ -1,0 +1,104 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Sixth Chapter *********************************
+%*******************************************************************************
+
+\chapter{LMM framework for multi-environment interaction eQTL using scRNA-seq}
+
+%********************************** %First Section  **************************************
+
+\section{Introduction} 
+
+Population-scale cohorts that combine genotyping with single cell expression profiles have fostered interest to study the effect of common genetic variants on gene regulation at single cell resolution.\\
+
+It has already been demonstrated that single cell expression quantitative trait loci (eQTL) mapping can be achieved, and that known eQTL previously identified using bulk expression can be replicated both in iPS cells and blood (Cuomo et al. 2020; van der Wijst et al. 2018).
+Additionally, the single cell resolution allows for the interrogation of interaction eQTL, where the strength of the genetic effect of eQTL is modulated by the cells’ types and states (Cuomo et al. 2020). 
+These kinds of studies can add a layer of interpretability of the role of genetic variants on gene expression regulation. 
+Analyses of eQTL context-specificity have been so far limited to a single state variable (e.g. cell type, (Fairfax et al. 2012) or stimulation status, (Fairfax et al. 2014)) and individual genetic variants.\\
+
+A recently proposed method called StructLMM (structured linear mixed model, described in 2.4.3) allows for the robust joint analysis of GxE effect of multiple environmental variables (Moore et al. 2019).
+This model can be applied, with some care, to the mapping of interaction eQTL, where genes’ single cell expression profiles are the tested outcomes, and the cells’ states and types are the environmental variables. 
+The main limitation of StructLMM is that it does not allow to fully control for the intrinsic population structure of the tested samples [REF]. 
+When using single cell measurements, we are in practice dealing with genetically identical replicate observations for a donor. 
+The relatedness structure between samples (or cells in this context) is therefore non-trivial, as the cell measurements are not independent, as assumed by the model.\\
+
+Here, we propose StructLMM2, an extension of the StructLMM model that builds on it while allowing control for confounding effects due to population structure, and is especially well suited for the mapping of multivariate single cell interaction eQTL. 
+The model can handle hundreds of cell states and conditions, and it can be applied to large cohorts of hundreds of thousands of cells for hundreds of  individuals.
+
+
+\section{Model} 
+
+\begin{equation}
+ \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \otimes \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\epsilon} 
+\end{equation}
+
+\section{Simulation data}
+
+First, we applied the model on simulated data.
+
+\subsection{Simulation strategy}
+Briefly, from the full model (eq. 6.1) we simulate only an intercept as covariate:  
+
+\begin{equation}
+ \mathbf{y} = \mathbf{y}_0 + \mathbf{g}\beta_G + \mathbf{g} \otimes \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\epsilon} 
+\end{equation}
+
+We column normalize all terms so that the total variance sums to 1.
+
+We set the variance explained by both genetic terms $var_G+var_{GxE}=\sigma_0^2$, and call the rest $v = 1-\sigma_0^2$.
+
+Further, we regulate the amount of variance driven by GxE using an additional weighting factor $\rho_0$, such that: $var_G = (1-\rho_0)\sigma_0^2$ and $var_{GxE} = \rho_0\sigma_0^2$
+
+For simplicity, we set the variances explained by the last three terms to be the same:
+$\sigma_E^2 = \sigma_g^2 = \sigma_n^2 = v/3$
+
+\subsection{calibration analysis}
+
+\subsection{Comparison with Struct LMM.0}
+
+\subsection{Comparison with standard interaction test}
+
+\section{Real data}
+
+Next, we applied the model on the data described in Chapter 3.1
+
+\section{Upstream analysis}
+
+One of the key steps in running this method is choosing the environmental factors.
+A user might have 
+PCA
+MOFA (single omic)
+
+\section{Downstream analysis} 
+
+\begin{equation}
+    \mathbf{f}(\mathbf{X}) \sim \mathrm{GP}(\mathbf{m}(\mathbf{x}), k(\mathbf{x},\mathbf{x}^T))
+\end{equation}
+
+Out of sample prediction for $\mathbf{f}_*$'s best estimator is its BLUP, defined as its expected value condition on $\mathbf{f}$ and $\mathbf{X},\mathbf{X}_*$:
+
+\begin{equation}
+    E[\mathbf{f}_*|\mathbf{f}] = \mathbf{m}_* +k(\mathbf{X}_*,\mathbf{X})k(\mathbf{X},\mathbf{X})^{-1}(\mathbf{f}-\mathbf{m})
+\end{equation}
+
+In our case,
+
+\begin{equation}
+    \mathbf{f}(\mathbf{X}) = \mathbf{y} = \mathbf{W}\boldsymbol{\alpha}+\mathbf{g}\beta_G+\mathbf{g}\boldsymbol{\beta}_{GxE}+\mathbf{e} + \mathbf{u} + \boldsymbol{\psi}
+\end{equation}
+
+with ($\mathbf{X} = {\mathbf{W},\mathbf{g},\mathbf{E},\mathbf{K}}$):
+
+\begin{equation}
+    \mathbf{m}(\mathbf{X}) = \mathbf{W}_*\boldsymbol{\alpha}_{*}+\mathbf{g}_*\beta_G
+\end{equation}
+
+\begin{equation}
+    k(\mathbf{X},\mathbf{X}) = \sigma_{GxE}^2(\mathbf{g}\otimes\mathbf{E})(\mathbf{g}\otimes\mathbf{E})^T
+\end{equation}
+
+\begin{equation}
+\mathbf{y}_{*}^{BLUP} = E[\mathbf{y}_*|\mathbf{y}] = 
+\mathbf{W}_*\boldsymbol{\alpha}_{*}+\mathbf{g}_*\beta_G+\mathbf{E}_*\gamma + 
+k(\mathbf{X}_*\mathbf{X})K^{-1}(\mathbf{y}-\mathbf{W}\boldsymbol{\alpha}-\mathbf{g}\beta_G-\mathbf{E}\gamma)
+\end{equation}

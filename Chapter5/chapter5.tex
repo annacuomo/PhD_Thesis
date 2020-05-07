@@ -1,0 +1,109 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Fifth Chapter *********************************
+%*******************************************************************************
+
+\chapter{Alternative phenotypes for eQTL mapping using single cell RNA-seq}
+
+In Chapter 4 we have focused on performing standard "mean-level" expression level eQTL mapping using scRNA-seq, where the phenotype of interest is expression abundance within a homogeneous population of cells.
+We can call such efforts "pseudo-bulk" approaches, where we are essentially replicating bulk-like expression values and performing the eQTL test adapting approaches used for traditional eQTL mapping. 
+In the applications we and others have described \cite{van2018single,cuomo2020single}, the value of using scRNA-seq lies in the fact that we are able to, within a single experiment, unbiasedly define and assess multiple different cell types, whilst retaining a single cell resolution.\\
+
+In this chapter we want to show examples of eQTL mapping using different phenotypes, which are especially allowed by the single cell resolution. 
+In 5.1 I will describe interaction eQTL, where the ..
+In 5.2 I will describe variance eQTL, where ..
+
+\section{Interaction eQTL}
+
+As discussed in (2.4) there are multiple ways to test for interaction effects, were variation in the phenotype is affected by a combined effect of the genotype at a certain locus and some environmental component.\\
+
+In the context of eQTL mapping those environments are more often called cell states or types and are typically estimated from the expression profiles themselves. Then an interaction eQTL might be an eQTL whose strength changes continuously over some differentiation trajectory for example, or an eQTL whose strength varies from cell type to cell type or from one cell cycle phase to another.\\ 
+
+In some sense, we have already have performed a related analysis: by subdividing cells into developmental stages and cell types prior to eQTL mapping, we have essentially performed stratified tests (see section 2.4.1).
+In the neuronal differentiation study, we first assigned cells to cell types using marker genes, and then mapped eQTL in each cell type separately.
+In the endoderm study, we ordered our cells along a computationally inferred pseudotime, and then essentially binned cells in three groups, again reflecting known biology of this developmental process and using marker genes.\\
+
+However, the single cell resolution allows to assess more subtle changes, by performing a joint analysis on all cells and measuring the effect of differentiation taken as a continuum.
+In the next section, we show different approaches we used to perform interaction eQTL mapping in the endoderm differentiation data.
+
+\subsection{Dynamic eQTL across iPSC differentiation to endoderm}
+
+The availability of large numbers of cells per donor across a continuous differentiation trajectory from pluripotent stage to definitive endoderm enabled the analysis of dynamic changes of eQTL strength at fine-grained resolution. 
+
+\subsubsection{Running average}
+
+First, for visualization purposes, we used a sliding-window approach. 
+Because we need a rather large amount of cells to reliably estimate expression abundance for each of our individuals, we slide a window containig 25\% of the cells along pseudotime by a step of 2.5\% cells.
+In each window, we considered average expression quantifications and estimate genetic effects using eQTL mapping, essentially performing the same analysis we perform in three developmental stages in each window (4.5). 
+
+We focused on the joint set of 4,422 eQTL lead variants (4,470 SNP-gene pairs) discovered at the iPSC, mesendo, and defendo stages and explored how they were modulated by developmental time.
+
+In parallel, we reassessed each eQTL in each window taking advantage of the full length transcript sequencing to measure allele-specific expression (ASE).
+Here, in each window, we quantified the deviation from 0.5 of the expression of the minor allele at the eQTL (ratio of reads phased to eQTL variants, Methods). 
+Notably, ASE can be quantified in each cell and is independent of expression level, thus mitigating technical correlations between differentiation stage and genetic effect estimates.
+
+Both methods result in a measure of the varying strength of genetic effects along development, or genetic effect dynamics. 
+Reassuringly, the two approaches were highly consistent across pseudotime (Fig. 3a, Supplementary Fig. 13).\\
+
+\subsubsection{Interaction tests}
+
+\textbf{Allele specific expression}
+
+To formally test for eQTL effects that change dynamically across differentiation (dynamic QTL), we tested for associations between pseudotime and the genetic effect size using a linear model:
+
+\begin{equation}
+    ASE = pseudotime + pseudotime^2 + \epsilon
+\end{equation}
+
+(genetic effect defined based on ASE at the level of single cells; likelihood ratio test, considering linear and quadratic pseudotime), uncovering a total of 899 time dynamic eQTL (out of the joint set of 4422 eQTL across all stages; FDR<10\%; Methods), including a substantial fraction of eQTL that were not stage-specific (Supplementary Data 3). 
+This complements our earlier analysis based on discrete differentiation stages, which identified substantial stage-specific effects (Fig. 2a,c), by identifying subtle changes in the relationship between genotype and phenotype during differentiation. 
+To further explore this set of genes, we clustered eQTL jointly based on the relative gene expression dynamics (global expression changes along pseudotime, quantified in sliding windows as above, Methods), and on the genetic effect dynamics (Fig. 3a; Methods). 
+This identified four basic dynamic patterns (Fig. 3b): decreasing early (cluster A), decreasing late (cluster B), transiently increasing (cluster C), and increasing (cluster D). As expected, stage-specific eQTL were grouped together in particular clusters (e.g. defendo specific eQTL in cluster D; Supplementary Fig. 14). 
+Notably, the gene expression dynamics and the eQTL dynamics tended to be distinct, demonstrating that gene expression level is not the primary mechanism governing variation in genetic effects. 
+In particular, genetic effects were not most pronounced when gene expression was high (Fig. 3c, d, Supplementary Fig. 15).\\
+
+Distinct combinations of expression and eQTL dynamics result in different patterns of allelic expression. This is illustrated by the mesendoderm-specific eQTL for \textit{VAT1L}. 
+Overall expression of \textit{VAT1L} decreases during differentiation, but expression of the alternative allele is repressed more quickly than that of the reference allele (Fig. 3c). 
+This illustrates how \textit{cis} regulatory sequence variation can modulates the timing of expression changes in response to differentiation, similar to observations previously made in \textit{C. elegans} using recombinant inbred lines \cite{francesconi2014effects}. 
+In other cases, the genetic effect coincides with high or low expression, for example in the cases of \textit{THUMPD1} and \textit{PHC2} (Fig. 3c). 
+These examples illustrate how genetic variation is intimately linked to the dynamics of gene regulation.\\
+
+We next asked whether dynamic eQTL were located in specific regulatory regions. 
+To do this, we evaluated the overlap of the epigenetic marks defined using the hESC differentiation time series with the dynamic eQTL (Fig. 3e, Supplementary Fig. 16). 
+This revealed an enrichment of dynamic eQTL in H3K27ac, H3K4me1 (i.e., enhancer marks), and H3K4me3 (i.e. promoter) marks compared to non-dynamic eQTL (i.e. eQTL that we identified but did not display dynamic changes along pseudotime, Fig. 3e), consistent with these SNPs being located in active regulatory elements.
+
+\vspace{5mm}
+
+\textbf{Fixed effect interaction test}
+
+
+
+\subsection{Cellular environment modulates genetic effects on expression}
+
+Whilst differentiation was the main source of variation in the dataset, single cell RNA-seq profiles can be used to characterise cell-to-cell variation across a much wider range of cell state dimensions14,15,16. 
+We identified sets of genes that varied in a co-regulated manner using clustering (affinity propagation; 8,000 most highly expressed genes; Supplementary Data 5; Methods), which identified 60 modules of co-expressed genes. 
+The resulting modules were enriched for key biological processes such as cell differentiation, cell cycle state (G1/S and G2/M transitions), respiratory metabolism, and sterol biosynthesis (as defined by Gene Ontology annotations; Supplementary Data 6). 
+These functional annotations were further supported by transcription factor binding (e.g., enrichment of SMAD3 and E2F7 targets in the differentiation and cell cycle modules, respectively (Supplementary Table 2, Supplementary Data 7)). 
+Additionally, expression of the cell differentiation module (cluster 6; Supplementary Table 2) was correlated with pseudotime, as expected (R=0.62; Supplementary Fig. 7C).\\
+
+Using the same ASE-based interaction test as applied to identify dynamic QTL, reflecting ASE variation across pseudotime (Fig. 3; Methods), we assessed how the genetic regulation of gene expression responded to these cellular contexts. 
+Briefly, we tested for genotype by environment (GxE) interactions using a subset of four co-expression modules as markers of cellular state, while accounting for effects that can be explained by interactions with pseudotime (Fig. 4a; Methods). 
+These four co-expression modules were annotated based on GO term enrichment, and their normalised mean expression levels in each cell were taken as quantitative measures of cell cycle state (G1/S and G2/M transitions) and metabolic pathway activity (respiratory metabolism and sterol biosynthesis; Methods). 
+This approach extends previous work using ASE to discover GxE interactions17,18, taking advantage of the resolution provided by single-cell data. 
+We identified 668 eQTL that had an interaction effect with at least one factor (Fig. 4b; FDR<10\%), with many of these eQTL having no evidence for an interaction with differentiation.
+Indeed, 369 genes had no association with pseudotime, but responded to at least one other factor. 
+Conversely, of the 872 dynamic eQTL, 299 were also associated with GxE effects with other factors, whereas 573 were exclusively associated with pseudotime (Fig. 4b, Supplementary Fig. 17; Supplementary Data 8-10; Methods).\\
+
+These interactions encompass regulatory effects on genes and SNPs with important functional roles. Specifically, 95 interaction eQTL variants overlap with variants previously identified in genome-wide association studies (GWAS, LD $r^2>0.8$; Methods; Supplementary Data 11). 
+For example, an eQTL for \textit{RNASET2} shows sensitivity to cellular respiratory metabolic state (Fig. 4a). 
+This eQTL SNP is in LD ($r^2=0.86$) with a GWAS risk variant for basal cell carcinoma19. Furthermore, an eQTL for \textit{SNRPC} showed sensitivity to the G2/M state, and is in LD ($r^2=0.92$) with a GWAS risk variant for prostate cancer (Fig. 4a). 
+These cellular factors vary not only across cells in the experiments considered here, but also across cells \textit{in vivo}, across individuals, and across environments. 
+Thus, these examples illustrate the versatility of our single cell dataset and how it can provide regulatory information about variants in contexts beyond early human development.\\
+
+Finally, we explored whether we could detect higher order interaction effects, where the genetic effect varies with a cellular state in different ways along differentiation, effectively testing for GxExE interactions. 
+To this end, we fitted a linear model with fixed effects for differentiation and each of the factors, plus a combined term (factor x pseudotime, Fig. 4b, c; Methods). 
+This identified 176 genes with significant higher order interactions between a genetic variant, differentiation, and at least one other factor (Fi. 4b, c, Supplementary Fig. 17; Supplementary Data 10). 
+One example is an eQTL for \textit{EIF5A}, whose ASE was responsive to G2/M state, especially early in differentiation (Fig. 4c). 
+These results highlight the context-specificity of eQTL, and the power of scRNA-seq in dissecting this specificity within one set of experiments.
+
+\section{Variance eQTL}

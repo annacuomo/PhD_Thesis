@@ -5,19 +5,19 @@
 
 \chapter{Mean level eQTL mapping using single cell RNA-seq}
 
-In this chapter we continue the analyses on the datasets described in Chapter 3 and add in the genetic variation aspect; we can now adapt the LMM-based methods traditionally used for eQTL mapping (described in Chapter 2) to single cell data (section 4.1). 
+In this chapter we continue the analyses on the datasets described in Chapter 3 and add in the genetic variation aspect; we can now adapt the LMM-based methods traditionally used for eQTL mapping (described in Chapter 2) to single cell data. 
 In particular, we validate our method (focusing on the iPS cells) by systematically comparing eQTL results we obtained using single cells to eQTL identified using bulk RNA-sequencing (section 4.2). 
 In addition, we compare eQTL results obtained when using two alternative single cell technologies: a plate-based (SmartSeq2) and a droplet-based (10X Genomics) technology, for a subset of lines (section 4.3). 
-Finally, we perform eQTL maps of the mesendoderm and definitive endoderm stages (section 4.4), and of various stages of neuronal development (section 4.5) all of which are novel to this study to the best of our knowledge (section 4.4). 
+Finally, we perform eQTL maps of the mesendoderm and definitive endoderm stages (section 4.4), and of various stages of neuronal development (section 4.5) all of which are novel to this study to the best of our knowledge. 
 The key results described in this chapter are contained in (Cuomo et al, 2020, Alvari, Cuomo et al, 2020, Jerber, Seaton, Cuomo et al, 2020).
 
 \section{What is different in single cell data?}
 
 When we perform eQTL mapping, we are interested to find differences in expression level between individuals, as a function of their different genotypes as specific genomic loci. 
-Under the assumption that we are looking at an otherwise homogenous population of cells (e.g. cell type) it is reasonable to take the sum or the average expression per individual, across all cells.
+Under the assumption that we are looking at an otherwise homogeneous population of cells (e.g. all cells of a given cell type) it is reasonable to take the sum or the average expression per individual, across all cells.
 When we use bulk RNA sequencing expression profiles, that is essentially what happens. 
 All cells from an individual are pooled, the mRNA extracted and sequenced. 
-The resulting reads are and mapped onto a reference genome, and the "abundance" of each genes is quantified as the number of reads obtained from one donor that uniquely map to that gene. 
+The resulting reads are and mapped onto a reference genome, and the expression level of each genes is quantified as the number of reads obtained from one donor that uniquely map to that gene. 
 A bulk RNA-seq experiment, therefore, results in one individual measure of “abundance” of each gene for each donor. 
 Such measure is the results of aggregating over XX cells [REF] and, at least for expressed genes (average TPM > YY) follows a distribution that can be approximated as Gaussian.
 
@@ -38,27 +38,48 @@ Add differences in number of total reads, read distribution, describe “double 
 
 In order to produce bulk-like results, two main approaches can be used.
 
-Under the assumption that we are looking at a single cell type, we can i) aggregate counts across all cells from an individual (e.g. taking the average expression value) and generate a "pseudo-bulk" measure, and then run the test exactly as if it were bulk. Or ii) use full single cell expression, without aggregating.
+Under the assumption that we are looking at a single cell type, we can i) aggregate counts across all cells from an individual (e.g. taking the average expression value) and generate a "pseudo-bulk" measure, and then run the test exactly as if it were bulk. 
+Or ii) use full single cell expression, without aggregating.
 
 \section{eQTL mapping in iPSCs}
 
-To perform eQTL mapping 
-
-Introduction
-Effects of common genetic variation in development unknown
-Method
-Results
-
-As we discussed in Chapter 2, the early stages of human development involve dynamic changes in cellular states and quick cell fate decisions. However, the extent to which an embryo’s genetic background influences this process has only been determined in a small number of special cases linked to rare large-effect variants that cause developmental disorders. This lack of information is critical - it can provide a deep understanding of how genetic heterogeneity is tolerated in normal development, when controlling the expression of key genes is vital. Combining single cell profiling and genetic variation of enough individuals can facilitate assessment of the molecular impact of genetic variability in a continuous manner across early human development.
+As we discussed in Chapter 3, the early stages of human development involve dynamic changes in cellular states and quick cell fate decisions. 
+However, the extent to which an embryo’s genetic background influences this process has only been determined in a small number of special cases linked to rare large-effect variants that cause developmental disorders. 
+This lack of information is critical - it can provide a deep understanding of how genetic heterogeneity is tolerated in normal development, when controlling the expression of key genes is vital. 
+Combining single cell profiling and genetic variation of enough individuals can facilitate assessment of the molecular impact of genetic variability in a continuous manner across early human development.\\
  
-We have deep genotype information for all of our 125 samples, so this study allows discovery of eQTL at various stages of early human development. This was partly motivated by the observation that a substantial fraction of variability in gene expression was explained by cell-line effects (Fig. XX).
+We have deep genotype information for all of our 125 samples, so this study allows discovery of eQTL at various stages of early human development. 
+This was partly motivated by the observation that a substantial fraction of variability in gene expression was explained by cell-line effects (Fig. XX).
  
-We tested for associations between common genetic variants and gene expression independently at each of the three defined stages of cell differentiation: iPSC, mesendo and defendo (Fig. YY). Briefly, for each donor, experimental batch, and differentiation stage, we quantified each gene’s average expression level, before using a linear mixed model to test for cis eQTL, adapting approaches described above and used for bulk RNA-seq profiles (+/- 250kb, MAF > 5% (Kilpinen et al. 2017)). 
+First, we tested for associations between common genetic variants and gene expression at iPSC stage. 
+Briefly, for each donor, experimental batch, and differentiation stage, we quantified each gene’s average expression level, before using a linear mixed model to test for cis eQTL, adapting approaches described above and used for bulk RNA-seq profiles (+/- 250kb, MAF > 5\% (Kilpinen et al. 2017)). 
 
+This identified 1,833 genes with at least one eQTL (denoted eGenes; FDR <10\%; 10,840 genes tested; Supplementary Data 3). 
 
 \section{Replication in bulk, 10x}
 
+To validate our approach, we also performed eQTL mapping using deep bulk RNA-sequencing profiles from the same set of iPSC lines (“iPSC bulk”; 10,736 genes tested) generated as part of the HipSci project1, yielding consistent eQTL (~70\% replication of lead eQTL effects; nominal P<0.05; Methods; Supplementary Data 4).\\ 
+
+These iPSC eQTL were further confirmed by analysis of scRNA-seq data generated from a subset of 5 experiments using a droplet-based approach (Methods; Supplementary Fig. 9, 10).
+
 \section{eQTL mapping in mesendo, defendo}
+
+Analogously, we mapped eQTL in the mesendo and defendo populations, yielding 1702 and 1342 eGenes, respectively. 
+For comparison, we also performed eQTL mapping in cells collected on day1 and day3—the experimental time points commonly used to identify cells at mesendo and defendo stages.
+Interestingly, this approach identified markedly fewer eGenes (1181 eGenes at day1, and 631 eGenes at day3), demonstrating the power of using the single-cell RNA-seq profiles to define relatively homogeneous differentiation stages in a data-driven manner (Fig. 2b; Methods; Supplementary Table 1). 
+Notably, this observation did not merely reflect differences in the number of cells or donors considered (Supplementary Fig. 11).\\
+
+Profiling multiple stages of endoderm differentiation allowed us to assess at which stage along this process individual eQTL can be detected. 
+We observed substantial regulatory and transcriptional remodelling upon iPS differentiation to definitive endoderm, with over 30\% of eQTL being specific to a single stage (Fig. 2a, c; Methods), where we considered the pairwise replication of eQTL to define stage-specific effects (nominal P<0.05 and consistent effect direction; Methods). 
+Importantly, we note that stage-specificity of eQTL was not significantly explained by stage-specific gene expression (Supplementary Fig. 12). 
+Our differentiation time course covers developmental stages that have never before been accessible to genetic analyses of molecular traits. 
+Consistent with this, 349 of our eQTL variants at the mesendo and defendo stages have not been reported in either a recent iPSC eQTL study based on bulk RNA-seq11, or in a compendium of eQTL identified from 49 tissues as part of the GTEx project12 (linkage disequilibrium with lead variants in GTEx, LD: $r^2<0.2$; Methods; Supplementary Data 3).\\
+
+In addition to these eQTL, we identified lead switching events for 155 eGenes. 
+Those are two distinct variants for the same gene that are identified as lead eQTL at different stages of differentiation (at LD: $r^2<0.2$; for example iPSC and defendo in Fig. 2d; Methods). 
+To investigate the potential regulatory role of such variants, we examined whether the corresponding genetic loci also featured changes in histone modifications during differentiation. 
+Specifically, we used ChIP-Sequencing to profile five histone modifications associated with promoter and enhancer usage (H3K27ac, H3K4me1, H3K4me3, H3K27me3, and H3K36me3) in hESCs that were differentiated towards endoderm (using the same protocol employed above) and measured at equivalent time points (i.e. day0, day1, day2, day3; Methods). 
+Intriguingly, for 20 of the lead switching events, we observed corresponding changes in the epigenetic landscape (stage-specific lead variants overlap with stage-specific changes in histone modification status), suggesting a direct mode of action (Fig. 2d).
 
 \section{eQTL mapping in neuronal cell types}
 
