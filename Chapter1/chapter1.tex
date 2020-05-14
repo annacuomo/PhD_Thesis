@@ -20,7 +20,7 @@ Around the same time, specifically in 1853, the man who is now universally consi
 He was actually not a scientist but a friar, by the name of Gregor Mendel, and he was going to perform the now infamous experiments on inheritance in peas. 
 At St. Thomas’ abbey, in Brno, Moravia (then part of the Austro-Hungarian empire), Mendel meticulously studied seven different traits of the plants (plant height, pod shape and color, seed shape and color, and flower position and color), each of which segregated on one of the plant's seven chromosomes. 
 For example, seeds were either yellow or green, wrinkled or round. For seven years, Mendel followed generations and generations of pea plants and noted that some traits occurred far more often than others. 
-For example, when crossing a plant with round seeds and one with wrinkled seeds, the offspring (F1) always had round seeds: Mendel called the round seed trait the “dominant” trait. However, the wrinkled seed trait that had seemingly vanished in the first filial generation would appear again, in the second generation (F2) in a 1 wrinkle seed plant to 3 round seed plants ratio. Somehow, this “recessive” trait was being passed on, remaining hidden when overpowered by the dominant trait, but not forgotten. 
+For example, when crossing a plant with round seeds and one with wrinkled seeds, the offspring ($F_1$) always had round seeds: Mendel called the round seed trait the “dominant” trait. However, the wrinkled seed trait that had seemingly vanished in the first filial generation would appear again, in the second generation ($F_2$) in a 1 wrinkle seed plant to 3 round seed plants ratio. Somehow, this “recessive” trait was being passed on, remaining hidden when overpowered by the dominant trait, but not forgotten. 
 In 1866, Mendel published his experiments and results in “Experiments in Plant Hybridization” \cite{mendel1996experiments}. 
 In it, he proposes what will be called the Mendelian Laws of Inheritance: i) the Law of Independent Segregation (every individual contains two factors for each trait one of which is passed on to its offspring at random), ii) the Law of Independent Assortment (traits are inherited independently of each other) and iii) the Law of Dominance (recessive alleles will be masked by dominant alleles and the trait corresponding to the dominant allele will be observed) [Mendel, 1866]. 
 The publication received almost no attention, but his Laws of Inheritance described therein will build the foundations of modern genetics.\\
@@ -167,6 +167,14 @@ With the map of the genome complete and cataloguing efforts moving apace, resear
 \subsection{Genotype-phenotype studies}
 \subsubsection{linkage}
 \subsubsection{GWAS}
+\subsubsection{GxE}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{Chapter1/Fig/GxE.png}
+\caption{\textbf{Illustration of GxE effect}.\\
+a) Genetic effects only. b) Environments have effects on phenotype but do not change the genetic effect. c) Interaction effect between genotype and environment (GxE).}
+\end{figure}
 
 %********************************** %Second Section  **************************************
 \section{Gene expression and eQTL mapping}  %Section - 1.2 
@@ -213,6 +221,12 @@ In many experiments cells are sampled at many time points and gene expression is
 
 \subsection{Early development}
 
+Development
+
+Embryonic stem cells
+
+Organoids
+
 %****** Box on model organisms ******
 
 %\newpage
@@ -243,8 +257,24 @@ Model organisms are non-human species used to study biological phenomena:
 \subsection{iPSC consortia}
 
 \subsubsection{HipSci}
-The Human Induced Pluripotent Stem Cell Initiative is the largest of such consortia, and we will use data from HipSci throughout this thesis
+The Human Induced Pluripotent Stem Cell Initiative (HipSci) is the largest of such consortia, and we will use data from HipSci throughout this thesis.
 
 \subsubsection{other iPSC consortia and large studies}
 
 iPScore, Banovich et al
+
+\section{Thesis outline}
+
+The overall aim of this thesis is to provide suitable methods to perform eQTL mapping at single cell resolution and to explore the effects of common genetic variants on single cell expression across a range of human iPSC-derived cell types using data from the HipSci project.\\
+
+Specifically, in Chapter 2, I give an overview of current LMMs for genetic analyses, covering their use for association and interaction testing, focusing on their application in eQTL mapping.\\
+
+In Chapter 3, I introduce the two main datasets used in this thesis. \\
+
+In Chapter 4, I present different approaches to mean-level eQTL mapping using scRNA-seq data, and apply them on the data feom the two studies described in Chapter 3. \\
+
+In Chapter 5, I present two additional types of QTL analyses we can perform taking advantage of the single cell resolution: interaction QTL and variance QTL. \\
+
+In Chapter 6, we present a novel method to test for multivariate interaction eQTL. \\
+
+Finally, in Chapter 7 I conclude and discuss future directions.

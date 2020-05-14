@@ -83,3 +83,10 @@ Intriguingly, for 20 of the lead switching events, we observed corresponding cha
 
 \section{eQTL mapping in neuronal cell types}
 
+Finally, we mapped eQTL in the cell types from the dataset described in the second part of Chapter 3 (3.2).
+Here our focus was on understanding how individual-to-individual genetic variation influenced gene expression across these cell types during differentiation and in response to stimulation.
+Specifically, we mapped cis expression quantitative trait loci (eQTL) separately for each of the 14 distinct cell populations that corresponds to the profiled “cell type”-“condition” contexts (fig.). 
+eQTL were mapped by calculating aggregate expression levels for each donor, considering common gene-proximal variants (MAF>0.05, plus or minus 250 kb around genes; Methods). 
+Variability in differentiation efficiency between lines resulted in substantial differences in the number of cells collected for each donor (Supplementary Fig. 8a), affecting accuracy of the estimates of aggregated expression. 
+To account for this source of noise, we adapted commonly used eQTL mapping strategies2 based on linear mixed models (LMMs) by incorporating an additional variance component into the model (Methods). 
+This approach greatly increased the power to map eQTL, resulting in a total of 4,087 genes with at least one eQTL in any of the contexts (hereafter “eGene”, FDR < 5\%, Fig. 4a, Supplementary Fig. 8b, Supplementary Table 7).

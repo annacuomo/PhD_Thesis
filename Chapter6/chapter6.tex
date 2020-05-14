@@ -11,18 +11,18 @@
 
 Population-scale cohorts that combine genotyping with single cell expression profiles have fostered interest to study the effect of common genetic variants on gene regulation at single cell resolution.\\
 
-It has already been demonstrated that single cell expression quantitative trait loci (eQTL) mapping can be achieved, and that known eQTL previously identified using bulk expression can be replicated both in iPS cells and blood (Cuomo et al. 2020; van der Wijst et al. 2018).
-Additionally, the single cell resolution allows for the interrogation of interaction eQTL, where the strength of the genetic effect of eQTL is modulated by the cells’ types and states (Cuomo et al. 2020). 
+It has already been demonstrated that single cell expression quantitative trait loci (eQTL) mapping can be achieved, and that known eQTL previously identified using bulk expression can be replicated both in iPS cells and blood \cite{cuomo2020single,van2018single}.
+Additionally, the single cell resolution allows for the interrogation of interaction eQTL, where the strength of the genetic effect of eQTL is modulated by the cells’ types and states \cite{cuomo2020single}. 
 These kinds of studies can add a layer of interpretability of the role of genetic variants on gene expression regulation. 
-Analyses of eQTL context-specificity have been so far limited to a single state variable (e.g. cell type, (Fairfax et al. 2012) or stimulation status, (Fairfax et al. 2014)) and individual genetic variants.\\
+Analyses of eQTL context-specificity have been so far limited to a single state variable (e.g. cell type, \cite{fairfax2012genetics} or stimulation status,\cite{fairfax2014innate} ) and individual genetic variants.\\
 
-A recently proposed method called StructLMM (structured linear mixed model, described in 2.4.3) allows for the robust joint analysis of GxE effect of multiple environmental variables (Moore et al. 2019).
+A recently proposed method called StructLMM (structured linear mixed model, described in 2.4.3) allows for the robust joint analysis of GxE effect of multiple environmental variables \cite{moore2019linear}.
 This model can be applied, with some care, to the mapping of interaction eQTL, where genes’ single cell expression profiles are the tested outcomes, and the cells’ states and types are the environmental variables. 
 The main limitation of StructLMM is that it does not allow to fully control for the intrinsic population structure of the tested samples [REF]. 
 When using single cell measurements, we are in practice dealing with genetically identical replicate observations for a donor. 
 The relatedness structure between samples (or cells in this context) is therefore non-trivial, as the cell measurements are not independent, as assumed by the model.\\
 
-Here, we propose StructLMM2, an extension of the StructLMM model that builds on it while allowing control for confounding effects due to population structure, and is especially well suited for the mapping of multivariate single cell interaction eQTL. 
+Here, we propose StructLMM-2, an extension of the StructLMM model that builds on it while allowing control for confounding effects due to population structure, and is especially well suited for the mapping of multivariate single cell interaction eQTL. 
 The model can handle hundreds of cell states and conditions, and it can be applied to large cohorts of hundreds of thousands of cells for hundreds of  individuals.
 
 
