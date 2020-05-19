@@ -22,7 +22,7 @@ The main limitation of StructLMM is that it does not allow to fully control for 
 When using single cell measurements, we are in practice dealing with genetically identical replicate observations for a donor. 
 The relatedness structure between samples (or cells in this context) is therefore non-trivial, as the cell measurements are not independent, as assumed by the model.\\
 
-Here, we propose StructLMM-2, an extension of the StructLMM model that builds on it while allowing control for confounding effects due to population structure, and is especially well suited for the mapping of multivariate single cell interaction eQTL. 
+Here, we propose sc-StructLMM, an extension of the StructLMM model that builds on it while allowing control for confounding effects due to population structure, and is especially well suited for the mapping of multivariate single cell interaction eQTL. 
 The model can handle hundreds of cell states and conditions, and it can be applied to large cohorts of hundreds of thousands of cells for hundreds of  individuals.
 
 
@@ -31,6 +31,32 @@ The model can handle hundreds of cell states and conditions, and it can be appli
 \begin{equation}
  \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \otimes \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\epsilon} 
 \end{equation}
+
+Because we use Rao's score test, we only need to evaluate the likelihood under $H_0$:
+
+\begin{equation}
+ \mathbf{y}|H_0 =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{e} + \mathbf{u} + \boldsymbol{\epsilon} 
+\end{equation}
+
+Where $\mathbf{e} \sim N(\mathbf{0},\sigma_e^2 \mathbf{E}\mathbf{E}^T)$, $\mathbf{u} \sim N(\mathbf{0},\sigma_g^2 \mathbf{G}\mathbf{G}^T)$ and $\boldsymbol{\psi} \sim N(\mathbf{0},\sigma_n^2 \mathbf{I_N})$.\\
+
+Now to be able to use the trick described in Section 2.3.3, we need to write the Covariance matrix in the form $\sigma^2(\mathbf{M}+\delta\mathbf{I})$.
+To do so, we introduce a weight parameter $\rho_1$ such that:
+
+\begin{equation}
+\begin{split}
+    Cov(\mathbf{y}) = \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I} =\\
+    \sigma_k^2[\rho_1\mathbf{E}\mathbf{E}^T + (1-\rho_1) \mathbf{G}\mathbf{G}^T] + \sigma_n^2 \mathbf{I} =\\ \sigma_k^2\{\boldsymbol{\Sigma}(\rho_1) + \delta_1 \mathbf{I}\}
+\end{split}
+\end{equation}
+
+Where $\sigma_k^2\rho_1 = \sigma_e^2$ and $\sigma_k^2(1-\rho_1) = \sigma_g^2$;
+$\delta_1 = \sigma_n^2/\sigma_k^2$ and $\boldsymbol{\Sigma}(\rho_1) = \rho_1\mathbf{E}\mathbf{E}^T + (1-\rho_1) \mathbf{G}\mathbf{G}^T$.
+
+Note that $\boldsymbol{\Sigma}$ only depends on $\rho_1$. 
+To efficiently implement this, we perform a grid search over $\rho_1$ with as little as 10 possible values, thus only slowing down the original method by a factor of 10.
+
+\newpage
 
 \section{Simulation data}
 
@@ -44,19 +70,28 @@ Briefly, from the full model (eq. 6.1) we simulate only an intercept as covariat
 \end{equation}
 
 We column normalize all terms so that the total variance sums to 1.
-
 We set the variance explained by both genetic terms $var_G+var_{GxE}=\sigma_0^2$, and call the rest $v = 1-\sigma_0^2$.
-
 Further, we regulate the amount of variance driven by GxE using an additional weighting factor $\rho_0$, such that: $var_G = (1-\rho_0)\sigma_0^2$ and $var_{GxE} = \rho_0\sigma_0^2$
-
 For simplicity, we set the variances explained by the last three terms to be the same:
 $\sigma_E^2 = \sigma_g^2 = \sigma_n^2 = v/3$
 
-\subsection{calibration analysis}
+\subsection{Calibration analysis}
+
+Using simulated data, we checked that our model was calibrated both in the case of no genetic effects at all (i.e. $\sigma_0^2 = 0$) and in the case of persistent effects only (no GxE, i.e. $\rho_0 = 0$).
 
 \subsection{Comparison with Struct LMM.0}
 
+Next, we compared our model to the original StructLMM model.
+StructLMM is expected to have issues in the presence of extended repeated structure, which is not equipped to deal with.
+To address this, we simulated various numbers of repeats per donor - mimicking cells -  ranging from 10 to 500.
+Indeed, we observe over-inflation of StructLMM in the presence of many repeats making the model not calibrated (Fig. Xa).
+sc-StructLMM, on the other hand, is nicely calibrated (Fig. Xb).
+
 \subsection{Comparison with standard interaction test}
+
+We then performed power analysis when comparing our model with one where the environments are modelled as fixed effects (see Section 2.4.2).
+
+\newpage
 
 \section{Real data}
 
@@ -102,3 +137,5 @@ with ($\mathbf{X} = {\mathbf{W},\mathbf{g},\mathbf{E},\mathbf{K}}$):
 \mathbf{W}_*\boldsymbol{\alpha}_{*}+\mathbf{g}_*\beta_G+\mathbf{E}_*\gamma + 
 k(\mathbf{X}_*\mathbf{X})K^{-1}(\mathbf{y}-\mathbf{W}\boldsymbol{\alpha}-\mathbf{g}\beta_G-\mathbf{E}\gamma)
 \end{equation}
+
+\section{Discussion}
