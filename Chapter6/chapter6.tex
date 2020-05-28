@@ -82,7 +82,7 @@ Using simulated data, we checked that our model was calibrated both in the case 
 \subsection{Comparison with Struct LMM.0}
 
 Next, we compared our model to the original StructLMM model.
-StructLMM is expected to have issues in the presence of extended repeated structure, which is not equipped to deal with.
+StructLMM is expected to have issues in the presence of extended repeated structure, which it is not equipped to deal with.
 To address this, we simulated various numbers of repeats per donor - mimicking cells -  ranging from 10 to 500.
 Indeed, we observe over-inflation of StructLMM in the presence of many repeats making the model not calibrated (Fig. Xa).
 sc-StructLMM, on the other hand, is nicely calibrated (Fig. Xb).
@@ -100,11 +100,18 @@ Next, we applied the model on the data described in Chapter 3.1
 \section{Upstream analysis}
 
 One of the key steps in running this method is choosing the environmental factors.
+We expect most applications to be for scRNA-seq datasets only (and genotypes).
+This means that the environments need to be estimated from the transcriptomic data, which is also used as phenotype, causing possible circularity issues.
+
+
 A user might have 
 PCA
 MOFA (single omic)
 
 \section{Downstream analysis} 
+
+\subsection{Estimate cell-specific genetic effects}
+One important 
 
 \begin{equation}
     \mathbf{f}(\mathbf{X}) \sim \mathrm{GP}(\mathbf{m}(\mathbf{x}), k(\mathbf{x},\mathbf{x}^T))
@@ -139,3 +146,9 @@ k(\mathbf{X}_*\mathbf{X})K^{-1}(\mathbf{y}-\mathbf{W}\boldsymbol{\alpha}-\mathbf
 \end{equation}
 
 \section{Discussion}
+
+\begin{itemize}
+    \item GLMM (Poisson, NB)
+    \item additional covariances?
+    \item other applications (longitudinal data)
+\end{itemize}
