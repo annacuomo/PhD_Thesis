@@ -5,21 +5,32 @@
 
 \chapter{Alternative phenotypes for eQTL mapping using single cell RNA-seq}
 
-In Chapter 4 we have focused on performing standard "mean-level" expression level eQTL mapping using scRNA-seq, where the phenotype of interest is expression abundance within a homogeneous population of cells.
-We can call such efforts "pseudo-bulk" approaches, where we are essentially replicating bulk-like expression values and performing the eQTL test adapting approaches used for traditional eQTL mapping. 
+In Chapter 4 we have focused on reproducing standard "mean-level" expression level eQTL mapping using scRNA-seq, where the phenotype of interest is expression abundance within a homogeneous population of cells.
+We can call such efforts "pseudo-bulk" approaches, where we are essentially replicating bulk-like expression values and performing the eQTL test adapting approaches used for traditional eQTL mapping using bulk RNA-seq. 
 In the applications we and others have described \cite{van2018single,cuomo2020single}, the value of using scRNA-seq lies in the fact that we are able to, within a single experiment, unbiasedly define and assess multiple different cell types, whilst retaining a single cell resolution.\\
 
-In this chapter we want to show examples of eQTL mapping using different phenotypes, which are especially allowed by the single cell resolution. 
-In 5.1 I will describe interaction eQTL, where the ..
-In 5.2 I will describe variance eQTL, where ..
+In this chapter we want to show examples of eQTL mapping using different phenotypes, where we specifically exploit the single cell resolution.
+
+Interaction eQTL can be though of as a sort of GxE effect, where the effect of a genetic variant on the expression of a given gene is modulated by another factor.
+If in traditional (GWAS) GxE analysis the factor is often an environmental variable such as diet or exercise, in eQTL we are more often looking at molecular changes, such as cell type composition, or the level of activation due to some stimulus, etc..
+
+Using bulk:
+
+Sometimes, other genes can be used directly as factors, like in \cite{zhernakova2017identification}
+
+However, if we want to identify molecular changes it only makes sense to assess expression at the single cell level, and truly identify continuous states..
+
+
+% In 5.2 I will describe variance eQTL, where ..
 
 \section{Interaction eQTL}
 
-As discussed in (2.4) there are multiple ways to test for interaction effects, were variation in the phenotype is affected by a combined effect of the genotype at a certain locus and some environmental component.\\
+As discussed in (2.4) there are multiple ways to test for interaction effects, where variation in the phenotype is affected by a combined effect of the genotype at a certain locus and some environmental component.\\
 
-In the context of eQTL mapping those environments are more often called cell states or types and are typically estimated from the expression profiles themselves. Then an interaction eQTL might be an eQTL whose strength changes continuously over some differentiation trajectory for example, or an eQTL whose strength varies from cell type to cell type or from one cell cycle phase to another.\\ 
+In the context of eQTL mapping those environments are more often called cell states or types and are typically estimated from the expression profiles themselves. 
+Then an interaction eQTL might be an eQTL whose strength changes continuously over some differentiation trajectory for example, or an eQTL whose strength varies from cell type to cell type or from one cell cycle phase to another.\\ 
 
-In some sense, we have already have performed a related analysis: by subdividing cells into developmental stages and cell types prior to eQTL mapping, we have essentially performed stratified tests (see section 2.4.1).
+In some sense, we have already performed a related analysis: by subdividing cells into developmental stages and cell types prior to eQTL mapping, we have essentially performed stratified tests (see section 2.4.1).
 In the neuronal differentiation study, we first assigned cells to cell types using marker genes, and then mapped eQTL in each cell type separately.
 In the endoderm study, we ordered our cells along a computationally inferred pseudotime, and then essentially binned cells in three groups, again reflecting known biology of this developmental process and using marker genes.\\
 
@@ -58,11 +69,13 @@ To formally test for eQTL effects that change dynamically across differentiation
 (genetic effect defined based on ASE at the level of single cells; likelihood ratio test, considering linear and quadratic pseudotime), uncovering a total of 899 time dynamic eQTL (out of the joint set of 4422 eQTL across all stages; FDR<10\%; Methods), including a substantial fraction of eQTL that were not stage-specific (Supplementary Data 3). 
 This complements our earlier analysis based on discrete differentiation stages, which identified substantial stage-specific effects (Fig. 2a,c), by identifying subtle changes in the relationship between genotype and phenotype during differentiation. 
 To further explore this set of genes, we clustered eQTL jointly based on the relative gene expression dynamics (global expression changes along pseudotime, quantified in sliding windows as above, Methods), and on the genetic effect dynamics (Fig. 3a; Methods). 
-This identified four basic dynamic patterns (Fig. 3b): decreasing early (cluster A), decreasing late (cluster B), transiently increasing (cluster C), and increasing (cluster D). As expected, stage-specific eQTL were grouped together in particular clusters (e.g. defendo specific eQTL in cluster D; Supplementary Fig. 14). 
+This identified four basic dynamic patterns (Fig. 3b): decreasing early (cluster A), decreasing late (cluster B), transiently increasing (cluster C), and increasing (cluster D). 
+As expected, stage-specific eQTL were grouped together in particular clusters (e.g. defendo specific eQTL in cluster D; Supplementary Fig. 14). 
 Notably, the gene expression dynamics and the eQTL dynamics tended to be distinct, demonstrating that gene expression level is not the primary mechanism governing variation in genetic effects. 
 In particular, genetic effects were not most pronounced when gene expression was high (Fig. 3c, d, Supplementary Fig. 15).\\
 
-Distinct combinations of expression and eQTL dynamics result in different patterns of allelic expression. This is illustrated by the mesendoderm-specific eQTL for \textit{VAT1L}. 
+Distinct combinations of expression and eQTL dynamics result in different patterns of allelic expression. 
+This is illustrated by the mesendoderm-specific eQTL for \textit{VAT1L}. 
 Overall expression of \textit{VAT1L} decreases during differentiation, but expression of the alternative allele is repressed more quickly than that of the reference allele (Fig. 3c). 
 This illustrates how \textit{cis} regulatory sequence variation can modulates the timing of expression changes in response to differentiation, similar to observations previously made in \textit{C. elegans} using recombinant inbred lines \cite{francesconi2014effects}. 
 In other cases, the genetic effect coincides with high or low expression, for example in the cases of \textit{THUMPD1} and \textit{PHC2} (Fig. 3c). 

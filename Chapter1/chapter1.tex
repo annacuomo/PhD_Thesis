@@ -61,17 +61,18 @@ In fact, \gls{dna} consists of only four building blocks, often referred to by t
 
 Proteins remained the most likely responsible for carrying genetic information until 1944, when Oswald Avery and colleagues at the Rockefeller Institute in New York demonstrated experimentally that it had to be \gls{dna}. 
 Avery, along with his co-workers Colin MacLeod and Maclyn McCarthy performed an experiment in \textit{Streptococcus pneumoniae}, where he removed various organic compounds from the bacteria, and observed whether it could still transform. 
-Only upon treating the bacteria with an enzyme that removed \gls{dna}, the bacteria stopped transforming.
+Only upon treating the bacteria with an enzyme that removed \gls{dna}, the bacteria stopped transforming.\\
 
 %%%% Box on genetic terms & origin
 
 \begin{Comment}
-\hspace{-2.5mm}\textbf{Box 1: Genetic terms}\label{box1}
+\hspace{-2.5mm}\textbf{Box 1: Genetic terms \& their origin}\label{box1}
 % \small
 \begin{itemize}
     \item Phenotype
     \item Gene
     \item Allele
+    \item Pedigree, from the french \textit{pied de grue} (crane's foot)
 
 \end{itemize}
 
@@ -91,7 +92,7 @@ Friend and collaborator of the pair was Maurice Wilkins, New Zealand-born Britis
 His colleague, Rosalind Franklin had perfected the technique to produce X-ray crystallography images of the \gls{dna} and instructed her assistant, Raymond Gosling, to take the most precise of them to date, the now famous “Photo 51”. 
 To Watson and Crick’s eyes, Photo 51 (which Wilkins had shared without Franklin knowing), looked without a doubt like the shadow that a helix would leave. The last piece of the puzzle came from a discovery that Austro-Hungarian Erwin Chargaff made, at Columbia University. He observed that globally the amounts of As and Ts in \gls{dna} were roughly the same, as were the amounts of Cs and Gs. 
 This provided the idea that bases would be paired up and facing inwards in the double helix, As with Ts, Cs with Gs, ensuring that the covalent bonds would be always of the same length, keeping the helix stable. 
-In 1953, Watson and Crick published “Molecular structure of nucleic acids” (Watson and Crick, 1953). 
+In 1953, Watson and Crick published “Molecular structure of nucleic acids” \cite{watson1953molecular}. 
 Their work showed how the four nucleotide bases (A, T, C, G) formed “two helical chains each coiled round the same axis” (Watson and Crick, 1953) spelling out what Crick called “the secret of life.” 
 For this discovery, Crick, Watson and Wilkins won the 1962 Nobel Prize in Physiology or Medicine “for their discoveries concerning the molecular structure of nucleic acids and its significance for information transfer in living material”. 
 Rosalind Franklin, who had played a critical role in the discovery had died four years prior of ovarian cancer, and her contribution went largely unrecognized at the time.
@@ -107,7 +108,7 @@ To this end, Galton applied himself to the study of biometrics, trying to measur
 Linked to these efforts, and on a less honourable note, Galton was also the founder of eugenics, a theory for which genetics should be used as a tool to force evolution’s hand by encouraging mating of individuals considered to have especially desirable qualities and on the other hand by eliminating or preventing reproduction of individuals considered faulted. Eugenics theories are linked to one of the most horrifying pages of human history, motivating forced sterilizations of the “unfit” in the United States in the 1920s and 1930s and of course having being used as justification for the racial policies of Nazi Germany.\\ 
 
 Nevertheless, some of the concepts and methods Galton developed during these studies are still fundamental to genetics today (Galton, 1909). 
-These include the concepts of correlation, regression toward the mean and the regression line, which Galton used to compare the heights of children to those of their parents. Galton’s protégé was the mathematician Karl Pearson, who worked together with Galton to make several more important contributions to statistics. Among others, he introduced the concepts of the p-value and the chi squared test (Pearson, 1900) and proposed principal component analysis (PCA, Pearson, 1901).
+These include the concepts of correlation, regression toward the mean and the regression line, which Galton used to compare the heights of children to those of their parents. Galton’s protégé was the mathematician Karl Pearson, who worked together with Galton to make several more important contributions to statistics. Among others, he introduced the concepts of the p-value and the chi squared test \cite{pearson1900x} and proposed \gls{pca} \cite{pearson1901liii}.
 
 \subsection{Towards quantitative genetics} %Section - 1.1.5
 
@@ -116,8 +117,8 @@ Similar to Mendel and Bateson the phenotypes they observed were predominantly ca
 In contrast, biometricians like Galton and Pearson had mostly looked at continuous traits in humans, such as height, and believed that those could not be explained by Mendelian genetics.
 This controversy has been referred to as the ‘Biometric-Mendelian debate’.\\ 
 
-This debate was resolved by British statistician Ronald A. Fisher, who in a seminal 1918 paper showed that, if many genes affect a trait, then the random sampling of alleles at each gene produces a continuous, normally distributed phenotype in the population (Fisher, 1918). 
-As the number of genes grows very large, the contribution of each gene becomes correspondingly smaller, leading in the limit to Fisher’s famous ‘‘infinitesimal model’’ (Barton et al., 2016).\\
+This debate was resolved by British statistician Ronald A. Fisher, who in a seminal 1918 paper showed that, if many genes affect a trait, then the random sampling of alleles at each gene produces a continuous, normally distributed phenotype in the population \cite{fisher1919xv}. 
+As the number of genes grows very large, the contribution of each gene becomes correspondingly smaller, leading in the limit to Fisher’s famous ‘‘infinitesimal model’’ \cite{barton2017infinitesimal}.\\
 
 In addition to showing that biometrics and Mendelianism are not contradictory but complementary, Fisher made several contributions to the field, outlining statistical ideas and tools still used today. 
 An undergraduate student at the University of Cambridge, Fisher [1912] published his first paper "On a absolute criterion for fitting frequency curves" where he outlined the fundamental ideas of maximum likelihood estimation (MLE). 
@@ -169,7 +170,7 @@ Additional breakthroughs in sequencing technologies have expanded and refined th
 
 With a complete map of the human genome in place, it was now easy to identify genetic
 variants, those bases discovered in an individual that did not match the (reference) base
-annotated in the map of the human genome. More common (minor allele frequency >5\%) variants were called single nucleotide polymorphisms (SNPs). 
+annotated in the map of the human genome. More common (\gls{maf} >5\%) variants were called single nucleotide polymorphisms (SNPs). 
 Previous studies had estimated that approximately 0.1\% (1 base per 1,000) of an individual's genome was a polymorphism (Li and Sadler, 1991; Wang, 1998; Cargill et al., 1999). 
 Most of these polymorphisms were scattered across the genome and no one had yet broadly described what these variants were, where in the genome they resided, and what (if any) phenotypic effect they conferred.\\
 
@@ -193,7 +194,7 @@ The data generated by the International HapMap Project combined with development
 
 Briefly, GWAS are a hypothesis free approach to test for significant association between the genotype frequency of common genetic variants (one by one across the entire genome) and a trait of interest \cite{mccarthy2008genome}. 
 
-The first successful GWAS conducted in 2005 for age-related macular degeneration (AMD) using 96 cases and 50 healthy controls, tested for associations at ~100,000 SNPs.
+The first successful GWAS conducted in 2005 for age-related macular degeneration (AMD) using 96 cases and 50 healthy controls, tested for associations at ~100,000 SNPs \cite{klein2005complement}. 
 
 In 2007, the Wellcome Trust Case-Control Consortium (WTCCC) published a study where they performed GWAS on seven different common diseases, using a common set of 3,000 healthy controls and 2,000 cases for each of bipolar disorder (BD), coronary artery disease (CAD), Crohn's disease (CD), hypertension (HT), rheumatoid arthritis (RA), type I and II diabetes (T1D, T2D), \cite{wellcome2007genome}.\\ 
 
@@ -215,20 +216,21 @@ Quantitative traits have since become increasingly popular to use as phenotypes.
 % This thresholding approach results in loss of information regarding phenotypic similarity and as a result, using the binary outcome is likely to be less powered than using the underlying quantitative trait. 
 % Moreover, quantitative traits are often closer to the underlying biology, providing greater insight into the mechanisms underpinning trait or disease development and the results from using continuous traits may be more directly interpretable, in that it is possible to quantify the average difference in trait outcome per risk allele carried.
 
-Furthermore, linear regressions and their derivations have become more popular methods to assess association, due to their flexibility to include covariates (McCarthy, 2008).
-I describe these models in detail in the next Chapter (\textbf{Chapter 2}). 
+Furthermore, linear regressions and their derivations have become more popular methods to assess association, due to their flexibility to include covariates \cite{mccarthy2008genome}.
+I describe these models in detail in the next Chapter (Chapter 2). 
 
 As of 2020 when I am writing this thesis, over 70,000 associations have been identified for over 1,000 different traits and diseases, according to the GWAS Catalog (ref).
 
 Linkage disequilibrium (LD, The nonrandom allocation of alleles at nearby variants to individual chromosomes as a result of recent mutation, genetic drift or selection, manifest as correlations between genotypes at closely linked markers.)
 
-Hardy-Weinberg equilibrium (HWE,A theoretical description of the relationship between genotype and allele frequencies that is based on expectation in a stable population undergoing random mating in the absence of selection, new mutations and gene flow: in the context of genetic studies, departures from equilibrium can be used to highlight genotyping errors.)
+Hardy-Weinberg equilibrium (HWE,A theoretical description of the relationship between genotype and allele frequencies that is based on expectation in a stable population undergoing random mating in the absence of selection, new mutations and gene flow: in the context of genetic studies, departures from equilibrium can be used to highlight genotyping errors).
 
 \cite{mccarthy2008genome}
 
-GWAS results are often visualised using Manhattan plots, with the negative log P value plotted on the y-axis against the corresponding genomic position ordered by chromosome and position on the x-axis. 
-Peaks on these plots represent loci (multiple variants in LD) that display evidence of association with the analysed phenotype. 
-Variants are deemed to be significantly associated with a trait if they exceed an appropriately chosen P value threshold. Due to LD structure, if a peak arises from a single variant, this is usually indicative of a false positive finding.
+\gls{gwas} results are often visualised using Manhattan plots, with the negative log p value plotted on the y-axis against the corresponding genomic position ordered by chromosome and position on the x-axis. 
+Peaks on these plots represent loci (multiple variants in \gls{ld}) that display evidence of association with the analysed phenotype. 
+Variants are deemed to be significantly associated with a trait if they exceed an appropriately chosen p value threshold. 
+Due to \gls{ld} structure, if a peak arises from a single variant, this is usually indicative of a false positive finding.
 
 \subsubsection{From case-control to cohort studies}
 
@@ -236,7 +238,7 @@ UK Biobank ~ 500,000 individuals
 
 \subsubsection{Challenges in GWAS}
 
-Rare diseases: often rare variants too (MAF<0.05)
+Rare diseases: often rare variants too (\gls{maf}<0.05)
 Pleiotropy: same variant affects multiple traits
 
 non-additive interactions:
@@ -260,13 +262,16 @@ Explicitly, whilst a variant with a significant genetic effect is determined by 
 %********************************** %Second Section  **************************************
 \section{Gene expression and eQTL mapping}  %Section - 1.2 
 
-\subsection{\gls{dna} and the central dogma}
-The resolution of the \gls{dna} structure and all discoveries that lead to it brought forward an understanding of other biological concepts such as protein synthesis and enabled Francis Crick to postulate the central dogma of biology: information is transmitted from nucleic acids (\gls{dna} and RNA) to proteins, but information cannot be transmitted from a protein to \gls{dna} [Crick, 1958]. 
+Intro on molecular readouts as intermediate to understand genotype-phenotype mechanisms.
+Going back in time to our progressive better understanding of moelcular machinery, starting from Crick postulating the central dogma.
+
+% \subsection{\gls{dna} and the central dogma}
+\subsection{Gene regulation}
+
+The resolution of the \gls{dna} structure and all discoveries that lead to it brought forward an understanding of other biological concepts such as protein synthesis and enabled Francis Crick to postulate the central dogma of biology: information is transmitted from nucleic acids (\gls{dna} and RNA) to proteins, but information cannot be transmitted from a protein to \gls{dna} \cite{crick1958protein}. 
 The deciphering of the genetic code through Nirenberg and others followed a few years later [Nirenberg \& Matthaei, 1961; Crick \& al., 1961; Matthaei \& al., 1962].\\
 
-Today, we know that \gls{dna} gets transcribed into RNA aided by the \gls{dna} polymerase molecule, and RNA gets translated to amino-acids making up proteins in the ribosome, with the help of transfer RNA (tRNA).
-
-\subsection{Gene regulation}
+Today, we know that \gls{dna} gets transcribed into RNA aided by the \gls{dna} polymerase molecule, and RNA gets translated to amino-acids making up proteins in the ribosome, with the help of transfer RNA (tRNA).\\
 
 In the process of gene expression, the genetic information stored in the \gls{dna} is used to produce molecular products. 
 The information on the composition of these products is contained in restricted portions of the genome known as genes. 
@@ -278,12 +283,14 @@ Only approximately 1.5\% of the human genome codes for proteins (Lander et al., 
 
 The impact of genetic variation on phenotypes is the consequence of perturbations to this complex molecular machinery.
 An easily interpretable mechanism through which genetic variants may affect phenotype is the direct alteration of the structure of the coded protein and thus of its functionality. 
-For example, sickle cell anaemia is caused by a SNP in the \textit{HBB} gene, which causes a substitution of an amino acid in the sequence of the coded protein (Laird and Lange, 2010). 
+For example, sickle cell anaemia is caused by a \gls{snp} in the \textit{HBB} gene, which causes a substitution of an amino acid in the sequence of the coded protein (Laird and Lange, 2010). 
 Alternatively, genetic variation may affect the regulation of gene expression. 
 One way this can occur is through the disruption of a specific sequence that affects the binding of proteins regulating the expression of a gene, for example a transcription factor (TF). 
 Another possibility is the alteration of the structure of the \gls{dna}, thereby affecting the functionality of regulatory elements and ultimately gene expression (ENCODE Project Consortium, 2004; Kundaje et al., 2015). 
 
 \subsection{Estimation of gene expression levels}
+
+
 
 In this thesis, we focus on gene expression, i.e., the transcriptome, as a molecular phenotype.
 In general, the transcriptome describes the complete set of transcripts in a tissue or cellular sample, and their respective quantity. 
@@ -306,30 +313,138 @@ The human genome project revealed that human \gls{dna}
 consists of surprisingly few exons (1.1\% of the genome), whereas introns cover 24\% of the genome (Venter et al., 2001; Lander et al., 2001). 
 The number of genes was also found to be smaller than expected, with around 30,000 being identified in 2001, and 19,000 genes being the latest estimate at the time that this thesis is written (Ezkurdia et al., 2014). 
 
+\subsubsection{From microarrays to (bulk) RNA-sequencing}
+
+Bulk RNA-sequencing was a major breakthrough in the late 2,000s (ref) and has been widely used since.
+
+It measures the average expression level for each gene across a large population (N=) of input cells. 
+
+Useful for comparative transcriptomics, e.g. samples of the same tissue from different species.
+Useful for quantifying expression signatures from ensembles, e.g. in disease studies.
+Insufficient for studying heterogeneous systems, e.g. early development studies, complex tissues (brain)
+Does not provide insights into the stochastic nature of gene expression
+
 
 \subsection{Expression quantitative trait loci}
 
 The decrease in cost of high-throughput profiling of gene expression has made it possible to measure gene expression levels in large numbers of individuals, thereby enabling the mapping of quantitative trait loci for gene expression (eQTL mapping, Schadt et al., 2003).
 
-As genetic effects on molecular traits may depend on factors such as tissue, environment and cell type, it is necessary to measure expression and other molecular traits in disparate cellular contexts. For this reason, the Genotype-Tissue Expression Project (GTEx Consortium, 2015) has been collecting and analysing gene expression profiles for more than 50 tissue types from over 900 donors.
+As genetic effects on molecular traits may depend on factors such as tissue, environment and cell type, it is necessary to measure expression and other molecular traits in disparate cellular contexts. 
+For this reason, the Genotype-Tissue Expression Project \cite{gtex2015genotype} has been collecting and analysing gene expression profiles for more than 50 tissue types from over 900 donors.
+
+GTEx \cite{gtex2015genotype, gtex2017genetic, aguet2019gtex}
 
 The latest version of GTEx (v8, ref) assesses eQTL in 53 tissues
 
 In addition, eQTL have been described in iPSC (dicussed later in Section 4)
 % add box on overview of tissues with available eQTL
 
+\subsection{Interpreting eQTL}
+
+colocalization
+
 \newpage
 
 %********************************** %Third Section  **************************************
 \section{Single cell RNA-seq}  %Section - 1.3 
 
-Next generation sequencing approaches have been applied to individual cells to quantify
-variation in \gls{dna} sequence, mRNA expression, epigenetic marks and protein abundance
-at single cell resolution.
+Next generation sequencing approaches have been applied to individual cells to quantify variation in \gls{dna} sequence, mRNA expression, epigenetic marks and protein abundance at single cell resolution.
+In this thesis, we focus on transcriptomic assays, which encompass the large majority of single-cell genomic research published to date (ref). 
+I use this section to provide an introduction to \gls{scrnaseq}.
+First, I summarise the processes involved in generating single-cell expression data and describe the technologies.. (1.3.1)
+Next, I provide an overview of computational modelling to analyse scRNAseq data (1.3.2).
+Finally, I identify examples in areas of biology where these assays have provided insight (1.3.3).
 
-In this thesis, we focus on gene expression only, and therefore on single cell RNA sequencing (scRNA-seq).
 
 \subsection{Evolution of scRNA-seq technologies}
+
+% from the tutorial (martin hemberg, davis - resource in the HCA)
+scRNA-seq was first introduced in 2009 by Tang \textit{et al.} \cite{tang2009mrna}
+Did not gain widespread popularity until ~2014 when new protocols and lower sequencing costs made it more accessible.
+
+Currently there are several different protocols in use, e.g. SMART-seq2 \cite{picelli2013smart}, CELL-seq \cite{hashimshony2012cel} and Drop-seq \cite{macosko2015highly}.
+
+There are also commercial platforms available, including the Fluidigm C1, Wafergen ICELL8 and the 10X Genomics Chromium.
+
+The first single-cell RNA sequencing (scRNA-seq) experiment was published in 2009, and the authors profiled only eight cells \cite{tang2009mrna}. 
+Only 7 years later, 10X Genomics released a data set of more than 1.3 million cells (ref).
+
+The main difference between bulk and single cell RNA-seq is that each sequencing library represents a single cell, instead of a population of cells. 
+Therefore, significant attention has to be paid to comparison of the results from different cells (sequencing libraries). 
+The main sources of discrepancy between the libraries are:
+
+ - Amplification (up to 1 million fold)
+ - Gene ‘dropouts’ in which a gene is observed at a moderate expression level in one cell but is not detected in another cell (Kharchenko, Silberstein, and Scadden 2014).
+In both cases the discrepancies are introduced due to low starting amounts of transcripts since the RNA comes from one cell only. 
+Improving the transcript capture efficiency and reducing the amplification bias are currently active areas of research. 
+However, as we shall see in this course, it is possible to alleviate some of these issues through proper normalization and corrections.
+
+\begin{itemize}
+    \item CEL-seq (cell expression by linear amplification and sequencing) \cite{hashimshony2012cel}
+    \item CEL-seq2 - Hashimshony et al 2016
+    \item Drop-seq \cite{macosko2015highly}
+    \item InDrop-seq \cite{klein2015droplet}
+    \item MARS-seq (massively parallel single cell RNA-seq) \cite{jaitin2014massively}
+    \item SCRB-seq - Soumillon et al 2014
+    \item Seq-well \cite{gierahn2017seq}
+    \item SmartSeq \cite{ramskold2012full}
+    \item SmartSeq2 \cite{picelli2013smart}
+    \item SmartSeq3 \cite{hagemann2020single}
+    \item STRT-seq \cite{islam2011characterization}
+\end{itemize}
+
+
+
+The methods can be categorised in different ways, but two of the most important aspects are quantification and capture
+
+Quantification: full-length vs tag-based\\
+
+Capture: microwell- (or plate-), microfluidic-, droplet-based.\\
+
+
+
+% make figure plate vs droplet based scRNA-seq
+
+Quantifying gene expression via microscopy is familiar in contemporary biology, whether using hybridisation techniques or artificially-created fluorescent fusion proteins. 
+The amount of fluoresence that is observed in individual cells directly provides the readout of RNA or protein expression levels. 
+Flow cytometry scales up these optical approaches to hundreds of thousands of measurements without compromising cellular resolution [12]. 
+Historically, these methods have not been suitable for assaying many genes simultaneously, due to constraints imposed by fluorophore emission and absorption spectra. 
+Nucleotide-focussed methods pushed beyond this limitation: real time polymerase chain reaction (PCR) [13] can quantify hundreds of genes, with cellular throughput improved using microfluidic systems [14, 15].
+The recent development of sequencing-by-hybridisation (described in Section 1.4.5) provides an interesting combination of these two approaches, allowing the precise localisation and quantification of thousands of transcripts per-cell.\\
+
+To achieve truly transcriptome-wide expression coverage, however, RNA-seq based methods are best suited. 
+Shortly after the first application of RNA-seq to bulk populations of cells [16], the feasibility of applying RNA-seq to individual cells was demonstrated [7]. 
+Over the past five years, single-cell RNA-sequencing (scRNA-seq) has become the most commonly used approach for assaying single-cell gene expression profiles. 
+There are two broad sets of methods for applying single-cell RNA-seq—“plate-based” and “droplet-based” (Figure 1.1).\\
+
+Initially, most studies used plate-based assays, where library preparation is performed manually on cells sorted into and lysed in individual wells of a microwell plate (Figure 1.1) [17, 18].
+Robotic and microfluidic systems (e.g., Fluidigm C1) have been developed to automate some of these processes.\\
+
+Droplet-based methods employ microfluidics to capture individual cells in nanolitre sized droplets, each loaded with reagents and unique labels: reverse transcription and transcript labelling take place within these small volumes (Figure 1.1). 
+The droplet suspension is later broken down for pooling of cell libraries prior to sequencing. 
+These methods have been developed by academic groups [19, 20] and commercially, by 10X Genomics [21].\\
+
+Each approach has its own advantages and disadvantages. 
+Plate-based methods tend to provide higher-quality libraries at the cost of lower cellular throughput, processing hundreds or thousands of cells compared to the hundreds of thousands that droplet methods can achieve.
+
+More subtle differences also differentiate the two sets of methods. 
+To capture rare cell types with known cell-surface markers, it is generally more efficient to flow-sort and prepare plates of single-cell libraries rather than the brute-force approach of capturing more cells outright using a droplet method. 
+Additionally, current droplet methods capture gene information exclusively from the 3’ or 5’ end of each transcript, while some plate approaches generatereads from across entire transcripts; the latter allows splice-variant and allele-specific transcriptional information to be retrieved. 
+Finally, droplet methods are more likely to produce “multiplet" cell transcriptomes, where multiple different cells become labelled with the same barcode. 
+This is largely due to the lack of user oversight (e.g., it is more difficult to identify attached pairs of cells) and the possible reuse of cell barcodes from the labelling beads. 
+The doublet rate in droplet experiments is proportional to the number of loaded cells [21]; hence a user may reduce the rate of this confounding, albeit by sacrificing cost-efficiency, by loading fewer cells per sample.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{Chapter1/Fig/scrnaseq_technologies_svensson2018.jpg}
+\caption[\textbf{scRNA-seq technologies}]{\textbf{Scale of scRNA-seq experiments}.\\
+Technologies that have allowed....
+
+% make own version adding SmartSeq3 etc 
+
+adapted from \cite{svensson2018exponential}}
+\label{fig:scrnaseq_technologies}
+\end{figure}
 
 \subsubsection{Plate-based technologies}
 
@@ -339,22 +454,107 @@ SmartSeq2
 
 DropSeq, 10X Genomics
 
+\subsubsection{other technologies}
+
+multi omics aproaches (\cite{stuart2019integrative})
+
+spatial transcriptomics
+
+perturb seq
+
 %\subsection{Analysis of scRNA-seq data}
 
 \subsection{Computational modelling of scRNA-seq}
-\subsubsection{Normalization}
 
-\subsubsection{Batch effects}
+Analysis of scRNA-seq data requires a new set of considerations, largely concerning technical signals, that were not relevant for bulk RNA-sequencing work. 
+Moreover, the resolution of this single-cell data also allows a number of more powerful analysis techniques to be applied.
+This section describes, in brief, how a typical single-cell RNA-sequencing dataset may be analysed.
+
+\cite{stegle2015computational}
+
+\subsubsection{Low-level analysis}
+
+reads QC 
+
+alignment
+
+mapping QC
+
+\subsubsection{Normalization and batch correction}
+
+Count matrix
+10 Genomics: UMI counts
+Smasrtseq2: expected counts or TPM (similar to bulk)
+
+cell QC (e.g. remove cells with less than xx total counts, yy total genes)
+possibly deal with doublets etc - in our case, donor assignment is also here
+
+normalization (account for differences due to read coverage etc)
+
+log transformation (variance stabilising)
+
+\textbf{feature selection} (isolate most informative genes, e.g. highly variable genes - HVGs)\\
+
+genes that behave differently from your expected mean-variance relationship
+
+optional: centering+scaling - standardizing
+
+batch correction (stronger than normalisation) 
+mutual nearest neighbours (MNN, \cite{haghverdi2018batch}) - and then fastMNN
+canonical correlation analysis (CCA, implemented in Seurat \cite{butler2018integrating}), Stuart et al 2019
+LIGER iNMF (negative matrix factorization),
+Harmony (\cite{nowotschin2019emergent}) - iterative soft k means (fastest)
+Welch et al 2019, Korsunsky et al 2019
+
+
+\subsubsection{Computational analysis}
+
+\textbf{dimensionality reduction}
+
+\gls{pca} was first introduced by Pearson over a hundreds years ago (\cite{}, see section 1), yet remains one of the most widely used tools \\
+
+\textbf{clustering}
+
+unsupervised\\
+
+\textbf{pseudotime}
+
+PCA, diffusion maps\\
+
+\textbf{DE}
+
+DESeq, edgeR
+
+
 
 \subsubsection{Visualization techniques}
 
+Even after application of a dimension-reduction procedure, a typical dataset will retain more than three biologically important dimensions in its new subspace, which makes visual representation of the data challenging. 
+
+Transforming high-dimensional data into a human-readable format is therefore an important challenge for single-cell data interpretation.
+
 scRNA-seq data visualization techniques used in this thesis: 
 
+
+
 \begin{itemize}
-    \item principal component analysis (PCA)
-    \item t-distributed stochastic neighbour embedding (tSNE)-2008 \cite{maaten2008visualizing}
-    \item uniform manifold approximation and projection (UMAP)-2018 \cite{mcinnes2018umap}
+    \item \gls{pca}
+    \item t-distributed stochastic neighbour embedding (tSNE) \cite{maaten2008visualizing}
+    \item uniform manifold approximation and projection (UMAP) \cite{mcinnes2018umap}
 \end{itemize}
+
+
+Workflow packages:
+
+\begin{itemize}
+    \item scanpy
+    \item scater / scran / Single cell experiment (SCE)
+    \item seurat
+    \item SINCERA
+\end{itemize}
+
+
+
 
 \subsection{General applications of scRNA-seq in biology}
 
@@ -364,12 +564,24 @@ Thus gene regulation is analyzed at the single cell level and, unlike traditiona
 By measuring gene expression in development, differentiation, or other responses, we can start to understand cellular phenotypes as well as the regulatory processes that determine these phenotypes. 
 In many experiments cells are sampled at many time points and gene expression is assessed.
 
+ 
+
+
 \subsubsection{Atlases}
 
 Human Cell Atlas (HCA)
+
+The human cell atlas aims to provide a comprehensive reference map of all human cells
+\cite{rozenblatt2017human}
 \subsubsection{Cancer}
 \subsubsection{Immunology}
 \subsubsection{Development}
+
+developmental trajectories 
+A particular advantage of single-cell methods is the ability to capture cells at various developmental
+stages in a single experiment.
+
+\subsubsection{lineage tracing}
 
 \newpage
 
@@ -378,11 +590,26 @@ Human Cell Atlas (HCA)
 
 \subsection{Early development}
 
-Development
+The study of early development.
+Understanding the mechanisms of development and differentiation and how cells commit to fates 
 
-Embryonic stem cells
+it has been done in vivo in model organisms such as Drosophila, chicken and mouse.
 
-Organoids
+\subsection{human models}
+
+For obvious ethical reasons these studies cannot be conducted in humans
+
+
+Embryonic stem cells \& Organoid models
+
+Embryoid Bodies (EBs) - ESCs left to aggregate with the addition of some cytokines (Brickman and Serup 2016, Spangler et al 2018)
+
+micropatterns: MPA vs MPP (anteriorly or posteriorly biased)
+Morgani et al 2018
+
+Gastruloid can break symmetry - form antero-posterior axis (van de Brink et al 2014, van den Brink 2020)
+
+PGC: primordial germ cells
 
 %****** Box on model organisms ******
 
@@ -413,7 +640,24 @@ Model organisms are non-human species used to study biological phenomena:
 
 \subsection{Stem Cell systems}
 
-(applications for regenerative medicine and disease therapeutics)
+
+iPSCs first in mouse \cite{takahashi2006induction}
+then in human \cite{takahashi2007induction}
+
+
+The promise of using pluripotent stem cells (PSCs) for regenerative medicine dates back to 1998 when James Thomson \cite{thomson1998embryonic} first derived human embryonic stem cells (hESCs) from the inner cell mass of developing embryos \cite{kimbrel2015current}.
+Not only do PSCs have the ability to self-renew indefinitely, but in theory they can also be differentiated into any cell type in the body, thus providing functional replacement or trophic support to worn-out or dysfunctional cells and tissues in a range of diseases. \\
+
+During the 2000s, funding restrictions and ethical concerns provided the impetus to find alternative approaches to generating stem cells with the same degree of pluripotency as hESCs. 
+Induced pluripotent stem cell (iPSC) technology quickly became the leading alternative to hESCs \cite{takahashi2006induction, takahashi2007induction, yu2007induced}
+The generation of iPSCs involves the reprogramming of differentiated somatic cells into a pluripotent state by the introduction of a cocktail of factors to 'reset' the transcriptional programme of the cell back to an embryonic state. 
+In 2012, Shinya Yamanaka and Sir John Gurdon11 were awarded a Nobel Prize for their combined efforts in discovering that “mature cells can be reprogrammed to become pluripotent”. 
+
+\subsubsection{tissues and diseases}
+
+\textbf{Nervous system.}
+Disease-specific iPSC-derived neurons are also being used as in vitro models to elucidate the cellular and molecular pathogenesis of Parkinson disease83,84,85,86,87, Alzheimer disease88,89, ALS90,91,92,93, spinal muscular atrophy94,95 and others.
+
 
 \begin{itemize}
     \item ESCs (embryonic stem cells)
@@ -443,11 +687,13 @@ Inducing factors:
 \subsection{iPSC consortia}
 
 \subsubsection{HipSci}
-The Human Induced Pluripotent Stem Cell Initiative (HipSci) is the largest of such consortia, and we will use data from HipSci throughout this thesis.
+The Human Induced Pluripotent Stem Cell Initiative (HipSci) is the largest of such consortia, and we will use data from HipSci \cite{kilpinen2017common} throughout this thesis.
 
 \subsubsection{other iPSC consortia and large studies}
 
-iPScore, Banovich et al
+iPSCORE \cite{panopoulos2017ipscore}, GENESiPS \cite{carcamo2017analysis}, PHLiPS \cite{pashos2017large}, Banovich \textit{et al} \cite{banovich2018impact}
+
+\cite{bonder2019systematic}
 
 \newpage
 

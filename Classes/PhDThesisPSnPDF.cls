@@ -780,8 +780,8 @@ wish to left align your text}
     \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
     \fancyhf{}
     \fancyhead[LO]{\nouppercase \rightmark}
-    \fancyhead[LE]{\colorbox{Mahogany}{\parbox{6em}{\color{white}\bfseries\thepage\hfill}}}
-    \fancyhead[RO]{\colorbox{Mahogany}{\parbox{6em}{\hfill\color{white}\bfseries\thepage}}}
+    \fancyhead[LE]{\colorbox{CadetBlue}{\parbox{6em}{\color{white}\bfseries\thepage\hfill}}}
+    \fancyhead[RO]{\colorbox{CadetBlue}{\parbox{6em}{\hfill\color{white}\bfseries\thepage}}}
     \fancyhead[RE]{\nouppercase \leftmark}
   \fi
 \fi
@@ -1001,7 +1001,7 @@ wish to left align your text}
 \newenvironment{declaration}{
 \cleardoublepage
 \setsinglecolumn
-\textcolor{Mahogany}{\LARGE \textbf{\textsc{Declaration}}}
+\textcolor{CadetBlue}{\LARGE \textbf{\textsc{Declaration}}}
 \vspace{5mm}
 \thispagestyle{empty}
 }{
@@ -1020,7 +1020,7 @@ wish to left align your text}
 \newenvironment{acknowledgements}{
 \cleardoublepage
 \setsinglecolumn
-\textcolor{Mahogany}{\LARGE \textbf{\textsc{Acknowledgements}}}
+\textcolor{CadetBlue}{\LARGE \textbf{\textsc{Acknowledgements}}}
 \vspace{5mm}
 \thispagestyle{empty}
 }
@@ -1122,7 +1122,7 @@ wish to left align your text}
 % Normal abstract in the thesis
   \cleardoublepage
   \setsinglecolumn
-  \textcolor{Mahogany}{\LARGE \textbf{\textsc{Abstract}}}
+  \textcolor{CadetBlue}{\LARGE \textbf{\textsc{Abstract}}}
   \vspace{5mm}
   \thispagestyle{empty}
 \fi

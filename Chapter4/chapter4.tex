@@ -9,7 +9,7 @@ In this chapter we continue the analyses on the datasets described in Chapter 3 
 In particular, we validate our method (focusing on the iPS cells) by systematically comparing eQTL results we obtained using single cells to eQTL identified using bulk RNA-sequencing (section 4.2). 
 In addition, we compare eQTL results obtained when using two alternative single cell technologies: a plate-based (SmartSeq2) and a droplet-based (10X Genomics) technology, for a subset of lines (section 4.3). 
 Finally, we perform eQTL maps of the mesendoderm and definitive endoderm stages (section 4.4), and of various stages of neuronal development (section 4.5) all of which are novel to this study to the best of our knowledge. 
-The key results described in this chapter are contained in (Cuomo et al, 2020, Alvari, Cuomo et al, 2020, Jerber, Seaton, Cuomo et al, 2020).
+The key results described in this chapter are contained in (Cuomo et al, 2020, Alvari, Cuomo et al, 2020, Jerber, Seaton, Cuomo et al, 2020) \cite{cuomo2020single, jerber2020population}.
 
 \section{What is different in single cell data?}
 
@@ -52,19 +52,23 @@ We have deep genotype information for all of our 125 samples, so this study allo
 This was partly motivated by the observation that a substantial fraction of variability in gene expression was explained by cell-line effects (Fig. XX).
  
 First, we tested for associations between common genetic variants and gene expression at iPSC stage. 
-Briefly, for each donor, experimental batch, and differentiation stage, we quantified each gene’s average expression level, before using a linear mixed model to test for cis eQTL, adapting approaches described above and used for bulk RNA-seq profiles (+/- 250kb, MAF > 5\% (Kilpinen et al. 2017)). 
+Briefly, for each donor, experimental batch, and differentiation stage, we quantified each gene’s average expression level, before using a linear mixed model to test for cis eQTL, adapting approaches described above and used for bulk RNA-seq profiles (+/- 250kb, MAF > 5\% \cite{kilpinen2017common}). 
+
+\begin{equation}
+    \boldsymbol{\mu} = \sum_i^{10}\alpha_i \mathbf{PC}_i + \mathbf{g}\beta + \mathbf{u} + \boldsymbol{\psi}  
+\end{equation}
 
 This identified 1,833 genes with at least one eQTL (denoted eGenes; FDR <10\%; 10,840 genes tested; Supplementary Data 3). 
 
 \section{Replication in bulk, 10x}
 
-To validate our approach, we also performed eQTL mapping using deep bulk RNA-sequencing profiles from the same set of iPSC lines (“iPSC bulk”; 10,736 genes tested) generated as part of the HipSci project1, yielding consistent eQTL (~70\% replication of lead eQTL effects; nominal P<0.05; Methods; Supplementary Data 4).\\ 
+To validate our approach, we also performed eQTL mapping using deep bulk RNA-sequencing profiles from the same set of iPSC lines (“iPSC bulk”; 10,736 genes tested) generated as part of the HipSci project \cite{kilpinen2017common}, yielding consistent eQTL (~70\% replication of lead eQTL effects; nominal P<0.05; Methods; Supplementary Data 4).\\ 
 
 These iPSC eQTL were further confirmed by analysis of scRNA-seq data generated from a subset of 5 experiments using a droplet-based approach (Methods; Supplementary Fig. 9, 10).
 
 \section{eQTL mapping in mesendo, defendo}
 
-Analogously, we mapped eQTL in the mesendo and defendo populations, yielding 1702 and 1342 eGenes, respectively. 
+Analogously, we mapped eQTL in the mesendo and defendo populations, yielding 1,702 and 1,342 eGenes, respectively. 
 For comparison, we also performed eQTL mapping in cells collected on day1 and day3—the experimental time points commonly used to identify cells at mesendo and defendo stages.
 Interestingly, this approach identified markedly fewer eGenes (1181 eGenes at day1, and 631 eGenes at day3), demonstrating the power of using the single-cell RNA-seq profiles to define relatively homogeneous differentiation stages in a data-driven manner (Fig. 2b; Methods; Supplementary Table 1). 
 Notably, this observation did not merely reflect differences in the number of cells or donors considered (Supplementary Fig. 11).\\
