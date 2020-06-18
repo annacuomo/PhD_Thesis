@@ -5,7 +5,19 @@
 
 \chapter{LMM framework for multi-environment interaction eQTL using scRNA-seq}
 
-%********************************** %First Section  **************************************
+\begin{Abstract}
+% \subsection{Contributions}
+\hspace{-3mm}\textbf{Contributions} I worked on this project in collaboration with Danilo Horta, Elissavet (Elsa) Kentepozidou, John Marioni and Oliver Stegle.
+In this project, I extended an existing model for identifying multivariate GxE interactions (StructLMM \cite{moore2019linear}) to the specific use case of scRNA-seq data.
+I worked out the necessary underlying maths necessary for the extension and helped re-writing the method in collaboration with Danilo. 
+The model is now a usable python package available here:
+Please also find the corresponding documentation here:
+
+Anna S.E. Cuomo, Danilo Horta, Elissavet Kentepozidou, Marc Jan Bonder, John C. Marioni, Oliver Stegle. 
+Title, 2020
+
+\vfill
+\end{Abstract}
 
 \section{Introduction} 
 
@@ -29,23 +41,29 @@ The model can handle hundreds of cell states and conditions, and it can be appli
 \section{Model} 
 
 \begin{equation}\label{eq:scStructLMM}
- \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \otimes \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\epsilon} 
-\end{equation}
-
-Because we use Rao's score test, we only need to evaluate the likelihood under $H_0$:
-
-\begin{equation}
- \mathbf{y}|H_0 =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{e} + \mathbf{u} + \boldsymbol{\epsilon} 
+ \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi} 
 \end{equation}
 
 Where $\mathbf{e} \sim N(\mathbf{0},\sigma_e^2 \mathbf{E}\mathbf{E}^T)$, $\mathbf{u} \sim N(\mathbf{0},\sigma_g^2 \mathbf{G}\mathbf{G}^T)$ and $\boldsymbol{\psi} \sim N(\mathbf{0},\sigma_n^2 \mathbf{I_N})$.\\
 
-Now to be able to use the trick described in Section 2.3.3, we need to write the Covariance matrix in the form $\sigma^2(\mathbf{M}+\delta\mathbf{I})$.
+Because we use Rao's Score test, we only need to evaluate the likelihood under $H_0$:
+
+\begin{equation}\label{eq:scStructLMM_H0}
+ \mathbf{y}|H_0 =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi} 
+\end{equation}
+
+\begin{equation}\label{eq:scStructLMM_H0_MVN}
+ \mathbf{y}|H_0 \sim N( \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G, \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I} )
+\end{equation}
+
+Now to be able to use the trick described in Section 2.3.3, we need to write the Covariance matrix in the form $\sigma^2(\mathbf{M}+\delta\mathbf{I})$ as in \eqref{eq:fast_lmm_full_covariance}.
 To do so, we introduce a weight parameter $\rho_1$ such that:
+
+Covariance under the null, $\mathbf{K}_0 = Cov(\mathbf{y} | H_0)$ is:
 
 \begin{equation}
 \begin{split}
-    Cov(\mathbf{y}) = \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I} =\\
+    \mathbf{K}_0 = \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I} =\\
     \sigma_k^2[\rho_1\mathbf{E}\mathbf{E}^T + (1-\rho_1) \mathbf{G}\mathbf{G}^T] + \sigma_n^2 \mathbf{I} =\\ \sigma_k^2\{\boldsymbol{\Sigma}(\rho_1) + \delta_1 \mathbf{I}\}
 \end{split}
 \end{equation}
@@ -56,44 +74,83 @@ $\delta_1 = \sigma_n^2/\sigma_k^2$ and $\boldsymbol{\Sigma}(\rho_1) = \rho_1\mat
 Note that $\boldsymbol{\Sigma}$ only depends on $\rho_1$. 
 To efficiently implement this, we perform a grid search over $\rho_1$ with as little as 10 possible values, thus only slowing down the original method by a factor of 10.
 
-\section{Fast implementation}
+\section{Statistical testing}
 
-To test for GxE interactions we apply the same strategy that is used in the StructLMM method, which in turn adopts the strategy described in Rao et al \cite{rao1948large}.
+To test for GxE interactions we apply the same strategy that is used in the StructLMM method, which in turn adopts the strategy described in Lippert et al \cite{lippert2011fast}.
+% Rao et al \cite{rao1948large}.
+
 In this section I describe the key steps.
-
 First, we define score-based test statistic Q as:
 
 \begin{equation}
-    Q = \frac{1}{2}y^TP (\partial K)P y 
+    Q = \frac{1}{2}\mathbf{y}^T\mathbf{P}_0 \frac{\partial \mathbf{K}}{\partial \theta}\mathbf{P}_0 \mathbf{y} 
 \end{equation}
 
-Where:
+Where $\mathbf{K}$ is the full covariance matrix (\eqref{eq:scStructLMM}):
+
+\begin{equation}\label{eq:full_K_scStructLMM}
+    \mathbf{K} = \sigma_{GxE}^2diag(\mathbf{g})\mathbf{E}\mathbf{E}^Tdiag(\mathbf{g}) +  \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I}
+\end{equation}
+
+and 
 
 \begin{equation}
-    P = K^{-1}-K^{-1}W(W^TK^{-1}W)^{-1}W^TK^{-1}
+    \mathbf{P}_0 = \mathbf{K}_0^{-1}-\mathbf{K}_0^{-1}\mathbf{X}(\mathbf{X}^T\mathbf{K}_0^{-1}\mathbf{X})^{-1}\mathbf{X}^T\mathbf{K}_0^{-1}
 \end{equation}
 
 is a matrix that projects out the fixed effects \cite{lippert2011fast, lippert2014greater}.
 
-Now, it can be shown that Q can be expressed as:
+In our case (\eqref{eq:scStructLMM}), the fixed effects include covariates and the persistent effect of the variant tested: $\mathbf{X} = [\mathbf{W}, \mathbf{g}]$\\
+
+Using \eqref{eq:full_K_scStructLMM} and considering the parameter $\theta = \sigma_{GxE}^2$
 
 \begin{equation}
-    Q \sim \sum_i \lambda_i \chi^2_i 
+    \frac{\partial \mathbf{K}}{\partial \sigma_{GxE}^2} = diag(\mathbf{g})\mathbf{E}\mathbf{E}^Tdiag(\mathbf{g})
 \end{equation}
 
-Where $\lambda_i$'s are the non-zero eigenvalues of $\frac{1}{2}\sqrt{P} \partial K \sqrt{P}$.
+Let us define $\mathbf{K}_1 = diag(\mathbf{g})\mathbf{E}\mathbf{E}^Tdiag(\mathbf{g})$:
+
+\begin{equation}
+    Q = \frac{1}{2}\mathbf{y}^T\mathbf{P}_0 \mathbf{K}_1\mathbf{P}_0 \mathbf{y} 
+\end{equation}
+
+As in \eqref{eq:StructLMM-int_H1}, $H_1: \sigma_{GxE}^2>0$, noting that as a variance parameter, $\sigma_{GxE}^2$ can only take positive values.
+As a result, the Score test statistic $Q$ does not follow the usual $\chi^2_i$ distribution (see \eqref{eq:lagrange_multiplier_univariate}), but instead a mixture of  $\chi^2$ distributions.
+I refer the donor specifically at the supplementary methods from \cite{lippert2014greater} for a proof.
+
+\begin{equation}
+    Q \sim \sum_i \lambda_i \chi^2_1 
+\end{equation}
+
+Where $\lambda_i$'s are the non-zero eigenvalues of $\frac{1}{2}\mathbf{P}_0^{\frac{T}{2}} \frac{\partial\mathbf{K}}{\partial \theta} \mathbf{P}_0^{\frac{1}{2}}$.\\
 
 Now since the eigenvalues of $AA^T$ are the same as those of $A^TA$, we can re-arrange and compute $\lambda_i$'s as the eigenvalues of:
 
 \begin{equation}
-    \frac{1}{2}\sqrt{\partial K} P \sqrt{\partial K}
+    \frac{1}{2}\frac{\partial\mathbf{K}}{\partial \theta}^{\frac{T}{2}} \mathbf{P}_0 \frac{\partial\mathbf{K}}{\partial \theta}^{\frac{1}{2}}
 \end{equation}
 
 instead.
-As in SKAT \cite{wu2011rare}, we use the Davies exact method \cite{davies1980algorithm} to compute the corresponding p values.
 
-SKAT \cite{wu2011rare}
-SKAT-O \cite{}
+To evaluate the significance of the score-best test statistic $Q$ we use the approach described in in SKAT \cite{wu2011rare}, thereby using the Davies exact method \cite{davies1980algorithm} to compute the corresponding p values, and switching to the modified moment matching approximation method (Lee et al 2012, Duchesne and De Micheaux 2010, Liu et al 2009 \cite{liu2009new, lee2012optimal}) when this fails to converge.
+
+
+Various methods have been proposed to compute the tail probability of the mixture of 1-dof $\chi^2$ distributions. 
+For example, we can use the Davies method (Davies, 1980)\cite{davies1980algorithm}, the moment‐matching‐based noncentral $\chi^2$ approximation method \cite{liu2009new, lee2012optimal}(Liu et al., 2009; Lee et al., 2012b), or the saddlepoint approximation method (Kuonen, 1999). 
+The Davies methos is the most accurate but can be be computationally expensive.
+The moment-matching approximation is anticonservative and could lead to inflated type I errors especially for small significance levels.
+SKAT: Davies + Liu
+SKATh: Davies + saddle
+\cite{wu2016efficient}
+
+\section{Definition of covariance matrix}
+
+E?
+
+PCs, MOFA, HVGs?
+transformation?
+normalization/scaling
+
 
 \section{Simulation data}
 
@@ -103,7 +160,7 @@ First, we applied the model on simulated data.
 Briefly, from the full model (eq. 6.1) we simulate only an intercept as covariate:  
 
 \begin{equation}
- \mathbf{y} = \mathbf{y}_0 + \mathbf{g}\beta_G + \mathbf{g} \otimes \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\epsilon} 
+ \mathbf{y} = \mathbf{y}_0 + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi} 
 \end{equation}
 
 We column normalize all terms so that the total variance sums to 1.
@@ -173,7 +230,7 @@ with ($\mathbf{X} = {\mathbf{W},\mathbf{g},\mathbf{E},\mathbf{K}}$):
 \end{equation}
 
 \begin{equation}
-    k(\mathbf{X},\mathbf{X}) = \sigma_{GxE}^2(\mathbf{g}\otimes\mathbf{E})(\mathbf{g}\otimes\mathbf{E})^T
+    k(\mathbf{X},\mathbf{X}) = \sigma_{GxE}^2(\mathbf{g}\odot\mathbf{E})(\mathbf{g}\odot\mathbf{E})^T
 \end{equation}
 
 \begin{equation}

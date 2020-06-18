@@ -1,0 +1,65 @@
+%!TEX root = ../thesis.tex
+%*******************************************************************************
+%****************************** Seventh Chapter *********************************
+%*******************************************************************************
+
+\chapter{Discussion}  %Title of the Seventh Chapter
+
+\section{Bridging the gap}
+
+Still a large gap in our understanding of function from genotype to phenotype.
+Translation and clinical application still far away
+Single cell data helps
+from healthy to diseased
+
+\section{Differentiation efficiency of iPSC differentiation protocols}
+
+Room for improvement in our understanding on how and when the protocols work
+
+\section{Key differences and commonalities between the two datasets}
+
+This section aims to highlight common aspects and differences between the two datasets described in chapters 4 and 5 respectively, and illustrate how they complement each other for our purposes.
+
+\subsection{iPSC lines used}
+In both cases, we used human iPSC lines from the HipSci consortium (see 1.4). 
+In fact, 45 lines were included in both studies.
+Through the HipSci resource, we also have access to bulk RNA sequencing for most of the same lines.\\
+
+% add table for numbers of lines in common?
+
+All HipSci lines are originated from fibroblasts, and we use all lines that were converted to a feeder-free medium (ref).
+Lines are from both sexes, and mostly healthy. 
+We do use a small portion of diseased lines in the endoderm differentiation protocol: 12 lines (out of 126) had monongenic diabetes, which did not affect any of the analyses. 
+
+\subsection{Experimental design}
+The pooling approach from the first study was replicated in the second, at a larger scale: in the endoderm protocol, 4 to 6 lines were differentiated together; in the midbrain neuronal differentiation protocol 9 to 21 lines were.
+In both cases, a subset of lines were differentiated in more than one pool (18/126, 35/215 respectively).\\
+
+An obvious difference is the length of the differentiation protocols.
+The definitive endoderm protocol is extremely short, lasting only 72h.
+As a consequence, considering different differentiation rates for different cells, we essentially have a continuos mapping of cells from pluripotent (0h i.e. day0) to definitive endoderm (72h i.e. day3).
+The midbrain dopaminergic neuronal differentiation protocol, on the other hand lasts nearly two months: 52 days.
+At the end, cells are much more differentiated and better resemble \textit{in vivo }mature cell types.
+We collected cells at day 11, day 30, and at the last time point, day 52.
+This time points are quite separate and discrete.
+
+
+\subsection{scRNA-seq technology used}
+
+Moreover, the scRNA-seq technology used in the two studies is different.\\
+
+In the endoderm differentiation study, for which data generation started in 2015, cells were sequenced using a plate-based scRNA-seq technology (SmartSeq2).\\
+
+The neuronal differentiation study is more recent (generation started in 2018) and thus used a technology that is more popular now (mainly because of UMI addition and scalability, see 1.3 for more detail), droplet-based (10X) sequencing.
+
+\subsection{Scale of study}
+A direct consequence of the technology used is a change in scale.
+SmartSeq2 is limited to 384 cell per plate
+Using 10X, one run can take up to 4,000 cells.
+We can observe this difference very clearly in our two datasets, made up by little less than 40,000 cells and just over a million (!) cells, respectively.\\
+
+We did also assess many more donors in the neuronal differentiation data: 215 (vs 125 from the endoderm study).
+
+\section{Discussion}
+
+The fact that iPSC differentiation protocols...
