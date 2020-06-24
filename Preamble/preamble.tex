@@ -299,9 +299,21 @@
 {0.25em}% Space after theorem head
 {\small\sffamily\thmname{}\nobreakspace}
 
+\newtheoremstyle{bluenumbox} % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily\color{blue}}% Theorem head font
+{}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\thmname{}\nobreakspace}
+
 % Defines the theorem text style for each type of theorem to one of the three styles above
 \theoremstyle{greennumbox}
 \newtheorem{abstractT}{}
+\theoremstyle{bluenumbox}
+\newtheorem{boxT}{}
 \theoremstyle{blacknumbox}
 \newtheorem{commentT}{}
 
@@ -324,7 +336,26 @@ innertopmargin=5pt,
 innerbottommargin=5pt,
 leftmargin=0cm,
 rightmargin=0cm,
-linewidth=4pt]{eBox}	
+linewidth=4pt]{eBox}
+
+\definecolor{cornflowerblue}{RGB}{114,133,165}
+
+\newmdenv[skipabove=10pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=cornflowerblue!10,
+linecolor=cornflowerblue,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt
+innerbottommargin=5pt]{bBox}
 
 \newmdenv[skipabove=7pt,
 skipbelow=7pt,
@@ -343,5 +374,6 @@ linewidth=4pt,
 innerbottommargin=5pt]{cBox}
 
 % Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
+
 \newenvironment{Abstract}{\begin{eBox}\begin{abstractT}}{\hfill{\color{green}\tiny\ensuremath{\blacksquare}}\end{abstractT}\end{eBox}}				  		
-\newenvironment{Comment}{\begin{cBox}\begin{commentT}}{\end{commentT}\end{cBox}}	
+\newenvironment{Comment}{\begin{cBox}\begin{commentT}}{\end{commentT}\end{cBox}}	\newenvironment{Comment2}{\begin{bBox}\begin{boxT}}{\end{boxT}\end{bBox}}

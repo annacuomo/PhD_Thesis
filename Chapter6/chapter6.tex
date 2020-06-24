@@ -5,7 +5,7 @@
 
 \chapter{LMM framework for multi-environment interaction eQTL using scRNA-seq}
 
-\begin{Abstract}
+\begin{Comment2}
 % \subsection{Contributions}
 \hspace{-3mm}\textbf{Contributions} I worked on this project in collaboration with Danilo Horta, Elissavet (Elsa) Kentepozidou, John Marioni and Oliver Stegle.
 In this project, I extended an existing model for identifying multivariate GxE interactions (StructLMM \cite{moore2019linear}) to the specific use case of scRNA-seq data.
@@ -16,8 +16,7 @@ Please also find the corresponding documentation here:
 Anna S.E. Cuomo, Danilo Horta, Elissavet Kentepozidou, Marc Jan Bonder, John C. Marioni, Oliver Stegle. 
 Title, 2020
 
-\vfill
-\end{Abstract}
+\end{Comment2}
 
 \section{Introduction} 
 
@@ -173,7 +172,7 @@ $\sigma_E^2 = \sigma_g^2 = \sigma_n^2 = v/3$
 
 Using simulated data, we checked that our model was calibrated both in the case of no genetic effects at all (i.e. $\sigma_0^2 = 0$) and in the case of persistent effects only (no GxE, i.e. $\rho_0 = 0$).
 
-\subsection{Comparison with Struct LMM.0}
+\subsection{Comparison with Struct LMM v0}
 
 Next, we compared our model to the original StructLMM model.
 StructLMM is expected to have issues in the presence of extended repeated structure, which it is not equipped to deal with.

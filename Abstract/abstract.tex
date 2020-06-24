@@ -2,24 +2,20 @@
 % Use `abstract' as an option in the document class to print only the titlepage and the abstract.
 \begin{abstract}
 
-A major challenge in biology is to unravel the genotype-phenotype map, or understand how DNA variants can shape observable traits, and cause complex diseases. 
-Genome-wide association studies (GWAS) aim to find such genotype-phenotype associations and have successfully identified thousands of significant associations. 
-The interpretability of those GWAS hits, however, is often far from trivial, especially when the DNA variants are found in non-coding areas of the genome. 
+Over the last fifteen years, genome-wide association studies (GWAS) have been used
+to identify genetic variants associated with thousands of traits and diseases by exploiting naturally occurring genetic variation in large cohorts of individuals. 
+More recently, similar approaches have been applied to high-throughput RNA sequencing data to find variants associated with expression level, called expression quantitative trait loci (eQTL).
+Recent advances in experimental techniques have provided an unprecedented opportunity to measure gene expression at the single cell level, and the chance to study cellular heterogeneity. 
+This represents a remarkable advance over traditional bulk sequencing methods, particularly to study cell fate commitment events in development.
 
-To understand the mechanisms that link genotype to phenotype one can look at intermediate molecular traits, such as gene expression. 
-For example, having one particular base at a certain locus can increase the affinity for some transcription factor to bind, and thus boost expression. 
-Associations between genotype and gene expression are called eQTL (expression quantitative trait loci). 
+The challenge of studying early development in human is partially overcome by advances in stem cell technologies.
+In particular, induced pluripotent stem cells (iPSCs) and cells derived from them represent a fantastic system to study development \textit{in vitro}.
 
-Traditional eQTL mapping uses data derived from bulk RNA-sequencing as a measure of gene expression, which means that all cells from a sample are pooled together prior to library generation and sequencing. 
-This results in a single measure of expression for each sample, gene pair, which is essentially averaged across all cells. 
-To link genotype to gene expression, linear mixed models (LMMs) represent a popular approach: the aim is to find a linear relationship between genotype and expression, whilst accounting for confounding effects such as the population structure between samples.
+% To map eQTL, linear mixed models (LMMs) represent a popular approach as their flexible framework allows to accounting for confounding effects such as the population structure between samples.
 
-Recent advances in experimental techniques have provided an unprecedented opportunity to measure molecular phenotypes at the single cell level, and the chance to study cellular heterogeneity. 
-This represents a remarkable advance over traditional bulk sequencing methods, particularly to study lineage diversification and cell fate commitment events in heterogeneous biological processes, including the immune system, embryonic development and cancer.
+In this thesis, I investigate the computational challenges of using single cell expression profiles to perform \gls{eqtl} mapping, focusing on the expansion and development of analytical frameworks that are necessary to take advantage of such data.
 
-Here, I will investigate the computational challenges that arise when using single cell expression profiles for QTL mapping, focusing particularly on the expansion and development of analytical frameworks that are necessary to take advantage of such data.
-
-In Chapter 1 we provide an introduction that spans a brief history of human genetics and models for genetics associations, focuses on eQTL mapping and standard methods for it, touches on the tissue-specificity of eQTL and the GTEx project and highlights the potential of single cell QTL mapping as well as the technical challenges that it poses.
+In Chapter 1 we provide an introduction that spans a brief history of human genetics and models for genetics associations, with a focus on eQTL mapping, as well as an overview of the use of human stem cells.
 
 In Chapter 2 we set the analytical foundations of linear mixed models, on which all subsequent methods described in this thesis will be based on.
 

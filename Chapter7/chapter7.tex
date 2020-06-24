@@ -5,61 +5,91 @@
 
 \chapter{Discussion}  %Title of the Seventh Chapter
 
-\section{Bridging the gap}
+\section{Bridging the genotype-phenotype gap}
 
+Bridging the gap
 Still a large gap in our understanding of function from genotype to phenotype.
 Translation and clinical application still far away
 Single cell data helps
 from healthy to diseased
 
-\section{Differentiation efficiency of iPSC differentiation protocols}
+One avenue to tackle these challenges is to increase statistical power by considering
+ever-increasing sample sizes. 
+A complementary direction of investigation is to consider joint analyses across multiple traits, molecular layers and contexts.
 
+\section{Human iPSCs to model development and disease}
+
+Efficiency of iPSC differentiation protocols
 Room for improvement in our understanding on how and when the protocols work
 
-\section{Key differences and commonalities between the two datasets}
+% \section{Key differences and commonalities between the two datasets}
 
-This section aims to highlight common aspects and differences between the two datasets described in chapters 4 and 5 respectively, and illustrate how they complement each other for our purposes.
+% This section aims to highlight common aspects and differences between the two datasets described in chapters 4 and 5 respectively, and illustrate how they complement each other for our purposes.
 
-\subsection{iPSC lines used}
-In both cases, we used human iPSC lines from the HipSci consortium (see 1.4). 
-In fact, 45 lines were included in both studies.
-Through the HipSci resource, we also have access to bulk RNA sequencing for most of the same lines.\\
+% \subsection{iPSC lines used}
+% In both cases, we used human iPSC lines from the HipSci consortium (see 1.4). 
+% In fact, 45 lines were included in both studies.
+% Through the HipSci resource, we also have access to bulk RNA sequencing for most of the same lines.\\
 
-% add table for numbers of lines in common?
+% % add table for numbers of lines in common?
 
-All HipSci lines are originated from fibroblasts, and we use all lines that were converted to a feeder-free medium (ref).
-Lines are from both sexes, and mostly healthy. 
-We do use a small portion of diseased lines in the endoderm differentiation protocol: 12 lines (out of 126) had monongenic diabetes, which did not affect any of the analyses. 
+% All HipSci lines are originated from fibroblasts, and we use all lines that were converted to a feeder-free medium (ref).
+% Lines are from both sexes, and mostly healthy. 
+% We do use a small portion of diseased lines in the endoderm differentiation protocol: 12 lines (out of 126) had monongenic diabetes, which did not affect any of the analyses. 
 
-\subsection{Experimental design}
-The pooling approach from the first study was replicated in the second, at a larger scale: in the endoderm protocol, 4 to 6 lines were differentiated together; in the midbrain neuronal differentiation protocol 9 to 21 lines were.
-In both cases, a subset of lines were differentiated in more than one pool (18/126, 35/215 respectively).\\
+% \subsection{Experimental design}
+% The pooling approach from the first study was replicated in the second, at a larger scale: in the endoderm protocol, 4 to 6 lines were differentiated together; in the midbrain neuronal differentiation protocol 9 to 21 lines were.
+% In both cases, a subset of lines were differentiated in more than one pool (18/126, 35/215 respectively).\\
 
-An obvious difference is the length of the differentiation protocols.
-The definitive endoderm protocol is extremely short, lasting only 72h.
-As a consequence, considering different differentiation rates for different cells, we essentially have a continuos mapping of cells from pluripotent (0h i.e. day0) to definitive endoderm (72h i.e. day3).
-The midbrain dopaminergic neuronal differentiation protocol, on the other hand lasts nearly two months: 52 days.
-At the end, cells are much more differentiated and better resemble \textit{in vivo }mature cell types.
-We collected cells at day 11, day 30, and at the last time point, day 52.
-This time points are quite separate and discrete.
+% An obvious difference is the length of the differentiation protocols.
+% The definitive endoderm protocol is extremely short, lasting only 72h.
+% As a consequence, considering different differentiation rates for different cells, we essentially have a continuos mapping of cells from pluripotent (0h i.e. day0) to definitive endoderm (72h i.e. day3).
+% The midbrain dopaminergic neuronal differentiation protocol, on the other hand lasts nearly two months: 52 days.
+% At the end, cells are much more differentiated and better resemble \textit{in vivo }mature cell types.
+% We collected cells at day 11, day 30, and at the last time point, day 52.
+% This time points are quite separate and discrete.
 
 
-\subsection{scRNA-seq technology used}
+% \subsection{scRNA-seq technology used}
 
-Moreover, the scRNA-seq technology used in the two studies is different.\\
+% Moreover, the scRNA-seq technology used in the two studies is different.\\
 
-In the endoderm differentiation study, for which data generation started in 2015, cells were sequenced using a plate-based scRNA-seq technology (SmartSeq2).\\
+% In the endoderm differentiation study, for which data generation started in 2015, cells were sequenced using a plate-based scRNA-seq technology (SmartSeq2).\\
 
-The neuronal differentiation study is more recent (generation started in 2018) and thus used a technology that is more popular now (mainly because of UMI addition and scalability, see 1.3 for more detail), droplet-based (10X) sequencing.
+% The neuronal differentiation study is more recent (generation started in 2018) and thus used a technology that is more popular now (mainly because of UMI addition and scalability, see 1.3 for more detail), droplet-based (10X) sequencing.
 
-\subsection{Scale of study}
-A direct consequence of the technology used is a change in scale.
-SmartSeq2 is limited to 384 cell per plate
-Using 10X, one run can take up to 4,000 cells.
-We can observe this difference very clearly in our two datasets, made up by little less than 40,000 cells and just over a million (!) cells, respectively.\\
+% \subsection{Scale of study}
+% A direct consequence of the technology used is a change in scale.
+% SmartSeq2 is limited to 384 cell per plate
+% Using 10X, one run can take up to 4,000 cells.
+% We can observe this difference very clearly in our two datasets, made up by little less than 40,000 cells and just over a million (!) cells, respectively.\\
 
-We did also assess many more donors in the neuronal differentiation data: 215 (vs 125 from the endoderm study).
+% We did also assess many more donors in the neuronal differentiation data: 215 (vs 125 from the endoderm study).
 
-\section{Discussion}
+\section{beyond the mean}
 
-The fact that iPSC differentiation protocols...
+In this chapter we want to show examples of eQTL mapping using different phenotypes, where we specifically exploit the single cell resolution.
+
+Interaction eQTL can be though of as a sort of GxE effect, where the effect of a genetic variant on the expression of a given gene is modulated by another factor.
+If in traditional (GWAS) GxE analysis the factor is often an environmental variable such as diet or exercise, in eQTL we are more often looking at molecular changes, such as cell type composition, or the level of activation due to some stimulus, etc..
+
+Using bulk:
+
+Sometimes, other genes can be used directly as factors, like in \cite{zhernakova2017identification}
+
+However, if we want to identify molecular changes it only makes sense to assess expression at the single cell level, and truly identify continuous states..
+
+% \subsection{other results}
+
+% As discussed in (2.4) there are multiple ways to test for interaction effects, where variation in the phenotype is affected by a combined effect of the genotype at a certain locus and some environmental component.\\
+
+% In the context of eQTL mapping those environments are more often called cell states or types and are typically estimated from the expression profiles themselves. 
+% Then an interaction eQTL might be an eQTL whose strength changes continuously over some differentiation trajectory for example, or an eQTL whose strength varies from cell type to cell type or from one cell cycle phase to another.\\ 
+
+% In some sense, we have already performed a related analysis: by subdividing cells into developmental stages and cell types prior to eQTL mapping, we have essentially performed stratified tests (see section 2.4.1).
+% In the neuronal differentiation study, we first assigned cells to cell types using marker genes, and then mapped eQTL in each cell type separately.
+% In the endoderm study, we ordered our cells along a computationally inferred pseudotime, and then essentially binned cells in three groups, again reflecting known biology of this developmental process and using marker genes.\\
+
+% However, the single cell resolution allows to assess more subtle changes, by performing a joint analysis on all cells and measuring the effect of differentiation taken as a continuum.
+% In the next section, we show different approaches we used to perform interaction eQTL mapping in the endoderm differentiation data.
+
