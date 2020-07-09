@@ -5,24 +5,25 @@
 
 \chapter{Mean level eQTL mapping using single cell RNA-seq data from iPSCs}
 
-Traditional \gls{eqtl} mapping uses, as a measure of gene expression, bulk RNA-sequencing, where expression level is averaged out across several cells from a given individual.
-Recent advances in experimental techniques allow to assess gene expression at the single cell level.
-Singe cell RNA-sequencing is now an established technique, with fairly standardised methods to perform both low-level and complex tasks such as clustering and pseudotime estimation.
+Traditional \gls{eqtl} mapping uses, as a measure of gene expression, bulk RNA-sequencing, where expression level is averaged across several cells from a given individual.
+However, recent advances in experimental techniques allow to assess molecular phenotypes including gene expression at the level of single cells.
+In particular, singe cell RNA-sequencing is now an established technique, with fairly standardised methods to perform both low-level and complex tasks such as clustering and pseudotime estimation.
 With the ability to identify cell types and states in an unbiased manner the use of scRNA-seq data is uniquely positioned to provide an extra layer to our understanding of the genetic regulation of expression across a plethora of cell types and states.
-As a consequence, single cell \gls{eqtl} mapping (where scRNAseq profiles are combined with genotype information) is slowly emerging as a field and it promises to greatly help our understanding of the architecture of human disease across tissues.
+As a consequence, single cell \gls{eqtl} mapping (where scRNAseq profiles are combined with genotype information to map eQTL) is quickly emerging as a field and it promises to greatly improve our understanding of the architecture of human disease across tissues.
 As more and more studies emerge, it becomes important to establish a "best practice" pipeline to optimise yield of sc-\gls{eqtl} studies and uniform methods across the field.
 Here, we use matched bulk and single cell RNA-seq from around 100 human \gls{ipsc} lines to assess our ability to detect \gls{eqtl} using single cell RNA-seq data and to replicate \gls{eqtl} identified using bulk RNA-seq.
-We investigate the role played by multiple factors including..
+We systematically assess the role played by multiple factors including the chosen aggregation method and covariates used and compare results across technologies.
 We believe this is a useful resource for several future studies that will want to perform eQTL mapping using single cell expression profiles.
+
+\newpage
 
 \begin{Comment2}
 % \subsection{Contributions}
-\hspace{-3mm}\textbf{Contributions} This work was done in collaboration between the Stegle and McCarthy labs and was published in \cite{}.\\
-
-The code for processing, analysing and plotting the data is open source and freely accessible here:
-
-The paper was written in collaboration with Giordano Alvari and Marc Jan Bonder, and is available at .
-\vfill
+\hspace{-3mm}\textbf{Contributions} 
+% This work was done in collaboration between the Stegle, Bonder and McCarthy labs.
+The project was lead by Giordano Alvari under Marc Jan Bonder's supervision and mine.
+% Christina Azodi supervised by Davis McCarthy performed the simulation analyses.
+% \vfill
 \end{Comment2}
 
 \newpage
@@ -30,16 +31,18 @@ The paper was written in collaboration with Giordano Alvari and Marc Jan Bonder,
 \section{Introduction}
 
 \subsection{scRNAseq}
+\label{sec:scrnaseq}
 
 The first single-cell RNA sequencing (scRNA-seq) experiment was published in 2009, and the authors profiled only eight cells \cite{tang2009mrna}. 
 Only 7 years later, 10X Genomics released a data set of more than 1.3 million cells \cite{102016our}.
 Today, over 1,000 scRNA-seq datasets have been published \cite{svensson2018exponential, svensson2019curated, svensson2020single}.
-By now scRNA-seq is an established technique and methods are available to efficiently and reliably perform low-level analyses such as read alignment, cell calling and \gls{qc} as well as workflows to perform higher level tasks such as batch correction, normalisation, clustering and pseudotime inference (refs).\\
+By now scRNA-seq is an established technique and methods are available to efficiently and reliably perform low-level analyses such as read alignment, cell calling and \gls{qc} as well as workflows to perform higher level tasks such as batch correction, normalisation, clustering and pseudotime inference.\\
 
-In some cases, those methods have been directly borrowed from bulk RNA-sequencing methods; other times, specific methods were proposed \cite{stegle2015computational}.
-A typical workflow for single cell RNA-seq data implemented in R can be found on Bioconductor (ref) using several scRNA-seq specific R packages \cite{lun2016step, risso2016scrnaseq, mccarthy2017scater, lun2019singlecellexperiment}\footnote{at https://bioconductor.org/packages/devel/bioc/vignettes/scran/inst/doc/scran.html and
+In some cases, those methods have been directly borrowed from bulk RNA-sequencing methods; other times, methods taylored specificall for single cell data were proposed \cite{stegle2015computational}.
+A typical workflow for single cell RNA-seq data implemented in R can be found on Bioconductor using several scRNA-seq specific R packages \cite{lun2016step, risso2016scrnaseq, mccarthy2017scater, lun2019singlecellexperiment}\footnote{at https://bioconductor.org/packages/devel/bioc/vignettes/scran/inst/doc/scran.html and
 
 https://osca.bioconductor.org}.
+
 Here I will only mention a few key steps.
 
 
@@ -58,8 +61,8 @@ Here I will only mention a few key steps.
 
 
 
-Several platforms implement the entire processing workflow, or at least large portions of it.
-These include R packages seurat \cite{} and SINCERA (S.., \cite{}) and python package scanpy \cite{}. 
+% Several platforms implement the entire processing workflow, or at least large portions of it.
+% These include R packages seurat \cite{stuart2019comprehensive} and SINCERA (SINgle CEll RNA-seq profiling Analysis, \cite{guo2015sincera}) and python package scanpy \cite{wolf2018scanpy}. 
 
 
 
@@ -131,10 +134,10 @@ These include R packages seurat \cite{} and SINCERA (S.., \cite{}) and python pa
 
 
 
-
+\subsection{single cell eQTL mapping}
 
 With the ability to identify cell types and states in an unbiased manner the use of scRNA-seq data is uniquely positioned to provide an extra layer to our understanding of the genetic regulation of expression across a plethora of cell types and states.
-As a consequence, single cell eQTL mapping (where scRNAseq profiles are combined with genotype information) is slowly emerging as a field and it promises to greatly help our understanding of the architecture of human disease across tissues \cite{van2018single, cuomo2020single, jerber2020population, van2020single}.
+As a consequence, single cell eQTL mapping (where scRNAseq profiles are combined with genotype information) is slowly emerging as a field and it promises to greatly help our understanding of the architecture of human disease across tissues \cite{wills2013single, van2018single, kang2018multiplexed, sarkar2019discovery, cuomo2020single, jerber2020population, van2020single}.
 As more and more studies emerge, it becomes important to establish a "best practice" pipeline to optimise yield of sc eQTL studies and uniform methods across the field.\\
 
 Here, we leverage bulk and single cell gene expression of matched human \gls{ipsc}s lines from around 100 donors to identify general guidelines for \gls{eqtl} mapping using scRNAseq data.
@@ -190,7 +193,7 @@ Under the assumption that we are looking at a single cell type, we can i) aggreg
 \begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{Chapter3/Fig/sc_qtl_workflow.png}
-\caption[\textbf{sc-eQTL workflow}]{\textbf{sc-eQTL workflow}.\\
+\caption[sc-eQTL workflow]{\textbf{sc-eQTL workflow}.\\
 Placeholder: different approaches tested to perform \gls{eqtl} mapping using scRNA-seq profiles}
 \label{fig:sc_qtl_workflow}
 \end{figure}
@@ -241,14 +244,40 @@ This identified 1,833 genes with at least one \gls{eqtl} (denoted eGenes; FDR <1
 
 % \section{Replication in bulk, 10x}
 
-To validate our approach, we also performed \gls{eqtl} mapping using deep bulk RNA-sequencing profiles from the same set of \gls{ipsc} lines (“iPSC bulk”; 10,736 genes tested) generated as part of the \gls{hipsci} project \cite{kilpinen2017common}, yielding consistent \gls{eqtl} (~70\% replication of lead \gls{eqtl} effects; nominal P<0.05; Methods; Supplementary Data 4).\\ 
+To validate our approach, we also performed \gls{eqtl} mapping using deep bulk RNA-sequencing profiles from the same set of \gls{ipsc} lines (“iPSC bulk”; 10,736 genes tested) generated as part of the \gls{hipsci} project \cite{kilpinen2017common}, yielding consistent \gls{eqtl} (~70\% replication of lead \gls{eqtl} effects; nominal p value < 0.05; Supplementary Data 4).\\ 
 
-These \gls{ipsc} \gls{eqtl} were further confirmed by analysis of scRNA-seq data generated from a subset of 5 experiments using a droplet-based approach (Methods; Supplementary Fig. 9, 10).
+These \gls{ipsc} \gls{eqtl} were further confirmed by analysis of scRNA-seq data generated from a subset of 5 experiments using a droplet-based approach (Supplementary Fig. 9, 10).
 
 
 \section{Results in simulated data}
 
+\section{Discussion}
+
+% from endodiff paper
+These results illustrate a difference between bulk and single-cell transcriptomics, as applied to eQTL mapping: the trade-off between statistical power and cellular resolution. 
+In our analysis of iPSC, bulk transcriptomes provided higher statistical power for
+discovery of eQTL. 
+However, as we have demonstrated, a single-cell approach allows detailed annotation of changing eQTL effects across heterogeneous cell types and cell states, with the ability to better interpret the context-specific role of individual genetic
+variants. 
+As single-cell approaches are extended to more disease-relevant tissues and cell types, this may provide important clues on the causal role of genetic variants in disease. 
+The single-cell technology employed also has implications for what can be assessed. 
+While we found that similar eQTL signals could be detected with both Smart-seq2 and 10x approaches, the full-length transcripts of Smart-seq2 allowed quantification of ASE, which is not possible with the 3' fragments sequenced using the 10x protocol.
+A further advantage of the application of single-cell transcriptomics in this study was to enable the pooling strategy. 
+While the feasibility of pooling samples has previously been demonstrated for peripheral blood mononuclear cells\cite{kang2018multiplexed}, we have extended this to cell lines differentiated together in culture. 
+This provided higher throughput, and enabled the characterisation of intrinsic line-to-line variation in differentiation efficiency in a controlled setting. 
+While the endoderm differentiation protocol considered here is short and efficient, other protocols (e.g., to generate neurons\cite{tao2016neural}) are much more challenging, making a pooling strategy useful for scaling up these protocols to population-scale.\\
 
 
+Is it relevant to do? 
+vs gating+bulk
 
+
+Comparison with bulk
+
+trade off: power vs resolution
+also pooling allowed using single cells
+
+Comparison across technologies
+
+plate-based vs droplet-based
 

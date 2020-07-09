@@ -1,14 +1,14 @@
-%!TEX root = ../thesis.tex
-%*******************************************************************************
-%****************************** First Chapter *********************************
-%*******************************************************************************
+% %!TEX root = ../thesis.tex
+% %*******************************************************************************
+% %****************************** First Chapter *********************************
+% %*******************************************************************************
 
 \chapter{Introduction}  %Title of the First Chapter
 
 \textit{[We might have just found] “The secret of life.”}\\
 \rightline{Francis Crick, 1953}
 
-%********************************** %First Section  **************************************
+% %********************************** %First Section  **************************************
 \section{From peas to GWAS}  %Section - 1.1 
 
 The observation that human traits are heritable is evident, often visible by eye. 
@@ -17,7 +17,7 @@ Similarly, many diseases “run in the family”: for example diabetes, or some 
 In fact, for some conditions, family history can be one of the most reliable diagnostic tools. 
 Describing the mechanisms by which we acquire traits, and the extent to which traits are heritable is at the core of the science we now call genetics, and is a question that has occupied scientists for years.
 
-% %********************************** % 1.1.1  **************************************
+% % %********************************** % 1.1.1  **************************************
 \subsection{Principles of (Mendelian) Inheritance} %Section - 1.1.1 
 
 In On the Origin of Species \cite{darwin1859origin}, Charles Darwin proposed the theory of evolution, which is based on the assumption that natural variation between individuals provides differential reproductive advantages, and that this variation can be inherited from one generation to the next. 
@@ -43,21 +43,39 @@ An important step towards reconciling Darwin’s theory of evolution with Mendel
 In 1903, Walter Sutton published a paper proposing how these principles, together with the random segregation of paternal and maternal chromosomes during gamete formation (which he studied in grasshoppers) could form the molecular basis for Mendel’s Laws of Inheritance \cite{sutton1903chromosomes}. 
 Importantly, he also noted how the number of traits was much larger than the number of chromosomes, which meant that some traits had to be located on the same chromosome and be transmitted together.
 
-% %********************************** % 1.1.1  **************************************
+% % %********************************** % 1.1.1  **************************************
 \subsection{Genetic Linkage and the birth of modern genetics} %Section - 1.1.2 
 
 In 1908, American geneticist Thomas Hunt Morgan set out to confirm (or disprove) Mendel’s theories using a model organism that generates new offspring much quicker than pea plants. 
 It was \textit{Drosophila melanogaster}, the fruit fly. 
-In his famous “fly room” at Columbia University, thousands of experiments were performed on flies. 
+In his famous "fly room" at Columbia University, thousands of experiments were performed on flies. 
 Flies with known phenotypes (such as red eyes) were put in jars to mate, and the traits of the progeny were recorded. 
 Through the key observations that some traits appeared to be sex-linked and that some other traits were co-occurring more often than expected by chance, Morgan theorised that “markers” responsible for particular traits were positioned on chromosomes, like beads on a string. 
-These markers, or genes (Box 1), when close together on a chromosome were more likely to be passed on to the next generation. 
+These markers, or genes (Box \ref{box:genetic_terms}), when close together on a chromosome were more likely to be passed on to the next generation. 
 Morgan had described the concept of genetic linkage and essentially hypothesized the phenomenon of crossing over (exchange of paternal and maternal chromosomal material during meiosis; \cite{morgan1911random}). 
 In 1913 his brilliant student, Alfred Sturtevant gathered all the data collected until then and developed the first genetic map, showing the position of the fruit fly’s known markers relative to each other in terms of recombination frequency \cite{sturtevant1913linear}. 
-Sturtevant will go on to call the unit of genetic linkage a “centimorgan”, in honour of his mentor.\\
+Sturtevant will go on to call the unit of genetic linkage a "centimorgan", in honour of his mentor.\\
+
+\newpage
+
+% %%%% Box on genetic terms & origin
+
+\begin{Comment}
+\hspace{-2.5mm}\textbf{Box 1: Genetic terms \& their origin}\label{box:genetic_terms}
+\small
+\begin{itemize}
+    \item \textbf{Alleles} (originally allelomorphs) were defined by Bateson as the units of inheritance described by Mendel \cite{bateson2013mendel}.
+    \item \textbf{Homozygote} and \textbf{heterozygote} were also described by Bateson to describe individuals carrying the same or different alleles.
+    \item The word \textbf{gene} as a term for the Mendelian factors or units of inheritance was introduced by the Danish botanist Johannsen [1911]. 
+    \item He also introduced the terms \textbf{phenotype} as the outward appearance of an individual and \textbf{genotype} as their genetic traits. 
+    \item The terms \textbf{polygenetic}, for traits that are governed by multiple genes [East, 1910] and \textbf{pleiotropic}, for genes that affect multiple, seemingly unrelated phenotypes [Plate, 1910, page 597] also made their first appearance at that time. 
+    \item The word \textbf{pedigree}, from the French \textit{pied de grue} (crane's foot), was first used in ...
+\end{itemize}
+\vspace{4mm}
+\end{Comment}
 
 The Mendelian-chromosome theory, first proposed by Boveri and Sutton \cite{sutton1903chromosomes} and then elaborated and expanded by Morgan and his students \cite{morgan1915mechanism} described chromosomes as the (paired) units of heredity that Mendel had described in his laws, and was widely accepted by scientists by the 1930s. 
-In 1933, Morgan received the Nobel Prize in Physiology or Medicine “for his discoveries concerning the role played by the chromosome in heredity”.\\
+In 1933, Morgan received the Nobel Prize in Physiology or Medicine "for his discoveries concerning the role played by the chromosome in heredity".\\
 
 However, the mechanisms of heredity and the physical molecule responsible for it were still unknown. 
 The concept of “gene” existed, but it was an abstract entity. 
@@ -71,25 +89,10 @@ In fact, \gls{dna} consists of only four building blocks, often referred to by t
 
 Proteins remained the most likely responsible for carrying genetic information until 1944, when Oswald Avery and colleagues at the Rockefeller Institute in New York demonstrated experimentally that it had to be \gls{dna}. 
 Avery, along with his co-workers Colin MacLeod and Maclyn McCarthy performed an experiment in \textit{Streptococcus pneumoniae}, where he removed various organic compounds from the bacteria, and observed whether it could still transform. 
-Only upon treating the bacteria with an enzyme that removed \gls{dna}, the bacteria stopped transforming \cite{avery1944studies}.\\
-
-%%%% Box on genetic terms & origin
-
-\begin{Comment}
-\hspace{-2.5mm}\textbf{Box 1: Genetic terms \& their origin}\label{box1}
-% \small
-\begin{itemize}
-    \item Phenotype
-    \item Gene
-    \item Allele
-    \item Pedigree, from the french \textit{pied de grue} (crane's foot)
-
-\end{itemize}
+Only upon treating the bacteria with an enzyme that removed \gls{dna}, the bacteria stopped transforming \cite{avery1944studies}.
 
 
-\end{Comment}
-
-% %********************************** % 1.1.1  **************************************
+% % %********************************** % 1.1.1  **************************************
 \subsection{The double helix} %Section - 1.1.3
 
 The question of the physical structure of the \gls{dna} remained unsolved until in 1953 a team of scientists proposed one structure. 
@@ -107,7 +110,7 @@ Their work showed how the four nucleotide bases (A, T, C, G) formed “two helic
 For this discovery, Crick, Watson and Wilkins won the 1962 Nobel Prize in Physiology or Medicine “for their discoveries concerning the molecular structure of nucleic acids and its significance for information transfer in living material”. 
 Rosalind Franklin, who had played a critical role in the discovery had died four years prior of ovarian cancer, and her contribution went largely unrecognized at the time.
 
-% %********************************** % 1.1.1  **************************************
+% % %********************************** % 1.1.1  **************************************
 \subsection{Biometrics} %Section - 1.1.4
 While Mendel was studying the inheritance of traits in peas, whilst Boveri studied sea urchins, Morgan fruit flies, Avery bacteria, and long before Crick, Watson and Franklin proposed a structure for \gls{dna} (working on squid), ever since Darwin’s theories, others were trying to quantify inheritance in the context of human traits.
 
@@ -120,7 +123,7 @@ Linked to these efforts, and on a less honourable note, Galton was also the foun
 Nevertheless, some of the concepts and methods Galton developed during these studies are still fundamental to genetics today (Galton, 1909). 
 These include the concepts of correlation, regression toward the mean and the regression line, which Galton used to compare the heights of children to those of their parents. Galton’s protégé was the mathematician Karl Pearson, who worked together with Galton to make several more important contributions to statistics. Among others, he introduced the concepts of the p value and the chi squared ($\chi^2$) test \cite{pearson1900x} and proposed \gls{pca} \cite{pearson1901liii}.
 
-% %********************************** % 1.1.1  **************************************
+% % %********************************** % 1.1.1  **************************************
 \subsection{Towards quantitative genetics} %Section - 1.1.5
 
 By cross-breeding Drosophila lines and performing genetic mapping, Morgan and his students had conducted the first genotype-phenotype studies. 
@@ -136,20 +139,20 @@ An undergraduate student at the University of Cambridge, Fisher [1912] published
 He later extended on this work and by 1922, he had established the properties of the \gls{mle} such as consistency and minimum variability \cite{fisher1922mathematical} that is still used today [Hald, 1999]. 
 He demonstrated the utility of maximum likelihood estimation in genetics by solving a number of equations to elucidate a genetic map of eight \textit{Drosophila melanogaster} genes based on their crossing-over frequencies \cite{fisher1922systematic}.\\ 
 
-% rephrase Fisher (now mostly taken from Hannah Meyer's thesis)
-In the same year and years to follow, he published a series of papers where he derived the distribution and significance testing of regression coefficients, correlation ratios and multiple regression coefficients [Fisher, 1922c; Fisher, 1928], an exact test for two-by-two contingency tables with small expectations (Fisher’s exact test) \cite{fisher1922interpretation}, partial correlation coefficients [Fisher, 1924b] and the variance ratio, later named after Fisher as the F statistic [Fisher, 1924a]. 
+% % rephrase Fisher (now mostly taken from Hannah Meyer's thesis)
+% In the same year and years to follow, he published a series of papers where he derived the distribution and significance testing of regression coefficients, correlation ratios and multiple regression coefficients [Fisher, 1922c; Fisher, 1928], an exact test for two-by-two contingency tables with small expectations (Fisher’s exact test) \cite{fisher1922interpretation}, partial correlation coefficients [Fisher, 1924b] and the variance ratio, later named after Fisher as the F statistic [Fisher, 1924a]. 
 
-Additionally, in his 1918 work, Fisher introduced the concepts of variance (as “the square root of the mean squared error”) and analysis of variance (ANOVA). 
-He employed these concepts during his appointment at Rothamsted Experimental Station where he analysed data from crop experiments that had been produced by the agricultural research institute over many decades.
-This work resulted in his series of publications entitled Studies in Crop Variation (see for example Fisher, 1921; Fisher and Mackenzie, 1923). 
+% Additionally, in his 1918 work, Fisher introduced the concepts of variance (as “the square root of the mean squared error”) and analysis of variance (ANOVA). 
+% He employed these concepts during his appointment at Rothamsted Experimental Station where he analysed data from crop experiments that had been produced by the agricultural research institute over many decades.
+% This work resulted in his series of publications entitled Studies in Crop Variation (see for example Fisher, 1921; Fisher and Mackenzie, 1923). 
 
-In 1930, Fisher published the book "The Genetical Theory of Natural Selection" where he reconciled Darwin’s evolutionary theory of natural selection and Mendel’s inheritance laws. 
-He gave the first, comprehensive quantitative theory of sexual selection, evolution of recombination rates, polymorphism and many more concepts found in today’s field of population genetics [Fisher, 1930]. 
-Thus, together with J.B.S. Haldane and Sewall Wright, Fisher essentially founded the field of population genetics in the 1930s.\\
+% In 1930, Fisher published the book "The Genetical Theory of Natural Selection" where he reconciled Darwin’s evolutionary theory of natural selection and Mendel’s inheritance laws. 
+% He gave the first, comprehensive quantitative theory of sexual selection, evolution of recombination rates, polymorphism and many more concepts found in today’s field of population genetics [Fisher, 1930]. 
+% Thus, together with J.B.S. Haldane and Sewall Wright, Fisher essentially founded the field of population genetics in the 1930s.\\
 
-A few decades later, building on Fisher’s work, Charles Henderson derived the solution of the mixed model equation \cite{henderson1950estimation}. Nowadays linear mixed models constitute the standard tool for many genetic analyses and are the basic building block of this thesis (see chapter 2).
+% A few decades later, building on Fisher’s work, Charles Henderson derived the solution of the mixed model equation \cite{henderson1950estimation}. Nowadays linear mixed models constitute the standard tool for many genetic analyses and are the basic building block of this thesis (see chapter 2).
 
-% %********************************** % 1.1.6  **************************************
+% % %********************************** % 1.1.6  **************************************
 \subsection{Molecular biology and technological advances}
 
 Whilst established as an official branch of science already in the 1930s, the resolution of the \gls{dna} structure and all discoveries that lead to it truly jump-started research in the new field of molecular biology.
@@ -160,7 +163,7 @@ In the decades that followed, a critical combination of scientific discoveries a
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=13cm]{Chapter1/Fig/genetic_timeline_draft.png}
-\caption[\textbf{Genetic Timeline}]{\textbf{Genetic Timeline (draft)}.\\
+\caption[Genetic Timeline]{\textbf{Genetic Timeline (draft)}.\\
 Key scientific discoveries in genetics and corresponding technological advancements.}
 \label{fig:genetic_timeline}
 \end{figure}
@@ -182,7 +185,7 @@ In 1958, Matthew Meselson and Franklin Stahl demonstrate mechanisms of DNA repli
 
 % The resolution of the \gls{dna} structure and all discoveries that lead to it brought forward an understanding of other biological concepts such as protein synthesis and enabled
 In the same year, Francis Crick first postulated the central dogma of biology: information is transmitted from nucleic acids (\gls{dna} and RNA) to proteins, but information cannot be transmitted from a protein to \gls{dna} \cite{crick1958protein}. 
-% The deciphering of the genetic code through Nirenberg and others followed a few years later [Nirenberg \& Matthaei, 1961; Crick \& al., 1961; Matthaei \& al., 1962].\\
+% % The deciphering of the genetic code through Nirenberg and others followed a few years later [Nirenberg \& Matthaei, 1961; Crick \& al., 1961; Matthaei \& al., 1962].\\
 
 In the following years, Sydney Brenner, François Jacob and Matthew Meselson discover the role of mRNA in transferring information from DNA in the nucleus to the protein-making machinery in the cytoplasm (1961).\\
 
@@ -198,13 +201,13 @@ Two different \gls{dna} sequencing techniques were independently developed by Fr
 % In shotgun sequencing, the long \gls{dna} of interest is randomly broken up into shorter \gls{dna} fragments which are cloned and sequenced separately. 
 % The occurrence of overlapping \gls{dna} fragments given by the random nature of creating the short fragments allows for the in silico reconstruction of longer \gls{dna} fragments.
 
-The next year the first genetic engineering company, Genentech, was founded by XX. shotgun, insulin (?)\\
+% The next year the first genetic engineering company, Genentech, was founded by XX. shotgun, insulin (?)\\
 
 
-1983: PCR (polymerase chain reaction) is invented 
+% 1983: PCR (polymerase chain reaction) is invented 
 
 
-In these same years multiple genomic features were discovered, such as transposons (1944, Barbara McClintock), introns (1977, Roberts and Sharp)
+% In these same years multiple genomic features were discovered, such as transposons (1944, Barbara McClintock), introns (1977, Roberts and Sharp)
 
 
 \subsubsection{Understanding disease}
@@ -228,24 +231,24 @@ Gusella and colleagues linked a gene on chromosome 4 to Huntington's disease. \c
 
 Shortly after followed a study from Francis Collins and others, identifying the genetic basis of cystic fibrosis as a single base deletion on chromosome 7 (1989)  \cite{riordan1989identification}.
 
-% Early success in identifying genetic factors responsible for human trait and diseases, was predominantly for monogenic disorders through the use of genetic linkage studies, first proposed in 1980 \cite{botstein1980construction, botstein2003discovering}.
-As of 2003, about 1,200 genes were linked to Mendelian
-traits \cite{botstein2003discovering}.
+% % Early success in identifying genetic factors responsible for human trait and diseases, was predominantly for monogenic disorders through the use of genetic linkage studies, first proposed in 1980 \cite{botstein1980construction, botstein2003discovering}.
+% As of 2003, about 1,200 genes were linked to Mendelian
+% traits \cite{botstein2003discovering}.
 
 
 
-candidate gene analysis (Tabor et al., 1988). \cite{tabor2002candidate}
+% candidate gene analysis (Tabor et al., 1988). \cite{tabor2002candidate}
 
-\subsubsection{Sequencing of the first genomes}
+% \subsubsection{Sequencing of the first genomes}
  
 
-In 1995, the first genome of a living organism –the bacteria \textit{H. influenzae}– was sequenced and assembled by shotgun sequencing. 
-The genomes of other model organisms were to follow in subsequent years (yeast \cite{goffeau1996life}, \textit{C. elegans} \cite{c1998genome}, \textit{D. melanogaster} \cite{adams2000genome}) until the first draft of the human genome was published in 2001 \cite{lander2001initial}.
+% In 1995, the first genome of a living organism –the bacteria \textit{H. influenzae}– was sequenced and assembled by shotgun sequencing. 
+% The genomes of other model organisms were to follow in subsequent years (yeast \cite{goffeau1996life}, \textit{C. elegans} \cite{c1998genome}, \textit{D. melanogaster} \cite{adams2000genome}) until the first draft of the human genome was published in 2001 \cite{lander2001initial}.
 
-The sequence of the human genome, the development of faster, massively-parallel next-generation sequencing techniques (reviewed in [Shendure et Ji, 2008; Heather et Chain, 2016]) and \gls{dna} microarrays that allow for the genotyping of hundreds of thousands of genetic markers simultaneously [Wang et al., 1998], started a new era of human genetic and genomic research.
+% The sequence of the human genome, the development of faster, massively-parallel next-generation sequencing techniques (reviewed in [Shendure et Ji, 2008; Heather et Chain, 2016]) and \gls{dna} microarrays that allow for the genotyping of hundreds of thousands of genetic markers simultaneously [Wang et al., 1998], started a new era of human genetic and genomic research.
 
 
-% \subsubsection{Genotype mapping}
+% % \subsubsection{Genotype mapping}
 
 \subsubsection{The Human Genome Project}
 
@@ -274,35 +277,35 @@ By Phase II (2007), the database contained 2.1 million SNPs from the four origin
 Phase III (2010) added genotyping from seven additional populations, for a total of >3 million SNPs in 11 global ancestry groups \footnote{ASW (African ancestry in Southwest USA); CEU (Utah residents with Northern and Western European ancestry from the CEPH collection); CHB (Han Chinese in Beijing, China); CHD (Chinese in Metropolitan Denver, Colorado); GIH (Gujarati Indians in Houston, Texas); JPT (Japanese in Tokyo, Japan); LWK (Luhya in Webuye, Kenya); MEX (Mexican ancestry in Los Angeles, California); MKK (Maasai in Kinyawa, Kenya); TSI (Tuscans in Italy); YRI (Yoruba in Ibadan, Nigeria).} (Altshuler et al., 2010).\\ 
 With the map of the genome complete and cataloguing efforts moving apace, researchers could now begin to search for modest effect genetic variants associated to human disease across the full length of the genome.
 
-% \subsection{The International HapMap Project}
+% % \subsection{The International HapMap Project}
 
-% Aim:  \cite{international2003international}.
-% Officially started in 2002 as a collaboration between research groups and provate companies in Canada, China, Japan, Nigeria, the United Kingdom and the United States.\\
+% % Aim:  \cite{international2003international}.
+% % Officially started in 2002 as a collaboration between research groups and provate companies in Canada, China, Japan, Nigeria, the United Kingdom and the United States.\\
 
-% phaseI: 2005 \cite{international2005haplotype}
-% phaseII: 2007 \cite{international2007second}
-% phaseIII: 2009
+% % phaseI: 2005 \cite{international2005haplotype}
+% % phaseII: 2007 \cite{international2007second}
+% % phaseIII: 2009
 
-% Four populations: 
-% \begin{itemize}
-%     \item 30 Yoruba trios from Ibadan, Nigeria (YRI)
-%     \item 30 trios of Utah residents of northern and western European ancestry (CEU)
-%     \item 44 unrelated Japanese individuals from Tokyo, Japan (JPT)
-%     \item 45 unrelated Han Chinese individuals from Bejing, China (CHB)
-% \end{itemize}
+% % Four populations: 
+% % \begin{itemize}
+% %     \item 30 Yoruba trios from Ibadan, Nigeria (YRI)
+% %     \item 30 trios of Utah residents of northern and western European ancestry (CEU)
+% %     \item 44 unrelated Japanese individuals from Tokyo, Japan (JPT)
+% %     \item 45 unrelated Han Chinese individuals from Bejing, China (CHB)
+% % \end{itemize}
 
-% In phase III, 11 global ancestry groups have been assembled: ASW (African ancestry in Southwest USA); CEU (Utah residents with Northern and Western European ancestry from the CEPH collection); CHB (Han Chinese in Beijing, China); CHD (Chinese in Metropolitan Denver, Colorado); GIH (Gujarati Indians in Houston, Texas); JPT (Japanese in Tokyo, Japan); LWK (Luhya in Webuye, Kenya); MEX (Mexican ancestry in Los Angeles, California); MKK (Maasai in Kinyawa, Kenya); TSI (Tuscans in Italy); YRI (Yoruba in Ibadan, Nigeria).
+% % In phase III, 11 global ancestry groups have been assembled: ASW (African ancestry in Southwest USA); CEU (Utah residents with Northern and Western European ancestry from the CEPH collection); CHB (Han Chinese in Beijing, China); CHD (Chinese in Metropolitan Denver, Colorado); GIH (Gujarati Indians in Houston, Texas); JPT (Japanese in Tokyo, Japan); LWK (Luhya in Webuye, Kenya); MEX (Mexican ancestry in Los Angeles, California); MKK (Maasai in Kinyawa, Kenya); TSI (Tuscans in Italy); YRI (Yoruba in Ibadan, Nigeria).
 
-% %********************************** % 1.1.1  **************************************
+% % %********************************** % 1.1.1  **************************************
 \subsection{Genome-wide association studies}
 
 The data generated by the International HapMap Project combined with development of appropriate chip-based microarray technology, enabling simultaneous genotyping of more than one million SNPs, led to the first wave of genome-wide association studies (GWAS).
 
 Briefly, GWAS are a hypothesis free approach to test for significant association between the genotype frequency of common genetic variants (one by one across the entire genome) and a trait of interest \cite{mccarthy2008genome}. 
 
+Initially, GWAS focused on complex phenotypes with binary outcomes, using a case control design. 
+
 The first successful GWAS conducted in 2005 for age-related macular degeneration (AMD) using 96 cases and 50 healthy controls, tested for associations at ~100,000 SNPs \cite{klein2005complement}. 
-
-
 
 In 2007, the Wellcome Trust Case-Control Consortium (WTCCC) published a study where they performed GWAS on seven different common diseases, using a common set of 3,000 healthy controls and 2,000 cases for each of bipolar disorder (BD), coronary artery disease (CAD), Crohn's disease (CD), hypertension (HT), rheumatoid arthritis (RA), type I and II diabetes (T1D, T2D), \cite{wellcome2007genome}.\\ 
 
@@ -314,58 +317,58 @@ As of June 4th, 2020, the GWAS Catalog includes 4,566 publications, describing 1
 
 
 
-% \subsection{GWAS Catalog}
+% % \subsection{GWAS Catalog}
 
-% GWAS Catalog was founded by \gls{nhgri} in 2008
-% and has become a collaborative project between the \gls{nhgri} and the \gls{ebi} since 2010
-% GWAS Catalog publications: https://www.ebi.ac.uk/gwas/docs/related-resources\\
+% % GWAS Catalog was founded by \gls{nhgri} in 2008
+% % and has become a collaborative project between the \gls{nhgri} and the \gls{ebi} since 2010
+% % GWAS Catalog publications: https://www.ebi.ac.uk/gwas/docs/related-resources\\
 
-% GWAS Catalog Stats:
-% Last data release on 2020-06-04
-% 4,566 publications
-% 124,935 SNPs
-% 186,829 associations
+% % GWAS Catalog Stats:
+% % Last data release on 2020-06-04
+% % 4,566 publications
+% % 124,935 SNPs
+% % 186,829 associations
 
-% \subsection{The 1000 Genomes Project}
+% % \subsection{The 1000 Genomes Project}
 
-% The 1000 Genomes Project ran between 2008 and 2015, creating the largest public catalogue of human variation and genotype data.
-% The final data set contains data for 2,504 individuals from 26 populations\\
+% % The 1000 Genomes Project ran between 2008 and 2015, creating the largest public catalogue of human variation and genotype data.
+% % The final data set contains data for 2,504 individuals from 26 populations\\
 
-% pilot: 2010 \cite{10002010map}
-% phase 1: 2012 \cite{10002012integrated}
-% phase 3: 2015 \cite{10002015global, sudmant2015integrated}\\
+% % pilot: 2010 \cite{10002010map}
+% % phase 1: 2012 \cite{10002012integrated}
+% % phase 3: 2015 \cite{10002015global, sudmant2015integrated}\\
 
 
-% Whilst these early GWAS were based on the directly genotyped tag SNPs, from 2008 onwards, utilisation of methods to fill in missing genotype data became increasingly common practice, referred to as imputation (ref). 
+% % Whilst these early GWAS were based on the directly genotyped tag SNPs, from 2008 onwards, utilisation of methods to fill in missing genotype data became increasingly common practice, referred to as imputation (ref). 
 
-% Imputation is a statistical technique to infer genotypes. 
-% The general idea is to compare genotyped samples to a reference panel of individuals of similar ancestry to identify short haplotype stretches that are shared between the genotyped and reference samples (Fig. 1.3b). This then allows missing genotypes to be filled in.
-% Initially, data from the HapMap Project was used as a reference panel, with for example the CEU panel used to impute samples of European ancestry. 
-% Imputation is now also used to explore association effects of rare variants (see Section 1.2.1 for further details of imputation of rare variants, including examples of current reference panels used).
+% % Imputation is a statistical technique to infer genotypes. 
+% % The general idea is to compare genotyped samples to a reference panel of individuals of similar ancestry to identify short haplotype stretches that are shared between the genotyped and reference samples (Fig. 1.3b). This then allows missing genotypes to be filled in.
+% % Initially, data from the HapMap Project was used as a reference panel, with for example the CEU panel used to impute samples of European ancestry. 
+% % Imputation is now also used to explore association effects of rare variants (see Section 1.2.1 for further details of imputation of rare variants, including examples of current reference panels used).
 
-% Initially, GWAS focused on complex phenotypes with binary outcomes, using a case control design. 
-% For each SNP and binary trait, the association was therefore often evaluated using a Cochran–Armitage (trend) test
-% $\chi^2$ test or a Fisher's exact test comparing the numbers of cases and controls when stratified by their allelels at the locus of interest.
 
-% Quantitative traits have since become increasingly popular to use as phenotypes. 
-% % This is partly due to the fact that the onset of many diseases is time dependent, meaning that some individuals selected as controls may later become cases and hence the control group actually contains a mixture of cases and controls, resulting in some loss of power. 
-% % In addition, some binary traits are defined by thresholding a continuous variable, with the threshold somewhat arbitrary such that an individual with a value marginally greater than the cutoff is said to be `diseased' whilst an individual just below the threshold is defined as `healthy'.
-% % Examples include defining obesity based on a BMI threshold and diabetes based on fasting glucose levels. 
-% % This thresholding approach results in loss of information regarding phenotypic similarity and as a result, using the binary outcome is likely to be less powered than using the underlying quantitative trait. 
-% % Moreover, quantitative traits are often closer to the underlying biology, providing greater insight into the mechanisms underpinning trait or disease development and the results from using continuous traits may be more directly interpretable, in that it is possible to quantify the average difference in trait outcome per risk allele carried.
+% % For each SNP and binary trait, the association was therefore often evaluated using a Cochran–Armitage (trend) test
+% % $\chi^2$ test or a Fisher's exact test comparing the numbers of cases and controls when stratified by their allelels at the locus of interest.
 
-% Furthermore, linear regressions and their derivations have become more popular methods to assess association, due to their flexibility to include covariates \cite{mccarthy2008genome}.
-% I describe these models in detail in the next Chapter (Chapter 2). 
+% % Quantitative traits have since become increasingly popular to use as phenotypes. 
+% % % This is partly due to the fact that the onset of many diseases is time dependent, meaning that some individuals selected as controls may later become cases and hence the control group actually contains a mixture of cases and controls, resulting in some loss of power. 
+% % % In addition, some binary traits are defined by thresholding a continuous variable, with the threshold somewhat arbitrary such that an individual with a value marginally greater than the cutoff is said to be `diseased' whilst an individual just below the threshold is defined as `healthy'.
+% % % Examples include defining obesity based on a BMI threshold and diabetes based on fasting glucose levels. 
+% % % This thresholding approach results in loss of information regarding phenotypic similarity and as a result, using the binary outcome is likely to be less powered than using the underlying quantitative trait. 
+% % % Moreover, quantitative traits are often closer to the underlying biology, providing greater insight into the mechanisms underpinning trait or disease development and the results from using continuous traits may be more directly interpretable, in that it is possible to quantify the average difference in trait outcome per risk allele carried.
 
-% As of 2020 when I am writing this thesis, over 70,000 associations have been identified for over 1,000 different traits and diseases, according to the GWAS Catalog (ref).
+% % Furthermore, linear regressions and their derivations have become more popular methods to assess association, due to their flexibility to include covariates \cite{mccarthy2008genome}.
+% % I describe these models in detail in the next Chapter (Chapter 2). 
 
-% Linkage disequilibrium (LD, The nonrandom allocation of alleles at nearby variants to individual chromosomes as a result of recent mutation, genetic drift or selection, manifest as correlations between genotypes at closely linked markers.)
+% % As of 2020 when I am writing this thesis, over 70,000 associations have been identified for over 1,000 different traits and diseases, according to the GWAS Catalog (ref).
 
-% Hardy-Weinberg equilibrium (HWE,A theoretical description of the relationship between genotype and allele frequencies that is based on expectation in a stable population undergoing random mating in the absence of selection, new mutations and gene flow: in the context of genetic studies, departures from equilibrium can be used to highlight genotyping errors).
+% % Linkage disequilibrium (LD, The nonrandom allocation of alleles at nearby variants to individual chromosomes as a result of recent mutation, genetic drift or selection, manifest as correlations between genotypes at closely linked markers.)
 
-% \cite{mccarthy2008genome}
+% % Hardy-Weinberg equilibrium (HWE,A theoretical description of the relationship between genotype and allele frequencies that is based on expectation in a stable population undergoing random mating in the absence of selection, new mutations and gene flow: in the context of genetic studies, departures from equilibrium can be used to highlight genotyping errors).
 
-\gls{gwas} results are often visualised using Manhattan plots, with the negative log p value plotted on the y-axis against the corresponding genomic position ordered by chromosome and position on the x-axis. 
+% % \cite{mccarthy2008genome}
+
+GWAS results are often visualised using Manhattan plots, with the negative log p value plotted on the y-axis against the corresponding genomic position ordered by chromosome and position on the x-axis (Fig. \ref{fig:manhattan}). 
 Peaks on these plots represent loci (multiple variants in \gls{ld}) that display evidence of association with the analysed phenotype. 
 Variants are deemed to be significantly associated with a trait if they exceed an appropriately chosen p value threshold. 
 Due to \gls{ld} structure, if a peak arises from a single variant, this is usually indicative of a false positive finding.
@@ -373,9 +376,9 @@ Due to \gls{ld} structure, if a peak arises from a single variant, this is usual
 \begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{Chapter1/Fig/Manhattan_plots_CD_WTCCC_2007.jpg}
-\caption[\textbf{Manhattan plot}]{\textbf{Manhattan plot}.\\
+\caption[Manhattan plot]{\textbf{Manhattan plot}.\\
 Manhattan plot for Crohn's disease (CD) from the WTCCC study \cite{wellcome2007genome}}
-\label{fig:molecular_genetic_associations}
+\label{fig:manhattan}
 \end{figure}
 
 \subsubsection{From case-control to cohort studies}
@@ -394,104 +397,106 @@ Goals of GWAS (2005) \cite{hirschhorn2005genome}
 
 \subsubsection{Challenges in GWAS}
 
-% Rare diseases: often rare variants too (\gls{maf}<0.05)
-% Pleiotropy: same variant affects multiple traits
+% % Rare diseases: often rare variants too (\gls{maf}<0.05)
+% % Pleiotropy: same variant affects multiple traits
 
-% non-additive interactions:
-% Epistasis: combined effect of separate variants interacting to have an effect on trait
-% GxE:interaction between a variant and an environment
-
-
-% \subsection{Genotype-Environment interactions}
-
-% Explicitly, whilst a variant with a significant genetic effect is determined by a mean phenotypic difference between groups of individuals with different allele dosages and a significant environment effect is determined by a mean phenotypic shift that is constant across different allele dosages (Fig. 1.6b), a significant statistical interaction effect is defined when there is a significant difference in the genetic effect between two groups of individuals with different environmental exposures.
-
-% % \begin{figure}[h]
-% % \centering
-% % \includegraphics[width=15cm]{Chapter1/Fig/GxE.png}
-% % \caption{\textbf{Illustration of GxE effect}.\\
-% % a) Genetic effects only. b) Environments have effects on phenotype but do not change the genetic effect. c) Interaction effect between genotype and environment (GxE).}
-% % \end{figure}
-
-% \newpage
-
-% %********************************** %Second Section  **************************************
-% \section{Gene expression and eQTL mapping}  %Section - 1.2 
-
-% Intro on molecular readouts as intermediate to understand genotype-phenotype mechanisms.
-% Going back in time to our progressive better understanding of moelcular machinery, starting from Crick postulating the central dogma.
-
-% % \subsection{\gls{dna} and the central dogma}
-% \subsection{Gene regulation}
-
-% The resolution of the \gls{dna} structure and all discoveries that lead to it brought forward an understanding of other biological concepts such as protein synthesis and enabled Francis Crick to postulate the central dogma of biology: information is transmitted from nucleic acids (\gls{dna} and RNA) to proteins, but information cannot be transmitted from a protein to \gls{dna} \cite{crick1958protein}. 
-% The deciphering of the genetic code through Nirenberg and others followed a few years later [Nirenberg \& Matthaei, 1961; Crick \& al., 1961; Matthaei \& al., 1962].\\
-
-% Today, we know that \gls{dna} gets transcribed into RNA aided by the \gls{dna} polymerase molecule, and RNA gets translated to amino-acids making up proteins in the ribosome, with the help of transfer RNA (tRNA).\\
-
-% In the process of gene expression, the genetic information stored in the \gls{dna} is used to produce molecular products. 
-% The information on the composition of these products is contained in restricted portions of the genome known as genes. 
-% In the first step of gene-expression (transcription), genes are transcribed into ribonucleic acid (RNA) molecules. 
-
-% Although RNA molecules can be the final product of gene expression, many RNA molecules are translated into proteins in a process known as translation. 
-% Proteins are long chains of smaller molecules called amino acids. 
-% Only approximately 1.5\% of the human genome codes for proteins (Lander et al., 2001) while a large fraction of the remaining portion is likely to play a role in the regulation of gene expression (ENCODE Project Consortium, 2004). 
-
-% The impact of genetic variation on phenotypes is the consequence of perturbations to this complex molecular machinery.
-% An easily interpretable mechanism through which genetic variants may affect phenotype is the direct alteration of the structure of the coded protein and thus of its functionality. 
-% For example, sickle cell anaemia is caused by a \gls{snp} in the \textit{HBB} gene, which causes a substitution of an amino acid in the sequence of the coded protein (Laird and Lange, 2010). 
-% Alternatively, genetic variation may affect the regulation of gene expression. 
-% One way this can occur is through the disruption of a specific sequence that affects the binding of proteins regulating the expression of a gene, for example a transcription factor (TF). 
-% Another possibility is the alteration of the structure of the \gls{dna}, thereby affecting the functionality of regulatory elements and ultimately gene expression (ENCODE Project Consortium, 2004; Kundaje et al., 2015). 
-
-% \subsection{Estimation of gene expression levels}
+% % non-additive interactions:
+% % Epistasis: combined effect of separate variants interacting to have an effect on trait
+% % GxE:interaction between a variant and an environment
 
 
+% % \subsection{Genotype-Environment interactions}
 
-% In this thesis, we focus on gene expression, i.e., the transcriptome, as a molecular phenotype.
-% In general, the transcriptome describes the complete set of transcripts in a tissue or cellular sample, and their respective quantity. 
-% As a precursor of protein expression, mRNA can serve as a proxy of gene expression levels. 
-% Multiple approaches have been developed to measure cellular mRNA levels, including hybridization- and sequencing-based approaches. 
-% In the case of hybridization-based methodology, reverse transcription (RT) is used to generate a complementary \gls{dna} (c\gls{dna}) template of the mRNA. 
-% When this c\gls{dna} template is being amplified with labelled hybridization probes via quantitative polymerase chain reaction (qPCR), fluorescence is emitted according to the oligonucleotides that are being incorporated. 
-% Based on the fluorescence signal, the genetic sequence of the original mRNA strand can be reconstructed. 
-% Alternatively, a hybridization microarray contains pre-defined probes for transcripts of every known gene of one or several species. Transcripts that are not known a priori can be detected with tag-based methods such as SAGE (Serial Analysis of Gene Expression); SAGE uses small tags that cover only fragments of a transcript as probes, and can therefore, opposed to hybridization microarray chips, also discover transcripts whose full sequence is unknown. 
-% However, a large proportion of the tags used by SAGE does not map to unique regions of a reference genome due to their short length, and can therefore not be used for transcript quantification. 
-% Further, tag-based approaches do not ensure the analysis of the entire transcriptome, and can generally not discover alternative splicing events (Wang et al., 2009).
-% RNA sequencing (RNA-Seq) based on next-generation sequencing (NGS) of the c\gls{dna} allows for genome-wide quantification of the transcriptome. After obtaining one (single-read RNA-Seq) or two paired (paired-end RNA-Seq) sequence reads per c\gls{dna} fragment, the sequencing reads are either aligned to a reference genome or are assembled de novo. 
-% From the number of RNASeq reads that map to a particular gene an estimation of gene expression can be deduced. 
-% In this thesis, we use FPKM (fragments per kilo base per million reads mapped) for gene expression estimations. 
-% FPKM quantify the number of reads that are assigned to a given gene, normalised by gene length and the total sequencing depth (Wang et al., 2009).
-% Opposed to the hybridization- and tag-based methods, NGS allows for identifying completely new genes, previously unknown genetic variants in the genes, variation in alternative splicing, or post-transcriptional modifications. In addition, RNA-Seq can quantify the vast array of non-coding RNA molecules (Section 1.1.1). Altogether, sequencing-based assessments of the transcriptome deliver more detailed insights into gene expression variability than hybridization- or tag-based approaches.
-% In this thesis, we quantify gene expression by RNA-Seq measurements of mRNA levels.
+% % Explicitly, whilst a variant with a significant genetic effect is determined by a mean phenotypic difference between groups of individuals with different allele dosages and a significant environment effect is determined by a mean phenotypic shift that is constant across different allele dosages (Fig. 1.6b), a significant statistical interaction effect is defined when there is a significant difference in the genetic effect between two groups of individuals with different environmental exposures.
 
-% The human genome project revealed that human \gls{dna}
-% consists of surprisingly few exons (1.1\% of the genome), whereas introns cover 24\% of the genome (Venter et al., 2001; Lander et al., 2001). 
-% The number of genes was also found to be smaller than expected, with around 30,000 being identified in 2001, and 19,000 genes being the latest estimate at the time that this thesis is written (Ezkurdia et al., 2014). 
+% % % \begin{figure}[h]
+% % % \centering
+% % % \includegraphics[width=15cm]{Chapter1/Fig/GxE.png}
+% % % \caption{\textbf{Illustration of GxE effect}.\\
+% % % a) Genetic effects only. b) Environments have effects on phenotype but do not change the genetic effect. c) Interaction effect between genotype and environment (GxE).}
+% % % \end{figure}
 
-% \subsubsection{From microarrays to (bulk) RNA-sequencing}
+% % \newpage
+
+% % %********************************** %Second Section  **************************************
+% % \section{Gene expression and eQTL mapping}  %Section - 1.2 
+
+% % Intro on molecular readouts as intermediate to understand genotype-phenotype mechanisms.
+% % Going back in time to our progressive better understanding of moelcular machinery, starting from Crick postulating the central dogma.
+
+% % % \subsection{\gls{dna} and the central dogma}
+% % \subsection{Gene regulation}
+
+% % The resolution of the \gls{dna} structure and all discoveries that lead to it brought forward an understanding of other biological concepts such as protein synthesis and enabled Francis Crick to postulate the central dogma of biology: information is transmitted from nucleic acids (\gls{dna} and RNA) to proteins, but information cannot be transmitted from a protein to \gls{dna} \cite{crick1958protein}. 
+% % The deciphering of the genetic code through Nirenberg and others followed a few years later [Nirenberg \& Matthaei, 1961; Crick \& al., 1961; Matthaei \& al., 1962].\\
+
+% % Today, we know that \gls{dna} gets transcribed into RNA aided by the \gls{dna} polymerase molecule, and RNA gets translated to amino-acids making up proteins in the ribosome, with the help of transfer RNA (tRNA).\\
+
+% % In the process of gene expression, the genetic information stored in the \gls{dna} is used to produce molecular products. 
+% % The information on the composition of these products is contained in restricted portions of the genome known as genes. 
+% % In the first step of gene-expression (transcription), genes are transcribed into ribonucleic acid (RNA) molecules. 
+
+% % Although RNA molecules can be the final product of gene expression, many RNA molecules are translated into proteins in a process known as translation. 
+% % Proteins are long chains of smaller molecules called amino acids. 
+% % Only approximately 1.5\% of the human genome codes for proteins (Lander et al., 2001) while a large fraction of the remaining portion is likely to play a role in the regulation of gene expression (ENCODE Project Consortium, 2004). 
+
+% % The impact of genetic variation on phenotypes is the consequence of perturbations to this complex molecular machinery.
+% % An easily interpretable mechanism through which genetic variants may affect phenotype is the direct alteration of the structure of the coded protein and thus of its functionality. 
+% % For example, sickle cell anaemia is caused by a \gls{snp} in the \textit{HBB} gene, which causes a substitution of an amino acid in the sequence of the coded protein (Laird and Lange, 2010). 
+% % Alternatively, genetic variation may affect the regulation of gene expression. 
+% % One way this can occur is through the disruption of a specific sequence that affects the binding of proteins regulating the expression of a gene, for example a transcription factor (TF). 
+% % Another possibility is the alteration of the structure of the \gls{dna}, thereby affecting the functionality of regulatory elements and ultimately gene expression (ENCODE Project Consortium, 2004; Kundaje et al., 2015). 
+
+% % \subsection{Estimation of gene expression levels}
 
 
 
-% Useful for comparative transcriptomics, e.g. samples of the same tissue from different species.
-% Useful for quantifying expression signatures from ensembles, e.g. in disease studies.
-% Insufficient for studying heterogeneous systems, e.g. early development studies, complex tissues (brain)
-% Does not provide insights into the stochastic nature of gene expression
+% % In this thesis, we focus on gene expression, i.e., the transcriptome, as a molecular phenotype.
+% % In general, the transcriptome describes the complete set of transcripts in a tissue or cellular sample, and their respective quantity. 
+% % As a precursor of protein expression, mRNA can serve as a proxy of gene expression levels. 
+% % Multiple approaches have been developed to measure cellular mRNA levels, including hybridization- and sequencing-based approaches. 
+% % In the case of hybridization-based methodology, reverse transcription (RT) is used to generate a complementary \gls{dna} (c\gls{dna}) template of the mRNA. 
+% % When this c\gls{dna} template is being amplified with labelled hybridization probes via quantitative polymerase chain reaction (qPCR), fluorescence is emitted according to the oligonucleotides that are being incorporated. 
+% % Based on the fluorescence signal, the genetic sequence of the original mRNA strand can be reconstructed. 
+% % Alternatively, a hybridization microarray contains pre-defined probes for transcripts of every known gene of one or several species. Transcripts that are not known a priori can be detected with tag-based methods such as SAGE (Serial Analysis of Gene Expression); SAGE uses small tags that cover only fragments of a transcript as probes, and can therefore, opposed to hybridization microarray chips, also discover transcripts whose full sequence is unknown. 
+% % However, a large proportion of the tags used by SAGE does not map to unique regions of a reference genome due to their short length, and can therefore not be used for transcript quantification. 
+% % Further, tag-based approaches do not ensure the analysis of the entire transcriptome, and can generally not discover alternative splicing events (Wang et al., 2009).
+% % RNA sequencing (RNA-Seq) based on next-generation sequencing (NGS) of the c\gls{dna} allows for genome-wide quantification of the transcriptome. After obtaining one (single-read RNA-Seq) or two paired (paired-end RNA-Seq) sequence reads per c\gls{dna} fragment, the sequencing reads are either aligned to a reference genome or are assembled de novo. 
+% % From the number of RNASeq reads that map to a particular gene an estimation of gene expression can be deduced. 
+% % In this thesis, we use FPKM (fragments per kilo base per million reads mapped) for gene expression estimations. 
+% % FPKM quantify the number of reads that are assigned to a given gene, normalised by gene length and the total sequencing depth (Wang et al., 2009).
+% % Opposed to the hybridization- and tag-based methods, NGS allows for identifying completely new genes, previously unknown genetic variants in the genes, variation in alternative splicing, or post-transcriptional modifications. In addition, RNA-Seq can quantify the vast array of non-coding RNA molecules (Section 1.1.1). Altogether, sequencing-based assessments of the transcriptome deliver more detailed insights into gene expression variability than hybridization- or tag-based approaches.
+% % In this thesis, we quantify gene expression by RNA-Seq measurements of mRNA levels.
+
+% % The human genome project revealed that human \gls{dna}
+% % consists of surprisingly few exons (1.1\% of the genome), whereas introns cover 24\% of the genome (Venter et al., 2001; Lander et al., 2001). 
+% % The number of genes was also found to be smaller than expected, with around 30,000 being identified in 2001, and 19,000 genes being the latest estimate at the time that this thesis is written (Ezkurdia et al., 2014). 
+
+% % \subsubsection{From microarrays to (bulk) RNA-sequencing}
+
+
+
+% % Useful for comparative transcriptomics, e.g. samples of the same tissue from different species.
+% % Useful for quantifying expression signatures from ensembles, e.g. in disease studies.
+% % Insufficient for studying heterogeneous systems, e.g. early development studies, complex tissues (brain)stuart2019integrative
+% % Does not provide insights into the stochastic nature of gene expression
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=15cm]{Chapter1/Fig/layers_of_genetic_associations_draft.png}
-\caption[\textbf{Genetics of molecular and global traits}]{\textbf{Genetics of molecular and global traits}.\\
+\caption[Genetics of molecular and global traits]{\textbf{Genetics of molecular and global traits}.\\
 Layers of genetic association analyses to understand the molecular mechanisms underpinning the genotype-phenotype map}
 \label{fig:molecular_genetic_associations}
 \end{figure}
 
-% %********************************** % 1.1.8  **************************************
+\newpage
+
+% % %********************************** % 1.1.8  **************************************
 \subsection{Expression quantitative trait loci}\label{sec:eqtl}
 
 first eqtl using microarray in yeast 2002 \cite{brem2002genetic}\\
 
-\textbf{first eqtl map in mammals 2003}
+first eqtl map in mammals 2003
 The decrease in cost of high-throughput profiling of gene expression has made it possible to measure gene expression levels in large numbers of individuals, thereby enabling the mapping of quantitative trait loci for gene expression (eQTL mapping, Schadt et al., 2003). \cite{schadt2003genetics}
 
 review: rockman and kruglyak 2006 \cite{rockman2006genetics}\\
@@ -515,12 +520,16 @@ Breast - Mammary Tissue, Cells - Cultured fibroblasts, Cells - EBV-transfortmed 
 
 
 
-% In addition, eQTL have been described in iPSC (dicussed later in Section 4)
+In addition, eQTL have been described in iPSC (dicussed later in Section 2)
 % % add box on overview of tissues with available eQTL
 
-% \subsection{Interpreting eQTL}
+\subsection{Interpreting eQTL}
 
-% colocalization
+\subsubsection{coloc}
+The idea behind colocalization is to estimate the probability of two genetic signals to be the same.
+A widely used package to identify colocalization events is COLOC \cite{giambartolomei2014bayesian}: given summary statistics for two association studies, coloc calculates the probability of no signal (PP0), signal for association A but not for association B (PP1), and viceversa (PP2), probability of both having signal but not the same (PP3) and finally probability of colocalization, i.e. both have signal and it's the same (PP4).
+
+\subsubsection{TWAS}
 
 % \newpage
 
@@ -772,34 +781,63 @@ Breast - Mammary Tissue, Cells - Cultured fibroblasts, Cells - EBV-transfortmed 
 \vspace*{5px}
 
 %********************************** %Fourth Section  **************************************
-% \section{Human induced pluripotent stem cells}  %Section - 1.4 
+
 \section{Human iPSCs to study cell differentiation}  %Section - 1.4 
+\label{sec:human_ipscs}  
 
 Human induced pluripotent stem cells (iPSCs) and cells derived from them are the biological system I use throughout this thesis to study the effect of common genetic variants on expression along cell differentiation.
 
-In this section I provide some rudiments of human embryology and describe the role of human stem cells in scientific research, focusing especially on the iPSC technology which allows us to reprogramme somatic cells to regain stem-cell like pluripotent properties and to be subsequently differentiated into virtually any desired cell type, provided the right stimuli.\\
+I use this section to provide some rudiments of human embryology and to describe the role of human stem cells in scientific research.
+I focus especially on the iPSC technology which allows to reprogramme easily accessible somatic cells such as skin and blood to regain stem-cell like (pluripotent) properties and to be subsequently differentiated into virtually any desired cell type, provided the right stimuli.\\
 
-I begin by providing a brief historical overview of the study of early development in humans and describe the key stages of human embryology.
-Then, I introduce the concepts of embryonic stem (ES) cells and somatic nuclear cloning.
-Next, I describe induced pluripotent stem cells, the technology behind the reprogramming and re-differentiating of iPSCs.
-Finally I describe general applications of human stem cells in biology, focusing in particular on applications of iPSCs in human genetics.
+In particular, in section \ref{sec:history_developmental_biology}, I provide a brief historical overview of the study of early development in humans and in section \ref{sec:human_embryogenesis} I describe the key stages of human embryology, which we attempt to mimick using iPSC-derived differentiation protocols.
+Then, in sections \ref{sec:escs} and \ref{sec:cloning}, I introduce the two key concepts of embryonic stem (ES) cells and somatic nuclear cloning.
+ESCs are cells collected at a very early stage of the embryo's development which can be grown \textit{in vitro} to model development.
+Somatic cloning, on the other hand, involves introducing the nucleus of a donor's somatic cell into an enucleated ovum which can either be implanted into a host and let develop, creating a "clone" for the donor; or, in alternative, grown \textit{in vitro} for research purposes.
+ 
+Next, in section \ref{sec:ipsc}, I describe induced pluripotent stem cells, which is a technology that allows to reprogramme somatic cells to become pluripotent again and and then differentiated to any cell type. 
+This allows to generate ESC-like cells directly from a(ny) donor, bypassing the need for cloning. 
+In this section I will describe the technology and highlight advantages but also challenges of the use of iPSCs in research.
+Finally, in the last section (section \ref{sec:human_stem_cell_applications}) I describe general applications of human stem cells in biology, focusing in particular on applications of iPSCs for human genetics.
 
 % %********************************** % 1.2.1  **************************************
-\subsection{From homunculi to modern embryology}
+\newpage
 
-In the previous chapter, we learnt that DNA encodes all instructions of life, and that each one of us contains a mixture of genetic information from both parents, which is identically copied in every one of our cells.
-But how do we go from one single cell containing our genetic fingerprint to a whole organism made of some 37 trillion highly specialised cells which differ in function and morphology and work together to ...?\\
+\subsection{From homunculi to developmental biology}
+\label{sec:history_developmental_biology}
+
+In the previous section, we learnt that DNA encodes all instructions of life, and that each one of us contains a mixture of genetic information from both parents, which is identically copied in every one of our cells.
+But how do we go from one single cell containing our genetic fingerprint to a whole organism made of some 37 trillion highly specialised cells which differ in function and morphology and work together in harmony as a single organism?\\
 
 Interest in the study of human development and the embryo has ancient origin.
-We call embryo the very first stages of development of a fertilized ovum in the uterus.
-The word derives from Medieveal Latin which in turn derived from Greek \textepsilon\textmu\textbeta\textrho\textupsilon\textomikron\textnu  (embryon, literally "young one").
+We call embryo the first stages of development of a fertilized ovum in the uterus.
+The word derives from 
+% Medieveal Latin which in turn derived from 
+the Greek \textepsilon\textmu\textbeta\textrho\textupsilon\textomikron\textnu \ (embryon, literally "young one").
 Early embryology (from embryon and -\textlambda\textomikron\textgamma\textiota\textalpha, -logia, "study of") was first proposed by Italian Marcello Malpighi and was intended as preformationism.
-The theory of preformation believes that an embryo is contained in the semen and that it is essentially a preformed miniature infant ("homunculus") which just gets larger and larger during development (fig: homuculi in sperm, Hartsoeker 1695).
+The theory of preformation believes that an embryo is contained in the semen (thus only derives from the father) and that it is essentially a preformed miniature infant ("homunculus") which just gets larger and larger during development (Fig. \ref{fig:early_embryology}).\\
+
+% \begin{figure}[h]
+\begin{wrapfigure}{r}{0.6\textwidth}
+% \centering
+\includegraphics[width=9.5cm]{Chapter1/Fig/Early_theories_development.png}
+\caption[Early theories of development]{\textbf{Early theories of development}.\\
+Illustration of the two leading theories on human embryology before the 19$^{th}$ century.
+Left, Illustration of Preformation: 
+% Preformationists believed that human embryos are contained in the semen as preformed miniature infants getting larger and larger during development.
+% Figure: 
+A tiny person (homunclus) growing inside a sperm, as drawn by Nicolaas Hartsoeker in 1695.
+Right, Epigenesis: study of foetus deveopment by Leonardo Da Vinci, c. 1510.}
+\label{fig:early_embryology}
+% \end{figure}
+\end{wrapfigure}
+
 The competing explanation of embryonic development was epigenesis, originally proposed 2,000 years earlier by Aristotle. 
-Much early embryology and support for the epigenesis theory came from the work of Italian anatomists such as Aldrovandi and Leonardo da Vinci (fig: foetus in the womb c. 1510) in the Renaissance.
+Much early embryology and support for the epigenesis theory came from the work of Italian anatomists such as Aldrovandi and Leonardo da Vinci (Fig. \ref{fig:early_embryology}) in the Renaissance.
 According to epigenesis, the form of an animal emerges gradually from a relatively formless egg. 
 Yet for centuries, most people believed in preformationism over epigenesis.
 Only as microscopy improved during the 19th century, biologists could see that embryos took shape in a series of progressive steps, and epigenesis displaced preformation as the favored explanation among embryologists.\\
+
 
 Modern embryology developed from the work of Estonian-born Karl Ernst von Baer.
 Von Baer is credited with discovering the mammalian ovum in 1827 and became the first person to observe human ova.
@@ -812,21 +850,22 @@ In his study of embryology, Von Baer discovered the blastula and formulated the 
 
 After the 1950s, with the DNA helical structure being unraveled and the increasing knowledge in the field of molecular biology, developmental biology emerged as a field of study which attempts to correlate the genes with morphological change, and tries to determine which genes are responsible for each morphological change that takes place in an embryo, and how these genes are regulated.
 
-\subsubsection{Human Embryogenesis}
+\subsection{Human Embryogenesis}
+\label{sec:human_embryogenesis}
 
 % add key genes and signalling
 % Nanog, Gata6 (endoderm), 
 % Wnt signalling / TGF-beta signalling / Nodal signalling
 
 I use this section to briefly describe the key steps of human embryogenesis as this is the system we aim to mimick \textit{in vitro} using differentiating human iPSCs.
-Embryogenesis describes the first eight weeks of development after fertilization.
-% (or 10 weeks after LMP - last menstrual period).
-After that, we normally talk about fetal development.\\
+Embryogenesis describes the first eight weeks of development\footnote{covering the 23 Carnegie stages.
+This system was based on work by Streeter (1942) and O'Rahilly and Müller (1987) at the Carnegie Institution of Washington.
+The system is standardised and provides a unified developmental chronology of the vertebrate embryo.} after fertilization, after which we normally talk about fetal development.\\
 
-Thanks to technological advances in microscopy and \textit{in vivo} experiments in model organisms such as mice, we have learnt a lot about this process since von Baer.
-Embryogenesis starts with a zygote, which is the single cell resulting from the fusion of gametes, an egg and a sperm cell; the fusion is known as fertilization.
+Thanks to technological advances in microscopy and \textit{in vivo} experiments in model organisms such as fruit flies and mice, we have learnt a lot about this process ever since von Baer.
+In particular embryogenesis starts with a zygote, which is the single cell resulting from the fusion of gametes, an egg and a sperm cell; the fusion is known as fertilization.
 Then, the first 12-to-24 hours post fertilization are spent in cleavage, which consists of very rapid cell (mitotic) division and no growth.
-The 32 cell stage is known as the morula (which is the Greek word for mulberry, Fig. \ref{fig:embryogenesis}).\\
+The 32 cell stage is known as the morula (which is the Greek word for mulberry).\\
 
 Then, the process called blastulation begins.
 Around day 3 cells start to get clumped together in a process called compaction.
@@ -835,13 +874,14 @@ Two layers develop: the cells on the outer layer are called trophoblasts, and th
 Next,the embroblasts clump even further into an inner collection of cells called the inner cell mass, which is pushed to a side of the sphere formed by the trophoblast.
 The rest of the fluid-filled cavity is called the blastocoel.
 This conformation is called blastocyst.
-This is also the time when the zona pellucida (a protective membrane that surrounded the egg cell and that was limiting growth) begins to disappear, allowing the blastocyst to grow and change shape.\\
+This is also the time when the zona pellucida (a protective membrane that surrounded the egg cell and that was limiting the embryo's growth) begins to disappear, allowing the blastocyst to grow and change shape.\\
 
-The ability of the embryo to move allows the beginning of implantation (when the embryo attaches to the uterine wall):
-apposition then adhesion to the endometrium valley crypt)
-trophoblasts divide and then fuse with the endometrium - they are now called syncitio-trophoblasts (vs cytotrophoblasts normal) and form villi
-uterine blood vessels and fetal blood vessels can transfuse into each other 
-together they will eventually build the placenta.\\
+The ability of the embryo to move allows the beginning of implantation (when the embryo attaches to the uterine wall): the embryo has now reached the uterus and attaches to the endometrium.
+The trophoblasts divide and then fuse with the endometrium -
+% they are now called syncitio-trophoblasts (vs cytotrophoblasts normal) and form villi uterine blood vessels and fetal blood vessels can transfuse into each other 
+% together they
+initiating the process that
+will eventually build the placenta.\\
 
 Up to this point, cells in the inner cell mass are pluripotent, meaning they can eventually turn into the cells of any body tissue (muscle, brain, bone, etc). 
 During the second week, these cells form another cavity, called the amniotic cavity. 
@@ -851,15 +891,20 @@ The hypoblast does not contribute to the embryo, so we will now turn our focus s
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=15cm]{Chapter1/Fig/wiki_human_embryogenesis.png}
-\caption[\textbf{Human Embryogenesis}]{\textbf{Human Embryogenesis}.\\
-Placeholder adapted from wiki - stages of human embryogenesis}
+\includegraphics[width=14.5cm]{Chapter1/Fig/embryogenesis_til_gastrulation.png}
+\caption[Human Embryogenesis]{\textbf{Human Embryogenesis}.\\
+Early stages of human embryogenesis.
+(a) From zygote to morula.
+(b) The blastocyst.
+(c) The formation of the bilaminar disk.
+(d) Gastrulation: from bilaminar to trilaminar disk.}
 \label{fig:embryogenesis}
 \end{figure}
 
-The next stage of early embrogenesis is gastrulation.
-During gastrulation, the three germ layers (endoderm, mesoderm, ectoderm) form; the cell mass is now known as a gastrula.
-A germ layer is a layer of cells that will go on to form one of our organizational tubes.
+The next stage of early embryogenesis is gastrulation.
+Famously called the most important moment in your life by Lewis Wolpert, gastrulation is the process during which the three germ layers (endoderm, mesoderm, ectoderm) form.
+The cell mass is now known as a gastrula.
+% A germ layer is a layer of cells that will go on to form one of our organizational tubes.
 The first step of gastrulation is the formation of the primitive streak ($\sim$day 16).
 This streak determines the midline of the body, and separates the left and right sides.
 At this point, cells are moving down from the epiblast ending up between the original epiblast layer and the hypoblast.
@@ -873,8 +918,8 @@ That this the end of what is called "early embryogenesis".\\
 
 
 Next, the germ layers start forming the various organs in a process called organogenesis.
-Briefly, the endoderm forms the gastrointestial tract, from which upper tract the lungs, the liver, the pancreas form. 
-The tube of course also form the oesophagus, the stomach, and the small and large intestine.
+Briefly, the endoderm forms the gastro-intestial tract, from which upper tract the lungs, the liver, the pancreas form. 
+The tube of course also form the esophagus, the stomach, and the small and large intestine.
 Second, the mesoderm forms some inner layers of the skin (endothelial), muscles (including the heart), bones and then also the kidneys and the bladder, ovaries and/or testis and blood cells.
 Finally, the ectoderm, forms the outer layer of skin (epithelial) and sweat glands and hair and importantly our nervous system.
 After 8 weeks since fertilization, we call the embryo a foetus, and fetal development starts.
@@ -895,17 +940,20 @@ After 8 weeks since fertilization, we call the embryo a foetus, and fetal develo
 
 % Examples: limbs, ears, eyes
 
-% %********************************** % 1.2.2  **************************************
+% %********************************** % 1.2.3 **************************************
+% \subsection{Embryonic Stem Cells}
+% \label{sec:escs} 
+
 \subsection{Stem Cells}
 
 % look up in humans
-In mammals, roughly 50–150 cells make up the inner cell mass during the blastocyst stage of embryonic development, around days 5–14. 
+In mammals, roughly 50–150 cells make up the inner cell mass during the blastocyst stage of embryonic development, around days 5–14 (Fig. \ref{fig:embryogenesis}). 
 These have stem cell\footnote{stem cells are characterised by their self-renewing abilities and the "potency" to differentiate into more specialised cells.} capability, meaning that they can eventually differentiate into all of the body's cell types (making them "pluripotent").
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=13cm]{Chapter1/Fig/stem_cells.jpg}
-\caption[\textbf{Stem Cells}]{\textbf{The potency tree of stem cells}.\\
+\caption[Stem Cells]{\textbf{The potency tree of stem cells}.\\
 Placeholder? from https://www.enzolifesciences.com/science-center/technotes/2019/august/stem-cells-from-embryonic-origin-to-induced-pluripotency-an-overview/}
 \label{fig:stem_cells}
 \end{figure}
@@ -933,44 +981,68 @@ Together with graduate student Andy Becker and senior scientist Lou Siminovitch 
 As mentioned before, inner mass cells are pluripotent.
 \textit{In vivo}, they go on to differentiate into the three germ layers (during gastrulation) and then on to make up organs (during organogenesis).
 In general, differentiation is thought to be a one-way street, meaning that more specialised cells cannot go backwards to stem cells naturally.
-However, when they are isolated and cultured \textit{in vitro}, they can be kept in the stem-cell stage and are known as embryonic stem cells (ESCs).
+Inner mass cells, when they are isolated and cultured \textit{in vitro}, can be kept in the stem-cell stage and are known as embryonic stem cells (ESCs).
 In 1981, embryonic stem (ES) cells were first isolated and successfully cultured using mouse blastocysts by British biologists Martin Evans and Matthew Kaufman \cite{evans1981establishment, martin1981isolation}.
 The first human embryonic stem cells (hESCs) were isolated in 1998 by American developmental biologist James Thomson.
-Thomson and colleagues derived hESC lines by culturing human blastocysts in a cocktail of growth factors and supporting mouse feeder cells (Thomson et al., 1998) \cite{thomson1998embryonic}. 
-These hESC lines were immediately heralded as foundational for cell replacement therapy and for modeling human diseases (Gearhart, 1998).
-\cite{saha2009technical}
+Thomson and colleagues derived hESC lines by culturing human blastocysts in a cocktail of growth factors and supporting mouse feeder cells \cite{thomson1998embryonic}. 
 
-Note that to isolate ESCs one needs to destroy the embryo, which caused a big ethical debate.
+
+These hESC lines were immediately heralded as foundational for cell replacement therapy and for modeling human diseases 
+% (Gearhart, 1998)
+\cite{saha2009technical}, and ever since the use of pluripotent stem cells for regenerative medicine has been sought \cite{kimbrel2015current}.
+
+Indeed, not only do PSCs have the ability to self-renew indefinitely, but in theory they can also be differentiated into any cell type in the body, thus providing functional replacement or trophic support to worn-out or dysfunctional cells and tissues in a range of diseases. \\
+
+However, in order to isolate (human) ESCs the embryo needs to be destroyed.
+Naturally, this caused a big ethical debate.
+During the 2000s, funding restrictions and ethical concerns provided the impetus to find alternative approaches to generating stem cells with the same degree of pluripotency as hESCs. 
+
+
+Discuss US policies etc, and how in some countried it is illegal etc etc\\
+
 In practice, a number of lines have been isolated and frozen and are available for research.
 How many? Where? All healthy?
-Up side: lines have been tested and looked at carefully and selected to have good properties etcetera
+
+This of course means that these lines have been carefully scrutinised and are optimised for...
 
 % \subsubsection{Stem Cell systems}
 % Embryonic stem cells \& Organoid models
-Emryonic stem cells have been used widely to improve our understanding of embryogenesis and development in general. 
 
-They have been differentiated into x,y,z
-ESC lines available have been carefully selected and are optimised for ..
+Indeed, embryonic stem cells have been used widely to improve our understanding of embryogenesis and development in general. 
 
-ESCs can be grown in a 2D culture but also in 3D structures, to better mimick the formation of organs (organoids) or even entire (early) embryos (gastruloids).
+In mouse, 
 
-Embryoid Bodies (EBs) - ESCs left to aggregate with the addition of some cytokines (Brickman and Serup 2016, Spangler et al 2018)
+In human,
 
-micropatterns: MPA vs MPP (anteriorly or posteriorly biased)
-Morgani et al 2018
+They have been differentiated into x,y,z.
 
-Gastruloid can break symmetry - form antero-posterior axis (van de Brink et al 2014, van den Brink 2020)
+ESCs can be grown in a 2D culture but also in 3D structures, to better mimick the formation of organs (organoids) or even entire (early) embryos (gastruloids).\\
 
-PGC: primordial germ cells
+% Embryoid Bodies (EBs) - ESCs left to aggregate with the addition of some cytokines (Brickman and Serup 2016, Spangler et al 2018)
 
-As far as 
+% micropatterns: MPA vs MPP (anteriorly or posteriorly biased)
+% Morgani et al 2018
+
+% Gastruloid can break symmetry - form antero-posterior axis (van de Brink et al 2014, van den Brink 2020)
+
+% PGC: primordial germ cells
+
+% As far as 
+As mentioned, one of the biggest issues with the use of human ESC cells is ethical.
+Indeed the use of human embryos, faces ethical controversies that hinder the applications of human ES cells. 
+In addition, it is difficult to generate patient- or disease-specific ES cells, which are required for their effective application \cite{yamanaka2007strategies}.
+
+One early solution for the latter problem involved fusing the nucleus of an adult donor (such as a patient) cell with ESCs in a process called nuclear cloning.
 
 % %********************************** % 1.2.3  **************************************
 \subsection{Nuclear cloning of somatic cells}
+\label{sec:cloning} 
 
 Nuclear cloning, also referred to as nuclear transfer or nuclear transplantation, denotes the introduction of a nucleus from an adult donor cell into an enucleated oocyte to generate a cloned embryo \cite{hochedlinger2003nuclear}.
 When transferred to the uterus of a female recipient, this embryo has the potential to grow into an infant that is a clone of the adult donor cell, a process termed “reproductive cloning.” 
-However, when explanted in culture, this embryo can give rise to embryonic stem cells that have the potential to become any or almost any type of cell present in the adult body.\\
+However, when explanted in culture, this embryo can give rise to embryonic stem cells that have the potential to become any 
+% or almost any 
+type of cell present in the adult body.\\
 
 The word "clone" comes from the Greek word for XX, it was first applied in plants.
 
@@ -999,13 +1071,15 @@ Problematic Lulu and Nana?
 
 Somatic (differentiated) cells can be reprogrammed by transferring their nuclear contents into (enucleated) oocytes (Wilmut et al 1997) or by fusion with ES cells (Cowan et al 2005, Tada et al 2001).
 
-In 2003, XX wrote a review on cloning, identifying cloned embryos explanted in culture as the only way to obtain 
+In 2003, XX wrote a review on cloning, identifying cloned embryos explanted in culture as the only way to obtain \\
 
 That was indeed true until in 2006, Japanese stem cell researcher Shinya Yamanaka successfully managed to re-programme mouse fibroblasts into acquiring a stem-cell identity, generating the first induced pluripotent stem cells (iPSCs) \cite{takahashi2006induction}.
+Yamanaka said that the success of the cloning of Dolly the sheep really was what proved to him that re-programming of somatic cells was possible.
 
-The next year, the labs of Yamanaka and Thomson successfully generated iPSCs from human somatic cells \cite{takahashi2006induction, }, surclassing nuclear transplantation as the first step toward effective regenerative medicine.\\
+The next year, the labs of Yamanaka and Thomson successfully generated iPSCs from human somatic cells \cite{takahashi2006induction, takahashi2007induction, yu2007induced}, surclassing nuclear transplantation as the first step toward effective regenerative medicine and becoming the leading alternative to hESCs for..
 
-In 2012 Sir John B. Gurdon and Shinya Yamanaka were jointly awarded the Nobel Prize in Physiology or Medicine "for the discovery that mature cells can be reprogrammed to become pluripotent" (ref).    
+In 2012 Sir John B. Gurdon and Shinya Yamanaka were jointly awarded the Nobel Prize in Physiology or Medicine for their combined efforts in discovering that "mature cells can be reprogrammed to become pluripotent" (ref).    
+
 
 
 
@@ -1040,13 +1114,17 @@ In 2012 Sir John B. Gurdon and Shinya Yamanaka were jointly awarded the Nobel Pr
 
 % %********************************** % 1.2.1  **************************************
 \subsection{Induced pluripotent stem cells}
+\label{sec:ipsc}
 
 % advantage of iPSCs over ESCs
-Use of human embryos, however, faces ethical controversies that hinder the applications of human ES cells. In addition, it is difficult to generate patient- or disease-specific ES cells, which are required for their effective application \cite{yamanaka2007strategies}.
+% Use of human embryos, however, faces ethical controversies that hinder the applications of human ES cells. 
+% In addition, it is difficult to generate patient- or disease-specific ES cells, which are required for their effective application \cite{yamanaka2007strategies}.
+
+The generation of iPSCs involves the reprogramming of differentiated somatic cells into a pluripotent state by the introduction of a cocktail of factors to 'reset' the transcriptional programme of the cell back to an embryonic state. 
 
 The induction of pluripotent stem cells from somatic cells was first demonstrated in mice in 2006.
 
-In a paper published in Cell, Takahashi and Yamanaka first demonstrated induction of pluripotent stem cells from both embryonic or adult mouse fibroblasts by inducing four transcription factors, Oct3/4, Sox2, c-Myc and Klf4, under ES cell culture conditions
+In a paper published in Cell, Takahashi and Yamanaka first demonstrated induction of pluripotent stem cells from both embryonic and adult mouse fibroblasts by inducing four transcription factors, Oct3/4, Sox2, c-Myc and Klf4, under ES cell culture conditions
 \cite{takahashi2006induction}.
 
 They could show that iPSCs exhibited similar morphology, proliferation properties and doubling times compared to ESCs.
@@ -1061,12 +1139,13 @@ A year later, the Yamanaka and Thomson labs published around the same time induc
 Both derived human iPSCs from fibroblasts, but:
 
 the Yamanaka paper from adult human dermal fibroblasts 
-retroviral system and using the same 4 factors Oct3/4, Sox2, c-Myc and Klf4
+retroviral system and using the same 4 factors, which later be known as the Yamanaka factors: Oct3/4, Sox2, c-Myc and Klf4
 % show embryoid bodies mediated as well as direct differentiation
 % neural, cardiac cells
 
-Thomson paper: lentiviral system
-and different factors: Oct4, Sox2 and Nanog + Lin28 instead.
+In the same year, the Thomson group (the same group which had isolated human ESCs for the first time in 1998) also successfully generated iPSCs, using a slighlty different tecnhique.
+Indeed they used a lentiviral system instead of..
+They also changed the inducing factors: Oct4, Sox2 remained, but the other two were replaced by Nanog and Lin28 instead.
 
 \subsubsection{Technical aspects of iPSC induction}
 
@@ -1118,10 +1197,52 @@ iPSCs are heterogeneous (random X inactivation)
 
 Reprogramming of human somatic cells uses readily accessible tissue, such as skin or blood, to generate embryonic-like induced pluripotent stem cells (iPSCs). \cite{saha2009technical}
 
+\subsubsection{Differentiating iPSCs}
 
+In order to induce differentiation of iPSCs to whatever fate we might need one must mimick the signalling that are happening \textit{in vivo}.
+Of course the challenge is to determine exactly at what point etc...
+
+Whilst many protocols have been established by now to make heart cells, liver cells, blood cells and many others, I will here highlight briefly the key steps and key genes for the two protocols we used in work I present in this thesis: definitive endoderm and midbrain dopaminergic neurons.\\
+
+\textbf{Definitive endoderm}
+
+The endoderm is the innermost of the three germ layers\footnote{from the greek endo for inner, as opposed to meso=middle and ecto=outer.}.
+It gives rise to the gastro-intestinal duct (esophagus, small and large intestine) and related organs (liver, pancreas) as well as to the pulmonary system (lungs).
+As we've seen, during gastrulation, ..
+
+The process to generate endoderm involves first inducing a mesendoderm fate, where cells are bipotent for either mesoderm or endoderm
+
+To achieve this, we need to suppress the expression of pluripotency markers such as NANOG and OCT4 and encourage the expression of master regulators of the mesendoderm, such as NODAL and T (Brachiury).
+To do so, ..
+
+Next, to induce the endoderm specifically,..\\
+
+\textbf{Dopaminergic Neurons}
+
+The central nervous system (CNS) as well as the skin derive from the ectoderm.
+In the process of neurulation the 
+% notochord 
+neural tube
+is formed.
+
+The notochord secretes molecules to neuronal stem cells, often called neuronal progenitor cells (NPCs).  
+The level along the notochord (most cranial, middle, most caudal) will determine what type of neuronal cells the NPCs will produce: they will become the forebrain, midbrain and hindbrain, respectively.
+This is known as patterning?
+
+FGF8 (DA)
+FGF4 (Sert)
+
+Dopaminergic and serotonergic neurons are part of the substantia nigra (literally black matter), which is part of the midbrain.
+
+Towards the end of neurogenesis (week XX), the NPCs start to produce another (non-neuronal) type of cells.
+Those are glia cells, and include oligodendrocytes, astrocytes and ependymal cells.
+
+
+In particular, neurogenesis (generation of neurons) begins at around week 5 ($\sim$ day 11).
 
 % %********************************** % 1.2.1  **************************************
 \subsection{Clinical applications of human stem cells}
+\label{sec:human_stem_cell_applications}
 
 "The promise of induced pluripotent stem cells in research and therapy" \cite{robinton2012promise}
 
@@ -1132,7 +1253,10 @@ other models were further used to obtain novel mechanistic or physiological insi
 
 
 \textbf{mouse iPSCs} (paragraph from Saha and Jaenish 2009 \cite{saha2009technical}):
-Recent work with rodents has tested the developmental potential of iPSCs and their potential for the treatment of diseases. Differentiation of mouse iPSCs can be directed in vitro into cardiovascular (Kuzmenkin et al., 2009; Narazaki et al., 2008; Schenke-Layland et al., 2008), hematopoietic (Hanna et al., 2007; Schenke-Layland et al., 2008; Xu et al., 2009), neural (Wernig et al., 2008), and hepatic progenitor cells (Cantz et al., 2008), and recently, mouse iPSCs passed the most stringent test of pluripotency by generating full-term adult mice in tetraploid complementation assays (Boland et al., 2009; Kang et al., 2009; Zhao et al., 2009). Further, mouse iPSCs obtained from adult fibroblasts can be used to restore physiological function of diseased tissues in vivo, as demonstrated by using iPSC-derived hematopoietic cells in a humanized mouse model of sickle cell anemia (Hanna et al., 2007). Also, endothelial/endothelial progenitor cells derived from mouse iPSCs injected directly into the liver of irradiated hemophilia A mice extended their survival for more than 3 months and rescued depleted Plasma FVIII levels (Xu et al., 2009). Finally, functional dopamine neurons could be generated from reprogrammed mouse fibroblasts, and transplantation of these neurons, like mESC-derived neurons, could restore dopamine function when grafted into Parkinsonian rats (Wernig et al., 2008). These studies establish that iPSCs have vast potential to generate a variety of functional cell types and can be used to modify the course of disease in rodents.\\
+Recent work with rodents has tested the developmental potential of iPSCs and their potential for the treatment of diseases. 
+Differentiation of mouse iPSCs can be directed in vitro into cardiovascular (Kuzmenkin et al., 2009; Narazaki et al., 2008; Schenke-Layland et al., 2008), hematopoietic (Hanna et al., 2007; Schenke-Layland et al., 2008; Xu et al., 2009), neural (Wernig et al., 2008), and hepatic progenitor cells (Cantz et al., 2008), and recently, mouse iPSCs passed the most stringent test of pluripotency by generating full-term adult mice in tetraploid complementation assays (Boland et al., 2009; Kang et al., 2009; Zhao et al., 2009). 
+Further, mouse iPSCs obtained from adult fibroblasts can be used to restore physiological function of diseased tissues in vivo, as demonstrated by using iPSC-derived hematopoietic cells in a humanized mouse model of sickle cell anemia (Hanna et al., 2007). 
+Also, endothelial/endothelial progenitor cells derived from mouse iPSCs injected directly into the liver of irradiated hemophilia A mice extended their survival for more than 3 months and rescued depleted Plasma FVIII levels (Xu et al., 2009). Finally, functional dopamine neurons could be generated from reprogrammed mouse fibroblasts, and transplantation of these neurons, like mESC-derived neurons, could restore dopamine function when grafted into Parkinsonian rats (Wernig et al., 2008). These studies establish that iPSCs have vast potential to generate a variety of functional cell types and can be used to modify the course of disease in rodents.\\
 
 \textbf{human iPSCs} (paragraph from Saha and Jaenish 2009 \cite{saha2009technical}):
 Differentiation of hiPSCs into several cell types has already been achieved: neural progenitors (Chambers et al., 2009), motor neurons (Dimos et al., 2008; Ebert et al., 2009), dopaminergic neurons (Soldner et al., 2009), retinal cells (Osakada et al., 2009), hepatocytes (Sullivan et al., 2009), blood cells (Choi et al., 2009; Ye et al., 2009), adipocytes (Taura et al., 2009), endothelial cells (Choi et al., 2009; Sullivan et al., 2009), and fibroblasts (Hockemeyer et al., 2008; Maherali et al., 2008). 
@@ -1150,13 +1274,7 @@ A teratoma is a non-malignant tumour that contains a mixture of cells from all t
 iPSCs or hESCs can be injected into an immuno-suppressed mouse and then we can wait until the mouse develops a teratoma and perform histological analysis of it to check that all layers (ecto, meso and endodermal cells) are present.
 
 
-The promise of using pluripotent stem cells (PSCs) for regenerative medicine dates back to 1998 when James Thomson \cite{thomson1998embryonic} first derived human embryonic stem cells (hESCs) from the inner cell mass of developing embryos \cite{kimbrel2015current}.
-Not only do PSCs have the ability to self-renew indefinitely, but in theory they can also be differentiated into any cell type in the body, thus providing functional replacement or trophic support to worn-out or dysfunctional cells and tissues in a range of diseases. \\
 
-During the 2000s, funding restrictions and ethical concerns provided the impetus to find alternative approaches to generating stem cells with the same degree of pluripotency as hESCs. 
-Induced pluripotent stem cell (iPSC) technology quickly became the leading alternative to hESCs \cite{takahashi2006induction, takahashi2007induction, yu2007induced}
-The generation of iPSCs involves the reprogramming of differentiated somatic cells into a pluripotent state by the introduction of a cocktail of factors to 'reset' the transcriptional programme of the cell back to an embryonic state. 
-In 2012, Shinya Yamanaka and Sir John Gurdon11 were awarded a Nobel Prize for their combined efforts in discovering that “mature cells can be reprogrammed to become pluripotent”. 
 
 \subsubsection{tissues and diseases}
 
@@ -1203,7 +1321,7 @@ In order to obtain an ES cell one must destroy the embryo, raising ethical conce
 
 In contrast, iPSCs can be derived from easily accessible tissues such as blood or skin, bypassing all such concerns.
 
-Because they are very easy to derive, they can be generated for specific patients, or people with genetic disorders we might want to study.
+Because they are very easy to derive, they can be generated for individual with any genetic background, including people with genetic disorders we might want to study.
 
 Down the line, iPSC technology opens the way to regenerative medicine where tissues can be re-generated with one's own cells thus avoiding the risk of immune rejection (when the body rejects a donor's allogenic organ as a foreign object).
 
@@ -1217,25 +1335,39 @@ cardiomyocyte (Burridge, et al 2014), skeletal muscle (Maffioletti et al 2015), 
 hepatocyte (Si-Tayeb et al 2009), pancreatic beta cell (Zhang et al 2009), lung (Huang et al 2013)\\
 
 
+In recent years, as the iPSC technology becomes more establishes, iPSC lines have been derived from large cohorts of individuals, allowing deeper characterisation of these cells across multiple individuals.
+This opened the door to the study of how common genetic variants affect gene expression in iPSCs.
+
+% implications in cancer etc?
+
+Additionally, these large cohorts represent a huge resource and allow to differentiate a number of these lines and interrogate eQTL in derived differentiated cell types, too.
+
+\subsubsection{Collections of human iPSC lines across many individuals}
 
 \textbf{HipSci}
 The \gls{hipsci} is the largest of such consortia, and we will use data from \gls{hipsci} \cite{kilpinen2017common} throughout this thesis.
 
-System: sendai vectors expressing  
-Factors: human (h)OCT3/4, hSOX2, hKLF4 and hMYC
-Cell of origin: primary fibroblasts
+
+All donors are volunteers from the large Cambridge area, UK.
+% ethnicity, age, sex, disease status, other?
+Skin biopsies (from the inner upper arm to minimise somatic mutations due to sun exposure) are collected and primary fibroblasts are isolated.
+
+Induction is perfomed using sendai vectors expressing the (human) Yamanaka factors: human (h)OCT3/4, hSOX2, hKLF4 and hMYC.
+
 Medium:
 Pluripotency score: novelty score + pluritest \cite{muller2011bioinformatic}
-Samples:
+
 
 Transduced cells were culture on an irradiated mouse embryonic fibroblast (MEF-CF1) feeder
 picked between day30 and 40 and cultured in iPS cell medium until ready to passage (define). 
 Cells passaged evert 5-7 days until established (usually at passage 5 or 6)
 then lines expanded for banking and characterization
-now transferred to feeder-free culture\\
+now transferred to feeder-free culture
+
+from \cite{kilpinen2017common}\\
+
 
 \textbf{other iPSC consortia and large studies}
-
 iPSCORE \cite{panopoulos2017ipscore}, GENESiPS \cite{carcamo2017analysis}, PHLiPS \cite{pashos2017large}, Banovich \textit{et al} \cite{banovich2018impact}
 
 \subsubsection{eQTL mapping using iPSCs and iPSC-derived cells}
@@ -1245,12 +1377,22 @@ In 2017, the \gls{hipsci} consortium published their flagship paper, where they 
 
 At around the same time, another map of iPSC eQTL was published in XX \cite{deboever2017large}.
 
+\cite{warren2017induced}
+
 Most recently, a meta-study was published as the result of an effort to combine iPSC resources into the i2QTL consortium  
 \cite{bonder2019systematic}.\\
 
 eQTL have also been mapped in iPSC-derived cell types.
 
-These include iPSC derived XX neurons \cite{schwartzentruber2018molecular}, and ...
+These include eQTL mapped in iPSC derived- 
+macrophages \cite{alasoo2018shared}
+hepatocytes \cite{pashos2017large}
+neurons \cite{schwartzentruber2018molecular}, 
+cardiomyocytes \cite{strober2019dynamic, banovich2018impact}
+other?
+
+
+
 
 \newpage
 
