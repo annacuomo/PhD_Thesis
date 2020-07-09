@@ -20,7 +20,7 @@ to do - or maybe just give link to pdf once it's uploaded to Cambridge system
 The work presented in this thesis has been done by me in collaboration with the persons listed in each section. 
 When using to information of this thesis, please cite the associated papers:
 
-**Chapter 3:**
+**Introduction:** 
 
 **Chapter 4:** [Chapter 4](https://www.nature.com/articles/s41467-020-14457-z)
 
@@ -30,10 +30,7 @@ _Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic
 
 **Chapter 5:** [Chapter 5](https://www.biorxiv.org/content/10.1101/2020.05.21.103820v1)
 
-Julie Jerber\*, Daniel D. Seaton\*, Anna S.E. Cuomo\*, Natsuhiko Kumasaka, James Haldane, Juliette Steer, Minal Patel, Daniel Pearce, Malin Andersson, Marc Jan Bonder, Ed Mountjoy, Maya Ghoussaini, Madeline A. Lancaster, HipSci Consortium, John C. Marioni, Florian T. Merkle, Oliver Stegle, Daniel J Gaffney.
-
-**Chapter 6:**
-
+Julie Jerber\*, Daniel D. Seaton\*, Anna S.E. Cuomo\*, Natsuhiko Kumasaka, Marc Jan Bonder, , Madeline A. Lancaster, HipSci Consortium, John C. Marioni, Florian T. Merkle, Oliver Stegle, Daniel J Gaffney.
 
 _Population-scale single-cell RNA-seq profiling across dopaminergic neuron differentiation._ bioRxiv, 2020, (\* equal contributions)
 
@@ -46,3 +43,4 @@ Cuomo, A. (2020). _Using single-cell RNA-seq to assess the effect of common gene
 ## Acknowlegments
 
 *   Krishna Kumar - [Original CUED PhD thesis template](https://github.com/kks32/phd-thesis-template)
+
