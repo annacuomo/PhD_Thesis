@@ -5,7 +5,7 @@
 
 \chapter{Linear mixed models for quantitative genetics}
 
-In chapters 3-6 I describe various models for \gls{eqtls} mapping using single cell expression profiles. 
+In chapters 3-6 I describe various models for \glspl{eqtl} mapping using single cell expression profiles. 
 All of these models build on a linear mixed model (LMM) framework. 
 I use this chapter to provide an overview of linear and linear mixed models and their application in quantitative genetics, with a focus on their use for \gls{eqtl} mapping. 
 I will also introduce \gls{lmm}-based models to test for \gls{gxe} interactions, to provide the necessary theoretical foundations for the analyses in chapters 4 and 6.\\
@@ -606,7 +606,7 @@ Even then, cryptic relatedness might still be present and would not be properly 
 
 Alternatively, \gls{lmm}s can be used to successfully account for confounding effects linked to both population structure and relatedness 
 % zhao 2007 , 
-\cite{yu2006unified, kang2008efficient,kang2010variance, price2010new, zhou2012genome}.
+\cite{yu2006unified, kang2008efficient,kang2010variance, price2010new, zhou2012genome, lee2018genome}.
 Instead of calculating principal components, the genotype data is used to estimate an NxN kinship matrix, $\mathbf{K}$, that describes the genetic similarity between pairs of individuals (see section below for a description of commonly used approaches to generate $\mathbf{K}$). 
 This genetic similarity is modelled through the use of an additional random
 effect term in the linear model described by eq. \eqref{eq:Linear_regression_genetics_covariates}, as follows:
