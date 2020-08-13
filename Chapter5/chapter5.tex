@@ -4,6 +4,7 @@
 %*******************************************************************************
 
 \chapter{Population-scale differentiation of iPSCs to a neuronal fate}
+\label{chapter5}
 
 The study described in chapter 4 acted as a proof of principle study where we demonstrated that feasibility of pooling cells from several lines prior to differentiating.
 This means that in a single experiment we can obtain data from multiple independent donors, thus allowing to perform population-scale studies.
@@ -261,7 +262,7 @@ Rows (i.e. cell line, pool combinations) were hierarchically clustered according
 \end{figure}
 
 Since DA and Sert cells are derived from similar progenitor populations \textit{in vivo}, it is not surprising that both populations are observed in our differentiation experiment \cite{ye1998fgf}. 
-This motivated us to estimate a "differentiation efficiency" for each iPSC line, defined as the sum of the proportions of DA and Sert cells produced on day 52.
+This motivated us to estimate a `differentiation efficiency' for each iPSC line, defined as the sum of the proportions of DA and Sert cells produced on day 52.
 
 We assessed the reproducibility of this measure of differentiation efficiency using data from 35 lines that were differentiated twice, in two different pools. 
 Importantly, we found that iPSC line differentiation efficiency defined in this way was highly reproducible between different pools (Pearson R=0.75; p value=$2x10^{-6}$).
@@ -384,7 +385,7 @@ Importantly, despite the variability in differentiation efficiency, our single-c
 Next, we mapped eQTL in order to understand how individual-to-individual genetic variation influenced gene expression across these cell types during differentiation and in response to stimulation.
 
 Specifically, we mapped \textit{cis} eQTL in each of the well represented\footnote{top 4
-cell type per condition with at least 20\% cells} "cell type"-"condition" contexts defined above.
+cell type per condition with at least 20\% cells} `cell type'-`condition' contexts defined above.
 We mapped eQTL independently for each of the 14 distinct cell populations shown in Table \ref{tab:eqtl_maps}. 
 
 \begin{table}[h]
@@ -414,7 +415,7 @@ where $\tilde{\mathbf{u}} \sim N(\mathbf{0}, diag(\frac{1}{n_i}))$, where $n_i$ 
 Because we are not accounting for population structure in the model, we have to rely on samples being unrelated, and cannot consider multiple observations for the same lines (e.g. across pools). 
 As a consequence, expression was aggregated at the cell line (and therefore donor) level, averaged across two pools for the lines present in more than one pool.
 
-This approach greatly increased the power to map eQTL, resulting in a total of 4,087 genes with at least one eQTL in any of the contexts (hereafter "eGene", FDR < 5\%).
+This approach greatly increased the power to map eQTL, resulting in a total of 4,087 genes with at least one eQTL in any of the contexts (hereafter `eGene', FDR < 5\%).
 
 Our approach also improved power compared to other model tried to address reviewers..
 
@@ -427,7 +428,7 @@ Notably, the cumulative number of genes with an eQTL in each cell type increased
 \begin{figure}[h]
 \centering
 \includegraphics[width=16cm]{Chapter5/Fig/neuroseq_eqtl.png}
-\caption[Mapping eQTL across neuronal cell types]{\textbf{Mapping \textit{cis} eQTL in distinct cell contexts ("cell types"-"conditions") across midbrain differentiation.}.\\
+\caption[Mapping eQTL across neuronal cell types]{\textbf{Mapping \textit{cis} eQTL in distinct cell contexts (`cell types'-`conditions') across midbrain differentiation.}.\\
 (a)Number of genes with at least one eQTL (eGenes) for each cell type and condition.
 (b)Cumulative number of eGenes for each cell type and condition (D11 = Day 11; D30 = Day 30; D52 = Day 52; ROT = Rotenone stimulation).}
 \label{fig:neuroseq_eqtl}
@@ -461,8 +462,8 @@ Consistent with the trend of increased eQTL sharing, we also observed that the f
 Interestingly, while iPS-derived eQTL maps mimic \textit{in vivo} GTEx Brain eQTL maps, we also identified 2,203 eQTL that could not be detected in GTEx brain tissues (q-value > 0.05 in any of 13 tissues), demonstrating the utility of iPSC and scRNA analysis to discover regulatory changes in disease associated genes.\\
 %%
 
-% In Chapter 4 we have focused on reproducing standard "mean-level" expression level eQTL mapping using scRNA-seq, where the phenotype of interest is expression abundance within a homogeneous population of cells.
-% We can call such efforts "pseudo-bulk" approaches, where we are essentially replicating bulk-like expression values and performing the eQTL test adapting approaches used for traditional eQTL mapping using bulk RNA-seq. 
+% In Chapter 4 we have focused on reproducing standard `mean-level' expression level eQTL mapping using scRNA-seq, where the phenotype of interest is expression abundance within a homogeneous population of cells.
+% We can call such efforts `pseudo-bulk' approaches, where we are essentially replicating bulk-like expression values and performing the eQTL test adapting approaches used for traditional eQTL mapping using bulk RNA-seq. 
 % In the applications we and others have described \cite{van2018single,cuomo2020single}, the value of using scRNA-seq lies in the fact that we are able to, within a single experiment, unbiasedly define and assess multiple different cell types, whilst retaining a single cell resolution.\\
 
 \section{Colocalisation of eQTL with disease risk variants}

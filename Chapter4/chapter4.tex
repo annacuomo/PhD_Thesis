@@ -4,6 +4,7 @@
 %*******************************************************************************
 
 \chapter{Identifying dynamic eQTL effects during iPSC differentiation using scRNA-seq}
+\label{chapter4}
 
 As outlined in section \ref{sec:human_ipscs}, human \glspl{ipsc} and cells derived from them have proven to be an excellent system to study cell fate decisions in early human development \textit{in vitro}, which cannot be studied \textit{in vivo}.
 So far, experiments have been limited to a handful of individuals \cite{} or have focused on one single time point \cite{kilpinen2017common, schwartzentruber2018molecular}, thus the extent to which development varies from individual to individual, and the role played by common genetic variants during the process remains largely unexplored.
@@ -32,6 +33,9 @@ Anna S.E. Cuomo*, Daniel D. Seaton*, Davis J. McCarthy*, Iker Martinez, Marc Jan
 
 \section{Introduction}
 
+% rephrase this (too similar to paper)
+% say in this chapter I, not in this study we
+% refer more to previous chapters
 As highlighted in section \ref{sec:human_ipscs}, the early stages of embryogenesis involve dramatic and dynamic changes in cellular states. 
 As cells go from a pluripotent state, where they still have the potential to differentiate to all cell types, to committing to a specific cell fate, many molecular programs and mechanisms are activated and tightly regulated.
 Our understanding of such mechanisms in humans is still only partial, yet a lot has been learnt in model organisms including fruit flies, Zebrafish, and mice \cite{}. 
@@ -49,24 +53,25 @@ However, \gls{ipsc} differentiation protocols are challenging to apply in practi
 \cite{bock2011reference}.
 Additionally, extensive batch-to-batch as well as line-to-line heterogeneity has been observed \cite{schwartzentruber2018molecular, carcamo2017analysis}. 
 Finally, the protocols are lengthy and hard to scale, leading to limited throughput.
-In this study, we employed different strategies to combat some of these issues.\\ 
+In this study, we employed different strategies to combat some of these issues.
+% \\ 
 
-First, the single cell RNA-seq readout allows cellular heterogeneity to be assessed in a continuous manner across development.
-Second, our pooling strategy - where we differentiate cells coming from 4 to 6 donors in the same pool - allows us to increase throughput to population-scale and allows us to control for technical batch-to-batch variation, enhancing the ability of inter line comparisons.
-Finally, we selected a short and efficient protocol, which models an extremely well-understood developmental process thus acting as a proof of principle study.\\
+% First, the single cell RNA-seq readout allows cellular heterogeneity to be assessed in a continuous manner across development.
+% Second, our pooling strategy - where we differentiate cells coming from 4 to 6 donors in the same pool - allows us to increase throughput to population-scale and allows us to control for technical batch-to-batch variation, enhancing the ability of inter line comparisons.
+% Finally, we selected a short and efficient protocol, which models an extremely well-understood developmental process thus acting as a proof of principle study.\\
 
-In this study, we differentiate iPS cell lines from 125 unrelated donors towards definitive endoderm, one of the three germ layers (alongside the ectoderm and the mesoderm, see section \ref{sec:human_embryogenesis}). 
-This is a short (three days) and well-established protocol \cite{hannan2013production} that is the basis for longer differentiation experiments toward disease-relevant tissues such as the gut, the pancreas and the lungs \cite{}.
-The generation of population-scale collections of differentiating human \gls{ipsc}s allows the study of inter-individual variability effects, which is key as cellular reprogramming becomes an increasingly used tool in molecular medicine.\\
+% In this study, we differentiate iPS cell lines from 125 unrelated donors towards definitive endoderm, one of the three germ layers (alongside the ectoderm and the mesoderm, see section \ref{sec:human_embryogenesis}). 
+% This is a short (three days) and well-established protocol \cite{hannan2013production} that is the basis for longer differentiation experiments toward disease-relevant tissues such as the gut, the pancreas and the lungs \cite{}.
+% The generation of population-scale collections of differentiating human \gls{ipsc}s allows the study of inter-individual variability effects, which is key as cellular reprogramming becomes an increasingly used tool in molecular medicine.\\
 
-% expand 
-Our study is among the first to use single cell RNA-seq combined with genotypic information to map \glspl{eqtl} (see Section \ref{sec:eqtl} for an overview of sc-eQTL studies).
+% % expand 
+% Our study is among the first to use single cell RNA-seq combined with genotypic information to map \glspl{eqtl} (see Section \ref{sec:eqtl} for an overview of sc-eQTL studies).
 
-With over a hundred individuals, we discover hundreds of eQTL at multiple stages of differentiation and provide the first eQTL map of the mesendoderm and definitive endoderm developmental stages.
-Additionally, we identify dynamic eQTL as eQTL whose genetic effect sizes vary dynamically over time, and show that those effects were not simply explained by changes in expression level. 
-Moreover, we generalise approaches from studies of the interaction between genotype and environment (GxE) by leveraging the single-cell resolution of our study to investigate the interplay between genetic factors and cellular types and states.
+% With over a hundred individuals, we discover hundreds of eQTL at multiple stages of differentiation and provide the first eQTL map of the mesendoderm and definitive endoderm developmental stages.
+% Additionally, we identify dynamic eQTL as eQTL whose genetic effect sizes vary dynamically over time, and show that those effects were not simply explained by changes in expression level. 
+% Moreover, we generalise approaches from studies of the interaction between genotype and environment (GxE) by leveraging the single-cell resolution of our study to investigate the interplay between genetic factors and cellular types and states.
 
-Finally, we begin to explore markers for the differentiation efficiency of iPSC lines, highlighting loss of X chromosome inactivation in female cell lines as an important cellular phenotype in this system.
+% Finally, we begin to explore markers for the differentiation efficiency of iPSC lines, highlighting loss of X chromosome inactivation in female cell lines as an important cellular phenotype in this system.
 
 \newpage
 
@@ -78,7 +83,7 @@ In order to assess differences in expression and genetic regulation along develo
 time points: at iPS stage (day0) and then after 24, 48 and 72 hours post initiation (day1, day2, day3).
 To get a comprehensive picture of the process, single cells' transcriptomes were assayed using full-length RNA sequencing (using the SmartSeq2 technology \cite{picelli2013smart}).
 Additionally, we recorded the expression of two selected cell surface markers using FACS, a pluripotency marker and a definitive endoderm marker, respectively (Tra-1-60 and CXCR4).
-In order to increase throughput and control for technical batch effects, we adopted a pooled experimental design, where each differentiation experiment (hereon simply "experiment") consisted of iPS cells from 4 to 6 distinct cell lines from the \gls{hipsci} collection, which were grown and differentiated in the same plate.
+In order to increase throughput and control for technical batch effects, we adopted a pooled experimental design, where each differentiation experiment (hereon simply `experiment') consisted of iPS cells from 4 to 6 distinct cell lines from the \gls{hipsci} collection, which were grown and differentiated in the same plate.
 We retained data from a total of 28 experiments.
 Imputed genotypes (see section \ref{sec:gwas}) were also available for all lines from the \gls{hipsci} resource (Fig. \ref{fig:endodiff_experimental_design}).
 
@@ -188,21 +193,20 @@ This stage removed far fewer cells, with 96\% of cells considered passing QC2.}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=15cm]{Chapter4/Fig/endodiff_qc_examples.png}
+\includegraphics[width=16cm]{Chapter4/Fig/endodiff_qc_examples.png}
 \caption[Distributions of QC metrics]{\textbf{Distributions of QC metrics}.\\
-Distributions of three exemplar QC metrics for six differentiation experiments (39-45).
+Distributions of three exemplar QC metrics for six differentiation experiments (40-45).
 Shown are the cell distributions along the metrics (number of genes detected, percentage of counts from mitochondrial genes, Salmon \cite{patro2017salmon} mapping rate) as well as the thresholds we used as dotted lines, stratified by day and experiment.
 One can immediately spot how poor quality plates\footnotemark perform similarly badly across all metrics.}
 \label{fig:endodiff_qc_distributions}
 \end{figure}
 
-
-
 \subsubsection{scRNA-seq processing}
 
-SmartSeq2 data does not include \gls{umis} which can help normalisation by providing a comparable measure of the amount of reads sequenced per cell. 
+SmartSeq2 data does not include \gls{umis}, which can be used to accurately detect PCR duplicates and quantify transcript abundance \cite{smith2017umi, islam2014quantitative, kivioja2012counting}. 
 In the absence of \gls{umis}, we can borrow information from cells with similar total number of reads and correct for overall library size. 
-Such size factor normalisation of counts was performed using \textit{scater} \cite{mccarthy2017scater}. 
+Such size factor normalisation of counts was performed using \textit{scater} \cite{mccarthy2017scater}.
+% \cite{lun2016pooling}?
 Expressed genes with an HGNC symbol were retained for analysis, where expressed genes in each batch of samples were defined based on (i) raw count >100 in at least one cell prior to cell QC (Fig. \ref{fig:endodiff_qc_workflow}) and (ii) average log2(CPM+1) >1 after cell QC. 
 Normalised CPM data were log transformed (log2(CPM+1)) for all downstream analyses. 
 The joint dataset was investigated for outlying cell lines or experimental batches, which identified no clear groups of outlying cells. 
@@ -214,6 +218,7 @@ Thus, we included cells from all donors in our analyses, irrespective of disease
 
 
 % \section{Results}
+\newpage
 
 \section{Data overview}
 
@@ -238,10 +243,30 @@ Additionally, shown are the percentages of cells that are positive for TRA-1-60,
  % footnote from qc examples figure (to make it appear on right page)
 \footnotetext{e.g. cells from day0, experiment 42.}
 
+\newpage
+
 \subsection{Sources of variation} 
 
+% \begin{wrapfigure}{r}{0.6\textwidth}
+% \includegraphics[width=9cm]{Chapter4/Fig/endodiff_variance_component.png}
+% \caption[Variance Component Analysis]{\textbf{Variance Component Analysis}.\\
+% Variance component analysis of 4,546 highly variable genes, using a linear mixed model fit to individual genes to decompose expression variation into
+% time point of collection, cell line and experimental batch.}
+% \label{fig:endodiff_vca}
+% \end{wrapfigure}
+
 To identify the main sources of variation in our dataset we performed variance component analysis across all genes, using a linear mixed model.
-Variance component analysis revealed the time point of collection as the main source of variation, followed by the cell line of origin and the experimental batch. 
+Variance component analysis revealed the time point of collection as the main source of variation, followed by the cell line of origin and the experimental batch.\\
+
+\begin{figure}[h]
+% \centering
+\includegraphics[width=10cm]{Chapter4/Fig/endodiff_variance_component.png}
+\caption[Variance Component Analysis]{\textbf{Variance Component Analysis}.\\
+Variance component analysis of 4,546 highly variable genes, using a linear mixed model fit to individual genes to decompose expression variation into
+time point of collection, cell line and experimental batch.
+The number of genes for which each factor explains 10, 20, 30 and 40\% of the variance respectively is indicated.}
+\end{figure}
+
 Next, we performed \gls{pca} on our dataset.
 To do so, we first identified the top 500 \gls{hvgs} defined as the most variable genes given a mean-variance trend calculated across all genes, using the function \textit{trendVar} as implemented in the R package scran.
 Consistent with the results from the variance component analysis, the first principal component (PC1) was strongly associated with differentiation time, motivating its use to order cells by their differentiation status (hereafter “pseudotime”, Fig. \ref{fig:endodiff_pca}).\\
@@ -281,7 +306,7 @@ To do so, we assign our cells to one of three non-overlapping stages, correspond
 In particular, we exploit i) the ordering of cells along our inferred pseudotime ii) the expression of the previously described markers of differentiation progress and iii) the cell's day of collection to determine the cell assignment to each stage.
 Specifically, we assign all day0 cells to the iPSC cluster given their very high homogeneity.
 Next, cells were assigned to the mesendoderm stage if they were collected at either day1 or day2, and had pseudotime values corresponding to the peak expression of \textit{Brachyury} (\textit{T}) along pseudotime (pseudotime between 0.15 and 0.5, Fig. \ref{fig:endodiff_stages}).  
-Similarly, cells were assigned to definitive edoderm if they were collected at day2 or day3 and had pseudotime values higher than 0.7, corresponding to a pseudotime window with maximal expression of \textit{GATA6} (Fig. \ref{fig:endodiff_stages}).
+Similarly, cells were assigned to definitive endoderm if they were collected at day2 or day3 and had pseudotime values higher than 0.7, corresponding to a pseudotime window with maximal expression of \textit{GATA6} (Fig. \ref{fig:endodiff_stages}).
 In total, we assigned 28,971 cells (about $\sim$80\% of all cells) to one of the three stages. 
 A smaller fraction of cells with intermediate pseudotime (between 0.5 and 0.7, n = 7,073) could not be confidently assigned to a canonical stage of differentiation; these cells were heavily enriched for those collected at day2, when rapid changes in molecular profiles are expected, reflecting a transitional population of cells.
 These cells were excluded for the purposes of the initial stage QTL mapping (results in section \ref{sec:endodiff_eqtl}), but are included in all other analyses. 
@@ -306,7 +331,7 @@ We have deep genotype information for all of our 125 samples, so this study allo
 
 Using the developmental stages just described and methods similar to those described in the previous chapter, we mapped eQTL in each of the \gls{ipsc}, mesendo and defendo populations, yielding 1,833, 1,702 and 1,342 eGenes, respectively. 
 
-Briefly, for each donor, experiment, and differentiation stage, we quantified each gene’s average expression level\footnote{This approach is similar to the "mean" described in chapter 3, except that the aggregation is done at the experiment level rather than the sequencing run level.}, before using a linear mixed model to test for \textit{cis} eQTL, adapting approaches used for bulk RNA-seq profiles (+ and - 250 kb, MAF >5\% \cite{kilpinen2017common}).\\
+Briefly, for each donor, experiment, and differentiation stage, we quantified each gene’s average expression level\footnote{This approach is similar to the `mean' described in chapter 3, except that the aggregation is done at the experiment level rather than the sequencing run level.}, before using a linear mixed model to test for \textit{cis} eQTL, adapting approaches used for bulk RNA-seq profiles (+ and - 250 kb, MAF >5\% \cite{kilpinen2017common}).\\
 
 For comparison, we also performed eQTL mapping in cells collected on day1 and day3 — the experimental time points commonly used to identify cells at mesendo and defendo stages \cite{hannan2013production}.
 % mention that this can be partially explained by differences in differentiation rate for different individuals etc?
@@ -597,7 +622,7 @@ Finally, we explored whether we could detect higher order interaction effects, w
 To this end, we fitted a linear model with fixed effects for differentiation and each of the factors, plus a combined term (factor x pseudotime):
 
 \begin{equation}
-    \mathrm{ASE} = \alpha_1 \mathrm{pseudotime} + \alpha_2 \mathrm{pseudotime}^2 + \alpha_3\mathrm{factor} + \beta \mathrm{pseudotime}*\mathrm{factor} + \boldsymbol{\psi},
+    \mathrm{ASE} = \alpha_1 \mathrm{pseudotime} + \alpha_2 \mathrm{pseudotime}^2 + \alpha_3\mathrm{factor} + \beta (\mathrm{pseudotime}*\mathrm{factor}) + \boldsymbol{\psi},
 \end{equation}
 
 where we test: $H_1: \beta \neq 0$.
