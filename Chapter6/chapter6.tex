@@ -11,29 +11,42 @@ Abstract will go here
 
 \newpage
 
-\begin{Comment2}
-% \subsection{Contributions}
-\hspace{-3mm}\textbf{Contributions} I worked on this project in collaboration with Danilo Horta, Elissavet (Elsa) Kentepozidou, John Marioni and Oliver Stegle.
-In this project, I extended an existing model for identifying multivariate GxE interactions (StructLMM \cite{moore2019linear}) to the specific use case of scRNA-seq data.
-I worked out the necessary underlying maths necessary for the extension and helped re-writing the method in collaboration with Danilo. 
-The model is now a usable python package available here:
-Please also find the corresponding documentation here:
+% \begin{Comment2}
+% % \subsection{Contributions}
+% \hspace{-3mm}\textbf{Contributions} I worked on this project in collaboration with Danilo Horta, Elissavet (Elsa) Kentepozidou, John Marioni and Oliver Stegle.
+% In this project, I extended an existing model for identifying multivariate GxE interactions (StructLMM \cite{moore2019linear}) to the specific use case of scRNA-seq data.
+% I worked out the necessary underlying maths necessary for the extension and helped re-writing the method in collaboration with Danilo. 
+% The model is now a usable python package available here:
+% Please also find the corresponding documentation here:
 
-Anna S.E. Cuomo, Danilo Horta, Elissavet Kentepozidou, Marc Jan Bonder, John C. Marioni, Oliver Stegle. 
-Title, 2020
+% Anna S.E. Cuomo, Danilo Horta, Elissavet Kentepozidou, Marc Jan Bonder, John C. Marioni, Oliver Stegle. 
+% Title, 2020
 
-\end{Comment2}
+% \end{Comment2}
 
-\newpage
+% \newpage
 
 \section{Introduction} 
 
-Population-scale cohorts that combine genotyping with single cell expression profiles have fostered interest to study the effect of common genetic variants on gene regulation at single cell resolution.\\
+As we have seen in the previous chapters, population-scale single-cell sequencing studies, which combine genotype information and single cell expression profiles across larger sets of individuals, have enabled the study of genetic effects on gene regulation at single-cell resolution. 
+Seminal studies have demonstrated the feasibility of mapping expression quantitative trait loci (eQTL) using single-cell readouts, thereby replicating conventional eQTL detected using bulk gene expression profiling \cite{cuomo2020single, van2018single}, detecting cell-type specific genetic effects \cite{van2018single} as well as identifying dynamic changes of regulatory effects across lineages or cellular differentiation \cite{cuomo2020single}. 
+Collectively, these efforts have demonstrated the potential of single-cell sequencing approaches to complement and generalise conventional eQTL mapping, elucidating context-specific regulation, which previously was limited to narrowly defined context such as cell types from sorted populations \cite{fairfax2012genetics} or external stimulation \cite{fairfax2014innate}.\\
 
-It has already been demonstrated that single cell expression quantitative trait loci (eQTL) mapping can be achieved, and that known eQTL previously identified using bulk expression can be replicated both in iPS cells and blood \cite{cuomo2020single,van2018single}.
-Additionally, the single cell resolution allows for the interrogation of interaction eQTL, where the strength of the genetic effect of eQTL is modulated by the cells’ types and states \cite{cuomo2020single}. 
-These kinds of studies can add a layer of interpretability of the role of genetic variants on gene expression regulation. 
-Analyses of eQTL context-specificity have been so far limited to a single state variable (e.g. cell type, \cite{fairfax2012genetics} or stimulation status,\cite{fairfax2014innate} ) and individual genetic variants.\\
+Despite this potential of single-cell genetics, appropriate analysis methods are only beginning to emerge. 
+
+On the one hand existing multi-tissue eQTL methods designed for bulk profiling, which allow for mapping eQTL that are present in single tissues or combinations of tissues, remain applicable. 
+For example, …\cite{flutre2013statistical, urbut2019flexible}.
+However, this requires to discretize single-cell profiles into cell types, which fails to fully leverage the advantages of single-cell readouts to detect complex gene-context interactions, in particular the ability to detect continuous changes and gradients. \\
+
+Recently, methods to assess GxE using larger numbers of context have emerged in the context of population studies,... StructLMM…
+
+
+% population-scale cohorts that combine genotyping with single cell expression profiles have fostered interest to study the effect of common genetic variants on gene regulation at single cell resolution.\\
+
+% It has already been demonstrated that single cell \gls{eqtl} mapping can be achieved, and that known \glspl{eqtl} previously identified using bulk expression can be replicated both in iPS cells and blood \cite{cuomo2020single,van2018single}.
+% Additionally, the single cell resolution allows for the interrogation of interaction eQTL, where the strength of the genetic effect of eQTL is modulated by the cells’ types and states \cite{cuomo2020single}. 
+% These kinds of studies can add a layer of interpretability of the role of genetic variants on gene expression regulation. 
+% Analyses of eQTL context-specificity have been so far limited to a single state variable (e.g. cell type, \cite{fairfax2012genetics} or stimulation status,\cite{fairfax2014innate} ) and individual genetic variants.\\
 
 A recently proposed method called StructLMM (structured linear mixed model, described in 2.4.3) allows for the robust joint analysis of GxE effect of multiple environmental variables \cite{moore2019linear}.
 This model can be applied, with some care, to the mapping of interaction eQTL, where genes’ single cell expression profiles are the tested outcomes, and the cells’ states and types are the environmental variables. 
@@ -44,14 +57,26 @@ The relatedness structure between samples (or cells in this context) is therefor
 Here, we propose sc-StructLMM, an extension of the StructLMM model that builds on it while allowing control for confounding effects due to population structure, and is especially well suited for the mapping of multivariate single cell interaction eQTL. 
 The model can handle hundreds of cell states and conditions, and it can be applied to large cohorts of hundreds of thousands of cells for hundreds of  individuals.
 
+\newpage
 
 \section{Model} 
 
+Commonly used methods for eQTL mapping fit linear or linear mixed models (LMMs),  whereby a given variant is tested for association with expression changes of a target gene \cite{kilpinen2017common}. 
+The effect size is assumed to be shared (persistent) across individuals, or alternatively a discrete group structure (e.g. tissues) can be accounted for {ref}. 
+scStructLMM in contrast borrows concepts from the previously described StructLMM model designed for global phenotypes \cite{moore2019linear}, whereby heterogeneity in effect sizes is defined by an environmental (context) covariance matrix, which can capture arbitrary substructure in environmental states. 
+scStructLMM generalizes this previous approaches by the ability to  account for two distinct sets of additive random effect components, which in particular enables modelling the intrinsic repeat structure of single-cell eQTL studies where multiple cells are sampled form the same individual. 
+The model can be cast as:
+
 \begin{equation}\label{eq:scStructLMM}
- \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi} 
+ \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi}, 
 \end{equation}
 
-Where $\mathbf{e} \sim N(\mathbf{0},\sigma_e^2 \mathbf{E}\mathbf{E}^T)$, $\mathbf{u} \sim N(\mathbf{0},\sigma_g^2 \mathbf{G}\mathbf{G}^T)$ and $\boldsymbol{\psi} \sim N(\mathbf{0},\sigma_n^2 \mathbf{I_N})$.\\
+% where $\mathbf{e} \sim \mathcal{N}\mathbf{0},\sigma_e^2 \mathbf{E}\mathbf{E}^T)$, $\mathbf{u} \sim \mathcal{N}\mathbf{0},\sigma_g^2 \mathbf{G}\mathbf{G}^T)$ and $\boldsymbol{\psi} \sim \mathcal{N}\mathbf{0},\sigma_n^2 \mathbf{I_N})$.\\
+
+Here, $\beta_G$ denotes the effect size of a conventional persistent genetic effect component, and $\boldsymbol{\beta_{GxE}}=[\beta_{GxE_1}, .. ,\beta_{GxE_N}]^T$ is a vector of per-cell effect sizes to account for heterogeneous genetic effects, which follows a multivariate normal distribution, $\boldsymbol{\beta_{GxE}} \sim \mathcal{N}\mathbf{0},\sigma_{GxE}^2 \mathbf{E}\mathbf{E}^T)$. 
+Depending on the functional form of the environmental covariance , this model can account for different types of G×E, for example, both discrete and continuous cell states and types or donor-level environmental covariates. 
+The same environmental covariance is also used to account for additive environmental effects, $\mathbf{e} \sim \mathcal{N}\mathbf{0},\sigma_e^2 \mathbf{E}\mathbf{E}^T)$ \cite{moore2019linear}. 
+Finally, additive global genetic effects are accounted using a classical genetic relatedness matrix (GRM) \cite{purcell2007plink} also called kinship matrix (K), $\mathbf{u} \sim \mathcal{N}\mathbf{0},\sigma_g^2 \mathbf{G}\mathbf{G}^T)$, appropriately expanded to reflect the repeated structure of multiple cells derived from the same donors; finally the noise term is gaussian and i.i.d. $\boldsymbol{\psi} \sim \mathcal{N}\mathbf{0},\sigma_n^2 \mathbf{I_N})$.\\
 
 Because we use Rao's Score test, we only need to evaluate the likelihood under $H_0$:
 
@@ -60,7 +85,7 @@ Because we use Rao's Score test, we only need to evaluate the likelihood under $
 \end{equation}
 
 \begin{equation}\label{eq:scStructLMM_H0_MVN}
- \mathbf{y}|H_0 \sim N( \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G, \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I} )
+ \mathbf{y}|H_0 \sim \mathcal{N} \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G, \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I} )
 \end{equation}
 
 Now to be able to use the trick described in Section 2.3.3, we need to write the Covariance matrix in the form $\sigma^2(\mathbf{M}+\delta\mathbf{I})$ as in \eqref{eq:fast_lmm_full_covariance}.
@@ -150,69 +175,99 @@ SKAT: Davies + Liu
 SKATh: Davies + saddle
 \cite{wu2016efficient}
 
-\section{Definition of covariance matrix}
+% \section{Definition of covariance matrix}
 
-E?
+% E?
 
-PCs, MOFA, HVGs?
-transformation?
-normalization/scaling
+% PCs, MOFA, HVGs?
+% transformation?
+% normalization/scaling
 
 
-\section{Simulation data}
+% \section{Simulation data}
 
-First, we applied the model on simulated data.
+% First, we applied the model on simulated data.
 
-\subsection{Simulation strategy}
-Briefly, from the full model (eq. 6.1) we simulate only an intercept as covariate:  
+% \subsection{Simulation strategy}
+% Briefly, from the full model (eq. 6.1) we simulate only an intercept as covariate:  
 
-\begin{equation}
- \mathbf{y} = \mathbf{y}_0 + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi} 
-\end{equation}
+% \begin{equation}
+%  \mathbf{y} = \mathbf{y}_0 + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi} 
+% \end{equation}
 
-We column normalize all terms so that the total variance sums to 1.
-We set the variance explained by both genetic terms $var_G+var_{GxE}=\sigma_0^2$, and call the rest $v = 1-\sigma_0^2$.
-Further, we regulate the amount of variance driven by GxE using an additional weighting factor $\rho_0$, such that: $var_G = (1-\rho_0)\sigma_0^2$ and $var_{GxE} = \rho_0\sigma_0^2$
-For simplicity, we set the variances explained by the last three terms to be the same:
-$\sigma_E^2 = \sigma_g^2 = \sigma_n^2 = v/3$
+% We column normalize all terms so that the total variance sums to 1.
+% We set the variance explained by both genetic terms $var_G+var_{GxE}=\sigma_0^2$, and call the rest $v = 1-\sigma_0^2$.
+% Further, we regulate the amount of variance driven by GxE using an additional weighting factor $\rho_0$, such that: $var_G = (1-\rho_0)\sigma_0^2$ and $var_{GxE} = \rho_0\sigma_0^2$
+% For simplicity, we set the variances explained by the last three terms to be the same:
+% $\sigma_E^2 = \sigma_g^2 = \sigma_n^2 = v/3$
 
-\subsection{Calibration analysis}
+% \subsection{Calibration analysis}
 
-Using simulated data, we checked that our model was calibrated both in the case of no genetic effects at all (i.e. $\sigma_0^2 = 0$) and in the case of persistent effects only (no GxE, i.e. $\rho_0 = 0$).
+% Using simulated data, we checked that our model was calibrated both in the case of no genetic effects at all (i.e. $\sigma_0^2 = 0$) and in the case of persistent effects only (no GxE, i.e. $\rho_0 = 0$).
 
-\subsection{Comparison with Struct LMM v0}
+% \subsection{Comparison with Struct LMM v0}
 
-Next, we compared our model to the original StructLMM model.
-StructLMM is expected to have issues in the presence of extended repeated structure, which it is not equipped to deal with.
-To address this, we simulated various numbers of repeats per donor - mimicking cells -  ranging from 10 to 500.
-Indeed, we observe over-inflation of StructLMM in the presence of many repeats making the model not calibrated (Fig. Xa).
-sc-StructLMM, on the other hand, is nicely calibrated (Fig. Xb).
+% Next, we compared our model to the original StructLMM model.
+% StructLMM is expected to have issues in the presence of extended repeated structure, which it is not equipped to deal with.
+% To address this, we simulated various numbers of repeats per donor - mimicking cells -  ranging from 10 to 500.
+% Indeed, we observe over-inflation of StructLMM in the presence of many repeats making the model not calibrated (Fig. Xa).
+% sc-StructLMM, on the other hand, is nicely calibrated (Fig. Xb).
 
-\subsection{Comparison with standard interaction test}
+% \subsection{Comparison with standard interaction test}
 
-We then performed power analysis when comparing our model with one where the environments are modelled as fixed effects (see Section 2.4.2).
+% We then performed power analysis when comparing our model with one where the environments are modelled as fixed effects (see Section 2.4.2).
 
 \newpage
 
-\section{Real data}
+% \section{Real data}
+\section{Application to differentiating iPS cells}
 
-Next, we applied the model on the data described in Chapter 3.1
+We applied the model on the data described in Chapter 4.
+% We applied our model on a recently published dataset \cite{cuomo2020single}. 
+Here, cells from 125 donors are differentiated from a pluripotent state, to definitive endoderm. 
+We use 
+principal components (PCs) 
+% 10 MOFA factors estimated from the data \cite{argelaguet2018multi}
+% 500 independent ($r^2<0.2$) highly variable genes (HVGs)
+to capture various aspects of the variation in gene expression in the dataset, which represent cell states and types. 
+In particular, PC1 nicely aligns with the differentiation axis. 
+We observe an increase in our power to identify interaction eGenes (genes with at least one interaction eQTL) as we increase the number of PCs used as environments, with then a plateau at 50 PCs (Fig.X).
+Reassuringly, we can recapitulate most (XX\%) of the dynamic eQTL described in the original paper, which were detected using solely PC1, and a fixed effect linear mixed model (Methods). 
+However, we show that we have increased power using our model. 
+Furthermore, the overlap with our interaction eQTL and the dynamic eQTL identified in Cuomo \textit{et al}. decreases, the more PCs we include (Fig. XX).\\
 
-\section{Upstream analysis}
-
-One of the key steps in running this method is choosing the environmental factors.
-We expect most applications to be for scRNA-seq datasets only (and genotypes).
-This means that the environments need to be estimated from the transcriptomic data, which is also used as phenotype, causing possible circularity issues.
 
 
-A user might have 
-PCA
-MOFA (single omic)
+% As environments, we used
+% the first 10 principal components
 
-\section{Downstream analysis} 
 
-\subsection{Estimate cell-specific genetic effects}
-One important 
+% PCs, MOFA, HVGs?
+% transformation?
+% normalization/scaling
+
+
+
+
+% \section{Upstream analysis}
+
+% One of the key steps in running this method is choosing the environmental factors.
+% We expect most applications to be for scRNA-seq datasets only (and genotypes).
+% This means that the environments need to be estimated from the transcriptomic data, which is also used as phenotype, causing concerns of circularity.
+
+
+% A user might have 
+% PCA
+% MOFA (single omic)
+
+% \section{Downstream analysis} 
+
+% \subsection{Estimate cell-specific genetic effects}
+
+\section{Predicting cell-specific effect sizes driven by GxE}
+
+Using our model we are also able to predict a continuous genetic effect.
+ 
 
 \begin{equation}
     \mathbf{f}(\mathbf{X}) \sim \mathrm{GP}(\mathbf{m}(\mathbf{x}), k(\mathbf{x},\mathbf{x}^T))
@@ -246,7 +301,17 @@ with ($\mathbf{X} = {\mathbf{W},\mathbf{g},\mathbf{E},\mathbf{K}}$):
 k(\mathbf{X}_*\mathbf{X})K^{-1}(\mathbf{y}-\mathbf{W}\boldsymbol{\alpha}-\mathbf{g}\beta_G-\mathbf{E}\gamma)
 \end{equation}
 
+
+
 \section{Discussion}
+
+upstream analysis
+One of the key steps in running this method is choosing the environmental factors.
+We expect most applications to be for scRNA-seq datasets only (and genotypes).
+This means that the environments need to be estimated from the transcriptomic data, which is also used as phenotype, causing concerns of circularity.\\
+
+downstream analysis
+which environments are responsible\\
 
 \begin{itemize}
     \item GLMM (Poisson, NB)
