@@ -76,7 +76,7 @@ Sturtevant will go on to call the unit of genetic linkage a centimorgan (cM), in
     \item \textbf{Homozygote} and \textbf{heterozygote} were also used by Bateson to describe individuals carrying the same or different alleles.
     \item The word \textbf{gene} as a term for the Mendelian factors or units of inheritance was introduced by Danish botanist Johannsen \cite{johannsen1911genotype}. 
     \item Johannsen also introduced the terms \textbf{phenotype} as the outward appearance of an individual and \textbf{genotype} as their genetic traits. 
-    \item The terms \textbf{polygenetic}, for traits that are governed by multiple genes 
+    \item The terms \textbf{polygenetic} (today more often simply polygenic), for traits that are governed by multiple genes 
     % [East, 1910] 
     and \textbf{pleiotropic}, for genes that affect multiple, seemingly unrelated, phenotypes 
     % [Plate, 1910, page 597] 
@@ -130,15 +130,17 @@ Rosalind Franklin, who had played a critical role in the discovery, had died fou
 \subsection{Biometrics} %Section - 1.1.4
 \label{sec:biometrics}
 
-While Mendel was studying the inheritance of traits in peas, whilst Boveri studied sea urchins, Morgan fruit flies, Avery bacteria, and long before Crick, Watson and Franklin proposed a structure for \gls{dna} (working on squid), ever since Darwin’s theories, others were trying to quantify inheritance in the context of human traits.
+While Mendel was studying the inheritance of traits in peas, whilst Boveri studied sea urchins, Morgan fruit flies, Avery bacteria, and long before Crick, Watson and Franklin proposed a structure for \gls{dna} (working on squid), ever since Darwin’s theories, others were trying to quantify inheritance in the context of human traits. 
+% \\
 One such investigator was Francis Galton, a half-cousin of Darwin’s, who was interested in mathematically describing and analysing Darwin’s evolutionary concepts. 
 He was particularly fascinated by the question of how evolution applied to humanity and how its effects could be used to improve the human race. 
 To this end, Galton applied himself to the study of biometrics, trying to measure and estimate the heritability of human traits such as height and mental capabilities. 
 Linked to these efforts, and on a less honourable note, Galton was also the founder of eugenics, a theory for which genetics should be used as a tool to force evolution’s hand by encouraging mating of individuals considered to have especially desirable qualities and by eliminating or preventing reproduction of individuals considered faulted. Eugenics theories are linked to one of the most horrifying pages of human history, motivating forced sterilisations of the `unfit' in the United States in the 1920s and 1930s and of course having been used as justification for the racial policies of Nazi Germany.
+% \\
 Nevertheless, some of the concepts and methods Galton developed during these studies are still fundamental to genetics today \cite{galton1870hereditary}. 
 These include the concepts of correlation, regression toward the mean and the regression line, which Galton used to compare the heights of children to those of their parents. 
 Galton’s protégé was the mathematician Karl Pearson, who worked together with Galton to make several more important contributions to statistics. 
-Among others, he introduced the concepts of the p value and the chi squared ($\chi^2$) test \cite{pearson1900x} and proposed \gls{pca} \cite{pearson1901liii}.
+Among others, he introduced the concepts of the p value and the chi squared ($\chi^2$) test \cite{pearson1900x} and proposed \gls{pca} \cite{pearson1901liii}\footnote{later independently developed and named by the American statistician and economist Harold Hotelling.}.
 
 % % %********************************** % 1.1.5  **************************************
 \subsection{Towards quantitative genetics} %Section - 1.1.5
@@ -161,8 +163,9 @@ He later extended on this work and by 1922, he had established the properties of
 He demonstrated the utility of maximum likelihood estimation in genetics by solving a number of equations to elucidate a genetic map of eight \textit{Drosophila melanogaster} genes based on their crossing-over frequencies \cite{fisher1922systematic}.\\
 
 A few decades later, building on Fisher’s work, Charles Henderson derived the solution of the mixed model equation \cite{henderson1950estimation}. 
-Nowadays linear mixed models constitute the standard tool for many genetic analyses and are the basic building block of the models used in this thesis (see Chapter 2).
-% \ref{chapter2}).
+Nowadays linear mixed models constitute the standard tool for many genetic analyses and are the basic building block of the models used in this thesis (see 
+% Chapter 2).
+\ref{chapter2}).
 
 \newpage
 
@@ -171,7 +174,7 @@ Nowadays linear mixed models constitute the standard tool for many genetic analy
 \label{sec:genetic_timeline}
 
 Whilst established as an official branch of science already in the 1930s, the resolution of the \gls{dna} structure, and all the discoveries that led to it, truly jump-started research in the new field of molecular biology.
-In the decades that followed, a critical combination of scientific discoveries and technological advances eventually led to the completion of the human genome sequence at the turn of the 21$^{st}$ century \cite{nhgri2003genetic}.
+In the decades that followed, a critical combination of scientific discoveries and technological advances eventually led to the completion of the human genome sequence at the turn of the 21$^{st}$ century \cite{nhgri2003genetic} (section \ref{sec:hgp}).
 
 \subsubsection{Cracking the code}
 
@@ -289,7 +292,7 @@ allows for the \textit{in silico} reconstruction of longer \gls{dna} fragments. 
  
 In 1995, the first genome of a living organism (the bacteria \textit{Haemophilus influenzae}) was sequenced and assembled by shotgun sequencing \cite{fleischmann1995whole}, shorty followed by that of another bacterium, \textit{Mycoplasma genitalium} \cite{fraser1995minimal}. 
 The genomes of other model organisms were to follow in subsequent years - the budding yeast \textit{S. cerevisiae} \cite{goffeau1996life}, the bacterium \textit{E. coli} \cite{blattner1997complete}, the worm \textit{C. elegans} \cite{c1998genome}, the bacterium \textit{M. Tuberculosis} \cite{cole1998deciphering}, the fruit fly \textit{D. melanogaster} \cite{adams2000genome} and the flowering plant \textit{Arabidopsis taliana} \cite{kaul2000analysis}.
-The first two human chromosomes (chromosome 22 and chromosome 21) were sequenced in 1999 and 2000, respectively \cite{dunham1999dna, hattori2000dna}, and the first draft of the entire human genome was published in 2001 \cite{lander2001initial, venter2001sequence}.
+The first two human chromosomes (chromosome 22 and chromosome 21) were sequenced in 1999 and 2000, respectively \cite{dunham1999dna, hattori2000dna}, and the first draft of the entire human genome was published in 2001 \cite{lander2001initial, venter2001sequence} (see section \ref{sec:hgp}).
 The mouse genome was only published in 2002 \cite{waterston2002initial}.
 
 \subsubsection{Understanding the genetic basis of disease}
@@ -365,19 +368,29 @@ In some sense, population-based association studies can be viewed as an extensio
 As a consequence, \gls{ld} regions are much smaller than within pedigrees of close relatives, thus requiring that a more dense panel of genetic markers be examined \cite{cordell2005genetic}.
 
 \subsubsection{The Human Genome Project}
+\label{sec:hgp}
 
-A driving force behind the growth and success of genetic association studies has been technological evolution,
+In order to study genomic variation, it was necessary to generate a reference genome.
+% in the US started by Jim Watson and then led by Francis Collins (since 1993)
+% and then Celera (Craig Venter, 1998)
+% in the UK (at Sanger) by first John Sulston (first worm sequenced), and then Jane Rogers\\
+% A driving force behind the growth and success of genetic association studies has been technological evolution,
 % ; breakthroughs in \gls{dna} sequencing and genotyping have
-which has
-pushed human disease research forward, inducing a shift in the field each time new advances were introduced. 
-The \gls{hgp}, aimed at sequencing the entire human genome, was perhaps the first major breakthrough to dramatically change the landscape of genetics, and was described by United States President Clinton as “an epic-making triumph of science and reason” \cite{clinton2000remarks} at the announcement of its completion.
+% which has
+% pushed human disease research forward, inducing a shift in the field each time new advances were introduced. 
+This was the goal of the \gls{hgp}, which aimed at sequencing the entire human genome.
+The \gls{hgp} was perhaps the first major breakthrough to dramatically change the landscape of genetics, and was described by United States President Clinton as “an epic-making triumph of science and reason” \cite{clinton2000remarks} at the announcement of its completion.
 Driven by and driver of technological breakthroughs in \gls{dna} sequencing and genotyping, the \gls{hgp} was a massive international undertaking and a truly collaborative effort; sequencing and analysis took place across twenty centers in six different countries (USA, UK, France, Germany, Japan, China) and took 13 years to complete, costing approximately \$2.7 billion \cite{lander2011initial}.
-Led by then NIH director Francis Collins and founder of Celera Genomics\footnote{The company Celera Genomics was formed in May 1998, with the objective of sequencing much of the human genome in three years
-% . Celera used a shotgun sequencing strategy, in which the entire genome is fragmented and random segments are sequenced and then put in order 
-\cite{venter1998shotgun}.} Craig Venter, the \gls{hgp} was announced by the White House in 2000.
+% Led by then NIH director Francis Collins and founder of Celera Genomics\footnote{The company Celera Genomics was formed in May 1998, with the objective of sequencing much of the human genome in three years
+% % . Celera used a shotgun sequencing strategy, in which the entire genome is fragmented and random segments are sequenced and then put in order 
+% \cite{venter1998shotgun}.} Craig Venter, the \gls{hgp} was announced by the White House in 2000.
+Led in the US by then NIH director Francis Collins and by founder of Celera Genomics\footnote{The company Celera Genomics was formed in May 1998, with the objective of sequencing much of the human genome in three years
+% % . Celera used a shotgun sequencing strategy, in which the entire genome is fragmented and random segments are sequenced and then put in order 
+\cite{venter1998shotgun}.} 
+Craig Venter, and with large contributions from the UK, in particular from the Sanger Institute directed by John Sulston (who had first sequenced the genome of \textit{C. Elegans}), the \gls{hgp} was announced as a joint US-UK statement on June 26th, 2000.
 After a first publication in 2001, the project was truly completed on April 25th, 2003, on the 50$^{th}$ anniversary of the Watson and Crick paper describing the helical structure of \gls{dna}.\\
 
-The \gls{hgp} provided the first map of the $\sim$3 billion bases in the human genome \cite{lander2001initial, schmutz2004quality, hattori2005finishing}, and revealed that human \gls{dna} consists of surprisingly few exons (1.1\% of the genome), whereas introns cover 24\% of the genome \cite{venter2001sequence, lander2001initial}. 
+The \gls{hgp} provided the first map (obtained from the genomes of a small number of individuals) of the $\sim$3 billion bases in the human genome \cite{lander2001initial, schmutz2004quality, hattori2005finishing}, and revealed that human \gls{dna} consists of surprisingly few exons (1.1\% of the genome), whereas introns cover 24\% of the genome \cite{venter2001sequence, lander2001initial}. 
 Additionally, the number of genes was found to be smaller than expected, with around 30,000 being identified in 2001, and circa 21,000 genes being the latest (still debated) estimate at the time that this thesis is written \cite{pertea2018thousands}. 
 Additional breakthroughs in sequencing technologies have expanded and refined the reference genome, which now captures more than 92\% of the genome and provides a landscape of its 
 % 20,000 
@@ -430,17 +443,19 @@ effectively capturing information about common variation
 % (minor allele frequency >5\%) 
 across a large percentage of the genome while only directly genotyping a few thousand SNPs.\\
 
+\newpage
 
 % % %********************************** % 1.1.7  **************************************
 \subsection{Genome-wide association studies}
 \label{sec:gwas}
 
 % from Sara's thesis, rewrite
-The sequence of the human genome, the development of faster, massively-parallel next-generation sequencing techniques 
+The sequence of the human genome, the development of faster, massively-parallel next-generation sequencing techniques, 
 % (reviewed in [Shendure et Ji, 2008; Heather et Chain, 2016]) 
 and \gls{dna} microarrays that allow for the genotyping of hundreds of thousands of genetic markers simultaneously \cite{wang1998large}, started a new era of human genetic and genomic research.
 In particular, the data generated by the International HapMap Project combined with development of appropriate chip-based microarray technology, which enabled simultaneous genotyping of more than one million SNPs, led to the first wave of \glspl{gwas} \cite{visscher2012five}.
-\gls{gwas} are a hypothesis-free approach to test for statistical association between the genotype frequency of common genetic variants (considered one by one across the genome) and a phenotype of interest \cite{mccarthy2008genome}. \\
+\gls{gwas} are a hypothesis-free\footnote{bar the selection of SNPs on the chip. 
+More recently, shallow DNA-seq has been increasingly used as an alternative, making the approach truly hypothesis-free.} approach to test for statistical association between the genotype frequency of common genetic variants (considered one by one across the genome) and a phenotype of interest \cite{mccarthy2008genome}. \\
 
 Initially, \gls{gwas} focused on complex phenotypes with binary outcomes, using a case-control design (i.e. diseased vs healthy).
 Then, for each SNP and binary trait, the association was evaluated using a Cochran–Armitage (trend) test, a $\chi^2$ test or a Fisher's exact test comparing the numbers of cases and controls when stratified by their alleles at the locus of interest. 
@@ -485,7 +500,8 @@ I describe these models in detail in the next chapter (Chapter 2).
 \gls{gwas} results are often visualised using Manhattan plots \cite{mccarthy2008genome}, with the negative log p value plotted on the y-axis against the corresponding genomic position (ordered by chromosome and position) on the x-axis (Fig. \ref{fig:manhattan}). 
 Peaks on these plots represent loci (multiple variants in \gls{ld}) that display evidence of association with the analysed phenotype. 
 Variants are deemed to be significantly associated with a trait if they exceed an appropriately chosen p value threshold. 
-Due to \gls{ld} structure, if a peak arises from a single variant, this is usually indicative of a false positive finding. 
+% \\
+% Due to \gls{ld} structure, if a peak arises from a single variant, this is usually indicative of a false positive finding. 
 
 \begin{figure}[h]
 \centering
@@ -494,7 +510,7 @@ Due to \gls{ld} structure, if a peak arises from a single variant, this is usual
 Manhattan plot for Crohn's disease (CD) from the WTCCC study \cite{wellcome2007genome}.
 On the x axis are plotted the genomic positions of the SNPs tested, one chromosome after the next.
 On the y axis are the association significance values.  
-Alternating colours are used to distinguish chromosomes (odd numbered chromosomes are dark, even light).
+Alternating colours are used to distinguish chromosomes (odd numbered chromosomes -and chromosome X- are dark, even light).
 Highlighted in green are statistically significant SNPs (p value < $5 \times 10^{-8}$).}
 \label{fig:manhattan}
 \end{figure}
@@ -520,7 +536,7 @@ Highlighted in green are statistically significant SNPs (p value < $5 \times 10^
 % was the 1000 Genomes project
 
 % The 1000 Genomes Project ran between 2008 and 2015, creating the largest public catalogue of human variation and genotype data.
-% The final data set contains data for 2,504 individuals from 26 populations.\\
+% The final dataset contains data for 2,504 individuals from 26 populations.\\
 
 % % pilot: 2010 \cite{10002010map}
 % % phase 1: 2012 \cite{10002012integrated}
@@ -603,13 +619,14 @@ Highlighted in green are statistically significant SNPs (p value < $5 \times 10^
 
 The path from \gls{gwas} to biology is not straightforward, because an association between a genetic variant at a genomic locus and a trait is not directly informative of the causal mechanisms whereby the variant is associated with phenotypic differences \cite{visscher201710}. 
 \gls{gwas} have robustly associated thousands of genomic loci with complex traits. 
-Despite this success, \gls{gwas} loci are often difficult to interpret - LD often obscures the causal variants driving the association, and the causal genes mediating variant effects on the trait are rarely ascertainable from \gls{gwas} data alone, especially for non-coding variants, which account for the majority of \gls{gwas}-identified risk alleles \cite{manolio2009finding, gallagher2018post, wainberg2019opportunities}. \\
-
+Despite this success, \gls{gwas} loci are often difficult to interpret - LD often obscures the causal variants driving the association, and the causal genes mediating variant effects on the trait are rarely ascertainable from \gls{gwas} data alone, especially for non-coding variants, which account for the majority of \gls{gwas}-identified risk alleles \cite{manolio2009finding, gallagher2018post, wainberg2019opportunities}. 
+% \\
 Maps of regulatory annotations and connections in disease-relevant tissues, generated by projects such as ENCODE (ENCyclopdia Of DNA Elements, \cite{encode2004encode}) and Epigenome RoadMap \cite{kundaje2015integrative} can help the interpretation of these (putative) regulatory variants.
-Additionally, molecular quantitative trait loci (QTL) mapping, where genomic variants are associated with changes in expression (eQTL \cite{schadt2003genetics}), DNA methylation (mQTL \cite{gaunt2016systematic}), histone modifications (hQTL \cite{grubert2015genetic}) or protein (pQTL \cite{melzer2008genome}) level, have added an interpretative layer to the molecular mechanisms associated with disease-associated variants.\\
+Additionally, molecular quantitative trait loci (QTL) mapping, where genomic variants are associated with changes in expression (eQTL \cite{schadt2003genetics}), DNA methylation (mQTL \cite{gaunt2016systematic}), histone modifications (hQTL \cite{grubert2015genetic}) or protein (pQTL \cite{melzer2008genome}) level, have added an interpretative layer to the molecular mechanisms associated with disease-associated variants.
+\\
 
 In this thesis, I focus on gene expression, i.e., the transcriptome, as a molecular phenotype.
-I use the next section to describe key aspects of eQTL mapping.
+I use the next section (section \ref{sec:eqtl}) to describe key aspects of eQTL mapping.
 
 % the decrease in cost of high-throughput profiling of gene expression has made it possible to measure gene expression levels in large numbers of individuals, thereby enabling the mapping of quantitative trait loci for gene expression (eQTL mapping, \cite{schadt2003genetics}). 
 % More recently, these studies have been extended to test for genetic effects on different regulatory elements, including DNA methylation (mQTL, \cite{gaunt2016systematic}), histone modifications (hQTL , \cite{grubert2015genetic}) as well as the activity of known proteins and protein complexes that regulate expression and chromatin accessibility, such as transcription factors 
@@ -618,7 +635,8 @@ I use the next section to describe key aspects of eQTL mapping.
 % % Additionally, molecular \glspl{qtl}
 
 % % %********************************** % 1.1.8  **************************************
-\subsection{Expression quantitative trait loci}\label{sec:eqtl}
+\subsection{Expression quantitative trait loci}
+\label{sec:eqtl}
 
 % % Nils Koelling
 % Despite the additional level of resolution provided by GWAS, the complex genetic mechanisms that underlie whole-organism phenotypes have proven challenging to understand. 
@@ -636,12 +654,12 @@ I use the next section to describe key aspects of eQTL mapping.
 
 
 \subsubsection{Regulation of gene expression}
+
 During gene expression (or transcription), the genetic information stored in restricted portions of the \gls{dna} (genes) is used to produce 
 % molecular products. 
 % The information on the composition of these products is contained in restricted portions of the genome known as genes. 
 % In the first step of gene-expression (transcription), genes are transcribed into 
 \gls{rna} molecules. 
-
 % Although RNA molecules can be the final product of gene expression, many 
 Next, during translation, the majority of RNA molecules are translated into  proteins 
 which are
@@ -655,18 +673,29 @@ An easily interpretable mechanism through which genetic variants may affect a ph
 and therefore functionality of the coded protein \cite{westra2014genome}. 
 As an example, sickle cell anaemia is caused by a \gls{snp} in the \textit{HBB} gene, which causes a substitution of an amino acid in the sequence of the coded protein \cite{laird2010fundamentals}. 
 Alternatively, genetic variation may affect the regulation of gene expression. 
-One way this can occur is through the disruption of a specific sequence that affects the binding of proteins regulating the expression of a gene, for example a \gls{tf}. 
+One way this can occur is through the disruption of a specific sequence that affects the binding of
+proteins regulating the expression of a gene, 
+% an expression-regulating protein, 
+for example 
+% e.g.
+a \gls{tf}. 
+In this scenario, the regulatory variant is said to be acting in \textit{cis}.
 Another possibility is the alteration of the structure of the \gls{dna}, thereby affecting the functionality of regulatory elements, and ultimately gene expression \cite{encode2004encode, kundaje2015integrative}. 
+In this case the regulatory 
+genetic 
+variant is \textit{trans}-acting. 
 
 \subsubsection{Mapping eQTL}
+\label{sec:eqtl_map}
 
 In the early 2000s, the new field of `genetic analysis of global gene expression' or `genetical genomics' \cite{jansen2001genetical} emerged, which applied traditional techniques of linkage and association analysis to thousands of transcript levels measured by microarrays \cite{rockman2006genetics}.
 This was partly driven by the decrease in cost of high-throughput profiling of gene expression, which made it possible to measure gene expression levels in large numbers of individuals.
-Genomic variants that were in this way associated to gene expression were termed \glspl{eqtl}. \\
-
+Genomic variants that were in this way associated to gene expression were termed \glspl{eqtl}. 
+% \\
 The first genome-wide surveys of eQTL were carried out in the early 2000s, based on genetic linkage analysis, first in yeast \cite{brem2002genetic}, then in mammals, including human \cite{schadt2003genetics}. 
 A few years later, in 2007, the first modern eQTL studies using a GWAS-like approach were conducted in humans \cite{stranger2007population, dixon2007genome}. 
-It soon became clear that gene expression levels are strongly heritable: for all human genes the average heritability was estimated to be around 0.25 \cite{ricano2013mapping, dunham2012integrated, maurano2012systematic, westra2014genome}, making eQTL studies extremely popular.\\
+It soon became clear that gene expression levels are strongly heritable: for all human genes the average heritability was estimated to be around 0.25 \cite{ricano2013mapping, dunham2012integrated, maurano2012systematic, westra2014genome}, making eQTL studies extremely popular.
+% \\
 
 RNA-sequencing\footnote{Today we would call this technique `bulk' RNA-sequencing as opposed to the more recent single cell RNA-sequencing; yet back then it was simply called RNA-sequencing, or `RNA-seq'.} was a major breakthrough in the late 2000s 
 % with the advent of next-generation sequencing  (NGS) technology,
@@ -676,25 +705,55 @@ It measures the average expression level for each gene across a large population
 of input cells (see Chapter 3 for further discussion).
 The quantitative genetics field adapted quickly, and the first studies to perform \gls{eqtl} mapping using RNA-seq data to measure expression level were published back-to-back in 2010, by groups in Chicago and Geneva
 \cite{montgomery2010transcriptome, pickrell2010understanding}.
-Today, (bulk) RNA-seq is the standard method to measure gene expression for eQTL mapping \cite{lappalainen2013transcriptome, gtex2015genotype, chen2016genetic}. 
+Today, (bulk) RNA-seq is the standard method to measure gene expression for eQTL mapping \cite{lappalainen2013transcriptome, gtex2015genotype, chen2016genetic}.\\
 
+One of the advantages of RNA-seq compared to microarrays is that, in addition to the quantification of protein-coding genes, it also  gives insights about other RNA traits, including splicing, exon level and increasingly also transcript level (see also Chapter
+\ref{chapter3}).
+% 3).
+As a consequence, splicing QTL (sQTL), can be mapped alongside standard (protein-coding) gene-level eQTL \cite{pickrell2010understanding, montgomery2010transcriptome}, as well as exon eQTL (eeQTL), transcript ratio QTL (trQTL) and miRNA eQTL, among others \cite{lappalainen2013transcriptome, bonder2019systematic}.
+ 
 % decide whether to include this at all and modify
 \subsubsection{\textit{Cis} and \textit{trans} eQTL}
+
+% Nica & Dermitzakis review 2013
+An eQTL is a genomic locus that explains a fraction of the genetic variance of a gene expression phenotype (Fig. \ref{fig:eqtl}). 
+% Nils K
+As we have seen, regulatory effects on gene expression can usually be divided into those that act in \textit{cis} (on the same molecule of DNA) and those that act in \textit{trans} (on a different molecule of DNA, often through an intermediate).
+To identify true \textit{cis} and \textit{trans} effects, differences in gene expression levels between two individuals can be compared to the level of \gls{ase} observed in their F1 hybrid, similar to a classical \textit{cis-trans} complementation test \cite{mcmanus2010regulatory, goncalves2012extensive}. 
+In this test, a real \textit{cis} effect would result in differential expression between the parents and corresponding \gls{ase} in the offspring. 
+On the other hand, a real \textit{trans} effect would result in no \gls{ase} in the offspring. \\
+
+% Nica & Dermitzakis review 2013
+% An eQTL is described as a genetic variant which affects the level of expression of a gene (Fig. \ref{fig:eqtl}).
+On the other hand, standard eQTL analysis involves a direct association test between markers of genetic variation with gene expression levels, without requiring any previous knowledge about specific \textit{cis} or \textit{trans} regulatory regions. 
+This association analysis can be performed proximally or distally to the gene. 
+% One of the major advantages of eQTL mapping using the GWAS approach is that it permits the identification of new functional loci without requiring any previous knowledge about specific cis or trans regulatory regions. Typically in the eQTL mapping literature, regulatory variants have been characterized as either cis or trans acting, reflecting the predicted nature of interactions and of course depending on the physical distance from the gene they regulate. In this review, c
+Conventionally, 
+variants within 1 Mb (megabase) on either side of a gene's TSS are called \textit{cis} eQTL, while those at least 5 Mb downstream or upstream of the TSS or on a different chromosome were considered \textit{trans} acting \cite{nica2013expression, westra2014genome}.
+Although this terminology is technically not accurate, in this thesis I adopt this convention, which has been widely embraced by the eQTL mapping community. 
+% \\
+% Typically, in the eQTL mapping literature, regulatory variants have been characterized as either cis or trans acting, reflecting the predicted nature of interactions and of course depending on the physical distance from the gene they regulate. 
+% Although technically inaccurate, conventionally the terminology defines eQTL located close to the gene (within 1Mb on either side of a gene's TSS) as \textit{cis}, a normal eQTL study cannot provide any direct evidence of this. 
+% Thus, while it has become common practice to describe eQTLs located close to their gene as \textit{cis} eQTL and those further away as \textit{trans} eQTL, this terminology is not accurate.
+% Variants located in the proximity  (e.g. within 1 megabase) of the affected genes are called local or proximal (putatively \textit{cis}-acting) eQTL (Fig. \ref{fig:eqtl}). 
+% These variants may directly affect gene expression, or alter transcription factor binding sites or other \textit{cis}-regulatory elements (CREs), which in turn may affect transcription. 
+%  \\
 
 % Paolo
 % eQTL mapping entails QTL mapping for tens of thousands of molecular measurements. 
 % Therefore the “small sample size/high number of tests” problem in these analyses is even more severe than in GWAS. Moreover, genetic analysis of molecular traits are typically performed in datasets with smaller sample sizes compared to GWAS (typically, molecular QTL mapping is performed considering a few hundreds of individuals).
 % To circumvent this issue, many studies have focused on mapping proximal (putatively \textit{cis}-acting) QTL by restricting association testing to genetic variants that are close to the analysed molecular trait as they are more likely to have an effect on the molecular phenotype compared to distal genetic variants.
 
-An eQTL is described as a genetic variant which affects the level of expression of a gene (Fig. \ref{fig:eqtl}).
-\glspl{eqtl} can be divided into two categories, based on the proximity between the genomic variant and the gene tested - \textit{cis} and \textit{trans} eQTL \cite{westra2014genome}.
+
+% \glspl{eqtl} can be divided into two categories, based on the proximity between the genomic variant and the gene tested - \textit{cis} and \textit{trans} eQTL \cite{westra2014genome}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=16cm]{Chapter1/Fig/eqtl.png}
+\includegraphics[width=15cm]{Chapter1/Fig/eqtl.png}
 \caption[\textit{Cis} and \textit{trans} eQTL]{\textbf{\textit{Cis} and \textit{trans} eQTL}.\\
-\textit{Cis} eQTL affect the expression of nearby genes. 
-\textit{Trans} eQTL, in contrast, affect the expression of distant genes, often by first having a \textit{cis} effect on the expression of intermediate regulatory genes.
+\textit{Cis} eQTL affect the expression of genes directly. 
+\textit{Trans} eQTL, in contrast, affect the expression of typically more distant genes, often by first having a \textit{cis} effect on the expression of intermediate regulatory genes.
+% On the right, the typical representation of eQTL using boxplots.
 Figure adapted from \cite{westra2014genome}.
 }
 \label{fig:eqtl}
@@ -702,16 +761,16 @@ Figure adapted from \cite{westra2014genome}.
 
 \newpage
 
-Variants located in the proximity  (e.g. within 1 megabase) of the affected genes are called local or proximal (putatively \textit{cis}-acting) eQTL (Fig. \ref{fig:eqtl}). 
-These variants may directly affect gene expression, or alter transcription factor binding sites or other \textit{cis}-regulatory elements (CREs), which in turn may affect transcription. 
-Indeed, it has been shown that \textit{cis} eQTL are enriched in CREs \cite{lappalainen2013transcriptome, battle2014characterizing} such as \gls{tf} binding sites and promoter regions \cite{gaffney2012dissecting}, enhancers, histone marks of active promoters and enhancers and DNase-I hypersensitivity sites \cite{degner2012dnase} and in turn tend to be depleted for repressive CREs (such as CTCF binding sites) \cite{reinhart200021, westra2014genome}. \\
+% Variants located in the proximity  (e.g. within 1 megabase) of the affected genes are called local or proximal (putatively \textit{cis}-acting) eQTL (Fig. \ref{fig:eqtl}). 
+% These variants may directly affect gene expression, or alter transcription factor binding sites or other \textit{cis}-regulatory elements (CREs), which in turn may affect transcription. 
+% Indeed, it has been shown that \textit{cis} eQTL are enriched in CREs \cite{lappalainen2013transcriptome, battle2014characterizing} such as \gls{tf} binding sites and promoter regions \cite{gaffney2012dissecting}, enhancers, histone marks of active promoters and enhancers and DNase-I hypersensitivity sites \cite{degner2012dnase} and in turn tend to be depleted for repressive CREs (such as CTCF binding sites) \cite{reinhart200021, westra2014genome}. \\
 
-Variants affecting gene expression in a distal manner (with the variant being located more than 5Mb away from the gene or on a different chromosome entirely), usually with the help of other intermediate molecules, are called distal or (putatively) \textit{trans}-acting eQTL (Fig. \ref{fig:eqtl}, \cite{westra2014genome}).\\
+% Variants affecting gene expression in a distal manner (with the variant being located more than 5Mb away from the gene or on a different chromosome entirely), usually with the help of other intermediate molecules, are called distal or (putatively) \textit{trans}-acting eQTL (Fig. \ref{fig:eqtl}, \cite{westra2014genome}).\\
 
 Typically, \textit{cis}-eQTL have a large effect size \cite{sherman2009systematic}, thus relatively modest sample sizes (from 80-100 samples) permit the detection of \textit{cis}-eQTL for thousands of genes \cite{stranger2007population, myers2007survey}
 % [17], [18], [19], [20] from \cite{westra2014genome}
 . 
-\textit{cis}-eQTL effects appear to be mostly additive effects \cite{powell2013congruence}, and \textit{cis}-eQTL SNPs are often located close to the \gls{tss} of genes or within gene bodies 
+\textit{cis}-eQTL effects appear to be mostly additive \cite{powell2013congruence}, and \textit{cis}-eQTL SNPs are often located close to the \gls{tss} of genes or within gene bodies 
 % [22], [23], [24] from \cite{westra2014genome}
 \cite{vosa2018unraveling}. 
 As the distance between the eQTL SNP and the \gls{tss} decreases, the eQTL effect size generally increases.
@@ -722,10 +781,11 @@ As a result, the number of reported \textit{trans}-eQTL has remained small
 \cite{grundberg2012mapping}
 in comparison to the number of reported \textit{cis}-eQTL \cite{westra2014genome}.\\
 
-In this thesis, I worked on datasets with relatively small sample sizes and only performed \textit{cis} eQTL mapping.
+In this thesis, I worked on datasets with relatively small sample sizes and only performed proximal (\textit{cis}) eQTL mapping.
 
 % \subsubsection{eQTL are context-specific}
-\subsubsection{From tissue specific to cell type specific eQTL}
+\subsubsection{From tissue-specific to cell type-specific eQTL}
+\label{sec:eqtl_celltype_specific}
 
 Early studies mainly performed eQTL mapping in whole blood or blood-derived cells, due to sample accessibility \cite{stranger2007population, pickrell2010understanding}.
 % add some of these references from \cite{westra2014genome} below
@@ -738,9 +798,10 @@ Perhaps most notable are those from the \gls{gtex} project, which set out to col
 Since the publication of their pilot study in 2015 \cite{gtex2015genotype}, several versions have been published \cite{gtex2017genetic, aguet2019gtex}.
 The most recent version (v8) was released in 2019 and it includes data from 53 tissue types\footnote{Adipose - Subcutaneous, Adipose - Visceral (Omentum), Adrenal Gland, Artery - Aorta, Artery - Coronary, Artery - Tibial, 
 Brain - Amygdala, Brain - Anterior cingulate cortex (BA24), Brain - Caudate (basal ganglia), Brain - Cerebellar Hemisphere, Brain - Cerebellum, Brain - Cortex, Brain - Frontal Cortex (BA9), Brain - Hippocampus, Brain - Hypothalamus, Brain - Nucleus accumbens (basal ganglia), Brain - Putamen (basal ganglia), Brain - Spinal cord (cervical c-1), Brain - Substantia Nigra, 
-Breast - Mammary Tissue, Cells - Cultured fibroblasts, Cells - EBV-transfortmed lymphocytes,  Cervix - Ectocervix, Cervix - Endocervix, Colon - Sigmoid, Colon - Transverse, Esophagus - Gastroesophageal Junction, Esophagus - Mucosa, Esophagus - Muscularis, Fallopian Tube, Heart - Atrial Appendage, Heart - Left Ventricle, Kidney - Cortex, Kidney - Medulla, Liver, Lung,  Minor Salivary Gland, Muscle - Skeletal, Nerve - Tibial, Ovary, Pancreas, Pituitary, Prostate, Skin - Not Sun Exposed (Suprapubic), Skin - Sun Exposed (Lower leg), Small Intestine - Terminal Ileum, Spleen, Stomach, Testis, Thyroid, Uterus, Vagina and Whole Blood.} from 948 donors.\\
-
-These studies have collectively emphasised the complex and cell-type–specific nature of eQTL, where 29\%–80\% of eQTL are cell type specific \cite{gtex2015genotype, nica2011architecture, dimas2009common,  fairfax2012genetics}. \\
+Breast - Mammary Tissue, Cells - Cultured fibroblasts, Cells - EBV-transfortmed lymphocytes,  Cervix - Ectocervix, Cervix - Endocervix, Colon - Sigmoid, Colon - Transverse, Esophagus - Gastroesophageal Junction, Esophagus - Mucosa, Esophagus - Muscularis, Fallopian Tube, Heart - Atrial Appendage, Heart - Left Ventricle, Kidney - Cortex, Kidney - Medulla, Liver, Lung,  Minor Salivary Gland, Muscle - Skeletal, Nerve - Tibial, Ovary, Pancreas, Pituitary, Prostate, Skin - Not Sun Exposed (Suprapubic), Skin - Sun Exposed (Lower leg), Small Intestine - Terminal Ileum, Spleen, Stomach, Testis, Thyroid, Uterus, Vagina and Whole Blood.} from 948 donors.
+These studies have collectively identified \textit{cis} eQTL for the vast majority of human genes.
+% (and increasingly for other RNA traits, splicing, transcripts, etc..),
+emphasising their complex and cell type–specific nature, finding that 29\%–80\% of eQTL are cell type-specific \cite{gtex2015genotype, nica2011architecture, dimas2009common,  fairfax2012genetics}. \\
 
 % modify highlighting importance of cell 
 While eQTL from normal tissues provide valuable insights, tissues are constituted of multiple distinct cell types, each with specific gene regulatory profiles, as exemplified by the seminal work by Fairfax \textit{et al}., mapping eQTL in different blood-isolated cell types (Monocytes and B cells \cite{fairfax2012genetics}).
@@ -755,7 +816,7 @@ eQTL datasets representing single primary cell types
 have been lacking \cite{zhang2018cell}.
 Additionally, these methods are 
 % biased towards specific cell types, or are 
-of limited use for less abundant cell types and dependent on accurately defined marker genes \cite{zhernakova2017identification}. \\
+of limited use for less abundant cell types, and dependent on accurately defined marker genes \cite{zhernakova2017identification}. \\
  
 With the advent of single cell RNA-sequencing, eQTL mapping studies are now possible at the level of individual cells. 
 scRNA-seq can be used to investigate rare cell types \cite{villani2017single}, and thus, enables identification of cell type-specific eQTL in an unbiased manner. 
@@ -764,12 +825,13 @@ A first proof-of-concept study was published in 2013 on 15 individuals, where 92
 In 2018, the first genome-wide single cell eQTL mapping was performed in blood, on 45 individuals \cite{van2018single}.
 For further discussion on performing eQTL using single cell RNA-seq as opposed to bulk RNA-seq, see Chapter 3.
 
-% \subsubsection{Context-specific eQTL}
-\subsection{Response eQTL}
-\cite{fairfax2014innate, barreiro2012deciphering}
+\subsubsection{Context-specific eQTL}
+% \subsubsection{Response eQTL}
 
+In addition to cell type-specific eQTL,
 % This is particularly interesting, because it will permit the identification of eQTL that could well depend on the specific context in which a cell operates \cite{westra2014genome}. 
-% Some effects of genetic variants on gene expression levels might manifest themselves only within those cells that have just been activated by a certain external stimulus (e.g. viral, bacterial, or any other relevant trigger). 
+% Additionally, 
+some effects of genetic variants on gene expression levels have been shown to manifest themselves only within cells that have been activated by a certain external stimulus (often called response eQTL \cite{fairfax2014innate, barreiro2012deciphering, kim2017genetic}) or only in cells under certain conditions \cite{yao2014sex} - both are sometimes referred to as `context-specific eQTL' \cite{westra2014genome}. 
 % If disease-associated SNPs only work in such a context, it could well be that such effects are not detectable when studying cells in bulk. 
 
 % from Nils Kolling's thesis
@@ -788,7 +850,7 @@ For further discussion on performing eQTL using single cell RNA-seq as opposed t
 
 \newpage
 
-\subsubsection{Linking eQTL to disease}
+\subsubsection{Using eQTL to link genes to disease}
 
 Whilst useful in their own right to understand genetic regulation of gene expression across cell types and states, eQTL mapping can also be used for annotating variants associated with complex traits, as such variants are likely enriched for eQTL \cite{nicolae2010trait}. 
 A recent study suggested that two-thirds of candidate common trait susceptibility genes identified as eQTL are not the nearest genes to the GWAS lead SNPs, highlighting the utility of this approach in annotating GWAS loci \cite{zhu2016integration}. 
@@ -860,7 +922,7 @@ Several methods have been proposed, such as TWAS \cite{gusev2016integrative}, Pr
 
 % To overcome the requirement for individual-level genotypes, the authors of PrediXcan subsequently derived a mathematical formulation (S-PrediXcan) which achieves comparable results using GWAS summary statistics (Barbeira et al., 2018). The authors applied S-PrediXcan to over 100 phenotypes across 44 GTEx tissues and found that most of the associations detected were tissue-specific, highlighting the need to profile gene expression in disease-relevant cell types. For example, LDL levels were positively associated with SORT1 expression only in the liver and negatively associated with PCSK9 only in tibial nerve. In contrast, schizophrenia was negatively associated with C4A expression across 42 of the 44 tissues tested (Barbeira et al., 2018).
 
-% Because most of the SNPs used to predict gene expression in TWAS are enriched in regulatory DNA (Trynka and Raychaudhuri, 2013), including epigenetic annotations in the model can improve transcriptome imputation. EpiXcan is an implementation of PrediXcan which takes into account annotations such as DNA methylation or histone modifications (Zhang et al., 2019). The contribution of each SNP in the prediction is weighted by its overlap with regulatory elements in a Bayesian hierarchical model. When applied to 58 traits and 14 eQTL data sets, EpiXcan increased the number of gene-trait associations by over 18% compared to PrediXcan. Most of these associations were tissue-specific. For example, TWAS associations with CAD were only detected in arterial tissue, while schizophrenia associations were specific to the brain (Zhang et al., 2019). Moreover, integrating EpiXcan with a catalog of chemical perturbations revealed drug repurposing opportunities. An example is ursolic acid, which can reverse the gene expression changes associated with BMI. This compound is currently under investigation for the treatment of obesity (Kunkel et al., 2012).
+% Because most of the SNPs used to predict gene expression in TWAS are enriched in regulatory DNA (Trynka and Raychaudhuri, 2013), including epigenetic annotations in the model can improve transcriptome imputation. EpiXcan is an implementation of PrediXcan which takes into account annotations such as DNA methylation or histone modifications (Zhang et al., 2019). The contribution of each SNP in the prediction is weighted by its overlap with regulatory elements in a Bayesian hierarchical model. When applied to 58 traits and 14 eQTL datasets, EpiXcan increased the number of gene-trait associations by over 18% compared to PrediXcan. Most of these associations were tissue-specific. For example, TWAS associations with CAD were only detected in arterial tissue, while schizophrenia associations were specific to the brain (Zhang et al., 2019). Moreover, integrating EpiXcan with a catalog of chemical perturbations revealed drug repurposing opportunities. An example is ursolic acid, which can reverse the gene expression changes associated with BMI. This compound is currently under investigation for the treatment of obesity (Kunkel et al., 2012).
 
 % Another TWAS approach proposed by Gusev et al. (2016) uses a Bayesian predictor to impute gene expression from genotypes. First, the method determines the weights of the Bayesian predictor based on a reference eQTL catalog. The contributions of each variant to the predictions are proportional to its eQTL effects on each gene. Next, gene expression is imputed directly from the GWAS summary statistics. To do this, the authors first use the summary statistics to impute the GWAS effect sizes of all common variants (Pasaniuc et al., 2014) and then multiply these effect sizes by the Bayesian weight of each variant (determined from the eQTL catalog as previously described). Each variant is then re-weighed by its LD with other variants in the locus. Finally, the contribution of all variants proximal to a gene is combined into a single expression-trait association estimate. The authors used this approach to find genes involved in the regulation of circulating lipid levels (HDL, LDL, total cholesterol, and triglycerides). This analysis nominated 665 lipid-associated genes, of which 66 had not been previously identified by any of the independent GWAS (Gusev et al., 2016). The majority of these novel genes showed additional functional evidence from mouse studies. For example, FTSJ3 expression correlated with fat mass and glucose-to-insulin ratio in mice, while ITIH4 correlated with LDL levels.
 
@@ -911,7 +973,7 @@ I use this section to provide some basics of human embryology and to describe th
 I focus especially on the \gls{ipsc} technology, which allows reprogramming of cells from easily accessible somatic tissues such as skin and blood to regain stem-cell like (pluripotent) properties and to be subsequently differentiated into virtually any desired cell type, provided the right stimuli.\\
 
 In particular, in section \ref{sec:history_developmental_biology}, I provide a brief historical overview of the study of early development in humans and in section \ref{sec:human_embryogenesis} I describe the key stages of human embryology, which we attempt to mimic using \gls{ipsc}-derived differentiation protocols.
-Then, in sections \ref{sec:escs} and \ref{sec:cloning}, I introduce the two key concepts of \glspl{esc} and somatic nuclear cloning.
+Then, in sections \ref{sec:escs} and \ref{sec:cloning}, I introduce the two key concepts of \glspl{esc} and \gls{scnt}, or somatic cloning.
 \glspl{esc} are cells collected at a very early stage of the embryo's development that can be grown \textit{in vitro} to model development.
 Somatic cloning, on the other hand, involves introducing the nucleus of a donor's somatic cell into an enucleated ovum which can either be implanted into a host and let develop, creating a `clone' for the donor; or, alternatively, grown \textit{in vitro} for research purposes.
  
@@ -920,7 +982,9 @@ Next, in section \ref{sec:ipsc}, I describe induced pluripotent stem cells, a te
 somatic cell types.
 This allows the generation of \gls{esc}-like cells directly from a(ny) donor, bypassing the need for cloning. 
 In this section I will describe the technology and highlight advantages and challenges of the use of \glspl{ipsc} in biological research.
-Finally, in the last section (section \ref{sec:ips_genetics}) I describe general applications of human stem cells in biology, focusing in particular on applications of \glspl{ipsc} for human genetics.
+Finally, in the last section (section \ref{sec:ips_genetics}), I describe 
+applications of human \glspl{ipsc} generated from many individuals to perform population-scale genetic analyses across a variety of \gls{ipsc}-derived cell types.
+% general applications of human stem cells in biology, focusing in particular on applications of \glspl{ipsc} for human genetics.
 
 % %********************************** % 1.2.1  **************************************
 \newpage
@@ -967,12 +1031,29 @@ The pioneering work of Franklin Mall led to the creation of the Carnegie collect
 Other collections were later created, such as the Kyoto collection, which today holds around 44,000 specimens \cite{nishimura1968normal}. 
 Much of our current textbook knowledge of human development is derived from the early descriptive studies of these samples.\\
 
-% fill up this space summarizing the commented text below
-% The development of in vitro fertilisation (IVF) of human eggs initiated a revolution in human embryo and stem cell research and human reproduction (Edwards et al., 1969; Rock and Menkin, 1944; Shettles, 1955). This initial milestone was followed by the development of conditions to culture fertilised human eggs in vitro for up to 5-6 days (Edwards et al., 1970; Steptoe et al., 1971), and ultimately led to the birth of the first IVF baby in 1978, thanks to the tireless efforts of Robert Edwards, Patrick Steptoe and Jean Purdy. Since then, the field of human embryology has flourished. IVF has allowed scientists to describe the dynamics of key morphogenetic processes during early human development, such as cleavage, compaction and blastulation (Wong et al., 2010; Marcos et al., 2015; Iwata et al., 2014); to characterise cell lineage specification events by studying the transcriptional and epigenetic profiles of all the cells present in a developing human embryo (Niakan and Eggan, 2013; Petropoulos et al., 2016; Braude et al., 1988; Zhu et al., 2018); to identify genetic and chromosomal abnormalities that compromise human embryo development (Munne et al., 2009; Vanneste et al., 2009); and, perhaps more importantly, to establish human embryonic stem cell lines (Thomson et al., 1998), which on their own have revolutionised our approach to studying human development and devising regenerative therapies. However, until recently, gene function could not be studied in the context of human embryos. The recent generation of OCT4 knockout human embryos represents a turning point in the field (Fogarty et al., 2017). This study highlighted differences in gene function between mouse and humans, and established a gold standard for functional studies in human embryos. Thus, human embryology is becoming an experimental science; I argue that, in the years to come, we will witness a surge in the number of mechanistic studies exploring our own development \cite{shahbazi2020mechanisms}.\\
+% rewrite and add references 
+The development of \textit{in vitro} fertilisation (IVF) of human eggs \cite{edwards1969early, rock1944vitro, shettles1955morula}, followed by the development of conditions to culture these fertilised eggs for up to 5-6 days \cite{edwards1970fertilization, steptoe1971human},
+% , and ultimately led to the birth of the first IVF baby in 1978, thanks to the tireless efforts of Robert Edwards, Patrick Steptoe and Jean Purdy.
+% Since then, the field of human embryology has flourished. 
+% IVF has 
+allowed scientists to describe the dynamics of key morphogenetic processes during early human development (see section \ref{sec:human_embryogenesis}).
+% , such as cleavage, compaction and blastulation (Wong et al., 2010; Marcos et al., 2015; Iwata et al., 2014); to characterise cell lineage specification events by studying the transcriptional and epigenetic profiles of all the cells present in a developing human embryo (Niakan and Eggan, 2013; Petropoulos et al., 2016; Braude et al., 1988; Zhu et al., 2018); to identify genetic and chromosomal abnormalities that compromise human embryo development (Munne et al., 2009; Vanneste et al., 2009); and, perhaps more importantly, to establish human embryonic stem cell lines \cite{thomson1998embryonic}, which on their own have revolutionised our approach to studying human development and devising regenerative therapies. However, until recently, gene function could not be studied in the context of human embryos. 
+% The recent generation of OCT4 knockout human embryos represents a turning point in the field (Fogarty et al., 2017). 
+% This study highlighted differences in gene function between mouse and humans, and established a gold standard for functional studies in human embryos.
+% Thus, human embryology is becoming an experimental science; I argue that, in the years to come, we will witness a surge in the number of mechanistic studies exploring our own development \cite{shahbazi2020mechanisms}.
+\\
 
-After the 1950s, with the helical structure of DNA being unraveled and with increasing knowledge in the field of molecular biology, developmental biology emerged as a field of study that attempts to determine which genes are responsible for morphological changes taking place in an embryo, and how these genes are regulated.
+% After the 1950s, with the helical structure of DNA being unraveled and with increasing knowledge in the field of molecular biology, developmental biology emerged as a field of study that attempts to determine which genes are responsible for morphological changes taking place in an embryo, and how these genes are regulated.
 
 % Development requires mechanical changes in cell and tissue shape, which drive morphogenesis, and gene expression changes, which regulate cell fate decisions and tissue patterning. These two developmental processes are not independent, as changes in cell fate can modify the architecture of tissues, and vice versa (Chan et al., 2017). Mechanochemical feedback at the molecular, cellular and tissue levels coordinates this crosstalk and instructs tissue self-organisation (see Glossary, Box 1) (Hannezo and Heisenberg, 2019).
+
+In parallel, ever since the 1950s, with the helical structure of DNA being unraveled (see section \ref{sec:double_helix}), and with increasing knowledge in the field of molecular biology, developmental biology emerged as a field of study
+% re-write and combine below
+that attempts to determine the interplay between morphological and gene expression changes during embryogenesis.
+% which genes are responsible for morphological changes taking place in an embryo, and how these genes are regulated.\\
+Indeed, development requires both mechanical changes in cell and tissue shape, which drive morphogenesis, as well as gene expression changes, which regulate cell fate decisions and tissue patterning \cite{niakan2013analysis, petropoulos2016single}. 
+% These two developmental processes are not independent, as changes in cell fate can modify the architecture of tissues, and vice versa (Chan et al., 2017). 
+Mechano-chemical feedback at the molecular, cellular and tissue levels coordinates this crosstalk and instructs tissue self-organisation \cite{hannezo2019mechanochemical}.
 
 \newpage
 
@@ -1441,6 +1522,7 @@ However, it has been shown that their residual epigenetic memory diminishes as t
 % \cite{omole2018ten, takahashi2016decade, brouwer2016choices}
 
 \subsubsection{Characterising iPSCs}
+\label{sec:ipsc_characterise}
 
 As iPSC reprogramming efficiencies are low, it is important to carefully characterise the \glspl{ipsc} obtained after reprogramming \cite{brouwer2016choices}.
 Different methods have been and should be used in combination to deeply characterise \glspl{ipsc}. 
@@ -1729,8 +1811,14 @@ and
 cardiomyocytes \cite{strober2019dynamic, banovich2018impact}.\\
 % other?
 
-These eQTL promise to greatly improve our understanding of genetic regulation in cell types that we do not typically have access to, including cells at developmental stages and cells that are difficult to isolate, such as neuronal cell types.
-Combined with \gls{gwas} results they can contribute to our understand of the genetic architecture of complex disease by facilitating analyis in the relevant cell types, for example dopaminergic neurons for Parkinson's disease or pancreatic beta cells for diabetes.
+These \glspl{eqtl} promise to greatly improve our understanding of genetic regulation in cell types that we do not typically have access to, including cells at developmental stages and cells that are difficult to isolate, such as neuronal cell types.
+Combined with \gls{gwas} results, they can contribute to our understand of the genetic architecture of complex disease by facilitating analyis in the relevant cell types, for example dopaminergic neurons for Parkinson's disease (Chapter
+\ref{chapter5})
+5)
+or endoderm-derived (Chapter 
+\ref{chapter4})
+% 4)
+pancreatic beta cells for diabetes.
 
 % add one concluding sentence/paragraph.
 
@@ -1738,18 +1826,30 @@ Combined with \gls{gwas} results they can contribute to our understand of the ge
 
 \section{Thesis outline}
 
-The overall aim of this thesis is to provide suitable methods to perform \gls{eqtl} mapping at single cell resolution and to explore the effects of common genetic variants on single cell expression across a range of human iPSC-derived cell types using data from the HipSci project.\\
+% In this thesis, I present novel and efficient LMMs that can model relationships between multiple variants and traits, and describe an inference framework that enables LMMs to be built flexibly.
+
+% In this thesis, I describe new methods and applications for eQTL mapping using single cell expression profiles.
+
+% The overarching topic of this thesis is the identification and interpretation of cell type and context-specific eQTL as detected using matched genotype information and expression profiles measured by \gls{scrnaseq}, across several individuals.\\
+
+The overall aim of this thesis is to provide suitable computational methods for the identification of cell type and context-specific eQTL using single cell expression profiles, 
+% and matched genotype information, 
+and explore their application across a range of human iPSC-derived cell types, using data from the \gls{hipsci} project.\\
+
+% The overall aim of this thesis is to provide suitable methods to perform \gls{eqtl} mapping using \gls{scrnaseq} expression profiles, and to explore the effects of common genetic variants on single cell expression across a range of human \gls{ipsc}-derived cell types using data from the \gls{hipsci} project.\\
+
+% \newpage
 
 Specifically, in Chapter 2, I give an overview of current \glspl{lmm} for genetic analyses, covering their use for association and interaction testing, focusing on their application in \gls{eqtl} mapping.\\
 
-In Chapter 3, I describe best practice approaches to perform \gls{eqtl} mapping using scRNAseq profiles and demonstrate these methods on matched bulk and single cell expression of around 100 human iPSC lines as well as on simulated data.  \\
+In Chapter 3, I describe best-practice approaches to perform \gls{eqtl} mapping using \gls{scrnaseq} profiles and demonstrate these methods on matched bulk and single cell expression of around 100 human \gls{ipsc} lines as well as on simulated data.  \\
 
-In Chapter 4, I present a dataset of almost 40,000 cells from 125 human iPSC lines differentiating to definitive endoderm, and demonstrate different approaches to \gls{eqtl} mapping using scRNA-seq data, identifying genetic variants that affect gene expression dynamically along differentiation. \\
+In Chapter 4, I present a dataset of almost 40,000 cells from 125 human \gls{ipsc} lines differentiating to definitive endoderm, and demonstrate different approaches to \gls{eqtl} mapping using \gls{scrnaseq} data, identifying genetic variants that affect gene expression dynamically along differentiation. \\
 
-In Chapter 5, I present a dataset of over 1 Million cells from 215 human iPSC lines to midbrain neurons.
+In Chapter 5, I present a dataset of over 1 Million cells from 215 human \gls{ipsc} lines to midbrain dopaminergic neurons.
 We identify thousands of \glspl{eqtl} across a number of cell types and upon external stimulation and identify hundreds of colocalisation events with variants known to be associated with neurological traits and diseases.
 Additionally, we investigate sources of variation in the capacity of individual cell lines to differentiate toward neurons.\\
 
-In Chapter 6, I present a novel method to jointly test for context-specific \glspl{eqtl} across multiple cell types and states defined at single cell resolution and show some preliminary results on single cell iPSC data. \\
+In Chapter 6, I present a novel method to jointly test for context-specific \glspl{eqtl} across multiple cell types and states defined at single cell resolution, and show some preliminary results on single cell \gls{ipsc} data. \\
 
 Finally, in Chapter 7 I conclude and discuss future directions.
