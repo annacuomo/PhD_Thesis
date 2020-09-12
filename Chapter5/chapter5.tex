@@ -12,7 +12,7 @@ The work described in Chapter
 This means that in a single experiment we can obtain data from many independent donors, thus allowing population-scale studies to be performed.
 Additionally, the single cell readout allows to trace back the donor of origin of each cell, without the need for any barcoding.
 We and others have shown that single cell RNA-seq can be used to map \gls{eqtl}, and despite the pooling we retain enough cells per individual to do so successfully.
-Finally, by profiling differentiations of several lines we can start to disentangle differences in differentiation efficiency across lines and experimental batches. \\
+Finally, by profiling differentiations of several lines we can start to disentangle differences in neural differentiation efficiency across lines and experimental batches. \\
 
 In this second study, we scale up the dataset in terms of both the number of donors (from 125 to 215) and cells (from around 40,000 to over 1 million) and apply similar principles to a much longer and more complex differentiation protocol, considering iPSCs differentiating towards a midbrain neuronal fate.
 First, the use of a droplet-based scRNA-seq technology allows us to assay a much larger number of cells, providing an overview of the 
@@ -237,7 +237,7 @@ The third cell population (making up the remaining 4\% of day 11 cells) was labe
 
 At day 30, cells with floorplate progenitor (23\%) and proliferating progenitor (7\%) identity could still be detected, whereas the neuroblast population was not seen any longer.
 Additionally, five new cell types were identified.
-Four of these additional cell types appeared neuronal and one was non-neuronal, as characterised by the expression (or lack there of) of the pan-neuronal markers \textit{SNAP25} and \textit{SYT1} \cite{arenas2015make}.
+Four of these additional cell types appeared neuronal and one was non-neuronal, as characterised by the expression (or lack thereof) of the pan-neuronal markers \textit{SNAP25} and \textit{SYT1} \cite{arenas2015make}.
 Of the four neuronal populations, two could be assigned to a midbrain neuronal identity.
 The first expressed canonical DA markers \textit{NR4A2}, \textit{PBX1}, and \textit{TMCC3} \cite{la2016molecular, park2006acquisition, ramonet2012park9} and was labelled as a population of midbrain dopaminergic neurons (DA, 27\%).
 The second cell population expressed some serotonergic neuronal markers (\textit{TPH2, GATA2} \cite{cummings2019serotonergic}) and was categorised as serotonergic-like (Sert, 21\%) neurons. 
@@ -294,6 +294,7 @@ Second, to the La Manno \textit{et al}. embryonic data.
 Finally, we mapped our DA cells to the Welch \textit{et al} post-mortem data, and found that for 91\% cells mapped to `NEUROdop', with the remaining 8\% mapping to a population of inhibitory neurons, `NEUROinh1'.
 
 % JCM: Could perhaps interpret the above? SOmething like this provides confidence in the identity of DA neurons from our iPSC differentiation model. Or something like that?
+These combined analyses provide confidence in the identity of DA neurons from our iPSC differentiation model.
 
 % When mapped to the set of all neurons from each independent dataset, our DA cells mapped for 99\% (La Manno hiPSC data), 85\% (La Manno embryonic data) and 91\% (Welch post-mortem human SN samples) to dopaminergic neuron populations.\\
 
@@ -388,7 +389,7 @@ In this case, the Harmony batch correction was performed across pools (rather th
 A joint UMAP projection of cells collected across all time points, stimuli and lines revealed broad co-clustering of cell types, but with noticeable differences between time points and stimuli (Fig. \ref{fig:neuroseq_overview}). \\
 
 Substantial variation in the cell type proportions could be observed, across time points and stimuli (Fig. \ref{fig:neuroseq_overview}). 
-For example, the proportion of DA upon rotenone stimulation was significantly reduced (30\% reduction upon stimulation, Fisher’s exact test, p value=$2.2 \times 10^{-16}$), consistent with previous observations that dopaminergic neurons are most affected by apoptosis due to oxidative stress \cite{sherer2003mechanism, knonagel1992autologous, cannon2009highly}.
+For example, the proportion of DA upon rotenone stimulation was significantly reduced (30\% reduction upon stimulation, Fisher’s exact test, p value = $2.2 \times 10^{-16}$), consistent with previous observations that dopaminergic neurons are most affected by apoptosis due to oxidative stress \cite{sherer2003mechanism, knonagel1992autologous, cannon2009highly}.
 Collectively, our population-scale \gls{scrnaseq} analysis revealed a diverse repertoire of cell types, enabling study of both cell line differentiation propensity (sections \ref{sec:neuroseq_diff_eff}, \ref{sec:neuroseq_ips}) and the identification of genetic variants that act in a cell type-specific manner (sections \ref{sec:neuroseq_eqt}, \ref{sec:neuroseq_coloc}). 
 \\ 
 
@@ -409,7 +410,7 @@ Bottom: Barplots showing, for each condition, the fraction of cells assigned to 
 
 \newpage
 
-\section{Line-to-line variation in differentiation efficiency}
+\section{Line-to-line variation in neural differentiation efficiency}
 \label{sec:neuroseq_diff_eff}
 
 Given the great diversity in terms of cell types generated by this protocol, we investigated whether this variation may be driven by variation in differentiation outcome between different iPSC lines. 
@@ -433,13 +434,13 @@ Each point indicates a different cell line.}
 Looking at the cell type fractions per cell line and pool across time points, we observed a bimodality in the data, with roughly 2/3 of the iPSC lines mostly making DA and Sert at day 30 and day 52, and the other 1/3 making very few midbrain neurons but many Ependymal-like and Astrocyte-like cells instead (Fig. \ref{fig:neuroseq_diff_efficiency}).
 When we performed \gls{pca} of such cell type fractions matrix, we identified the proportion of midbrain neurons (DA and Sert) on day 52 as the largest axis of variation (PC1, 47\% variance, Fig. \ref{fig:neuroseq_diff_efficiency}). 
 Since DA and Sert cells are derived from similar progenitor populations \textit{in vivo}, it is not surprising that both populations are observed in our differentiation experiment \cite{ye1998fgf, cao2017characterization}. 
-This motivated us to estimate a `differentiation efficiency' for each iPSC line, defined as the sum of the fractions of DA and Sert cells produced on day 52 (Fig. \ref{fig:neuroseq_diff_efficiency}). 
+This motivated us to estimate a `neural differentiation efficiency' for each iPSC line, defined as the sum of the fractions of DA and Sert cells produced on day 52 (Fig. \ref{fig:neuroseq_diff_efficiency}). 
 \\
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=14cm]{Chapter5/Fig/neuroseq_define_diff_efficiency.png}
-\caption[Definition of differentiation efficiency]{\textbf{Distribution of cell proportions at day 52 and definition of differentiation efficiency}.\\
+\caption[Definition of neural differentiation efficiency]{\textbf{Distribution of cell proportions at day 52 and definition of neural differentiation efficiency}.\\
 Cell proportions were generated for each cell type and time point for all combinations of cell lines and pools with at least 10 cells at all time points (10 pools). 
 (a) Heatmap of the resulting cell proportion matrix. 
 Pools are shown in the first bar and the colours indicate in which of the 10 pools each line was differentiated. 
@@ -451,18 +452,18 @@ Rows (i.e. cell line, pool combinations) were hierarchically clustered according
 
 \clearpage
 
-We assessed the reproducibility of this measure of differentiation efficiency using data from 35 lines that were differentiated twice, in two different pools. 
-Importantly, we found that iPSC line differentiation efficiency defined in this way was highly reproducible between different pools (Pearson R=0.75; p value=$2 \times 10^{-6}$, Fig. \ref{fig:neuroseq_diff_eff_replication}).
+We assessed the reproducibility of this measure of neural differentiation efficiency using data from 35 lines that were differentiated twice, in two different pools. 
+Importantly, we found that iPSC line neural differentiation efficiency defined in this way was highly reproducible between different pools (Pearson's R = 0.75; p value = $2 \times 10^{-6}$, Fig. \ref{fig:neuroseq_diff_eff_replication}).
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=15.5cm]{Chapter5/Fig/neuroseq_diff_eff_replication.png}
-\caption[Reproducible differentiation efficiency]{\textbf{Reproducible variation in differentiation trajectories}.\\
-(left) Hierarchical clustering of (cell line, pool) combinations (same as Fig. \ref{fig:neuroseq_diff_efficiency}) by differentiation efficiency. 
-Colours in the first bar indicate in which of 10 pools (for which we had data at all time points, used to define differentiation efficiency) each line was differentiated. 
+\caption[Reproducible neural differentiation efficiency]{\textbf{Reproducible variation in differentiation trajectories}.\\
+(left) Hierarchical clustering of (cell line, pool) combinations (same as Fig. \ref{fig:neuroseq_diff_efficiency}) by neural differentiation efficiency. 
+Colours in the first bar indicate in which of 10 pools (for which we had data at all time points, used to define neural differentiation efficiency) each line was differentiated. 
 Differentiation replicates, where the same line was present in 2 pools, are shown in the second bar (replicate 1 in red and replicate 2 in blue).
 (middle) UMAPs, highlighting the distributions of cells on day 52 for two selected cell lines with low and high differentiation efficiencies respectively (HPSI0514i-fiaj\_1, in seagreen and HPSI1213i-hehd\_1, in dark blue).
-(right) Scatter plot showing estimated differentiation efficiency between differentiation replicates (i.e. cell lines differentiated in two different pools, n=35). 
+(right) Scatter plot showing estimated neural differentiation efficiency between differentiation replicates (i.e. cell lines differentiated in two different pools, n=35). 
 Highlighted are the same two cell lines.}
 \label{fig:neuroseq_diff_eff_replication}
 \end{figure}
@@ -474,28 +475,28 @@ Given the robustness of these results, we wondered if they were generalisable to
 We therefore differentiated a pool of 18 lines (pool 4) into cerebral organoids for 113 days (as previously described in Lancaster \textit{et al}. \cite{lancaster2017guided}) and profiled the resulting cell populations using \gls{scrnaseq} (11,445 cells). 
 The same steps of dimensionality reduction, batch correction and clustering applied to the midbrain dataset were applied to the cerebral organoid data. 
 This identified eight clusters that were mapped to different cell types (neural cells, intermediate progenitor cells, radial glial progenitor cells, satellite cells, mesenchymal cells, myotube and Wnt and PAX7 positive cells) using 24 marker genes (Fig. \ref{fig:neuroseq_organoids}).
-We found that the proportion of brain cell types (all neural, glial, and neural progenitor cells) produced by each line in the cerebral organoids was strongly correlated with differentiation efficiency as estimated from the dopaminergic differentiation (R=0.94; p value=$2 \times 10^{-5}$; n=12). 
+We found that the proportion of brain cell types (all neural, glial, and neural progenitor cells) produced by each line in the cerebral organoids was strongly correlated with neural differentiation efficiency as estimated from the dopaminergic differentiation (R = 0.94; p value = $2 \times 10^{-5}$; n=12). 
 Taken together, these results strongly suggest that variation in iPSC neural differentiation efficiencies arise primarily due to cell-intrinsic factors. 
-Furthermore, the consistency of differentiation efficiency suggests that these properties extend to neuronal differentiation more generally.
+Furthermore, the consistency of neural differentiation efficiency suggests that these properties extend to neuronal differentiation more generally.
 % \\
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=14cm]{Chapter5/Fig/neuroseq_organoids.png}
-\caption[Differentiation efficiency in cerebral organoids]{\textbf{Differentiation efficiency in cerebral organoids}.\\
+\caption[Neural differentiation efficiency in cerebral organoids]{\textbf{Neural differentiation efficiency in cerebral organoids}.\\
 (a) Experimental workflow for scRNA-seq analysis of iPSC-derived cerebral organoids using one pool consisting of 18 cell lines, profiled using scRNA-seq after 113 days of differentiation.
 % Add cell type legend. 
 (b) UMAPs of two representative cell lines making non-brain and brain cell types in the organoid study. 
-(c) Scatter plot of differentiation efficiency as measured using midbrain dopaminergic neuronal differentiation (x-axis) versus differentiation efficiency as measured in organoid differentiation (y-axis) for a subset of 12 iPS cell lines in common. 
+(c) Scatter plot of neural differentiation efficiency as measured using midbrain dopaminergic neuronal differentiation (x-axis) versus neural differentiation efficiency as measured in organoid differentiation (y-axis) for a subset of 12 iPS cell lines in common. 
 Highlighted are the two cell lines from (b).}
 \label{fig:neuroseq_organoids}
 \end{figure}
 
-% In contrast, when compared to the endoderm differentiation efficiency defined in the previous chapter (for the lines shared between the two studies, n = 45), we found no correlation, suggesting that different germ layers..
+% In contrast, when compared to the endoderm neural differentiation efficiency defined in the previous chapter (for the lines shared between the two studies, n = 45), we found no correlation, suggesting that different germ layers..
 
 \clearpage
 
-\section{iPSC expression can predict differentiation efficiency}
+\section{iPSC expression can predict neural differentiation efficiency}
 \label{sec:neuroseq_ips}
 
 Motivated by the reproducibility of differentiation outcomes across multiple independent pools, we set out to explore possible predictors.
@@ -505,29 +506,55 @@ a bad differentiation outcome, they could become a
 % very 
 useful tool to select which lines to differentiate in future experiments.\\
 
-We began by testing for associations between differentiation efficiency and other experimental and biological factors.
+We began by testing for associations between neural differentiation efficiency and other experimental and biological factors.
 Those included cell line passage number (p value = 0.77), donor sex (p value = 0.008), chromosome X activation status (p value = 0.01), and PluriTest scores \cite{muller2011bioinformatic} (p value = 0.01).
-% Although some were nominally significant, explained little variation..
-\\ 
-% add details
-% JCM: Interpret this?
+Although some were nominally significant, they explained little variation as opposed to line-specific effects, when we performed variance component analysis, by modelling:
 
-Next, we assessed whether differentiation efficiency was associated with particular patterns of gene expression in undifferentiated iPSCs. 
-Using data from independent bulk RNA-seq data available for a subset of 184 iPSC lines included in this study \cite{kilpinen2017common, bonder2019systematic} we identified significant associations with differentiation efficiency for 2,045 genes (983 positive and 1,062 negative associations; F-test, FDR < 5\%, Fig. \ref{fig:neuroseq_ips_expression_signature}). 
+\begin{equation}\label{eq:neuroseq_vca}
+    \mathrm{neural \ differentiation \ efficiency = Donor/Line + Pool + Sex + Age + \boldsymbol{\psi}},
+\end{equation}
+
+where Line (which cannot be distinguished from Donor), Pool, Sex and Age are all modeled as random effects (n=230 line-pool combinations).
+To assess specifically the effect of X chromosome inactivation status, we fitted an alternative model which was limited to the female donors only (n=115 line-pool combinations):
+
+\begin{equation}\label{eq:neuroseq_vca_xci}
+    \mathrm{neural \ differentiation \ efficiency = Donor/Line + Pool + XCI + Age + \boldsymbol{\psi}}. 
+\end{equation}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=16cm]{Chapter5/Fig/neuroseq_diff_eff_vca.png}
+\caption[Variance component analysis of neural differentiation efficiency]{\textbf{Variance component analysis of neural differentiation efficiency}.\\
+Results from variance component models in eq. \eqref{eq:neuroseq_vca} and \eqref{eq:neuroseq_vca_xci}, respectively.
+The variance explained by each component was re-scaled to sum up to 100.
+XCI is categorised into 0.1-wide bins: [0-0.1]..[0.4-0.5].}
+\label{fig:neuroseq_diff_eff_vca}
+\end{figure}
+
+\newpage
+
+We note that there is some effect of the batch a line was differentiated in, as it's been observed before \cite{kilpinen2017common, schwartzentruber2018molecular}, yet line-specific effects are prevalent (Fig. \ref{fig:neuroseq_diff_eff_vca}).
+This is confirmed when we consider data from 6 lines (from pools 1, 2 and 3) that were differentiated individually, as well as in pools.
+When we compared our measure of neural differentiation efficiency for each of the lines when differentiated alone or in a pool, we found strongly concordant results (R = 0.83, p value = 0.034).\\ 
+
+Next, we assessed whether neural differentiation efficiency was associated with particular patterns of gene expression in undifferentiated iPSCs. 
+Using data from independent bulk RNA-seq data available for a subset of 184 iPSC lines included in this study \cite{kilpinen2017common, bonder2019systematic} we identified significant associations with neural differentiation efficiency for 2,045 genes (983 positive and 1,062 negative associations; F-test, FDR < 5\%, Fig. \ref{fig:neuroseq_ips_expression_signature}). 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=16cm]{Chapter5/Fig/neuroseq_ips_bulk_expr_correlations.png}
-\caption[iPS expression signature of differentiation efficiency]{\textbf{A gene expression signature in iPSCs is associated with differentiation efficiency}.\\
-Histogram of Pearson correlation coefficients between variation in gene expression of individual genes (from bulk RNA-seq \cite{bonder2019systematic}) and differentiation efficiency. 
+\caption[iPS expression signature of neural differentiation efficiency]{\textbf{An iPSC gene expression signature is associated with neural differentiation efficiency}.\\
+Histogram of Pearson correlation coefficients between variation in gene expression of individual genes (from bulk RNA-seq \cite{bonder2019systematic}) and neural differentiation efficiency. 
 Two representative genes (\textit{UTF1, TAC3}) are highlighted. 
-\textit{UTF1} is an example of a gene whose gene expression in iPSC (based on bulk RNA-seq) is negatively correlated with differentiation efficiency (R=-0.5, p value = = 3.5$ \times 10^{-13}$ ), whereas \textit{TAC3} is positively correlated (R=0.38, p value = 9.8$ \times 10^{-8}$).}
+\textit{UTF1} is an example of a gene whose gene expression in iPSC (based on bulk RNA-seq) is negatively correlated with neural differentiation efficiency (R = -0.5, p value = 3.5$ \times 10^{-13}$ ), whereas \textit{TAC3} is positively correlated (R = 0.38, p value = 9.8$ \times 10^{-8}$).}
 \label{fig:neuroseq_ips_expression_signature}
 \end{figure}
 
+\newpage
+
 \subsection{A predictor of (poor) differentiation using iPSC gene expression}
 
-Next, we used the genome-wide gene expression signature in undifferentiated iPSCs to build a model to predict poor differentiation outcomes, where we defined poor differentiation as a binary outcome (differentiation efficiency < 0.2).
+Next, we used the genome-wide gene expression signature in undifferentiated iPSCs to build a model to predict poor differentiation outcomes, where we defined poor differentiation as a binary outcome (neural differentiation efficiency < 0.2).
 We used a logistic regression and obtained 100\% precision at 35\% recall as assessed by cross-validation. 
 This result was robust to alternative thresholds for defining poor differentiation outcomes (Fig. \ref{fig:neuroseq_diff_eff_predictor}). 
 
@@ -535,16 +562,16 @@ This result was robust to alternative thresholds for defining poor differentiati
 \centering
 \includegraphics[width=15.5cm]{Chapter5/Fig/neuroseq_diff_eff_predict.png}
 \caption[Predicting differentiation failure from iPSC gene expression]{\textbf{Predicting differentiation failure from iPSC gene expression}.\\
-(a) Histogram of differentiation efficiencies across cell lines. 
-The threshold chosen to define differentiation success or failure (i.e. differentiation efficiency=0.2) is shown by the dashed line, separating the two modes of the distribution. 
-(b) Precision-recall curves for a logistic regression model predicting differentiation failure from iPSC gene expression data2 using a range of thresholds between 0.1 and 0.35 to define differentiation failure. 
+(a) Histogram of neural differentiation efficiencies across cell lines. 
+The threshold chosen to define differentiation success or failure (i.e. neural differentiation efficien = 0.2) is shown by the dashed line, separating the two modes of the distribution. 
+(b) Precision-recall curves for a logistic regression model predicting differentiation failure from iPSC gene expression data \cite{cuomo2020single} using a range of thresholds between 0.1 and 0.35 to define differentiation failure. 
 Results are presented from leave-one-out cross validation.}
 \label{fig:neuroseq_diff_eff_predictor}
 \end{figure}
 
 We then used this model to generate predicted scores for all 812 HipSci lines for which bulk RNA-seq data was available.
 This analysis indicated that a substantial fraction of lines in the HipSci resource (26\%) were predicted to produce < 20\% neuronal cells under the differentiation conditions we tested.
-Furthermore, we tested whether the same experimental and biological factors previously associated with differentiation efficiency replicated in this larger sample and found consistent results.
+Furthermore, we tested whether the same experimental and biological factors previously associated with neural differentiation efficiency replicated in this larger sample and found consistent results.
 Finally, we also observed substantial variation in predicted outcomes of different lines from the same donor, suggesting that donor genetic background is unlikely to play a role in driving differentiation biases.
 % (neither of these two last points are shown, and neither is the validation performed upon revision. Add?)
 % figure?
@@ -566,8 +593,10 @@ which expressed similarly high levels of core pluripotency markers (\textit{NANO
 We found that genes whose expression predicted poor differentiation (e.g. \textit{UTF1}) were highly enriched in one of those clusters (cluster 2), while genes whose expression were predictive of successful differentiation (e.g. \textit{TAC3}), were down-regulated in cluster 2 relative to the remaining iPSC clusters (Fig. \ref{fig:neuroseq_ips_sc_genes}). 
 % In comparison, other cell clusters did not show such equivalent enrichment in differentiation marker genes.
 % \\
-
-As a direct confirmation of this hypothesis, we also tested for and confirmed an association between the fraction of cells in cluster 2 and differentiation efficiency for each cell line (Pearson R = -0.76, p value =$2.05 \times 10^{-9}$, Fig. \ref{fig:neuroseq_ips_sc_genes}). 
+As a direct confirmation of this hypothesis, we also tested for and confirmed an association between the fraction of cells in cluster 2 and neural differentiation efficiency for each cell line (Pearson R = -0.76, p value = $2.05 \times 10^{-9}$, Fig. \ref{fig:neuroseq_ips_sc_genes}). 
+We used additional data from \cite{cuomo2020single} to assess the consistency of the fraction of cluster 2 cells across replication experiments, finding high concordance (Pearson R = 0.9; n = 23).
+% Using the known relationship between iPSC bulk RNA-seq and the proportion of cluster 2 cells, we predicted this proportion for 182 cell lines included in our differentiation experiments, and confirmed the negative correlation with neural differentiation efficiency (Pearson R = -0.49; p value = $3 \times 10^{-12}$). 
+\\
 
 \begin{figure}[htbp]
 \centering
@@ -576,22 +605,18 @@ As a direct confirmation of this hypothesis, we also tested for and confirmed an
 (a) UMAPs of single-cell RNA-seq profiles in iPSCs from 112 donors \cite{cuomo2020single}.
 Colours denote the expression level of the two example genes from Fig. \ref{fig:neuroseq_ips_expression_signature}: \textit{UTF1} and \textit{TAC3}. 
 Cluster 2 is shown by the dashed lines. 
-(b) Comparison of marker gene association results with expression markers of the cluster 2. For each gene, the Pearson correlation coefficient of association between the gene and differentiation efficiency (x-axis; iPSC gene expression assessed using bulk RNA-seq, as in Fig. \ref{fig:neuroseq_ips_expression_signature}) is compared to its log fold change between cluster 2 and the other clusters (y-axis, scRNA-seq).
+(b) Comparison of marker gene association results with expression markers of the cluster 2. For each gene, the Pearson correlation coefficient of association between the gene and neural differentiation efficiency (x-axis; iPSC gene expression assessed using bulk RNA-seq, as in Fig. \ref{fig:neuroseq_ips_expression_signature}) is compared to its log fold change between cluster 2 and the other clusters (y-axis, scRNA-seq).
 (\textit{UTF1, TAC3}) are highlighted. 
-(c) Scatterplot between the proportion of cells assigned to cluster 2 (y-axis) and differentiation efficiency (x-axis) across 45 cell lines which were included in both sets of experiments. 
+(c) Scatterplot between the proportion of cells assigned to cluster 2 (y-axis) and neural differentiation efficiency (x-axis) across 45 cell lines which were included in both sets of experiments. 
 Where multiple measurements were available for a given cell line, these were averaged.}
 \label{fig:neuroseq_ips_sc_genes}
 \end{figure}
-
-We used additional data from \cite{cuomo2020single} to assess the consistency of the fraction of cluster 2 cells across replication experiments, finding high concordance (Pearson R = 0.9; n = 23).
-% Using the known relationship between iPSC bulk RNA-seq and the proportion of cluster 2 cells, we predicted this proportion for 182 cell lines included in our differentiation experiments, and confirmed the negative correlation with differentiation efficiency (Pearson R = -0.49; p value = $3 \times 10^{-12}$). 
-\\
 
 Finally, we also analysed an additional scRNA-seq dataset from iPSCs derived from Lymphoblastoid Cell Lines (LCLs) \cite{sarkar2019discovery}. 
 Using our single cell analysis pipeline, we identified a cluster of cells with a concordant (define) expression profile to cluster 2. 
 Taken together, these results provide further evidence that a subpopulation of iPS cells with poor differentiation capability is consistently detected across different human iPSCs banks, and that this bias can be robustly predicted using expression markers at the iPSC stage. \\
 
-Importantly, despite the variability in differentiation efficiency, our single-cell sequencing approach still enabled us to examine multiple disease-relevant cell populations for many cell lines - thus allowing the exploration of the impact of common genetic variants on gene expression, across such cell populations (next section, section \ref{sec:neuroseq_eqt}).
+Importantly, despite the variability in neural differentiation efficiency, our single-cell sequencing approach still enabled us to examine multiple disease-relevant cell populations for many cell lines - thus allowing the exploration of the impact of common genetic variants on gene expression, across such cell populations (next section, section \ref{sec:neuroseq_eqt}).
 % these cell types. 
 % Correlating changes in gene expression with common genetic variants associated with various traits in GWAS could provide insights into disease mechanisms.
 
@@ -628,7 +653,7 @@ For
 each context (cell type, condition), all genes detected in at least 1\% of cells of that context
 were tested, and expression quantification was only included for a donor if it represented
 the mean of at least 10 cells.
-Variability in differentiation efficiency between lines\footnote{i.e. some lines made mostly neuronal cell types and barely any non-neuronal, thus expression estimates for those lines in non-neuronal cell types will be less accurate because estimated using very few cells, and vice versa for lines that mostly made non-neurons, and very few neurons.} resulted in substantial differences in the number of cells collected for each donor, affecting accuracy of the estimates of aggregated expression. 
+Variability in neural differentiation efficiency between lines\footnote{i.e. some lines made mostly neuronal cell types and barely any non-neuronal, thus expression estimates for those lines in non-neuronal cell types will be less accurate because estimated using very few cells, and vice versa for lines that mostly made non-neurons, and very few neurons.} resulted in substantial differences in the number of cells collected for each donor, affecting accuracy of the estimates of aggregated expression. 
 To account for this source of noise, we adapted commonly used \gls{eqtl} mapping strategies \cite{cuomo2020single} based on \glspl{lmm} (Chapter
 % \ref{chapter2}
 2) by incorporating an additional variance component into the model:
@@ -648,17 +673,17 @@ As a consequence, expression was aggregated at the cell line (and therefore dono
 
 % resulting in
 Using this approach, we found
-a total of 4,087 genes with at least one \gls{eqtl} in any of the contexts (hereafter `eGenes', FDR < 5\%, Table \ref{tab:eqtl_results}).
+a total of 4,828 genes with at least one \gls{eqtl} in any of the contexts (hereafter `eGenes', FDR < 5\%, Storey procedure, Table \ref{tab:eqtl_results}).
 
 \begin{table}[h]
     \centering
     \begin{tabular}{c|c c c c c c}
     &         FPP & P\_FPP & DA & Sert & Epen1 & Astro \\
     \hline
-    Day 11  &  1784 & 1802 & - & - & - & - \\
-    Day 30  & 618 & - & 674 & 546 & 622 & -  \\
-    Day 52 - untreated & - & - & 698 & 778 & 745 & 111 \\
-    Day 52 - ROT treated & - & -  & 304 & 611 & 575 & 88 \\
+    Day 11  & 2,560 & 2,457 & - & - & - & - \\
+    Day 30  & 881 & - &  872 & 776 & 1,011 & -  \\
+    Day 52 - untreated & - & - & 1,024 & 1,436 & 1,391 & 257 \\
+    Day 52 - ROT treated & - & -  & 458 & 1,043 & 1,122 & 205 \\
     \end{tabular}
     \caption{Number of eGenes at FDR 5\% for each assessed eQTL map.}
     \label{tab:eqtl_results}
@@ -686,7 +711,7 @@ of the mean expression estimation (Fig. \ref{fig:neuroseq_eqtl_improved_power}).
 \begin{figure}[h]
 \centering
 \includegraphics[width=13cm]{Chapter5/Fig/neuroseq_eqtl_power.png}
-\caption[Improved eQTL power]{\textbf{Improved eQTL power}.\\
+\caption[Improved eQTL power]{\textbf{Improved eQTL power - to be updated}.\\
 Number of eGenes for each cell type, time point and stimulation discovered using either a traditional linear model (coral, from eq. \eqref{eq:neuroseq_base}) or our enhanced model accounting for noise due to variation in the number of cells collected for each donor (seagreen, from eq. \eqref{eq:neuroseq_ncell}).}
 \label{fig:neuroseq_eqtl_improved_power}
 \end{figure}
@@ -729,7 +754,7 @@ Overall, our approach was the best powered (with 698 eGenes, see Table \ref{tab:
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=13.5cm]{Chapter5/Fig/neuroseq_eqtl_methods_corr.png}
-\caption[eQTL methods comparison]{\textbf{eQTL methods comparison}.\\
+\caption[eQTL methods comparison]{\textbf{eQTL methods comparison - possibly update}.\\
 Scatter plots of \gls{eqtl} effect sizes (left) and p values (right) obtained when testing association of untreated day 52 dopaminergic neuron \gls{eqtl} discovered using our approach (from eq. \eqref{eq:neuroseq_ncell}, x axis) and each of the three alternative methods described in equations \eqref{eq:neuroseq_pcs_kinship}, \eqref{eq:neuroseq_batch_kinship} and \eqref{eq:neuroseq_batch_ncell}, respectively (y axis). 
 Pearson's correlations (R) are indicated.}
 \label{fig:neuroseq_eqtl_methods_comp}
@@ -785,19 +810,19 @@ Next, notably, the cumulative number of genes with an \gls{eqtl} in each cell ty
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=15cm]{Chapter5/Fig/neuroseq_eqtl_cumulative.png}
-\caption[Mapping eQTL across neuronal cell types]{\textbf{Mapping \textit{cis} eQTL in distinct cell contexts across midbrain differentiation.}.\\
+\includegraphics[width=14cm]{Chapter5/Fig/neuroseq_eqtl_cumulative.png}
+\caption[Mapping eQTL across neuronal cell types]{\textbf{Mapping \textit{cis} eQTL in distinct cell contexts across midbrain differentiation}.\\
 % (a)Number of genes with at least one eQTL (eGenes) for each cell type and condition.
 % (b)
 Cumulative number of eGenes for each cell type and condition (D11 = day 11; D30 = day 30; D52 = day 52 (untreated); ROT = rotenone-treated day 52).}
 \label{fig:neuroseq_eqtl}
 \end{figure}
 
-For example, in DA cells, eQTL mapping in matured cells (day 52) identified an additional set of 270 eGenes (at FDR 5\%) compared to day 30 cells.
+For example, in DA cells, eQTL mapping in matured (untreated) cells (day 52) identified an additional set of 441 eGenes (at FDR 5\%) compared to day 30 cells.
 An example of a timepoint-specific eGene is \textit{HSPB1}, for which SNP rs6465098 is an eQTL in day 52 cells, but not day 30 (Fig. \ref{fig:neuroseq_eqtl_examples}). 
 \textit{HSPB1} encodes a heat shock protein that plays a key role in neuronal differentiation \cite{miller2018heat} and for which changes in gene expression have been observed in neurons after ischemia \cite{bartelt2016hspb5} and associated with toxic protein accumulation in Alzheimer disease \cite{shimura2004binding, wilhelmus2006small}.\\
 
-Similarly, we detected 196 additional eGenes with a rotenone-specific effect in DA and Sert neurons. 
+Similarly, we detected 248 additional eGenes with a rotenone-specific effect in DA and Sert neurons. 
 As an example, rs12597281 is an eQTL for \textit{ACSF3} in rotenone stimulated serotonergic neurons at day 52, but not in unstimulated cells (Fig. \ref{fig:neuroseq_eqtl_examples}). 
 \textit{ACSF3} encodes an acyl-CoA synthetase localised in the mitochondria and for which inherited mutations have been associated with a metabolic disorder, combined malonic and methylmalonic aciduria (CMAMMA), where patients exhibits a wide range of neurological symptoms including memory problems, psychiatric problems and/or cognitive decline \cite{tucci2020brain}.\\
 
@@ -815,8 +840,8 @@ More importantly, this data shows how our experimental design brings an extra le
 
 \begin{figure}[h]
 % \centering
-\includegraphics[width=15.5cm]{Chapter5/Fig/neuroseq_eqtl_examples.png}
-\caption[Context-specific eQTL examples]{\textbf{Context-specific eQTL examples (resolution!)}.\\
+\includegraphics[width=16cm]{Chapter5/Fig/neuroseq_eqtl_examples.png}
+\caption[Context-specific eQTL examples]{\textbf{Context-specific eQTL examples}.\\
 Left: day 52-specific eQTL for \textit{HSPB1} in DA (rs6465098; FDR < 5\%, Methods). 
 Shown are Manhattan plots for DA at day 30 (top), day 52 (bottom). 
 Right: a rotenone stimulus-specific eQTL for \textit{ACSF3} in Sert-like cells (rs12597281, right). 
@@ -830,7 +855,7 @@ Shown are Manhattan plots for rotenone stimulated Sert at day 52 (top) and unsti
 
 To test how our eGene discovery relates to previous studies, we compared the number of eGenes identified in this study with bulk eQTL maps from \textit{in vivo} tissues from the GTEx consortium \cite{gtex2017genetic}. 
 To aid the comparison between bulk and single-cell eQTL maps,
-we aggregated\footnote{Considered the union of eQTL identified in any of our 14 cell populations.} eQTL across cell types and found that the number of discovered eGenes was similar to that expected in a primary tissue of the same sample size (not quite, change this). \\
+we aggregated\footnote{Considered the union of eQTL identified in any of our 14 cell populations.} eQTL across cell types and found that the number of discovered eGenes was similar to that expected in a primary tissue of the same sample size. \\
 
 However, when focusing on individual cell populations, we observed fewer `cell type'-`condition' eQTL than detected in GTEx tissues of similar sample size, likely due to the decreased representation of donor cells (Fig. \ref{fig:neuroseq_and_gtex_power}).\\
 
@@ -866,7 +891,7 @@ First, reassuringly, we observed that the sharing of genetic signal between our 
 \begin{figure}[h]
 \centering
 \includegraphics[width=16cm]{Chapter5/Fig/neuroseq_gtex_brain_nonbrain_boxplots.png}
-\caption[Brain vs non-brain]{\textbf{Brain vs non-brain}.\\
+\caption[Brain vs non-brain]{\textbf{Brain vs non-brain - rearrange boxplot, update to new results}.\\
 Boxplots indicating for each of our 14 eQTL maps (on the x axis) the amount of sharing as quantified by MASHR \cite{urbut2019flexible} with each of the GTEx brain tissues (yellow, n=13) and GTEx other (non-brain) tissues (black, n=36).
 Boxplots are coloured by cell type, whereas the border indicates the set of GTEx tissues considered.}
 \label{fig:neuroseq_and_gtex_brain_specificity}
@@ -886,7 +911,7 @@ This second analysis enabled us to assess the similarity of our maps to the brai
 \begin{figure}[h]
 \centering
 \includegraphics[width=16cm]{Chapter5/Fig/neuroseq_gtex_brain_boxplots.png}
-\caption[Brain sharing increase]{\textbf{Brain sharing increases over time}.\\
+\caption[Brain sharing increase]{\textbf{Brain sharing increases over time - update}.\\
 Sharing of eQTL signals discovered in our study for different cell types and conditions, 
 % as well as in two recent iPSC studies \cite{cuomo2020single, bonder2019systematic} 
 with \textit{in vivo} brain eQTL maps (from GTEx). 
@@ -917,19 +942,27 @@ As exemplar maps, at varying sample sizes, we took the substantia nigra (n=88), 
 % The substantia nigra is also the only midbrain region from the GTEx maps.
 % The cerebellum is often an outlier brain tissue, with especially many eQTL (ref).
 
-Of the eGenes identified at FDR<5\% in each of the GTEx maps, only around 45\% of the genes were tested in any of our maps 
-(727/1,807 for substantia nigra,
-2,304/5,086 for frontal cortex, 
-and 4,008/8,429 for cerebellum).
+Of the eGenes identified at FDR<5\% in each of the GTEx maps, a little bit less than 60\% of the genes were tested in any of our maps 
+(985/1,807 (55\%) for substantia nigra,
+3,034/5,086 (60\%) for frontal cortex, 
+and 5,204/8,429 (62\%) for cerebellum).
 
-For those, 57\% eQTL were nominally significant (p value < 0.05) in at least one of our maps (on average, substantia nigra: 59\%, cerebellum: 61\%, frontal cortex: 51\%), 
+For those, 55\% eQTL were nominally significant (p value < 0.05) in at least one of our maps (on average, substantia nigra: 57\%, cerebellum: 59\%, frontal cortex: 49\%), 
 % Even more rarely were both the gene and the genetic variant assessed in our maps (from 398 to 420, about 20\%).
 % From 197 to 262 of these eQTL (about 60\%) were nominally significant in our maps, most of which
 and most of them
 (90\% on average) also had consistent effect sign. \\
 
-So in total, only a little more than one eQTL in five ($\sim$22\%)
-from a GTEx brain map could be re-discovered in one of our single cell maps.
+So in total, around 30\% eQTL (29\%,31\%,36\%)
+from a GTEx brain map could be re-discovered in one of our single cell maps (Fig. \ref{fig:neuroseq_and_gtex_rediscovery}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=16cm]{Chapter5/Fig/neuroseq_rediscovering_gtex_brain.png}
+\caption[Rediscovery of GTEx brain eQTL maps]{\textbf{Rediscovery of GTEx brain eQTL maps}.\\
+For three representative GTEx brain tissue-eQTL maps of various sample size (substantia nigra, n=88; frontal cortex, n=129; cerebellum, n=173), we divide eGenes (genes with at least one eQTL, FDR<5\%) into i) genes that were not assessed in any of our maps (white), ii) genes whose lead variant could not be re-discovered (light colour, nominal p value > 0.05 in all of our 14 eQTL maps) and iii) genes wholse lead eQTL variant who could be (dark colour, nominal p value < 0.05 in at least one of our 14 maps).}
+\label{fig:neuroseq_and_gtex_rediscovery}
+\end{figure}
 
 % JCM: Perhaps put this in context - at face value it seems like a pretty poor result so some contextualisation here (or at least pointing to the discussion) would be helpful I think.
 
@@ -1044,7 +1077,7 @@ Despite these efforts, differentiation bias among cell lines has been widely app
 To the best of our knowledge, the work presented here is the first to systematically survey differentiation biases at the scale of an entire cell bank. 
 To address this question, we leveraged the detailed phenotyping of cell lines in the HipSci bank.
 We excluded the cell type of origin hypothesis \cite{hu2016effects} in this instance since all HipSci lines were skin-derived.
-We also observed relatively weak relationships between differentiation efficiency and other biological factors, such as X chromosome inactivation status, which has been described as relevant for other differentiation lineages (i.e. endoderm lineage, see Chapter
+We also observed relatively weak relationships between neural differentiation efficiency and other biological factors, such as X chromosome inactivation status, which has been described as relevant for other differentiation lineages (i.e. endoderm lineage, see Chapter
 % \ref{chapter4}
 4 and \cite{cuomo2020single}).
 % Instead, we found that variability in differentiation outcomes can be largely explained by cell-intrinsic factors that are maintained over multiple freeze/thaw cycles. 
@@ -1070,7 +1103,7 @@ In support of this hypothesis, we identified several upregulated genes in cluste
 % To the best of our knowledge, the work presented here is the first to systematically survey differentiation biases at the scale of an entire cell bank. 
 % To address this question, we leveraged the large number of cells in the HipSci bank and the detailed phenotyping of each of these lines. 
 % We excluded the cell type of origin hypothesis \cite{hu2016effects} in this instance since all HipSci lines were skin-derived.
-% We also observed relatively weak relationships between differentiation efficiency and other biological factors, such as X chromosome inactivation status, which has been described as relevant for other differentiation lineages (i.e. endoderm lineage, see Chapter
+% We also observed relatively weak relationships between neural differentiation efficiency and other biological factors, such as X chromosome inactivation status, which has been described as relevant for other differentiation lineages (i.e. endoderm lineage, see Chapter
 % % \ref{chapter4}
 % 4 and \cite{cuomo2020single}).
 % Instead, we found that variability in differentiation outcomes can be largely explained by cell-intrinsic factors that are maintained over multiple freeze/thaw cycles. 

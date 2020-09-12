@@ -6,27 +6,58 @@
 \chapter{Concluding remarks}  %Title of the Seventh Chapter
 \label{chapter7}
 
-The work described in Chapter 6 is preliminary
-
 % from Paolo's thesis
 % use Visscher et al 2017 (10 years of GWAS) instead
-The success of the first genome-wide association studies, which uncovered common variants with moderate effect sizes for traits such as type 2 diabetes (Scott et al., 2007) and coronary artery disease (Burton et al., 2007), fuelled the hope that GWAS could be applied to characterise the genetic component of virtually any trait of interest \cite{visscher2012five}. 
+The success of the first genome-wide association studies, which uncovered common variants with moderate effect sizes for traits such as type 2 diabetes \cite{scott2007genome} and coronary artery disease \cite{wellcome2007genome}, fuelled the hope that GWAS could be applied to characterise the genetic component of virtually any trait of interest
+\cite{visscher2012five}. 
+% In parallel, 
+In the years that followed, on the other hand, the GWAS approach has been the subject of numerous and evolving criticisms.
+In particular,
+researchers grew skeptical about GWAS, arguing
+% as increasing numbers of traits have been surveyed using genetic association analyses, it has become increasingly clear that 
+these expectations were too optimistic and that GWAS could only produce few associations,
+variants identified could not explain estimated heritability \cite{manolio2009finding}, or that associations were spurious at all.
+Today, there is now much more acceptance of the experimental design because the empirical results have been robust and overwhelming.
+Indeed, GWAS actually informed a lot and bla bla bla \cite{visscher2012five}. 
+Undeniably, the genotype-to-phenotype map has proven more complex than initially hypothesised. 
+Many traits of interest are complex and can be regulated by tens or even hundreds of genetic loci with each locus having a small individual effect, polygenic models \cite{}
+% (Wood et al., 2014; Ripke et al., 2014). 
+and even omnigenic model \cite{boyle2017expanded}.
+% Moreover, genetic variants commonly entail pleiotropic effects across several related phenotypes and diseases (Fortune et al., 2015; Pickrell et al., 2016) and interactions of genetic effects with environmental factors and other contexts are common (Andreassi, 2009; Winkler et al., 2015). 
+\\
 
-However, as increasing numbers of traits have been surveyed using genetic association analyses, it has become increasingly clear that these expectations were too optimistic and that the genotype-to-phenotype map is more complex than initially hypothesised. 
-Many traits of interest are complex and can be regulated by tens or even hundreds of genetic loci with each locus having a small individual effect (Wood et al., 2014; Ripke et al., 2014). 
-Moreover, genetic variants commonly entail pleiotropic effects across several related phenotypes and diseases (Fortune et al., 2015; Pickrell et al., 2016) and interactions of genetic effects with environmental factors and other contexts are common (Andreassi, 2009; Winkler et al., 2015). 
 Additionally, many discovered variants lie in non-coding regions of the genome, hampering the interpretation of the molecular mechanisms that underlie such associations. 
 Genetic studies of gene expression levels and other molecular traits have helped identify the regulated gene for a fraction of such intergenic GWAS loci. 
-However, as the effects of genetic variants can arise in specific tissue types or under specific stimuli (GTEx Consortium, 2015; Fairfax et al., 2014), these genetic studies need to be conducted in disease-relevant cellular states. \\
+In particular eQTL mapping where common variants are associated with changes in gene expression have been very successful, with ...
+However, as the effects of genetic variants can arise in specific tissue types or under specific stimuli \cite{gtex2015genotype, barreiro2012deciphering}, these genetic studies need to be conducted in disease-relevant cellular states. 
+% \\
+These are often hard to access, limiting studies to easily accessible tissues such as skin and blood, or post-mortem tissues, which have their own issues.
+These tissues are also largely assessed using bulk RNA-seq, making it difficult to assess the relevant cell types, especially in complex tissues such as the brain.\\
 
+Additionally, many (common) diseases have developmental component thus it is important to assess genetic regulation at those early stages of human development, which are impossible to access \textit{in vivo}.\\
 
-Access to cell types tricky
+Solution: \textit{in vitro} systems
+Human iPSCs can be derived in a donor-specific manner, can be differentiated to virtually any cell type of interest.
+Combined with single cell readouts,..\\
 
-- \textit{in vitro} systems
+But
+
+Challenge 1: iPSC differentiation protocols are not very efficient.
+
+Challenge 2: methods to perform single cell eQTL mapping across cell types and states not there yet.\\
 
 \section{Human iPSCs to model development and disease}
 
-Efficiency of iPSC differentiation protocols
+In work presented in this thesis, we attempted to quantify the efficiency of two distinct iPSC differentiation protocols.
+In the first case, (chapter 4) short and sweet protocol, some differences between lines but not massive.
+Causes: XCI already known, not enough power to determine genetic causes, no multiple lines per donor either, donor confounded with line.\\
+
+In the second case (chapter 5) longer protocol, more lines.
+Huge difference across lines in ability to make neurons, gene signature predictive of poor neuronal differentiation efficiency, possibly a sub-population of iPSCs.
+Again, no power for genetics, no multiple lines per donor.
+Some batch effects, but not enough to explain differences.
+No correlation between the two protocols. \\
+
 Room for improvement in our understanding on how and when the protocols work
 Comparison between protocols, lineages, germ layers.
 Are some lines just not going to differentiate no anything?
@@ -35,21 +66,47 @@ And is this dependent on the cell type of origin of iPSCs?
 Is this a donor (genetic or other) effect or a line one?
 i.e. trying other lines from a same donor could be a solution?
 Or is this going to be limited to some people.
+... are all questions that remain to be investigated in future studies.\\
+
+Also challenge to verify similarity to corresponding \textit{in vivo} tissues.
 
 \section{Bridging the genotype-phenotype gap}
 
-Bridging the gap
 Still a large gap in our understanding of function from genotype to phenotype.
 Translation and clinical application still far away
-Single cell data helps
-from healthy to diseased
-
 One avenue to tackle these challenges is to increase statistical power by considering ever-increasing sample sizes. 
 A complementary direction of investigation is to consider joint analyses across multiple traits, molecular layers and contexts.
+eQTL mapping contributes to this by.. provides one layer of molecular understanding between genotype and phenotype \\
 
-Contribution here by adding dynamic axis..
+Single cell data has exploded recently, 
+can be deployed to scale, combined with pooling strategies.
+Can be used to estimate contexts
 
-discuss sharing of eQTL and cell-type specificity
+Adding cell-level context to eQTL mapping provides one more\\
+
+1) identify pure cell population + cell population-specific eQTL
+
+2) dynamic eQTL
+
+3) other interaction eQTL
+
+4) jointly (preliminary)\\
+
+1 - contribution to best-practice (ch3)
+
+also, discuss sharing of eQTL and cell-type specificity (ch4,5)
+
+and disease-relevance (coloc, ch5)\\
+
+2 - Contribution here by adding dynamic axis (ch4)
+\cite{francesconi2014effects, strober2019dynamic}\\
+
+3 - mention other interaction eQTL e.g. co-expression \cite{zhernakova2017identification}
+using ASE \cite{knowles2017allele}\\
+
+4 - The work described in Chapter 6 is preliminary, with further work required to confirm the reported findings, ..
+Future directions related to this..
+
 
 
 % \section{Key differences and commonalities between the two datasets}
@@ -96,18 +153,18 @@ discuss sharing of eQTL and cell-type specificity
 
 % We did also assess many more donors in the neuronal differentiation data: 215 (vs 125 from the endoderm study).
 
-\section{beyond the mean}
+% \section{beyond the mean}
 
-In this chapter we want to show examples of eQTL mapping using different phenotypes, where we specifically exploit the single cell resolution.
+% In this chapter we want to show examples of eQTL mapping using different phenotypes, where we specifically exploit the single cell resolution.
 
-Interaction eQTL can be though of as a sort of GxE effect, where the effect of a genetic variant on the expression of a given gene is modulated by another factor.
-If in traditional (GWAS) GxE analysis the factor is often an environmental variable such as diet or exercise, in eQTL we are more often looking at molecular changes, such as cell type composition, or the level of activation due to some stimulus, etc..
+% Interaction eQTL can be though of as a sort of GxE effect, where the effect of a genetic variant on the expression of a given gene is modulated by another factor.
+% If in traditional (GWAS) GxE analysis the factor is often an environmental variable such as diet or exercise, in eQTL we are more often looking at molecular changes, such as cell type composition, or the level of activation due to some stimulus, etc..
 
-Using bulk:
+% Using bulk:
 
-Sometimes, other genes can be used directly as factors, like in \cite{zhernakova2017identification}
+% Sometimes, other genes can be used directly as factors, like in \cite{zhernakova2017identification}
 
-However, if we want to identify molecular changes it only makes sense to assess expression at the single cell level, and truly identify continuous states..
+% However, if we want to identify molecular changes it only makes sense to assess expression at the single cell level, and truly identify continuous states..
 
 % \subsection{other results}
 

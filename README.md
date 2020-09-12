@@ -20,7 +20,7 @@ to do - or maybe just give link to pdf once it's uploaded to Cambridge system
 The work presented in this thesis has been done by me in collaboration with the persons listed in each section. 
 When using to information of this thesis, please cite the associated papers:
 
-**Chapter 3:**
+<!--**Chapter 3:**-->
 
 **Chapter 4:** [Chapter 4](https://www.nature.com/articles/s41467-020-14457-z)
 
@@ -34,10 +34,10 @@ Julie Jerber\*, Daniel D. Seaton\*, Anna S.E. Cuomo\*, Natsuhiko Kumasaka, James
 
 _Population-scale single-cell RNA-seq profiling across dopaminergic neuron differentiation._ bioRxiv, 2020, (\* equal contributions)
 
-The figures in the introduction are my own work. 
+The figures in the remaining chapters are my own work. 
 When using or adapting them, please cite this thesis as follows:
 
-Cuomo, A. (2020). _Using single-cell RNA-seq to assess the effect of common genetic variants on cell-to-cell variability_
+Cuomo, A.S.E. (2020). _Using single-cell RNA-seq to assess the effect of common genetic variants on gene expression during development_
 
 ## Acknowlegments
 
