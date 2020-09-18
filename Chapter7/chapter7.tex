@@ -8,104 +8,190 @@
 
 % from Paolo's thesis
 % use Visscher et al 2017 (10 years of GWAS) instead
-The success of the first genome-wide association studies, which uncovered common variants with moderate effect sizes for traits such as type 2 diabetes \cite{scott2007genome} and coronary artery disease \cite{wellcome2007genome}, fuelled the hope that GWAS could be applied to characterise the genetic component of virtually any trait of interest
-\cite{visscher2012five}. 
+After the success of the first genome-wide association studies (\textbf{section 
+% 1.1.7
+\ref{sec:gwas}}), which revealed common genetic variants with moderate effect sizes for complex traits such as type 2 diabetes \cite{scott2007genome} and coronary artery disease \cite{wellcome2007genome}, new hope was born that GWAS could be used to characterise the genetic basis of virtually any trait of interest \cite{visscher2012five}. 
 % In parallel, 
-In the years that followed, on the other hand, the GWAS approach has been the subject of numerous and evolving criticisms.
-In particular,
-researchers grew skeptical about GWAS, arguing
+This initial enthusiasm, however, was followed by growing skepticism, when subsequent studies on more and more traits only reported very small effect sizes \cite{hardy2009genomewide}.
+% Indeed, in the years that followed the GWAS approach became the subject of numerous and evolving criticisms.
+% Researchers argued that
 % as increasing numbers of traits have been surveyed using genetic association analyses, it has become increasingly clear that 
-these expectations were too optimistic and that GWAS could only produce few associations,
-variants identified could not explain estimated heritability \cite{manolio2009finding}, or that associations were spurious at all.
-Today, there is now much more acceptance of the experimental design because the empirical results have been robust and overwhelming.
-Indeed, GWAS actually informed a lot and bla bla bla \cite{visscher2012five}. 
-Undeniably, the genotype-to-phenotype map has proven more complex than initially hypothesised. 
-Many traits of interest are complex and can be regulated by tens or even hundreds of genetic loci with each locus having a small individual effect, polygenic models \cite{}
-% (Wood et al., 2014; Ripke et al., 2014). 
-and even omnigenic model \cite{boyle2017expanded}.
-% Moreover, genetic variants commonly entail pleiotropic effects across several related phenotypes and diseases (Fortune et al., 2015; Pickrell et al., 2016) and interactions of genetic effects with environmental factors and other contexts are common (Andreassi, 2009; Winkler et al., 2015). 
-\\
+% such initial expectations were too optimistic and that GWAS were only going to produce few associations, associations with very small effect sizes, 
+One key criticism to the GWAS approach was 
+the so called `missing heritability' \cite{manolio2009finding}.
+In particular, the variants identified could only explain a very small portion of the estimated heritability for most traits.
+% \cite{manolio2009finding}, and even that reported associations were mostly spurious or false.
+Additionally, the method itself was criticised from a more technical standpoint, with researchers arguing that the reported associations may be synthetic, or spurious \cite{maher2008case}.
+Today, there is much more acceptance of the experimental design because the empirical results have been robust and reproducible, largely proving these criticisms wrong.
+This was also due to the development of proper tools to account for confounders such as population structure (see \textbf{section 
+% 2.3
+\ref{sec:pop_struct_noLMM}}) and the reaching of agreements on GWAS design, for example on the significance threshold of p value < $5 \times 10^{-8}$.
+The further critique that GWAS findings have little biological and clinical relevance have also, to some extent, been confuted, as there have been examples where GWAS results have informed the molecular underlying causes of disease, and even directly led to clinical applications \cite{visscher201710}. \\
+
+Yet undeniably, the genotype-phenotype map has proven more complex than initially hypothesised. 
+First, many traits of interest are complex and can be regulated by tens or even hundreds of genetic loci with each locus having a small individual effect, leading to the so called polygenic model \cite{wood2014defining, loh2015contrasting, shi2016contrasting}.
+Recent work has actually extended this concept to that of an `omnigenic model', where the additive effect of most genetic variants, common and rare,  contributes to the heritability of complex traits \cite{boyle2017expanded}.
+Moreover, genetic variants commonly entail pleiotropic effects across several related traits and diseases \cite{pickrell2016detection, visscher2016plethora} and interactions of genetic effects with environmental factors (i.e. GxE \cite{garcia2005nat2, thomas2010gene}) as well as between genetic variants (i.e. epistasis \cite{wei2014detecting}) are common. \\
 
 Additionally, many discovered variants lie in non-coding regions of the genome, hampering the interpretation of the molecular mechanisms that underlie such associations. 
-Genetic studies of gene expression levels and other molecular traits have helped identify the regulated gene for a fraction of such intergenic GWAS loci. 
-In particular eQTL mapping where common variants are associated with changes in gene expression have been very successful, with ...
-However, as the effects of genetic variants can arise in specific tissue types or under specific stimuli \cite{gtex2015genotype, barreiro2012deciphering}, these genetic studies need to be conducted in disease-relevant cellular states. 
+Genetic studies of gene expression levels and other molecular traits have helped identify the regulated gene for some of these intergenic GWAS loci \cite{schadt2008mapping}.
+In particular, expression quantitative trait loci (eQTL) mapping - where common variants are associated with changes in gene expression - have been very successful, and studies of increasing sample size have demonstrated that eQTL can be detected for the vast majority of human genes, and increasingly for alternative RNA traits such as splicing isoforms and transcripts (\textbf{section 
+% 1.1.8
+\ref{sec:eqtl}}). 
+However, since such effects often arise in specific tissue-types or under specific stimuli \cite{alasoo2018shared}, eQTL mapping studies need to be conducted in disease-relevant cell types. 
 % \\
-These are often hard to access, limiting studies to easily accessible tissues such as skin and blood, or post-mortem tissues, which have their own issues.
-These tissues are also largely assessed using bulk RNA-seq, making it difficult to assess the relevant cell types, especially in complex tissues such as the brain.\\
+These are often hard to access, historically limiting studies to easily accessible tissues such as skin and blood \cite{fairfax2014innate, westra2014genome}, or to cell lines \cite{gibson2005quantitative}.
+More recently, the GTEx consortium released eQTL maps across over 50 human post-mortem tissues \cite{aguet2019gtex}.
+Whilst this represents a great resource, there are some issues with the use of data from post-mortem donors, as the processes triggered by death may alter physiologically normal RNA levels \cite{ferreira2018effects}.
+Moreover, these tissues have been assessed using bulk RNA-seq, making it difficult to isolate specific disease-relevant cell types, especially for rare cell types, or complex tissues like the brain.
+Finally, several complex diseases (such as schizophrenia \cite{owen2011neurodevelopmental}) have recently been shown to have a developmental component, making it important to assess genetic regulation at early stages of human development, most of which are impossible to access \textit{in vivo}, and across several individuals.\\
 
-Additionally, many (common) diseases have developmental component thus it is important to assess genetic regulation at those early stages of human development, which are impossible to access \textit{in vivo}.\\
+One solution to address these problems is the use of \textit{in vitro} systems.
+In particular, human iPSCs have proven to be a versatile model to study early development in a neatly controlled setup (\textbf{section 
+% 1.2.5
+\ref{sec:ipsc}}).
+Human iPSCs can be derived in a donor-specific manner, and can be differentiated towards virtually any cell type of interest.
+As a result, eQTL maps of iPSCs and iPSC-derived cell types have recently emerged \cite{kilpinen2017common, schwartzentruber2018molecular}. 
+In this thesis, I have argued that human iPSC technology combined with single cell expression readouts (which allow to isolate cell types of interest), and pooling strategies (which increase throughput by differentiating cells from several individuals in the same experiment), represent an excellent system to study the effect of common genetic variants on gene expression during cellular differentiation.\\
 
-Solution: \textit{in vitro} systems
-Human iPSCs can be derived in a donor-specific manner, can be differentiated to virtually any cell type of interest.
-Combined with single cell readouts,..\\
-
-But
-
-Challenge 1: iPSC differentiation protocols are not very efficient.
-
-Challenge 2: methods to perform single cell eQTL mapping across cell types and states not there yet.\\
+However, for many differentiation protocols, large variability has been observed in terms of differentiation efficiency across lines and experiments (the contributions of this thesis toward this problem are discussed in \textbf{section \ref{sec:discussion_part1}}).
+Moreover, approaches to perform eQTL mapping using single cell expression profiles, and across cell types and states have only just begun to emerge and dedicated, efficient methods are still missing (elaborated in \textbf{section \ref{sec:discussion_part2}}).
 
 \section{Human iPSCs to model development and disease}
+\label{sec:discussion_part1}
 
-In work presented in this thesis, we attempted to quantify the efficiency of two distinct iPSC differentiation protocols.
-In the first case, (chapter 4) short and sweet protocol, some differences between lines but not massive.
-Causes: XCI already known, not enough power to determine genetic causes, no multiple lines per donor either, donor confounded with line.\\
+In work presented in this thesis, we attempted to quantify the differentiation efficiency, across iPSC lines for two distinct protocols.
+In the first case, (described in \textbf{Chapter 
+% 4
+\ref{chapter4}}) the protocol used was very short (three days) and very well understood, describing early stages of endoderm differentiation.
+Even so, we observed noticeable differences between lines in their ability to differentiate towards definitive endoderm.
+We note that because we only chose to differentiate one cell line per individual, we could not distinguish between line effects and donor effects.
+We did investigate whether there might be genetic causes, by testing the effect of common variants on the differentiation ability, but our results were inconclusive, likely reflecting the lack of power of our study (with a sample size of only 125).
+We did identify some genes whose expression at iPSC stage was predictive of endoderm differentiation efficiency.
+These were mostly on chromosome X, confirming previous reports that the X chromosome activation status in human iPSC lines may hamper their quality, especially with regards to their differentiation potential.\\
 
-In the second case (chapter 5) longer protocol, more lines.
-Huge difference across lines in ability to make neurons, gene signature predictive of poor neuronal differentiation efficiency, possibly a sub-population of iPSCs.
-Again, no power for genetics, no multiple lines per donor.
-Some batch effects, but not enough to explain differences.
-No correlation between the two protocols. \\
+In the second study I describe in this thesis (in \textbf{Chapter 
+% 5
+\ref{chapter5}}) the differentiation protocol used was much longer (52 days), and we differentiated significantly more lines (215).
+Here, we observed quite extreme differences across lines in their ability to generate neurons, with roughly one third of the lines preferentially producing non-neuronal cell types, namely ependymal- and astrocyte-like cells.
+Again, we could not identify common genetic variants associated with our estimated neural differentiation efficiency, noting that the number of unique donors considered was still too low to be able to identify such genome-wide signals.
+We highlight that in this case, too, only one line was used per donor, making it impossible to disentangle the two effects.
+Similar to previous reports \cite{schwartzentruber2018molecular}, some batch effects were observed, but were significantly weaker than cell line effects.
+We did, however, identify an iPSC gene signature that was predictive of poor neural differentiation efficiency, finding around two thousand genes whose expression at pluripotent stage was significantly correlated (either positively or negatively) with a line's ability to generate neurons. 
+We further hypothesised that this may be linked to a sub-population of iPSCs, that exhibited differential expression of these genes.
+We speculate on possible mechanisms (\textbf{section
+% 5.7
+\ref{sec:neuroseq_discussion}}), but argue that further validation would be needed to state anything conclusively.
+Lastly, we observe no correlation between the differentiation efficiencies defined in the two protocols, suggesting that a line's differentiation potential toward one lineage is independent, or even inversely correlated with that toward another. \\
 
-Room for improvement in our understanding on how and when the protocols work
-Comparison between protocols, lineages, germ layers.
-Are some lines just not going to differentiate no anything?
-Or some lines are more prone to endoderm and consequently less so to ectoderm?
-And is this dependent on the cell type of origin of iPSCs?
-Is this a donor (genetic or other) effect or a line one?
-i.e. trying other lines from a same donor could be a solution?
-Or is this going to be limited to some people.
-... are all questions that remain to be investigated in future studies.\\
+I believe that future work is required to gain a better understanding on the mechanisms and causes behind an iPSC line's differentiation potential.
+In particular, I envision that a systematic comparison that includes several differentiation protocols, following different lineages and generating cells from different germ layers will greatly contribute to this knowledge.
+Additionally, it will be important to include multiple lines per individual in future studies, to be able to effectively disjoint the two sources of variation.
+Other sources of variation that may be worth investigating will be the original cell type that iPSC lines were derived from, as well as differences between donor characteristics including sex, age and ethnicity.
+Finally, larger sample size studies will allow to test for genome-wide genetic effects. \\
 
-Also challenge to verify similarity to corresponding \textit{in vivo} tissues.
+My hope is that the results of these comparative studies will shed light on several unanswered questions.
+For example, is an iPSC line's ability to differentiate toward mature cell types simply an indication of its (poor) quality?
+And if so, is it simply not possible to use these lines for differentiation studies?
+Or, alternatively, some lines are more prone toward an endoderm fate and as a consequence less so to mesoderm and ectoderm, for example?
+And to what extent (if any) is this dependent on the cell type of origin of those iPSCs?
+Importantly, is poor differentiation ability a characteristic of the cell line, or of the donor (genetic or otherwise)?
+This would have important consequences, for example on the importance on deriving several iPSC lines from the same donor to maximise yield of `good differentiating lines'.
+And if not, will it be harder to derive functional iPSC lines from some people, than others?
+These and other questions remain to be investigated.
+% \\
+
+% Finally, challenge to verify similarity to corresponding \textit{in vivo} tissues.
+% reference datasets..
+% Methods to `map' complicated, cell types not well characterised (in human).
+% Tricky to mimic timing, cell-to-cell interactions etc
 
 \section{Bridging the genotype-phenotype gap}
+\label{sec:discussion_part2}
 
-Still a large gap in our understanding of function from genotype to phenotype.
-Translation and clinical application still far away
-One avenue to tackle these challenges is to increase statistical power by considering ever-increasing sample sizes. 
-A complementary direction of investigation is to consider joint analyses across multiple traits, molecular layers and contexts.
-eQTL mapping contributes to this by.. provides one layer of molecular understanding between genotype and phenotype \\
+A large gap remains in our understanding of the functional mechanisms that link genotypes to phenotypes.
+% For the vast majority of genetic variants identified using association studies, translation and clinical application remains very far in the future.
+% One avenue to tackle these challenges is to consider joint analyses across multiple traits, molecular layers and contexts.
+eQTL studies can be used to fill some of this gap by 
+% contributes to this by 
+% providing one layer of molecular understanding between DNA variants and complex traits, by 
+identifying the putative regulatory role of common variants on gene expression.
+Indeed, when performed across tissues and contexts, eQTL maps can provide insights not only into which genes are regulated, but also where and under which conditions they are active.\\
 
-Single cell data has exploded recently, 
-can be deployed to scale, combined with pooling strategies.
-Can be used to estimate contexts
+The profiling of molecular traits, especially gene expression, at single cell resolution has represented a true revolution in the last ten years (\textbf{section
+% 3.1.2
+\ref{sec:scrnaseq}}).
+Indeed, experimental methods, and computational approaches to examine the resulting data, have become established in recent years, leading to the explosion of single cell expression data, with over one thousand datasets published since 2009.
+Single cell expression profiling can now be deployed at population-scale and, combined with pooling strategies, permits to efficiently measure cell-level expression across several individuals.
+Additionally, single cell transcriptomics can be used to estimate cell states and contexts, at increased resolution \cite{buettner2017f}.
+For example, rare cell types and cells in different phases of the cell cycle, can be identified unbiasedly, within one experiment.
+Lastly, the use of single cell expression profiles allows to order single cells along a continuous trajectory, without the need to discretise cells into distinct populations.
+Adding such cell-level context information to eQTL mapping provides one more layer of molecular understanding, potentially making the gap one bit smaller.\\
 
-Adding cell-level context to eQTL mapping provides one more\\
+In this thesis, I provide examples of how the single cell resolution of expression profiles can be leveraged to better understand the molecular machinery of gene regulation.
+First, single cell expression profiles can be used to unbiasedly identify pure cell population, quantify expression within those, and then test for eQTL in such populations.
+Second, single cell profiles can be used to order cells along a differentiation trajectory, and used to identify dynamic eQTL, i.e. eQTL that vary in their strength over time.
+Third, single cell transcriptomic data can be used to define other axes of variation, and thus context-specific eQTL can be identified across a plethora of cell states.
+% change this below, remove multivariate aspect and instead highlight disease-relevance
+Finally, the linear mixed model framework (\textbf{section
+% 2.3.2
+\ref{sec:linear_mixed_models}}) can be adapted to jointly test for context-specific eQTL in a multivariate fashion, across several cell types and states simultaneously.\\
 
-1) identify pure cell population + cell population-specific eQTL
+Historically, eQTL have been mapped using bulk RNA-seq profiles as a measure of expression level.
+In \textbf{Chapter 
+% 3
+\ref{chapter3}}, I select human iPSCs as a homogeneous cell type, and systematically compare performance of eQTL mapping using single cell RNA-seq. 
+First, we show that it is possible to perform large-scale single cell genetics, although with lower statistical power as compared to bulk studies, at least within a well defined, pure, cell population. 
+We also, to an extent, confirm feasibility of these studies across scRNA-seq approaches, using both plate-based and droplet-based methods to quantify expression.
+Secondly, we provide first hints towards the establishment of a best-practice protocol to maximise yield of single cell eQTL studies, identifying the mean as the optimal aggregation method, and principal component analysis as the preferable approach to capture global expression trends which should be include in the model as covariates. 
+% \\
 
-2) dynamic eQTL
+Once a sensible and robust approach for identifying eQTL within a well-defined homogeneous population has been established, I used variations of this model to map eQTL in specific cell populations identified along cellular differentiation in two different systems.
+First, I mapped eQTL at three early developmental stages along definitive endoderm differentiation (\textbf{Chapter 
+% 4
+\ref{chapter4}}).
+Next, I mapped eQTL across a total of 14 different cell type-and-condition combinations during neuronal differentiation (\textbf{Chapter 
+% 5
+\ref{chapter5}}). 
+Here, we introduced a variance term in the model based on the observation that the number of cells varied widely between donors thus rendering the expression estimates less precise. 
+This change resulted in a great boost in power.
+\\
+% cell type eQTL mapping in specific stages along two differentiation protocols (Chapters 4, 5) and in one condition (\textbf{Chapter 5}).
 
-3) other interaction eQTL
+The availability of eQTL maps across cell types and stages provides the opportunity to assess the amount of sharing of eQTL signal.
+In particular, we found a large amount of cell type-specific eQTL, i.e. eQTL that could only be detected in one of the cell populations considered.
+Additionally, we found several eQTL that had not been previously detected in primary tissues (i.e. from GTEx) or in iPSCs.
+Thus this work represents an important resource of genetic regulation maps of gene expression in previously unexplored developmental stages and cell types. \\
 
-4) jointly (preliminary)\\
+In \textbf{Chapter 5}, to assess disease-relevance of our identified associations, we performed colocalisation analysis between eQTL maps from our neuronal cell populations and GWAS for neurological traits.
+Here, too, we uncover several colocalisation events that had not been previously been identified, using existing eQTL maps.
+Indeed, some of these examples provide insight into the genetic underpinning of neurological diseases, such as schizophrenia.\\
 
-1 - contribution to best-practice (ch3)
+Next, in \textbf{Chapter 4}, we added the temporal axis, by identifying dynamic eQTL, i.e. eQTL whose strength is modulated by developmental time.
+This extends similar work from \cite{francesconi2014effects, strober2019dynamic}, to single cell-resolved data.
+Indeed, in this study cells were collected at very close time points, which combined with varying differentiation rates across both cells and lines resulted into a continuous differentiation trajectory.
+Importantly, we observed that changes in genetic effects over time did not merely reflect changes in overall expression.
+Moreover, we found that dynamic eQTL were enriched for epigenetic marks consistent with promoter and enhancer regions.
+% \\
+We next used the same approach, building on allele-specific expression (similar to \cite{knowles2017allele} for GxE), to test for eQTL effect modulated by alternative cell states, including cell cycle phase and metabolic state (\textbf{Chapter 4}).
+This type of analysis is similar to previous work to identify `interaction eQTL' \cite{zhernakova2017identification, van2018single}. \\
 
-also, discuss sharing of eQTL and cell-type specificity (ch4,5)
+% remove this last paragraph, highlight importance of cell type specificity and iPSCs as a model again.
+Finally, in \textbf{Chapter 6} I present sc-StructLMM, a novel statistical method that allows to jointly test for context-specific eQTL across several cell states and types simultaneously.
+The model can incorporate any discrete or continuous cellular states, thus bypassing the need for defining discrete cell populations.
+Moreover, by testing all conditions jointly it removed the downstream step of meta-analysing results obtained across different conditions. 
+I applied this model on differentiation iPSCs from the study described in \textbf{Chapter 4}, uncovering context-specific effects for several of the eQTL identified.
+Moreover, I use the model to estimate cell-level genetic effect sizes, thus pinpointing the cell sub-populations where a given eQTL is active. 
+The work described in this chapter is preliminary, with further work required to confirm the reported findings.
+In particular, key aspects for the correct application of the model will include exploring and evaluating approaches to define cellular states to include as factors in the model.
+Moreover, additional downstream analysis steps should be added to help determining which factors are responsible for the interaction effects, and which genes or pathways are involved.
+Additionally, future improvements regard the scalability of the approach, to accommodate larger single cell studies such as the dataset described in \textbf{Chapter 5}.
+Finally, all models described in this thesis build on a LMM, which assumes normality of the phenotype vector.
+Future work should include the evaluation of the feasibility of integrating non-Gaussian likelihoods in the models to map eQTL using single cell RNA-seq expression profiles.\\
 
-and disease-relevance (coloc, ch5)\\
-
-2 - Contribution here by adding dynamic axis (ch4)
-\cite{francesconi2014effects, strober2019dynamic}\\
-
-3 - mention other interaction eQTL e.g. co-expression \cite{zhernakova2017identification}
-using ASE \cite{knowles2017allele}\\
-
-4 - The work described in Chapter 6 is preliminary, with further work required to confirm the reported findings, ..
-Future directions related to this..
+Overall, the work in this thesis demonstrates the importance of modelling context-specific eQTL effects across cellular types and states, identified at single cell resolution.
+I test and apply several existing and novel methods to map eQTL using single cell data, all building on the linear mixed model framework. 
+Such methods, combined with the increasing availability of population-scale single cell expression studies, have the potential to further advance our understanding the complex machinery that links genotype to phenotype.
 
 
 

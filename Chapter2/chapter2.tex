@@ -6,26 +6,35 @@
 \chapter{Linear mixed models for quantitative genetics}
 \label{chapter2}
 
-In chapters 3-6 I describe and develop various models for \glspl{eqtl} mapping using single cell expression profiles. 
+In \textbf{Chapters 
+% 3-6
+\ref{chapter3}-\ref{chapter5}}
+I describe and develop various models for \glspl{eqtl} mapping using single cell expression profiles. 
 All of these models build on a 
 linear mixed model (LMM)
 % \gls{lmm}
 framework. 
 I use this chapter to provide an overview of linear and linear mixed models and their application in quantitative genetics, with a focus on their use for \gls{eqtl} mapping. 
-I will also introduce \gls{lmm}-based models to test for \gls{gxe} interactions, to provide the necessary theoretical foundations for some of the analyses in Chapters 4 and 6.\\
+I will also introduce \gls{lmm}-based models to test for \gls{gxe} interactions, to provide the necessary theoretical foundations for some of the analyses in \textbf{Chapters 
+% 4
+\ref{chapter4}}.
+% and \textbf{
+% 6
+% \ref{chapter6}}.
+\\
 
 \gls{lmm}s are a very popular framework for many genetic analyses. 
 They are especially appealing because they provide robust control for confounding factors. 
-While inference using \gls{lmm}s is in general computationally demanding, there exist efficient implementations of specific \gls{lmm}s, which enable applications to large datasets. 
-In this chapter, I give an overview of the use of \gls{lmm}s in genetic association studies: in sections \ref{sec:linear_regression}-\ref{sec:linear_models_genetics}, I discuss the linear model (also called linear regression) and basic applications for \gls{gwas} and \gls{qtl} mapping. 
-In section \ref{sec:linear_mixed_models}, I introduce the \gls{lmm} and discuss applications in genetics, with a focus on the use of \gls{lmm}s for \gls{eqtl} mapping. 
-Finally, in Section \ref{sec:lmm_gxe}, I discuss extensions of the \gls{lmm} framework to test for \gls{gxe} interactions.\\
+While inference using \gls{lmm}s is in general computationally demanding, there exist efficient implementations of specific \gls{lmm}s, which enable application to large datasets. 
+In this chapter, I give an overview of the use of \gls{lmm}s in genetic association studies: in \textbf{sections \ref{sec:linear_regression}-\ref{sec:linear_models_genetics}}, I discuss the linear model (also called linear regression) and basic applications for \gls{gwas} and \gls{qtl} mapping. 
+In \textbf{section \ref{sec:linear_mixed_models}}, I introduce the \gls{lmm} and discuss applications in genetics, with a focus on the use of \gls{lmm}s for \gls{eqtl} mapping. 
+Finally, in \textbf{section \ref{sec:lmm_gxe}}, I discuss extensions of the \gls{lmm} framework to test for \gls{gxe} interactions.\\
 
 \newpage
 
-For mathematical model descriptions throughout this thesis, I use the following notation: bold, small letters symbolise one-dimensional column vectors (e.g. $\mathbf{v}$) and bold capitalised letters matrices (e.g. $\mathbf{M}$). 
+For mathematical model descriptions throughout this thesis, I use the following notation: bold, lower-case letters symbolise one-dimensional column vectors (e.g. $\mathbf{v}$) and bold capitalised letters matrices (e.g. $\mathbf{M}$). 
 A normal distribution is specified by $ \mathcal{N}(\mu, \sigma^2)$, where $\mu$, $\sigma$ are two scalars representing the mean and standard deviation parameters.
-For simplicity, I use the same notation for multivariate normal (e.g. $ \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$), noting that the specified parameters ($\boldsymbol{\mu}$ and $\boldsymbol{\Sigma}$) are a $N \times 1$ mean vector, and a $N \times N$ covariance matrix, respectively.
+For simplicity, I use the same notation for multivariate normal (e.g. $ \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})$), noting that the specified parameters ($\boldsymbol{\mu}$ and $\boldsymbol{\Sigma}$) are an $N \times 1$ mean vector, and an $N \times N$ covariance matrix, respectively.
 
 %********************************** %First Section  **************************************
 
@@ -162,8 +171,8 @@ Note that eq. \eqref{eq:Linear_regression_REML_sigma} is identical to eq. \eqref
 
 As we have seen, originally GWAS used contingency table tests (such as the $\chi^2$ test) to assess the significant effect of a variant on a dichotomous trait \cite{mccarthy2008genome}.
 However, these tests are sub-optimal in the case of quantitative traits, such as height and weight, which would need to be arbitrarily discretised.
-Additionally, these tests are not equipped to account for confounding factors (these are described in more detail in section \ref{sec:linear_mixed_models}).
-As a consequence, regression-based models became the preferred approach, because they allow covariates adjustment, and can directly provide a measure of the effect size for each tested variant \cite{bush2012genome}.\\
+Additionally, these tests are not equipped to account for confounding factors (these are described in more detail in \textbf{section \ref{sec:linear_mixed_models}}).
+As a consequence, regression-based models became the preferred approach, because they allow covariate adjustment, and can directly provide a measure of the effect size for each tested variant \cite{bush2012genome}.\\
 
 When applying regression models in genetic association studies, the phenotype of interest is modeled as the outcome variable ($\mathbf{y}$). 
 In \gls{gwas}, we typically look at `global phenotypes', including traits such as height and eye colour or disease status/risk for complex disorders \cite{mccarthy2008genome}.
@@ -212,7 +221,7 @@ For binary outcomes, the logistic (or logit) link:
 is commonly used, hence the name logistic regression.
 
 % In other cases, we might have count data better approximated by a Poisson distribution, etc.
-The three requirements of a GLM are i) to have a linear predictor ($\mathbf{z} = \mathbf{g}\beta + \boldsymbol{\psi}$), ii) that the distribution of $\mathbf{y}$  belongs to the exponential family (Box\ref{box:exp_fam}), and iii) that we can define a link function $g$ such that:
+The three requirements of a GLM are i) to have a linear predictor ($\mathbf{z} = \mathbf{g}\beta + \boldsymbol{\psi}$), ii) that the distribution of $\mathbf{y}$  belongs to the exponential family (\textbf{Box \ref{box:exp_fam}}), and iii) that we can define a link function $g$ such that:
 
 \begin{equation*}
  E[\mathbf{y}] = g(\mathbf{z})^{-1}. 
@@ -226,7 +235,7 @@ The three requirements of a GLM are i) to have a linear predictor ($\mathbf{z} =
 \newpage
 
 \begin{Comment}
-\hspace{-2.5mm}\textbf{Box\ref{box:exp_fam}: Exponential Family distributions}\label{box:exp_fam}\\
+\hspace{-2.5mm}\textbf{Box \ref{box:exp_fam}: Exponential Family distributions}\label{box:exp_fam}\\
 % \small
 In probability and statistics, an exponential family \cite{andersen1970sufficiency} is a parametric set of probability distributions of the form:
 
@@ -282,6 +291,12 @@ $h(x)=1, \hfill T(x)=x, \hfill \theta = p, \hfill \eta(\theta) = logit(p), \hfil
 
 \newpage
 
+% \subsection{Modelling non-Gaussian data}
+% \label{sec:non_gaussian}
+
+% variance stabilising 
+% Warp LMM
+
 \subsection{Statistical hypothesis testing}
 \label{sec:hypothesis_testing}
 
@@ -321,14 +336,14 @@ Finally, if this probability is low (under a defined threshold, e.g. p value < 0
 
 In statistical hypothesis testing, two types of errors can be made. 
 We can either reject $H_0$ when $H_0$ is true, thus generating a false positive (type I error), or reject $H_1$ when $H_1$ is true, generating a false negative (type II error).
-Other concepts that are central to statistical hypothesis testing are the significance level, defined as the type I error rate (i.e. the expected percentage of false positives), and the statistical power, which is the true positive rate under $H_1$ (i.e. the ability to recover true associations, see Box\ref{box:confusion_mat}).
+Other concepts that are central to statistical hypothesis testing are the significance level, defined as the type I error rate (i.e. the expected percentage of false positives), and the statistical power, which is the true positive rate under $H_1$ (i.e. the ability to recover true associations, see \textbf{Box \ref{box:confusion_mat}}).
 
 %****** Box on confusion matrix ******
 
 \newpage
 
 \begin{Comment}
-\hspace{-2.5mm}\textbf{Box\ref{box:confusion_mat}: Key concepts of statistical testing}\label{box:confusion_mat}\\
+\hspace{-2.5mm}\textbf{Box \ref{box:confusion_mat}: Key concepts of statistical testing}\label{box:confusion_mat}\\
 % \small
 Confusion matrix for statistical classification:
 
@@ -369,7 +384,7 @@ Below, I list some key concepts in statistical testing and their relationship to
 
 \vspace{5mm}
 
-Three approaches are commonly used for statistical testing in genetic association analyses: the Wald test, the \gls{lrt}, and the score test (Fig. \ref{fig:hypothesis_tests}).
+Three approaches are commonly used for statistical testing in genetic association analyses: the Wald test, the \gls{lrt}, and the score test (\textbf{Fig. \ref{fig:hypothesis_tests}}).
 In the next paragraphs, I will describe briefly all three but note that only the latter two (LRT and score test) are used in this thesis.
 
 \begin{figure}[h]
@@ -377,7 +392,7 @@ In the next paragraphs, I will describe briefly all three but note that only the
 \includegraphics[width=15cm]{Chapter2/Fig/wald_lrt_score_tests.png}
 \caption[Wald, LRT and score test]{\textbf{The Wald test, the likelihood-ratio test and the score test}.\\
 The three most commonly used statistical testing approaches are illustrated here in the univariate case (single parameter $\theta$). 
-On the x axis is the parameter $\theta$ on the y axis the log likelihood $\ell(\theta)$.
+On the x axis is the parameter $\theta$, and on the y axis the log likelihood $\ell(\theta)$.
 The Wald test essentially evaluates the difference between the \gls{mle} $\hat{\theta}$ and the parameter under $H_0$, $\theta_0$.
 The likelihood-ratio test evaluates the difference between the log likelihoods evaluated at those values, i.e. $\ell(\hat{\theta})$ and $\ell(\theta_0)$.
 Finally, the score test evaluates the slope of $\ell(\theta)$ at $\theta_0$. Note that the slope at $\hat{\theta}$ is $=0$ by definition, as the MLE maximises $\ell(\theta)$.}
@@ -454,7 +469,7 @@ To understand the intuition behind this test let us consider again the univariat
 \end{equation}
 
 At the \gls{mle} $\hat{\theta}$, the log likelihood is maximised and therefore its gradient $S(\hat{\theta})$ is equal to $0$.
-On the contrary, in principle, $ S(\theta_0) \neq 0 $ (Fig. \ref{fig:hypothesis_tests}). 
+On the contrary, in principle, $ S(\theta_0) \neq 0 $ (\textbf{Fig. \ref{fig:hypothesis_tests}}). 
 Intuitively, the further away from 0, the more likely we are to reject the null hypothesis.
 
 \newpage
@@ -462,21 +477,21 @@ Intuitively, the further away from 0, the more likely we are to reject the null 
 \subsubsection{Intuition on differences between LRT and score test}
 
 In this thesis, we apply both the \gls{lrt} and the score test, for different applications.
-I use this paragraph to highlight the key differences between the two tests and provide an intuition as to when one should use one or the other.
+I use this paragraph to highlight the key differences between the two tests and provide an intuition as to when we should use one or the other.
 First of all, it can be shown that \cite{engle1984wald}:
 
 \begin{equation}\label{eq:W_LLR_LM}
     W \geq \mathrm{LLR} \geq \mathrm{LM}.
 \end{equation}
 
-Let us exclude the Wald test for this purposes, eq. \eqref{eq:W_LLR_LM} guarantees that the log-likelihood ratio is always equal to or greater than the Lagrange multiplier.
-The Neyman-Pearson lemma \cite{neyman1933ix} proves that the power  of the \gls{lrt}, defined as the probability of rejecting the null hypothesis when it is false: $P = P($reject $H_0 | H_1)$ (Box\ref{box:confusion_mat}) is the same or higher than the power of the score test:
+Let us exclude the Wald test for this purpose, eq. \eqref{eq:W_LLR_LM} guarantees that the log-likelihood ratio is always equal to or greater than the Lagrange multiplier.
+The Neyman-Pearson lemma \cite{neyman1933ix} proves that the power  of the \gls{lrt}, defined as the probability of rejecting the null hypothesis when it is false: $P = P($reject $H_0 | H_1)$ (\textbf{Box \ref{box:confusion_mat}}) is the same or higher than the power of the score test:
 
 \begin{equation}
     (P_W \geq) P_{\mathrm{LLR}} \geq P_{\mathrm{LM}}.
 \end{equation}
 
-On the other hand, the false positive rate (FPR, Box\ref{box:confusion_mat}) of the \gls{lrt}, defined as the probability of rejecting the null hypothesis when it is true: FPR $= P($reject $H_0 | H_0)$ is also higher than the FPR of the score test.
+On the other hand, the false positive rate (FPR, \textbf{Box \ref{box:confusion_mat}}) of the \gls{lrt}, defined as the probability of rejecting the null hypothesis when it is true: FPR $= P($reject $H_0 | H_0)$ is also higher than the FPR of the score test.
 The score test is therefore more accurate, making a smaller (or equal) number of Type I errors. \\
 
 % One advantage of the \gls{lrt} is that it is robust to re-parametrisation of the parameters, whereas the score test is not (for completeness, neither is the Wald test). 
@@ -489,7 +504,11 @@ For example, $-\infty < \beta < \infty$, so testing $H_1: \beta \neq 0$ satisfie
 On the other hand, $0 < \sigma^2 < \infty$ so testing $H_1: \sigma^2 \neq 0$ violates the assumption, because the value $0$ is at the boundary.
 Similarly, the score test statistic does not follow a $\chi^2_1$ distribution in the presence of variance parameters, however an alternative test statistic can be defined which follows a linear combination of $\chi^2_1$ distributions, and efficient methods to evaluate its significance have been proposed by Davies \cite{davies1980algorithm}, Kuonen \cite{kuonen1999miscellanea} and Liu \cite{liu2009new, lee2012optimal}. \\
 
-I will use the \gls{lrt} in the analyses in Chapters 3-5, where the tests evaluate $\beta$.
+I will use the \gls{lrt} in the analyses in \textbf{Chapters 
+% 3
+\ref{chapter3}-
+% 5
+\ref{chapter5}}, where the tests evaluate $\beta$.
 I use Rao's score test in Chapter 6, where I will be evaluating the variance parameter $\sigma^2$.
 
 
@@ -498,14 +517,14 @@ I use Rao's score test in Chapter 6, where I will be evaluating the variance par
 
 Hundreds of thousands or millions of variants may be individually tested within a typical human \gls{gwas}. 
 In e\gls{qtl} mapping, we might test tens of thousands of genes, each essentially equivalent to a \gls{gwas} trait. 
-Even when we only test for local e\gls{qtl} (in \textit{cis}, only SNPs within a window around the gene position, see section \ref{sec:eqtl}), we will still test hundreds of variants per gene, bringing the average number of tests performed well into the millions.
+Even when we only test for local e\gls{qtl} (in \textit{cis}, only SNPs within a window around the gene position, see \textbf{section \ref{sec:eqtl}}), we will still test hundreds of variants per gene, bringing the average number of tests performed well into the millions.
 When performing such a large number of tests, considering single test p values results in a high number of false positives (for example, for p value < 0.01 and 10$^6$ tests we expect 10,000 false positives under the null hypothesis). 
 This problem is known as the multiple hypothesis testing problem. 
 In the next section, I give a brief overview of the methods commonly used in genetic analysis to correct for multiple hypothesis testing, with a focus on methods used in e\gls{qtl} mapping.
 
 \subsubsection{Controlling family-wise error rate} 
 
-One strategy to perform multiple testing correction is to control the probability of having at least one false positive for a trait, which corresponds to a trait-wise p value known as family-wise error rate (FWER, Box\ref{box:confusion_mat}).
+One strategy to perform multiple testing correction is to control the probability of having at least one false positive for a trait, which corresponds to a trait-wise p value known as family-wise error rate (FWER, \textbf{Box \ref{box:confusion_mat}}).
 The widely used Bonferroni method follows this strategy assuming independence between tests \cite{laird2010fundamentals}. 
 Given a desired family-wise significance level $\alpha$, the method consists of calculating adjusted p values as $P_{adj} = P*n $, where n is the number of tests, and setting $P_{adj} < \alpha$ . 
 This strategy ensures FWER < $\alpha$. 
@@ -543,14 +562,14 @@ This can be improved by increasing the number of permutations, e.g. using M as l
 % \\
 A second approach is to adjust for multiple testing when considering a more complex hypothesis, for example by pooling across variants, thus requiring fewer permutations.
 % I am wondering are you creating a new test which is to identify the minimal p-value for the region and want to correct this using permutations? 
-As an example, in the method described in \cite{ongen2016fast}, the minimal p value for each permutation across all SNPs, and use those to build a beta distribution of background p values, against which to compare the real p values.
+As an example, in the method described in \cite{ongen2016fast}, the minimal p values for each permutation across all SNPs are selected, and used to build a beta distribution of background p values, against which to compare the real p values.
 % Recently, one method has been developed that uses permutation results for as little as (M=) 50-100 permutations to estimate a full distribution of background permuted p values, 
 This method has been shown to robustly work for as little as (M=) 50-100 permutations, making use of the benefits of the assumption-free permutation approach without too much of the computational burden \cite{ongen2016fast}. 
 This is the method I will use in Chapters 3-5 of this thesis to control for FWER at gene level when performing large scale \gls{eqtl} mapping.
 
 \subsubsection{Controlling false discovery rate}
 
-An alternative solution for multiple testing correction is to control the \gls{fdr}, i.e. the expected percentage of false discoveries (Box\ref{box:confusion_mat}).
+An alternative solution for multiple testing correction is to control the \gls{fdr}, i.e. the expected percentage of false discoveries (\textbf{Box \ref{box:confusion_mat}}).
 The most widely used FDR-based correction method is the Benjamini-Hochberg (BH) procedure \cite{benjamini1995controlling}, which again assumes independence between tests. 
 Let us consider T tests with p values $p_1, p_2, ..., p_T$ and let $r_1, r_2, ..., r_T$ be their ranks (the smallest p value has rank 1, the largest has rank T), defining adjusted p values as $P_{adj,i} = \frac{T*p_i}{r_i} $ and setting $P_{adj,i} <\alpha$ ensures FDR < $\alpha$ \cite{yekutieli1999resampling}.
 Alternatively, the Storey procedure (proposed in 2002 \cite{storey2002direct, storey2003statistical}) optimises the BH procedure by taking into account the distribution of the p values in the experiment.
@@ -583,8 +602,8 @@ If that is the case, the model is said to be calibrated.
 To verify that a model is calibrated we can disrupt the association between genotypes and phenotypes, by randomly permuting the genotypes. 
 A representation that is often used to compare the observed (permuted) and the expected distributions of p values is the \gls{qq} plot. 
 In a \gls{qq} plot the observed $-\log_{10}$(p value) is plotted against the expected $-\log_{10}$(p value), where the expected value is obtained by drawing from a uniform distribution. 
-I define as `confounding', variables that are correlated with the genotype $\mathbf{g}$ (and sometimes also the phenotype $\mathbf{y}$) and thus may create spurious associations when left unaccounted for (see also section \ref{sec:linear_mixed_models}).
-Inflated \gls{qq} plots are typically associated with the presence of such confounding factors, and can be used as a diagnostic tool (Fig. \ref{fig:qqplots}). 
+I define as `confounding', variables that are correlated with the genotype $\mathbf{g}$ (and sometimes also the phenotype $\mathbf{y}$) and thus may create spurious associations when left unaccounted for (see also \textbf{section \ref{sec:linear_mixed_models}}).
+Inflated \gls{qq} plots are typically associated with the presence of such confounding factors, and can be used as a diagnostic tool (\textbf{Fig. \ref{fig:qqplots}}). 
 
 % \vspace{2mm}
 
@@ -673,7 +692,7 @@ MOFA \cite{argelaguet2018multi}.
 
 One major source of confounding effects in genetic analysis - that I have purposefully not discussed thus far -  is latent population substructure, which includes population stratification (the presence in the study sample of individuals with different ancestral and demographic histories) and relatedness between individuals, both known and cryptic (evidence that individuals in the study sample have residual, non-trivial degrees of relatedness) \cite{mccarthy2008genome}.
 It was acknowledged, even before the first \gls{gwas} was conducted, that there was a possibility of identifying false positives (or that true positives may be masked) when using population based association studies (instead of family based linkage studies), due to those confounding effects \cite{burton2005key}. 
-This is because both phenotypic prevalence (proportion of individuals exhibiting the phenotype) and allele frequencies (frequencies of a specific allele within a population) vary across different populations, which may result in the identification of spurious association between variants and the phenotype of interest due to ethnicity or population sub-structure \cite{burton2005key} (Fig. \ref{fig:conf_cov}).
+This is because both phenotypic prevalence (proportion of individuals exhibiting the phenotype) and allele frequencies (frequencies of a specific allele within a population) vary across different populations, which may result in the identification of spurious association between variants and the phenotype of interest due to ethnicity or population sub-structure \cite{burton2005key} (\textbf{Fig. \ref{fig:conf_cov}}).
 
 % name examples
 % and mention differences as compared to covariates: pop struct affects both y and g
@@ -682,7 +701,7 @@ This is because both phenotypic prevalence (proportion of individuals exhibiting
 \centering
 \includegraphics[width=10cm]{Chapter2/Fig/confounders_covariates.png}
 \caption[Confounders and covariates]{\textbf{Confounders and covariates}.\\
-Traditionally `confounders' are those variables that are correlated with both the genotype vector and the phenotype, i.e. hidden common causes of both $\mathbf{g}$ an  $\mathbf{y}$. 
+Traditionally `confounders' are those variables that are correlated with both the genotype vector and the phenotype, i.e. hidden common causes of both $\mathbf{g}$ and  $\mathbf{y}$. 
 For example, population structure/relatedness ($\mathbf{K}$) is a confounder in population genetics studies. 
 On the other hand, other covariates such as sex\footnote{Unless we are testing genes on the X or Y chromosomes.} and batch only have an effect on $\mathbf{y}$.
 By including them as covariates in the model, we control for additional phenotypic variation and thereby increase association power. 
@@ -838,7 +857,7 @@ If we assume that $\mathbf{b}$ is drawn from a normal distribution such that: $\
 The $\mathrm{RRM}$ can also be interpreted as an IBD relatedness matrix where the base population
 is the current population \cite{powell2010reconciling}. \\
 
-Throughout this thesis, we use the $\mathrm{RRM}$ described in \cite{yang2011gcta} as implemented in plink \cite{purcell2007plink}.
+Throughout this thesis, we use the $\mathrm{RRM}$ described in \cite{yang2011gcta} as implemented in PLINK \cite{purcell2007plink}.
 
 % Hayes et al. 74 
 
@@ -883,7 +902,7 @@ However, for the model in eq. \eqref{eq:Linear_mixed_model}, i.e. when the covar
  \mathbf{y} \sim  \mathcal{N}(\mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta, \sigma_g^2\mathbf{K} + \sigma_n^2\mathbf{I}),
 \end{equation}
 
-it is possible to speed up computations \cite{kang2008efficient, kang2010variance, lippert2011fast, zhou2012genome} enabling applications to large cohorts. 
+it is possible to speed up computations \cite{kang2008efficient, kang2010variance, lippert2011fast, zhou2012genome} enabling application to large cohorts. 
 
 These strategies reduce the computational complexity from $\mathcal{O}(N^3)$
 per-variant to a single  $\mathcal{O}(N^3)$ cost up-front and a per-variant complexity of  $\mathcal{O}(N^2)$.
@@ -939,7 +958,8 @@ Both can be solved efficiently as follows:
 \end{equation}
 
 where we define $\mathbf{D_{\delta}}=(\mathbf{S} + \delta\mathbf{I})^{-1}$ which is a diagonal matrix whose i$^{th}$ element is: $\frac{1}{S_{ii} + \delta}$ and use the property of orthonormality of $\mathbf{Q}$ (i.e. $\mathbf{Q}^{-1} = \mathbf{Q}^T$).
-As a result, this operation can be computed in linear time $\mathcal{O}(N)$.
+As a result, this operation can be computed in linear time $\mathcal{O}(N)$. 
+Next,
 
 \begin{equation}\label{eq:fast_lmm_Sigma_determinant}
     |\boldsymbol{\Sigma}| = |\mathbf{Q} (\mathbf{S} + \delta\mathbf{I})\mathbf{Q}^T|= |\mathbf{Q}||(\mathbf{S} + \delta\mathbf{I})||\mathbf{Q}^T| = |\mathbf{S} + \delta\mathbf{I}| = |\mathbf{D_{\delta}}^{-1}| = - |\mathbf{D_{\delta}}|,
@@ -960,7 +980,7 @@ We can now re-write the log-likelihood as:
 
 where $\tilde{\mathbf{y}} = \mathbf{Q}^T\mathbf{y}$ and $\tilde{\mathbf{X}}= \mathbf{Q}^T\mathbf{X}$ are the rotated phenotype vector and covariate matrix (including the genotype vector $\mathbf{g}$).
 
-If we consider $\delta$ fixed, the first and third terms are constant, so I can rewrite:
+If we consider $\delta$ fixed, the first and third terms are constant, so we can rewrite:
 
 \begin{equation}
     \ell = const - \frac{N}{2} \log(\sigma_g^2) - \frac{1}{2\sigma_g^2}[\mathbf{D_{\delta}}^{\frac{1}{2}}\tilde{\mathbf{y}}-\mathbf{D_{\delta}}^{\frac{1}{2}}\tilde{\mathbf{X}}\boldsymbol{\beta}]^T[\mathbf{D_{\delta}}^{\frac{1}{2}}\tilde{\mathbf{y}}-\mathbf{D_{\delta}}^{\frac{1}{2}}\tilde{\mathbf{X}}\boldsymbol{\beta}].
@@ -977,7 +997,7 @@ To further speed up computations, $\boldsymbol{\alpha}$ and $\delta$ are only op
 Since there is no closed-form for $\delta$, we use the Brent search numerical procedure \cite{goddard2009estimating} to find the optimal $\hat{\delta}$.
 For every \gls{snp}, we find the \gls{mle}s for $\beta$ and $\sigma^2_g$ using the closed-form from equations \eqref{eq:Linear_regression_MLE_solution_beta},\eqref{eq:Linear_regression_MLE_solution_sigma}.\\
 
-When the rank of $\mathbf{K}$ is much smaller the number of individuals $rank(\mathbf{K}) << N$,  we can further speed up the algorithm by computing the `economical' eigen decomposition \cite{lippert2011fast}, where we use the fact that most eigenvalues of $\mathbf{K}$ are 0:
+When the rank of $\mathbf{K}$ is much smaller than the number of individuals $rank(\mathbf{K}) << N$,  we can further speed up the algorithm by computing the `economical' eigen decomposition \cite{lippert2011fast}, where we use the fact that most eigenvalues of $\mathbf{K}$ are 0:
 
 \begin{equation}\label{eq:economic_eigen_decomposition}
     \overbrace{[\mathbf{Q_0} \quad \mathbf{Q_1]}}^{\mathbf{Q}}
@@ -1000,14 +1020,14 @@ For details on this implementation I refer the reader to the Supplementary note 
 When running the FaST-LMM algorithm in the context of \gls{eqtl} mapping, we run the model for each gene separately.
 For a given gene, the model under $H_0$ is fixed.
 In order to perform \textit{cis} \gls{eqtl} mapping, we define a \textit{cis} window around the gene (typically ranging from 100 kb to 1 Mb) and a minimum \gls{maf} (e.g. 0.05) and test all \gls{snp}s within the window with \gls{maf} > 0.05 in our population.  
-We test one each \gls{snp} independently, with only the alternative model changing.
-This means that all weights $\boldsymbol{\alpha}$ excluding the SNP effect, and $\delta$ are only computed once per gene.\\
+We test each \gls{snp} independently, with only the alternative model changing.
+This means that all weights $\boldsymbol{\alpha}$ excluding the SNP effect, as well as $\delta$ are only computed once per gene.\\
 
 Typically, for each gene-\gls{snp} pair tested the reported values are i) the p value (e.g. obtained using eq. \eqref{eq:lrt_p_value}), ii) the estimated effect size $\beta$, and iii) the effect size standard error ($se(\beta)$).
 
 % how is se(beta) computed?
 
-Subsequently, multiple testing correction is applied, first at the gene level (using FWER) and then globally (using FDR, as described in Section \ref{sec:multiple_testing}).
+Subsequently, multiple testing correction is applied, first at the gene level (using FWER) and then globally (using FDR, as described in \textbf{section \ref{sec:multiple_testing}}).
 The resulting adjusted p values are also reported.
 To summarize a typical eQTL map, a number frequently reported is the number of genes with at least one \gls{eqtl} (from now on `eGenes'), often reported together (or as a fraction of) the number of genes tested. \\
 
@@ -1025,10 +1045,10 @@ To summarize a typical eQTL map, a number frequently reported is the number of g
 \section{Linear Mixed Models for GxE}
 \label{sec:lmm_gxe}
 
-The  statistical test described in section \ref{sec:hypothesis_testing} refers to an `association test' where the aim is to test for an effect that the \gls{snp} of interest has on a trait directly\footnote{Note that this was described for a linear regression but can be equivalently applied to the linear mixed model, i.e. $H_0: \mathbf{y} \sim N (\mathbf{0}, \sigma_g^2\mathbf{K} + \sigma_n^2\mathbf{I})$ vs $H_1: \mathbf{y} \sim N (\mathbf{g}\beta, \sigma_g^2\mathbf{K} + \sigma_n^2\mathbf{I})$, where the test assesses $\beta = 0$ vs $\beta \neq 0$.}.
+The  statistical test described in \textbf{section \ref{sec:hypothesis_testing}} refers to an `association test' where the aim is to test for an effect that the \gls{snp} of interest has on a trait directly\footnote{Note that this was described for a linear regression but can be equivalently applied to the linear mixed model, i.e. $H_0: \mathbf{y} \sim N (\mathbf{0}, \sigma_g^2\mathbf{K} + \sigma_n^2\mathbf{I})$ vs $H_1: \mathbf{y} \sim N (\mathbf{g}\beta, \sigma_g^2\mathbf{K} + \sigma_n^2\mathbf{I})$, where the test assesses $\beta = 0$ vs $\beta \neq 0$.}.
 However, the same \gls{lmm}s and fast implementation approaches described so far can be applied, with care, to testing for genotype-environment (GxE) interactions instead (`interaction test' for simplicity).
 % As described previously (section \ref{sec:gxe})
-In particular, a significant statistical \gls{gxe} interaction is defined when there is a significant difference in the genetic effect between groups of individuals with different environmental exposures (Fig. \ref{fig:gxe}).
+In particular, a significant statistical \gls{gxe} interaction is defined when there is a significant difference in the genetic effect between groups of individuals with different environmental exposures (\textbf{Fig. \ref{fig:gxe}}).
 
 \begin{figure}[h]
 \centering
@@ -1050,9 +1070,9 @@ In the following, I describe various approaches to test for GxE interactions, wh
 
 \subsection{Stratified interaction test}
 
-A possible way to detect interaction effects, is to stratify samples into discrete subgroups based on their environmental exposure.
+One possible way to detect interaction effects is to stratify samples into discrete subgroups based on their environmental exposure.
 In \gls{eqtl} mapping, one might for example cluster cells into cell types, or separate samples into different condition groups.
-Then a LM (eq. \eqref{eq:Linear_regression_genetics_covariates}) or \gls{lmm} (eq. \eqref{eq:Linear_mixed_model}) can be applied to each stratum and the marginal variant effects can be compared to assess whether there is a significant difference in these effects across the sub-populations.
+Then, an LM (eq. \eqref{eq:Linear_regression_genetics_covariates}) or \gls{lmm} (eq. \eqref{eq:Linear_mixed_model}) can be applied to each stratum and the marginal variant effects can be compared to assess whether there is a significant difference in these effects across the sub-populations.
 I will refer to this method as the `stratified interaction test'.
 
 However, as more detailed environmental data is collected, allowing for finer stratification of the population, these methods are no longer optimal as the sub-populations become too small to obtain stable estimates of the variant effects.
@@ -1098,11 +1118,11 @@ In Chapter 6, I will present an extension to StructLMM for applications to scRNA
 Instead, I will use this section to give an intuition for the method.\\
 
 The \gls{lmm} in eq. \eqref{eq:Linear_mixed_model} models the weight of a given \gls{snp} (or effect size, $\beta$) as a scalar, where the assumption is that the effect of a \gls{snp} on the trait is the same across all samples.
-However, as we have seen, samples belonging to different environmental subgroups can have different effects of a \gls{snp} on a trait due to \gls{gxe} effects (Fig. \ref{fig:gxe}).
-Moreover, the sub-grouping might be extremely complex, possibly driven by several environmental exposures, making adding them all in the model described in eq. \eqref{eq:multi_interaction_test_FE_LMM} infeasible.
+However, as we have seen, samples belonging to different environmental subgroups can have different effects of a \gls{snp} on a trait due to \gls{gxe} effects (\textbf{Fig. \ref{fig:gxe}}).
+Moreover, the sub-grouping might be extremely complex, possibly driven by several environmental exposures, making the addition of them all in the model described in eq. \eqref{eq:multi_interaction_test_FE_LMM} infeasible.
 
 The intuition of Struct\gls{lmm} is to again consider the \gls{snp} effect size as split into two components, the persistent effect size, which is assumed to be persistent across conditions (we call this $\beta_G$) and the GxE effect size. 
-However, here the GxE effect size is modelled as a random variable and is a $N \times 1$ vector ($\boldsymbol{\beta}_{GxE}$), which depends on the environmental structure of the samples:
+However, here the GxE effect size is modelled as a random variable and is an $N \times 1$ vector ($\boldsymbol{\beta}_{GxE}$), which depends on the environmental structure of the samples:
 
 \begin{equation}\label{eq:StructLMM-int}
  \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \boldsymbol{\psi}, 
@@ -1125,13 +1145,13 @@ vs
  H_{1}: \sigma^2_{GxE} \neq 0. 
 \end{equation}
 
-StructLMM also allows to test for associations, whilst accounting for GxE effects, essentially testing for any effects of a given variant, either G or GxE.
+StructLMM also allows for testing for associations, whilst accounting for GxE effects, essentially testing for any effects of a given variant, either G or GxE.
 However, this is beyond the scope of this thesis so I refer the reader to the original paper \cite{moore2019linear}.\\
 
 The main limitation of StructLMM is that, for reasons of inference efficiency, it does not properly account for population sub-structure.
 Note that the term $\mathbf{e}$ in \eqref{eq:StructLMM-int} accounts for effects that the environmental sub-structure of individuals might have on the phenotype directly (i.e. not mediated by $\mathbf{g}$).
 However, that leaves no room to account for genetic population sub-structure.
-For unrelated individuals, as we discussed in section \ref{sec:pop_struct_noLMM}, it may be sufficient to include \gls{pc}s as covariates.
+For unrelated individuals, as we discussed in \textbf{section \ref{sec:pop_struct_noLMM}}, it may be sufficient to include \glspl{pc} as covariates.
 In the case of repeated samples, however, whether it is single cells from the same donor or longitudinal measures from the same individual, that is no longer the case.
 In Chapter 6, I propose a solution for this problem and 
 show preliminary results on a \gls{scrnaseq} dataset.
@@ -1150,6 +1170,8 @@ I compare our results to an \gls{eqtl} map obtained using bulk RNA-seq from the 
 
 In Chapters 4 and 5 I use different adaptations of linear and linear mixed models to test both for associations (eq. \eqref{eq:Linear_mixed_model}) and interactions (eq. \eqref{eq:Interaction_test_FE_LMM}) in two separate \gls{scrnaseq} datasets. 
 
-Finally, in Chapter 6 I present scStruct-LMM, an extension to the StructLMM model (i.e. eq. \eqref{eq:StructLMM-int}) that is able to handle repeated observations from the same samples.
+Finally, in \textbf{Chapter 
+% 6
+\ref{chapter6}} I present scStruct-LMM, an extension to the StructLMM model (i.e. eq. \eqref{eq:StructLMM-int}) that is able to handle repeated observations from the same samples.
 The model is originally intended for single cell data, and allows to test for context-specific \gls{eqtl} mapping across cell contexts and states.
 However, it could also be used for performing GxE interactions across many variables in any other study with replicated measurements for the same individual, such as longitudinal studies.

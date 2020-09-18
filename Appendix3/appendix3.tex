@@ -1,0 +1,128 @@
+
+%!TEX root = ../thesis.tex
+% ******************************* Thesis Appendix B ********************************
+
+\chapter{Experimental Methods}
+
+\section{Experimental methods for Chapter 4}
+
+\subsection{Cell culture for maintenance and differentiation}
+
+Human iPSC lines were thawed for differentiation and maintained in Essential 8 (E8) media (LifeTech) on vitronectin (StemCell Technologies, \#07180) coated Corning plates according to the manufacturer's instructions.  
+Cells were passaged at least twice after thawing and always 3 - 4 days before plating for differentiation to ensure all the cell lines in each experiment were growing at a similar rate prior to differentiation. 
+Gelatine/MEF coated plates were prepared 24 – 48 hours before plating for differentiation by incubating plates with 0.1\% gelatine for 20 minutes at room temp. 
+The gelatine was then aspirated and plates were incubated in MEF medium overnight at 37°C.  
+Immediately prior to plating cells, plates were washed once with D-PBS to remove any residual MEF medium.  
+To plate for endoderm differentiation, cells were washed once with D-PBS and dissociated using StemPro Accutase (Life Technologies, A1110501) at 37°C for 3 - 5 min. 
+Colonies were fully dissociated through gentle pipetting. 
+Cells were resuspended in MEF medium, passed through a 40 µm cell strainer, and pelleted gently by centrifuging at 300 x g for 5 min. Cells were re-suspended in E8 media and plated at a density of 15,000 cells per cm2  on gelatin/MEF coated plates [6,26] in the presence of 10 µM Rock inhibitor – Y27632 (Sigma, \#Y0503 - 5 mg). 
+Media was replaced with fresh E8 free of Rock inhibitor every 24 hours post plating. 
+Differentiation into definitive endoderm commenced 72 hours post plating.  
+Cells were washed 1x gently with D-PBS to remove residual E8.  
+Cells were then incubated in CDM-PVA containing 100 ng/mL ActivinA (made in house), 80 ng/mL FGF2 (made in house), 10 ng/mL BMP4 (R\&D systems, \#314-BP-050), 10 µm Ly294002 (Promega, \#V1201), and 3 µM CHIR99201 (Selleckchem, \#S1263) for 24 hours (day 1).  
+After 24 hours, the day 1 media was replaced with CDM-PVA containing 100 ng/mL ActivinA, 80 ng/mL FGF2, 10 ng/mL BMP4, and 10 µm Ly294002 for another 24 hours (day 2).  
+Day 2 media was then replaced with RPMI/B27 containing 100 ng/mL ActivinA and 80 ng/mL FGF2 for another 24 hours (day 3) \cite{hannan2013production}. 
+The overall efficiency of the differentiation protocol was validated using reference lines with good and poor differentiation capacity, respectively (Fig. \ref).  
+Please refer to the table below (Table S16) for compositions of gelatine, MEF media, CDM-PVA, and RPMI/B27.  
+All media was filtered through 0.22 µm filters prior to use.
+
+\subsection{Single cell preparation and sorting for scRNAseq}
+Cells were dissociated into single cells using Accutase and washed once with MEF medium as described above when plating cells for differentiation. 
+For all subsequent steps, cells were kept on ice to avoid degradation.  Approximately 1 x 106 cells were re-suspended in PBS + 2\% BSA + 2 mM EDTA (FACS buffer); BSA and PBS were nuclease-free. 
+For staining of cell surface markers, 1 x 106 cells were re-suspended in 100 µL of ice-cold FACS buffer containing 20 µL anti-Tra-1-60 antibody (BD Pharmingen, BD560380)  and 5 µL of anti-CXCR4 antibody (eBioscience 12-9999-42), and were placed on ice for 30 min. 
+Cells were protected from light during staining and all subsequent steps. 
+Cells were washed with 5 mL of FACS buffer, passed through a 35 µm filter to remove clumps, and re-suspended in 300 µL of FACS buffer for live cell sorting on the BD Influx Cell Sorter (BD Biosciences).
+Live/dead marker 7AAD (eBioscience 00-6993) was added immediately prior to analysis at a concentration of 2 µL/mL and only living cells were considered when determining differentiation capacities. 
+Living cells stained with 7AAD but not TRA-1-60 or CXCR4 were used as gating controls. Data for TRA-1-60 and CXCR4 staining were available for 31,724 cells, of the total 36,044. 
+Single-cell transcriptomes of sorted cells were assayed as follows: reverse transcription and cDNA amplification was performed according to the SmartSeq2 protocol \cite{picelli2013smart}, and library preparation was performed using an Illumina Nextera kit. 
+Samples were sequenced using paired-end 75bp reads on an Illumina HiSeq 2500 machine (one lane of sequencing per 384 well plate).
+
+\subsection{ChIP-seq experiments and data processing}
+\label{sec:endodiff_chipseq}
+
+ChIP-seq was performed using FUCCI-Human Embryonic Stem Cells (FUCCI-hESCs, H9 from WiCell) in a modified endoderm differentiation protocol to that used for the iPSC differentiations (see details below). 
+Cells were grown in defined culture conditions as described previously \cite{brons2007derivation}. 
+Pluripotent cells were maintained in Chemically Defined Media with BSA (CDM-BSA) supplemented with 10ng/ml recombinant Activin A and 12ng/ml recombinant FGF2 (both from Dr. Marko Hyvonen, Dept. of Biochemistry, University of Cambridge) on 0.1\% Gelatin and MEF media coated plates. 
+Cells were passaged every 4-6 days with collagenase IV as clumps of 50-100 cells. 
+The culture media was replaced 48 hours after the split and then every 24 hours. \\
+
+The generation of FUCCI-hESC lines has been described in \cite{pauklin2013cell} and are based on the FUCCI system described in \cite{sakaue2008visualizing}. 
+hESCs were differentiated into endoderm as previously described \cite{vallier2009early}. 
+Following FACS sorting, Early G1 (EG1) cells were collected and immediately placed into the endoderm differentiation media and time-points were collected every 24h up to 72h.
+Endoderm specification was performed in CDM with Polyvynilic acid (CDM-PVA) supplemented with 20ng/ml FGF2, 10$\mu$M Ly-294002 (Promega), 100ng/ml Activin A, and 10ng/ml BMP4 (R\&D). \\
+
+We performed ChIP as described previously \cite{pauklin2016initiation}. 
+For ChIP-sequencing, ChIP for various histone marks (H3K4me3, H3K27me3, H3K4me1, H3K27ac, H3K36me3) (see \textbf{Table \ref{tab:endodiff_chipseq_antibodies}} for antibodies) was performed on two biological replicates per condition. 
+At the end of the ChIP protocol, fragments between 100bp and 400bp were used to prepare barcoded sequencing libraries. 
+10ng of input material for each condition were also used for library preparation and later used as a control during peak calls. 
+The libraries were generated by performing 8 PCR cycles for all samples. 
+Equimolar amounts of each library were pooled and this multiplexed library was diluted to 8pM before sequencing using an Illumina HiSeq 2000 with 75bp paired-end reads. \\
+
+Reads were mapped to GRCh38 reference assembly using BWA \cite{li2009fast}. 
+Only reads with mapping quality score $\geq$ 10 and aligned to autosomal and sex chromosomes were kept for further processing. 
+Peak calling analysis \cite{bailey2013practical} was performed using PeakRanger \cite{feng2011peakranger}, and only the peaks that were reproducible at an FDR of $\leq$ 0.05 in two biological replicates were selected for further processing. 
+Peak calling was done using appropriate controls with the tool peakranger 1.18 in modes ranger (H3K4me3, H3K27ac; `-l 316 -b 200 -q 0.05'), ccat (H3K27me3; ‘-l 316 --win\_size 1000 --win\_step 100 --min\_count 70 --min\_score 7 -q 0.05’) and bcp (H3K4me1, H3K36me3; ‘-l 316’). 
+Adjacent peak regions closer than 40 bp were merged using the BEDTools suite \cite{quinlan2010bedtools}, and those overlapping ENCODE blacklisted regions were filtered out (ENCODE Excludable Mappability Regions \cite{encode2012integrated}). 
+Finally, peaks were converted to GRCh37 coordinates using UCSC LiftOver. 
+% [68].
+
+\section{Experimental methods for Chapter 5}
+
+\subsection{Human iPSC culture}
+Feeder-free human iPSCs were obtained from the HipSci project \cite{kilpinen2017common}. 
+Lines were thawed onto tissue culture-treated plates (Corning, 3516) coated with 10 µg/mL VitronectinXF (StemCell Technologies, 07180) using complete Essential 8 (E8) medium (Thermo Fisher, A1517001) and 10 µM Rock inhibitor (Sigma, Y0503). 
+Cells were expanded in E8 medium for 2 passages using 0.5 µM EDTA pH 8.0 (Thermo Fisher, 15575-020) for cell dissociation. 
+
+\subsection{Pooling and differentiation of midbrain dopaminergic neurons}
+iPSC colonies were dissociated into a single-cell suspension using Accutase (Thermo Fisher, A11105-01) and resuspended in E8 medium containing 10 µM Rock inhibitor. 
+Cells were counted using an automated cell counter (Chemometec NC-200) and a cell suspension containing an equal amount of each iPSC line was prepared in E8 medium containing 10 µM Rock inhibitor and seeded at 2 x 105 cells per cm2 on 0.01\% Geltrex- (Thermo Fisher, A1413202) coated plates. 
+Each pool of lines contained between 7 to 24 donors. 
+24h after plating, neuronal differentiation of the pooled lines to a midbrain lineage was performed as described by12 with minor modifications: 1. SHH C25II was replaced by 100nM SAG (Tocris, 6390) in the neuronal induction phase. 
+2. On day 20, the cells were passaged with Accutase containing 20 units/mL of papain (Worthington, LK00031765) and plated at 3.5 x 105 cells per cm2 on 0.01\% Geltrex-coated plates for final maturation.
+
+\subsection{Rotenone stimulation}
+On day 51 of differentiation, the cells were exposed for 24h to freshly prepared 0.1 μM rotenone (Sigma, R8875, purity HPLC $\geq$ 95\%) diluted in neuronal maturation medium \cite{kriks2011dopamine}. 
+The final DMSO concentration was 0.01\% in all exposure conditions. 
+Unstimulated control samples (i.e. DMSO only) were taken concurrently.
+
+\subsection{Generation of cerebral organoids}
+Cerebral organoids were generated according to the enCOR method as previously described by \cite{lancaster2017guided}. 
+Briefly, one pool of 18 iPSC lines was thawed and expanded for 1 passage before seeding 18,000 cells onto PLGA microfilaments prepared from Vicryl sutures. 
+STEMdiff Cerebral Organoid kit (Stem Cell Technologies, 08570) was used for organoid culture with timing according to manufacturer's suggestion and Matrigel embedding as previously described57. 
+From day 35 onward the medium was supplemented with 2\% dissolved Matrigel basement membrane (Corning, 354234), and processed for scRNA-seq after 113 days of culture. 
+
+\subsection{Generation of single cell suspensions for sequencing}
+On harvesting days, the cells were washed once with 1X DPBS (Thermo Fisher, 14190-144) before adding either Accutase (day 11) or Accutase containing 20 units/mL of papain (days 30 and 52). 
+The cells were incubated at 37°C for up to 20 min (day 11) or up to 35 min (days 30 and 52) before adding DMEM:F12 (Thermo Fisher Scientific, 10565-018) supplemented with 10 µM Rock inhibitor and 33 μg/mL DNase I (Worthington, LK003170, only for days 30 and 52). 
+The cells were dissociated using a P1000 and collected in a 15 mL tube capped with a 40 µm cell strainer. 
+After centrifugation, the cells were resuspended in 1X DPBS containing 0.04\% BSA (Sigma, A0281) and washed 3 additional times in 1X DPBS containing 0.04\% BSA. Single-cell suspensions were counted using an automated cell counter (Chemometec NC-200) and concentrations adjusted to 5 x 105 cells/mL. \\
+
+Organoids were washed twice in 1X DPBS before adding EBSS (Worthington, LK003188)  dissociation buffer containing 19 U/mL of papain, 50 μg/mL of DNase I and 22.5X of Accutase.
+Organoids were incubated in a shaking block (750 rpm) at 37°C for 30 min. 
+Every 10 min, the organoids were triturated using a P1000 and BSA-coated  pipette tips until large clumps were dissociated. 
+Dissociated organoids were transferred into a new tube capped with a 40 µm cell strainer and pelleted for 4 min at 300g. 
+After centrifugation, the cells were resuspended in EBSS containing 50μg/mL of DNase I and 2 mg/mL ovomucoid (Worthington, LK003150). 
+0.5 volume of EBSS, followed by 0.5 volume of 20 mg/mL ovomucoid were added to the top of the cell suspension and the cells were mixed by flicking the tube. 
+After centrifugation, the cells were resuspended in 1X DPBS containing 0.04\% BSA. 
+Single-cell suspensions were counted using an automated cell counter and concentrations adjusted to 5 x105 cells/mL.
+
+Immunohistochemistry 
+Cells were fixed in 4\% paraformaldehyde (Thermo Fisher Scientific, 28908) for 15 min, rinsed 3 times with PBS1X (Sigma, D8662) and blocked with 5\% normal donkey serum (NDS; AbD Serotec, C06SBZ) in PBST (PBS1X + 0.1\% Triton X-100, Sigma, 93420) for 2h at room temperature. Primary antibodies were diluted in PBST containing 1\% NDS and incubated overnight at 4°C.
+Cells were washed 5 times with PBS1X and incubated with secondary antibodies diluted in PBS1X for 45 min at room temperature.  
+Cells were washed 3 more times with PBS1X and Hoechst (Thermo Fisher Scientific, H3569) was used to visualize cell nuclei. Image acquisition was performed using Cellomics array scan VTI (Thermo Fisher Scientific).
+The following antibodies were used: 
+FOXA2 (Santa Cruz, sc101060 - 1/100)
+LMX1A (Millipore, AB10533 - 1/500)
+TH (Santa Cruz, sc-25269 - 1/200)
+MAP2 (Abcam, 5392 - 1/2000)
+Donkey anti-chicken AF647 (Thermo Fisher Scientific, A21449)
+Donkey anti-mouse AF488 (Thermo Fisher Scientific, A11008)
+Donkey anti-mouse AF555 (Thermo Fisher Scientific, A31570)
+Donkey anti-rabbit AF488 (Thermo Fisher Scientific, A21206)
+Donkey anti-rabbit AF555 (Thermo Fisher Scientific, A27039)
+
+\subsection{Chromium 10x Genomics library and sequencing}
+Single cell suspensions were processed by the Chromium Controller (10x Genomics) using Chromium Single Cell 3’ Reagent Kit v2 (PN-120237). 
+On average, 15,000 cells from each 10x reaction were directly loaded into one inlet of the 10x Genomics chip (Suppl Table 1 (add)). 
+All the steps were performed according to the manufacturer's specifications. 
+Barcoded libraries were sequenced using HiSeq4000 (Illumina, one lane per 10x chip position) with 50bp or 75bp paired end reads to an average depth of 40,000-60,000 reads per cell.

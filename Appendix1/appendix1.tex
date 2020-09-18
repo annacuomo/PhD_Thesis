@@ -1,138 +1,238 @@
 %!TEX root = ../thesis.tex
 % ******************************* Thesis Appendix A ****************************
-\chapter{Supplementary Material Chapter 4} 
+\chapter{Supplementary Tables} 
 
-\subsection*{Detailed QC steps}
+% \section{Additional results Chapter 3}
 
-\subsection*{scRNA-seq quality control and processing}
+% results on smaller gene selection?
 
-Adaptors of raw scRNA-seq reads were trimmed using Trim Galore! (refs), using default settings. Trimmed reads were mapped to the human reference genome build 37 using STAR (ref) (version: 020201) in two-pass alignment mode, using the default settings proposed by the ENCODE consortium (STAR manual). Gene-level expression quantification was performed using Salmon (ref) (version: 0.8.2), using the “--seqBias”, “--gcBias” and “VBOpt” options using ENSEMBL transcripts (built 75)(ref)
+\section{Additional results Chapter 4}
 
-Gene-level expression quantification was performed using Salmon (ref) (version: 0.8.2), using the “--seqBias”, “--gcBias” and “VBOpt” options using ENSEMBL transcripts (built 75)(ref). Transcript-level expression values were summarised at a gene level (estimated counts per million (CPM)) and quality control of scRNA-seq data was performed with the scater Bioconductor package in R (ref). Cells were retained for downstream analyses if they had at least 50,000 counts from endogenous genes, at least 5,000 genes with non-zero expression, less than 90pct of counts came from the 100 highest-expressed genes, less than 15pct of reads mapping to mitochondrial (MT) genes, they had a Salmon mapping rate of at least 60pct, and if the cell was successfully assigned to a donor. Dead cells as identified based on 7AAD staining were discarded. Size factor normalisation of counts was performed using the scran Bioconductor package in R (ref). Expressed genes with an HGNC symbol were retained for analysis, where expressed genes in each batch of samples were defined based on (i) raw count >100 in at least one cell prior to QC and (ii) average log2(CPM+1) >1 after QC. Normalised CPM data were log transformed (log2(CPM+1)) for all downstream analyses. The joint dataset was investigated for outlying cell lines or experimental batches, which identified no clear groups of outlying cells (Supplementary Fig. 21, 22). 
-
-
-% \begin{enumerate}
-% \item	Download the TeXLive ISO (2.2GB) from\\
-% \href{https://www.tug.org/texlive/}{https://www.tug.org/texlive/}
-% \item	Download WinCDEmu (if you don't have a virtual drive) from \\
-% \href{http://wincdemu.sysprogs.org/download/}
-% {http://wincdemu.sysprogs.org/download/}
-% \item	To install Windows CD Emulator follow the instructions at\\
-% \href{http://wincdemu.sysprogs.org/tutorials/install/}
-% {http://wincdemu.sysprogs.org/tutorials/install/}
-% \item	Right click the iso and mount it using the WinCDEmu as shown in \\
-% \href{http://wincdemu.sysprogs.org/tutorials/mount/}{
-% http://wincdemu.sysprogs.org/tutorials/mount/}
-% \item	Open your virtual drive and run setup.pl
-% \end{enumerate}
-
-% or
-
-% \subsection*{Basic MikTeX - \TeX~ distribution}
-% \begin{enumerate}
-% \item	Download Basic-MiK\TeX (32bit or 64bit) from\\
-% \href{http://miktex.org/download}{http://miktex.org/download}
-% \item	Run the installer 
-% \item	To add a new package go to Start >> All Programs >> MikTex >> Maintenance (Admin) and choose Package Manager
-% \item	Select or search for packages to install
-% \end{enumerate}
-
-% \subsection*{TexStudio - \TeX~ editor}
-% \begin{enumerate}
-% \item	Download TexStudio from\\
-% \href{http://texstudio.sourceforge.net/\#downloads}
-% {http://texstudio.sourceforge.net/\#downloads} 
-% \item	Run the installer
-% \end{enumerate}
-
-% \section*{Mac OS X}
-% \subsection*{MacTeX - \TeX~ distribution}
-% \begin{enumerate}
-% \item	Download the file from\\
-% \href{https://www.tug.org/mactex/}{https://www.tug.org/mactex/}
-% \item	Extract and double click to run the installer. It does the entire configuration, sit back and relax.
-% \end{enumerate}
-
-% \subsection*{TexStudio - \TeX~ editor}
-% \begin{enumerate}
-% \item	Download TexStudio from\\
-% \href{http://texstudio.sourceforge.net/\#downloads}
-% {http://texstudio.sourceforge.net/\#downloads} 
-% \item	Extract and Start
-% \end{enumerate}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c | c c c c c}
+     & eGenes & genes tested & cells & unique donors & unique samples*  \\
+    \hline
+    iPSC (day0) & 1,833 & 10,840 & 9,661 & 111 & 136 \\
+    mesendo & 1,702 & 10,924 & 9,809 & 123 & 224 \\
+    defendo & 1,342 & 10,901 & 10,924 & 116 & 238\\
+    transitioning & 227 & 10,924 & 6,387 & 118 & 313 \\
+    day1 & 1,181 & 10,787 & 9,443 & 111 & 138 \\
+    day2 & 718 & 10,788 & 8,455 & 105 & 116 \\
+    day3 & 631 & 10,765 & 8,485 & 108 & 127 \\
+    \end{tabular}
+    \caption[Summary of the type and number of eQTL]{\textbf{Summary of the type and number of eQTL}.\\
+    Including all eQTL discovered based on single cell RNA traits, both at the level of our computationally-defined stages (iPSC, mesendo and defendo) and the time points of collection by design (day1, day2 and day3).
+    We note that in the stage definition a number of cells ($\sim$20\%) were excluded and considered to not belong to any well defined stage (see \textbf{page \pageref{fig:endodiff_stages}}), exclusively for the purposes of stage-level eQTL mapping.
+    We included here an eQTL map of such transitioning population, which as expected was a very underpowered analysis.
+    Additionally, we added results for day2 cells, for completeness.
+    Shown are the number of genes that were considered for QTL mapping, as well as the number of genes for which a QTL was detected.
+    *Samples are donor-experiment(-time point) combinations which were effectively used for testing (see \textbf{section \ref{sec:endodiff_eqtl}}).}
+    \label{tab:endodiff_eqtl_summary}
+\end{table}
+% number of eqtl, sample size etc?
 
 
-% \section*{Unix/Linux}
-% \subsection*{TeXLive - \TeX~ distribution}
-% \subsubsection*{Getting the distribution:}
-% \begin{enumerate}
-% \item	TexLive can be downloaded from\\
-% \href{http://www.tug.org/texlive/acquire-netinstall.html}
-% {http://www.tug.org/texlive/acquire-netinstall.html}.
-% \item	TexLive is provided by most operating system you can use (rpm,apt-get or yum) to get TexLive distributions
-% \end{enumerate}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c c c}
+     Antibody raised against & Catalog number & Company  \\
+    \hline
+    Histone H3 & ab1791 & Abcam \\
+    Histone H3 (tri methyl K4) & ab8580 & Abcam \\
+    Histone H3 (tri methyl K27) & C15200181 (MAb-181-050)
+ & Diagenode\\
+    Histone H3 (mono methyl K4) & ab8895 & Abcam \\
+    Histone H3 (acetyl K27) & ab4729 & Abcam \\
+    Histone H3 (tri methyl K36) & ab9050 & Abcam \\
+    \end{tabular}
+    \caption[Antibodies used for ChIP-seq experiments]{\textbf{Antibodies used for ChIP-seq experiments}.\\
+    .}
+    \label{tab:endodiff_chipseq_antibodies}
+\end{table}
 
-% \subsubsection*{Installation}
-% \begin{enumerate}
-% \item	Mount the ISO file in the mnt directory
-% \begin{verbatim}
-% mount -t iso9660 -o ro,loop,noauto /your/texlive####.iso /mnt
-% \end{verbatim}
+\clearpage
 
-% \item	Install wget on your OS (use rpm, apt-get or yum install)
-% \item	Run the installer script install-tl.
-% \begin{verbatim}
-% 	cd /your/download/directory
-% 	./install-tl
-% \end{verbatim}
-% \item	Enter command `i' for installation
+\section{Additional information for Chapter 5}
 
-% \item	Post-Installation configuration:\\
-% \href{http://www.tug.org/texlive/doc/texlive-en/texlive-en.html\#x1-320003.4.1}
-% {http://www.tug.org/texlive/doc/texlive-en/texlive-en.html\#x1-320003.4.1} 
-% \item	Set the path for the directory of TexLive binaries in your .bashrc file
-% \end{enumerate}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c c c c c}
+    trait & category & study & n & n (replication)  \\
+    \hline
+    Alzheimer's Disease (late onset) &  neurodegenerative & \cite{lambert2013meta}  & 55,134 & 19,884\\
+    Parkinson's Disease  &  neurodegenerative & \cite{nalls2019expanding} & 442,271 & -\\
+    Schizophrenia   &  neurodevelopmental & \cite{schizophrenia2014biological} & 150,064 & -\\
+    Bipolar disorder & neurodevelopmental & \cite{hou2016genome} & 34,950 & 5,305\\
+    Neuroticism & personality & \cite{okbay2016genetic} & 170,911 & -\\
+    Neuroticism & personality & \cite{luciano2018association} & 329,821 & 122,867\\
+    Neuroticism & personality & \cite{turley2018multi} & 168,105 & -\\
+    Depression (broad) & behavioural & \cite{howard2018genome} & 322,580 & -\\
+    Educational attainment & intelligence & \cite{davies2016genome} & 111,114 & - \\
+    Paternal history of Alzheimer's disease &  neurodegenerative & \cite{marioni2018gwas} & 260,279 & - \\
+    Family history of Alzheimer's disease &  neurodegenerative & \cite{marioni2018gwas} & 314,278 & -\\
+    Maternal history of Alzheimer's disease &  neurodegenerative & \cite{marioni2018gwas} & 288,676 & -\\
+    Depressed affect & behavioural & \cite{nagel2018meta} & 357,957 & -\\
+    Cognitive performance & intelligence & \cite{lee2018gene} & 257,841 & -\\
+    Sleeplessness / insomnia & personality & \cite{neale2018gwas} & 360,738 & -\\
+    Nervous feelings & behavioural & \cite{neale2018gwas} & 351,829 & -\\
+    Worrier / anxious feelings & behavioural & \cite{neale2018gwas} & 351,833 & - \\
+    Tense / 'highly strung' & behavioural & \cite{neale2018gwas} & 350,159 & -\\
+    Suffer from 'nerves' & behavioural & \cite{neale2018gwas} & 348,082 & -\\
+    Neuroticism score & personality & \cite{neale2018gwas} & 293,006 & - \\
+    Intelligence questions\footnotemark & intelligence & \cite{neale2018gwas} & 117,131 & -\\
+    Risk taking & behavioural & \cite{neale2018gwas} & 348,549 & -\\
+    College or University degree & intelligence & \cite{neale2018gwas} & 357,549 & - \\
+    A levels/AS levels or equivalent & intelligence & \cite{neale2018gwas} & 357,549 & -\\
+    Other professional qualifications  & intelligence & \cite{neale2018gwas} & 357,549 & -\\
+    \end{tabular}
+    \caption[Neurological traits used for the colocalisation analysis]{\textbf{Neurological traits used for the colocalisation analysis}.\\
+    Table compiled by Natsuhiko Kumasaka.
+    Traits used for the colocalisation analysis in \textbf{Chapter 5} (\textbf{section \ref{sec:neuroseq_coloc}}).
+    The corresponding publication and sample size (both for the initial study and, when available for a replication study) are indicated.
+    Additionally, traits are divided into broad categories.}
+    \label{tab:coloc_neuro_traits}
+\end{table}
 
-% \subsubsection*{For 32bit OS}
-% For Bourne-compatible shells such as bash, and using Intel x86 GNU/Linux and a default directory setup as an example, the file to edit might be \begin{verbatim}
-% edit $~/.bashrc file and add following lines
-% PATH=/usr/local/texlive/2011/bin/i386-linux:$PATH; 
-% export PATH 
-% MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH;
-% export MANPATH 
-% INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
-% export INFOPATH
-% \end{verbatim}
-% \subsubsection*{For 64bit OS}
-% \begin{verbatim}
-% edit $~/.bashrc file and add following lines
-% PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH;
-% export PATH 
-% MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH;
-% export MANPATH 
-% INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
-% export INFOPATH
+% \newpage
 
-% \end{verbatim}
+\footnotetext{Number of fluid intelligence questions attempted within time limit.}
+
+% \section{Additional results Chapter 5}
 
 
 
-% %\subsection{Installing directly using Linux packages} 
-% \subsubsection*{Fedora/RedHat/CentOS:}
-% \begin{verbatim} 
-% sudo yum install texlive 
-% sudo yum install psutils 
-% \end{verbatim}
+% \subsection*{Detailed QC steps}
+
+% \subsection*{scRNA-seq quality control and processing}
+
+% Adaptors of raw scRNA-seq reads were trimmed using Trim Galore! (refs), using default settings. Trimmed reads were mapped to the human reference genome build 37 using STAR (ref) (version: 020201) in two-pass alignment mode, using the default settings proposed by the ENCODE consortium (STAR manual). Gene-level expression quantification was performed using Salmon (ref) (version: 0.8.2), using the “--seqBias”, “--gcBias” and “VBOpt” options using ENSEMBL transcripts (built 75)(ref)
+
+% Gene-level expression quantification was performed using Salmon (ref) (version: 0.8.2), using the “--seqBias”, “--gcBias” and “VBOpt” options using ENSEMBL transcripts (built 75)(ref). Transcript-level expression values were summarised at a gene level (estimated counts per million (CPM)) and quality control of scRNA-seq data was performed with the scater Bioconductor package in R (ref). Cells were retained for downstream analyses if they had at least 50,000 counts from endogenous genes, at least 5,000 genes with non-zero expression, less than 90pct of counts came from the 100 highest-expressed genes, less than 15pct of reads mapping to mitochondrial (MT) genes, they had a Salmon mapping rate of at least 60pct, and if the cell was successfully assigned to a donor. Dead cells as identified based on 7AAD staining were discarded. Size factor normalisation of counts was performed using the scran Bioconductor package in R (ref). Expressed genes with an HGNC symbol were retained for analysis, where expressed genes in each batch of samples were defined based on (i) raw count >100 in at least one cell prior to QC and (ii) average log2(CPM+1) >1 after QC. Normalised CPM data were log transformed (log2(CPM+1)) for all downstream analyses. The joint dataset was investigated for outlying cell lines or experimental batches, which identified no clear groups of outlying cells (Supplementary Fig. 21, 22). 
 
 
-% \subsubsection*{SUSE:}
-% \begin{verbatim}
-% sudo zypper install texlive
-% \end{verbatim}
+% % \begin{enumerate}
+% % \item	Download the TeXLive ISO (2.2GB) from\\
+% % \href{https://www.tug.org/texlive/}{https://www.tug.org/texlive/}
+% % \item	Download WinCDEmu (if you don't have a virtual drive) from \\
+% % \href{http://wincdemu.sysprogs.org/download/}
+% % {http://wincdemu.sysprogs.org/download/}
+% % \item	To install Windows CD Emulator follow the instructions at\\
+% % \href{http://wincdemu.sysprogs.org/tutorials/install/}
+% % {http://wincdemu.sysprogs.org/tutorials/install/}
+% % \item	Right click the iso and mount it using the WinCDEmu as shown in \\
+% % \href{http://wincdemu.sysprogs.org/tutorials/mount/}{
+% % http://wincdemu.sysprogs.org/tutorials/mount/}
+% % \item	Open your virtual drive and run setup.pl
+% % \end{enumerate}
+
+% % or
+
+% % \subsection*{Basic MikTeX - \TeX~ distribution}
+% % \begin{enumerate}
+% % \item	Download Basic-MiK\TeX (32bit or 64bit) from\\
+% % \href{http://miktex.org/download}{http://miktex.org/download}
+% % \item	Run the installer 
+% % \item	To add a new package go to Start >> All Programs >> MikTex >> Maintenance (Admin) and choose Package Manager
+% % \item	Select or search for packages to install
+% % \end{enumerate}
+
+% % \subsection*{TexStudio - \TeX~ editor}
+% % \begin{enumerate}
+% % \item	Download TexStudio from\\
+% % \href{http://texstudio.sourceforge.net/\#downloads}
+% % {http://texstudio.sourceforge.net/\#downloads} 
+% % \item	Run the installer
+% % \end{enumerate}
+
+% % \section*{Mac OS X}
+% % \subsection*{MacTeX - \TeX~ distribution}
+% % \begin{enumerate}
+% % \item	Download the file from\\
+% % \href{https://www.tug.org/mactex/}{https://www.tug.org/mactex/}
+% % \item	Extract and double click to run the installer. It does the entire configuration, sit back and relax.
+% % \end{enumerate}
+
+% % \subsection*{TexStudio - \TeX~ editor}
+% % \begin{enumerate}
+% % \item	Download TexStudio from\\
+% % \href{http://texstudio.sourceforge.net/\#downloads}
+% % {http://texstudio.sourceforge.net/\#downloads} 
+% % \item	Extract and Start
+% % \end{enumerate}
 
 
-% \subsubsection*{Debian/Ubuntu:}
-% \begin{verbatim} 
-% sudo apt-get install texlive texlive-latex-extra 
-% sudo apt-get install psutils
-% \end{verbatim}
+% % \section*{Unix/Linux}
+% % \subsection*{TeXLive - \TeX~ distribution}
+% % \subsubsection*{Getting the distribution:}
+% % \begin{enumerate}
+% % \item	TexLive can be downloaded from\\
+% % \href{http://www.tug.org/texlive/acquire-netinstall.html}
+% % {http://www.tug.org/texlive/acquire-netinstall.html}.
+% % \item	TexLive is provided by most operating system you can use (rpm,apt-get or yum) to get TexLive distributions
+% % \end{enumerate}
+
+% % \subsubsection*{Installation}
+% % \begin{enumerate}
+% % \item	Mount the ISO file in the mnt directory
+% % \begin{verbatim}
+% % mount -t iso9660 -o ro,loop,noauto /your/texlive####.iso /mnt
+% % \end{verbatim}
+
+% % \item	Install wget on your OS (use rpm, apt-get or yum install)
+% % \item	Run the installer script install-tl.
+% % \begin{verbatim}
+% % 	cd /your/download/directory
+% % 	./install-tl
+% % \end{verbatim}
+% % \item	Enter command `i' for installation
+
+% % \item	Post-Installation configuration:\\
+% % \href{http://www.tug.org/texlive/doc/texlive-en/texlive-en.html\#x1-320003.4.1}
+% % {http://www.tug.org/texlive/doc/texlive-en/texlive-en.html\#x1-320003.4.1} 
+% % \item	Set the path for the directory of TexLive binaries in your .bashrc file
+% % \end{enumerate}
+
+% % \subsubsection*{For 32bit OS}
+% % For Bourne-compatible shells such as bash, and using Intel x86 GNU/Linux and a default directory setup as an example, the file to edit might be \begin{verbatim}
+% % edit $~/.bashrc file and add following lines
+% % PATH=/usr/local/texlive/2011/bin/i386-linux:$PATH; 
+% % export PATH 
+% % MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH;
+% % export MANPATH 
+% % INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
+% % export INFOPATH
+% % \end{verbatim}
+% % \subsubsection*{For 64bit OS}
+% % \begin{verbatim}
+% % edit $~/.bashrc file and add following lines
+% % PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH;
+% % export PATH 
+% % MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH;
+% % export MANPATH 
+% % INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
+% % export INFOPATH
+
+% % \end{verbatim}
+
+
+
+% % %\subsection{Installing directly using Linux packages} 
+% % \subsubsection*{Fedora/RedHat/CentOS:}
+% % \begin{verbatim} 
+% % sudo yum install texlive 
+% % sudo yum install psutils 
+% % \end{verbatim}
+
+
+% % \subsubsection*{SUSE:}
+% % \begin{verbatim}
+% % sudo zypper install texlive
+% % \end{verbatim}
+
+
+% % \subsubsection*{Debian/Ubuntu:}
+% % \begin{verbatim} 
+% % sudo apt-get install texlive texlive-latex-extra 
+% % sudo apt-get install psutils
+% % \end{verbatim}

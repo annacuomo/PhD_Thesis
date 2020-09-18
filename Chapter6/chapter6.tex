@@ -7,17 +7,17 @@
 \label{chapter6}
 
 % add abstract
-As we have seen, \gls{scrnaseq} assays are now established and relatively cheap, which means that they can deployed at scale, across many individuals. 
-As a result, eQTL mapping using single cell profiles, rather than bulk ones, to quantify gene expression have arised (Chapter 
+As we have seen, \gls{scrnaseq} assays are now established and relatively cheap, which means that they can deployed at population-scale, across many individuals. 
+As a result, eQTL mapping using single cell profiles, rather than bulk ones, to quantify gene expression have arised (\textbf{Chapter 
 % \ref{chapter3}
-3).\\
+3}).\\
 
-In particular, \gls{scrnaseq} can be used to first (unbiasedly) define discrete cell populations within an experiment, and then quantify expression within each cell population to map cell type- and condition-specific eQTL (Chapters 
+In particular, \gls{scrnaseq} can be used to first (unbiasedly) define discrete cell populations within an experiment, and then quantify expression within each cell population to map cell type- and condition-specific eQTL (\textbf{Chapters 
 % \ref{chapter4}, \ref{chapter5}
-4, 5).
-In alternative, the single cell transcriptome can be used to order cells along a developmental trajectory to map dynamic eQTL, where the effect of a genetic variant on expression is modulated by (pseudo)time (Chapter 
+4, 5}).
+In alternative, the single cell transcriptome can be used to order cells along a developmental trajectory to map dynamic eQTL, where the effect of a genetic variant on expression is modulated by (pseudo)time (\textbf{Chapter 
 % \ref{chapter4}
-4). \\
+4}). \\
 
 % It has been shown that single cell expression profiles can be used to estimate a number of discrete and continuous states for the cells considered,
 
@@ -27,9 +27,9 @@ including cell type and differentiation trajectory but also cell cycle phase, me
 This means that within a single neatly contained experiment, one can have access to expression profiles for thousands of genes, across hundreds of individuals at single cell resolution, and cells can be unbiasedly annotated according to a number of factors. \\
 
 This kind of experimental setup calls for computational methods that would allow to jointly perform multi-context-specific eQTL, at single cell resolution.
-Here, we propose scStructLMM, a novel method for multivariate context-specific single cell eQTL mapping based on a linear mixed model framework (Chapter 
+Here, we propose scStructLMM, a novel method for multivariate context-specific single cell eQTL mapping based on a linear mixed model framework (\textbf{Chapter 
 % \ref{chapter2}
-2).
+2}).
 
 \newpage
 
@@ -50,15 +50,15 @@ Here, we propose scStructLMM, a novel method for multivariate context-specific s
 
 \section{Introduction} 
 
-As we have seen in previous chapters, population-scale single-cell sequencing studies, which combine genotype information and single cell expression profiles across larger sets of individuals, have enabled the study of genetic effects on gene regulation at single-cell resolution (Chapter
+As we have seen in previous chapters, population-scale single-cell sequencing studies, which combine genotype information and single cell expression profiles across larger sets of individuals, have enabled the study of genetic effects on gene regulation at single-cell resolution (\textbf{Chapter
 % \ref{chapter3}
-3). 
-Seminal studies have demonstrated the feasibility of mapping expression quantitative trait loci (eQTL) using single-cell readouts, thereby replicating conventional eQTL detected using bulk gene expression profiling \cite{cuomo2020single, van2018single}, detecting cell-type specific genetic effects \cite{van2018single} as well as identifying dynamic changes of regulatory effects across lineages or cellular differentiation \cite{cuomo2020single} (Chapter 
+3}). 
+Seminal studies have demonstrated the feasibility of mapping expression quantitative trait loci (eQTL) using single-cell readouts, thereby replicating conventional eQTL detected using bulk gene expression profiling \cite{cuomo2020single, van2018single}, detecting cell-type specific genetic effects \cite{van2018single} as well as identifying dynamic changes of regulatory effects across lineages or cellular differentiation \cite{cuomo2020single} (\textbf{Chapter 
 % \ref{chapter4}
-4). 
-Collectively, these efforts have demonstrated the potential of single-cell sequencing approaches to complement and generalise conventional eQTL mapping, elucidating context-specific regulation, which previously was limited to narrowly defined context such as cell types from sorted populations \cite{fairfax2012genetics} or external stimulation \cite{fairfax2014innate} (see section 
+4}). 
+Collectively, these efforts have demonstrated the potential of single-cell sequencing approaches to complement and generalise conventional eQTL mapping, elucidating context-specific regulation, which previously was limited to narrowly defined context such as cell types from sorted populations \cite{fairfax2012genetics} or external stimulation \cite{fairfax2014innate} (see \textbf{section 
 % \ref{sec:eqtl}
-1.18).\\
+1.18}).\\
 
 Despite this potential of single-cell genetics, appropriate analysis methods are only beginning to emerge. 
 On the one hand existing multi-tissue eQTL methods designed for bulk profiling, which allow for mapping eQTL that are present in single tissues or combinations of tissues, remain applicable 
@@ -68,14 +68,13 @@ On the one hand existing multi-tissue eQTL methods designed for bulk profiling, 
 % and pairwise comparisons \cite{nica2011architecture, ding2010gene}
 % meta qtl \cite{di2014meta, sul2013effectively}
 % also \cite{fu2012unraveling, petretto2010new, li2018empirical} 
-\\
-
+% \\
 However, these require to discretise single-cell profiles into cell types, which fails to fully leverage the advantages of single-cell readouts to detect complex gene-context interactions, in particular the ability to detect continuous changes and gradients. \\
 
 Recently, methods to assess GxE using larger numbers of conditions have emerged in the context of population studies.
-In particular, a recently proposed method called StructLMM (structured linear mixed model, described in section 
+In particular, a recently proposed method called StructLMM (structured linear mixed model, described in \textbf{section 
 % \ref{sec:struct_lmm}
-2.4.3) allows for the robust joint analysis of GxE effect of multiple environmental variables \cite{moore2019linear}. \\
+2.4.3}) allows for the robust joint analysis of GxE effect of multiple environmental variables \cite{moore2019linear}. \\
 
 
 % population-scale cohorts that combine genotyping with single cell expression profiles have fostered interest to study the effect of common genetic variants on gene regulation at single cell resolution.\\
@@ -92,8 +91,10 @@ In particular, a recently proposed method called StructLMM (structured linear mi
 % The relatedness structure between samples (or cells in this context) is therefore non-trivial, as the cell measurements are not independent, as assumed by the model.\\
 
 % without the previous paragraph this doesn't make any sense, rephrase
-Here, we propose sc-StructLMM, an extension of the StructLMM model which builds on it while allowing control for confounding effects due to sample replicated structure, and is especially well suited for the mapping of multivariate context-specific eQTL using single cells. 
-The model can handle hundreds of cell states and conditions, and it can be applied to large cohorts of hundreds of thousands of cells for hundreds of  individuals.
+Here, we propose sc-StructLMM, an extension of the StructLMM model which builds on it while 
+incorporating features that are especially tailored to the application to single cell data, particularly the ability to deal with replicated measurements (read: cells) from the same individual.
+% allowing control for confounding effects due to sample replicated structure, and is especially well suited for the mapping of multivariate context-specific eQTL using single cells. 
+The model can handle hundreds of cell states and conditions, and it can be applied to large cohorts of hundreds of thousands of cells for hundreds of  individuals (see \textbf{Fig. \ref{fig:sc_structlmm_overview}} for an overview of sc-StructLMM).
 
 % \begin{figure}[htbp]
 % \centering
@@ -119,17 +120,17 @@ Downstream analysis includes the estimation of cell-specific effect sizes driven
 
 \clearpage
 
-\section{Model} 
+\section{The sc-StructLMM model} 
 
-As we have seen (Chapters 
+As we have seen (\textbf{Chapters 
 % \ref{chapter2}-\ref{chapter5}
-2-5), commonly used methods for eQTL mapping fit linear or linear mixed models (LMMs),  whereby a given variant is tested for association with expression changes of a target gene \cite{kilpinen2017common}. 
+2-5}), commonly used methods for eQTL mapping fit linear or linear mixed models (LMMs),  whereby a given variant is tested for association with expression changes of a target gene \cite{kilpinen2017common}. 
 The effect size is assumed to be shared (persistent) across individuals, or alternatively a discrete group structure (e.g. tissues) can be accounted for \cite{fusi2012joint}. 
 In contrast, scStructLMM borrows concepts from the previously described StructLMM model designed for global phenotypes \cite{moore2019linear}, whereby heterogeneity in effect sizes is defined by an environmental (context) covariance matrix, which can capture arbitrary sub-structure in cellular states. 
 Specifically, scStructLMM generalises the previous approach by including one additional random effect, which enables to  account for two distinct sets of additive random effect components: population structure as well as cellular context structure.
-In particular, accounting for the samples' population structure is critical, as it allows to model not only relatedness and population stratification (section 
+In particular, accounting for the samples' population structure is critical, as it allows to model not only relatedness and population stratification (\textbf{section 
 % \ref{sec:linear_mixed_models}
-2.3), but also replicated measurements for the same donor, in particular the intrinsic repeat structure of single-cell eQTL studies where multiple cells are sampled form the same individual. 
+2.3}), but also replicated measurements for the same donor, in particular the intrinsic repeat structure of single-cell eQTL studies where multiple cells are sampled form the same individual. 
 The model can be cast as:
 
 \begin{equation}\label{eq:scStructLMM}
@@ -146,16 +147,16 @@ The same environmental covariance is also used to account for additive environme
 % $\mathbf{e} \sim \mathcal{N}(\mathbf{0},\sigma_e^2 \mathbf{E}\mathbf{E}^T)$ 
 $\mathbf{e} \sim \mathcal{N}(\mathbf{0},\sigma_e^2 \boldsymbol{\Sigma})$ 
 \cite{moore2019linear}. 
-Finally, additive global genetic effects are accounted for using a relatedness matrix ($\mathbf{R}$) (calculated using PLINK \cite{purcell2007plink}, see section 
+Finally, additive global genetic effects are accounted for using a relatedness matrix ($\mathbf{R}$) (calculated using PLINK \cite{purcell2007plink}, see \textbf{section 
 % \ref{sec:linear_mixed_models}
-2.3.2), such that
+2.3.2}), such that
 $\mathbf{u} \sim \mathcal{N}(\mathbf{0},\sigma_g^2 \mathbf{R})$,
 % $\mathbf{u} \sim \mathcal{N}(\mathbf{0},\sigma_g^2 \mathbf{G}\mathbf{G}^T)$,
-appropriately expanded to reflect the repeated structure of multiple cells derived from the same donors (Fig. \ref{fig:sc_structlmm_expanded}). \\
+appropriately expanded to reflect the repeated structure of multiple cells derived from the same donors (\textbf{Fig. \ref{fig:sc_structlmm_expanded}}). \\
 
 Similar to models described before, $\mathbf{y}$ represent the $N \times 1$ expression phenotype vector (noting that $N$ is the number of cells, not donors); $\mathbf{W}$ are known covariates, and $\boldsymbol{\alpha}$ the corresponding weights.
 In particular, cellular covariates (i.e. observations made at cell level), can be included as columns of $\mathbf{W}$ as they are, whereas donor-level covariates (e.g. sex, age) will need to be expanded first.
-Similarly, the genotype vector $\mathbf{g}$ is expanded to fit the model (Fig. \ref{fig:sc_structlmm_expanded}).
+Similarly, the genotype vector $\mathbf{g}$ is expanded to fit the model (\textbf{Fig. \ref{fig:sc_structlmm_expanded}}).
 Finally, the noise term is gaussian and i.i.d. $\boldsymbol{\psi} \sim \mathcal{N}(\mathbf{0},\sigma_n^2 \mathbf{I_N})$.\\
 
 \begin{figure}[h]
@@ -163,18 +164,18 @@ Finally, the noise term is gaussian and i.i.d. $\boldsymbol{\psi} \sim \mathcal{
 \includegraphics[width=15.5cm]{Chapter6/Fig/sc_structlmm_expanded.png}
 \caption[Schematic of expanded genotype vector and kinship matrix]{\textbf{Schematic of expanded genotype vector and kinship matrix}.\\
 Schematic of `expansion' from donor-level to cell-level.
-Similar as to what is illustrated in Fig. \ref{fig:kinship_repeats}, except we have to deal now with hundreds of cells per donor, rather than 2 or 3 experimental replicates.}
+Similar as to what is illustrated in \textbf{Fig. \ref{fig:kinship_repeats}}, except we have to deal now with hundreds of cells per donor, rather than 2 or 3 experimental replicates.}
 \label{fig:sc_structlmm_expanded}
 \end{figure}
 
 % \newpage
 
 The statistical test to be performed evaluates the significant contribution of the GxE component (i.e. $\sigma_{GxE}^2 > 0$)\footnote{This test is equivalent to the StructLMM-int test presented in eq. \eqref{eq:StructLMM-int}.}.
-Significance, we 
+We 
 % Because we 
-use Rao's Score test (see section 
+use Rao's Score test (see \textbf{section 
 % \ref{sec:hypothesis_testing}
-2.2.1), thus we only need to evaluate the MLE of the parameters 
+2.2.1}), thus we only need to evaluate the MLE of the parameters 
 % likelihood
 under $H_0$:
 
@@ -186,12 +187,12 @@ under $H_0$:
  \mathbf{y}|H_0 \sim \mathcal{N}( \mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta_G, \sigma_e^2 \mathbf{E}\mathbf{E}^T + \sigma_g^2 \mathbf{G}\mathbf{G}^T+ \sigma_n^2 \mathbf{I} )
 \end{equation}
 
-Now, to be able to use the trick described in section 
+Now, to be able to use the trick described in \textbf{section 
 % \ref{sec:fast_lmm},
-2.3.3, 
-we need to write the Covariance matrix in the form $\sigma^2(\mathbf{M}+\delta\mathbf{I})$ as in eq.
-% \eqref{eq:fast_lmm_full_covariance}
-2.39.
+2.3.3}, 
+we need to write the covariance matrix in the form $\sigma^2(\mathbf{M}+\delta\mathbf{I})$ as in eq.
+\eqref{eq:fast_lmm_full_covariance}.
+% 2.39.
 To do so, we introduce a weight parameter $\rho_1$ such that the covariance matrix of $\mathbf{y}$ under the null hypothesis, $\mathbf{K}_0 = \mathrm{Var}(\mathbf{y} | H_0)$ can be re-written as:
 
 \begin{equation}
@@ -238,7 +239,7 @@ and
 is a matrix that projects out the fixed effects \cite{lippert2011fast, lippert2014greater}.
 In our case (eq. \eqref{eq:scStructLMM}), the fixed effects include covariates and the persistent effect of the variant tested: $\mathbf{X} = [\mathbf{W}, \mathbf{g}]$\\
 
-Using \eqref{eq:full_K_scStructLMM} and considering the parameter $\theta = \sigma_{GxE}^2$, we can derive:
+Using eq. \eqref{eq:full_K_scStructLMM} and considering the parameter $\theta = \sigma_{GxE}^2$, we can derive:
 
 % \begin{equation}
 %     \frac{\partial \mathbf{K}}{\partial \sigma_{GxE}^2} = \mathrm{diag}(\mathbf{g})\mathbf{E}\mathbf{E}^T\mathrm{diag}(\mathbf{g}).
@@ -256,8 +257,8 @@ Next, let us define $\mathbf{K}_1 = \mathrm{diag}(\mathbf{g})\boldsymbol{\Sigma}
     \mathrm{Q} = \frac{1}{2}\mathbf{y}^T\mathbf{P}_0 \mathbf{K}_1\mathbf{P}_0 \mathbf{y} 
 \end{equation}
 
-As in \eqref{eq:StructLMM-int_H1}, $H_1: \sigma_{GxE}^2>0$, noting that as a variance parameter, $\sigma_{GxE}^2$ can only take positive values.
-As a result, the Score test statistic $\mathrm{Q}$ does not follow the usual $\chi^2_i$ distribution (see eq. \eqref{eq:lagrange_multiplier_univariate}), but instead a mixture of  $\chi^2$ distributions.
+As in eq. \eqref{eq:StructLMM-int_H1}, $H_1: \sigma_{GxE}^2>0$, noting that as a variance parameter, $\sigma_{GxE}^2$ can only take positive values.
+As a result, the score test statistic $\mathrm{Q}$ does not follow the usual $\chi^2_i$ distribution (see eq. \eqref{eq:lagrange_multiplier_univariate}), but instead a mixture of  $\chi^2$ distributions.
 I refer the reader specifically at the supplementary methods from \cite{lippert2014greater} for a proof.
 
 \begin{equation}
@@ -295,108 +296,149 @@ To evaluate the significance of the score-best test statistic $\mathrm{Q}$ we us
 
 
 
-\section{Application to simulated data}
+% \section{Application to simulated data}
 
-% First, we applied the model on simulated data.
+% % First, we applied the model on simulated data.
 
-First, I used simulation experiments to show calibration (see section 
-% \ref{sec:confounders}
-2.2.4) of scStructLMM is calibrated.
-% , and then to demonstrate the 
-% power 
-% advantages of scStructLMM compared to other methods. 
-% forthe interaction and association test (Section 2.3). 
-I use this section to describe the simulation procedure used to generate these simulated data and the methods used to assess calibration.
-% and statistical power. 
-% I will then show calibration and power results for some general settings, followed by results for simulation experiments that explicitly examine the effect of certain environmental properties.
+% First, I used simulation experiments to show calibration (see \textbf{section 
+% % \ref{sec:confounders}
+% 2.2.4}) of scStructLMM is calibrated.
+% % , and then to demonstrate the 
+% % power 
+% % advantages of scStructLMM compared to other methods. 
+% % forthe interaction and association test (Section 2.3). 
+% I use this section to describe the simulation procedure used to generate these simulated data and the methods used to assess calibration.
+% % and statistical power. 
+% % I will then show calibration and power results for some general settings, followed by results for simulation experiments that explicitly examine the effect of certain environmental properties.
 
-\subsection{Simulation strategy}
+% \subsection{Simulation strategy}
 
-\subsubsection{Genotype data}
+% \subsubsection{Genotype data}
 
-Given $S$ number of SNPs, I first generated $S$ random minor allele frequencies (MAFs) between 0.1 and 0.45.
-Given those, and a number of donors $N$, I generated $S$ independent $N \time 1$ $\mathbf{g}$ vectors as random vectors of 0, 1, 2 with probabilities given by the corresponding MAF ($p(2) = MAF^2$, $p(0) = (1-MAF)^2$, and $p(1) = 1 - p(0) - p(2)$).  
+% Given $S$ number of SNPs, I first generated $S$ random minor allele frequencies (MAFs) between 0.1 and 0.45.
+% Given those, and a number of donors $N$, I generated $S$ independent $N \time 1$ $\mathbf{g}$ vectors as random vectors of 0, 1, 2 with probabilities given by the corresponding MAF ($p(2) = MAF^2$, $p(0) = (1-MAF)^2$, and $p(1) = 1 - p(0) - p(2)$).  
 
-\subsubsection{Kinship matrix}
+% \subsubsection{Kinship matrix}
 
-Next, I defined the IBD matrix as the $N \times N$ matrix $\mathbf{R} = \mathbf{G}\mathbf{G}^T$, where $\mathbf{G}$ is the $N \times S$ genotype matrix from above.
-$\mathbf{R}$ was then column-normalised.
+% Next, I defined the IBD matrix as the $N \times N$ matrix $\mathbf{R} = \mathbf{G}\mathbf{G}^T$, where $\mathbf{G}$ is the $N \times S$ genotype matrix from above.
+% $\mathbf{R}$ was then column-normalised.
 
-\subsubsection{Environments}
+% \subsubsection{Environments}
 
-First, I define the context covariance matrix as:
-$\boldsymbol{\Sigma} = \mathbf{E}\mathbf{E}^T$.
+% First, I define the context covariance matrix as:
+% $\boldsymbol{\Sigma} = \mathbf{E}\mathbf{E}^T$.
 
-Next, I simulated two different types of context covariance matrix.
+% Next, I simulated two different types of context covariance matrix.
 
-\subsubsection{Phenotype}
+% \subsubsection{Phenotype}
 
-Briefly, from the full model (eq. 6.1) we simulate only an intercept as covariate, such that:  
+% Briefly, from the full model (eq. 6.1) we simulate only an intercept as covariate, such that:  
 
-\begin{equation}
- \mathbf{y} = \mathbf{y}_0 + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi}, 
-\end{equation}
+% \begin{equation}
+%  \mathbf{y} = \mathbf{y}_0 + \mathbf{g}\beta_G + \mathbf{g} \odot \boldsymbol{\beta_{GxE}} + \mathbf{e} + \mathbf{u} + \boldsymbol{\psi}, 
+% \end{equation}
 
-where I column-normalise all terms so that the total variance sums to 1.
-Next, I set the variance explained by both genetic terms $var_G+var_{GxE}=\sigma_0^2$, and call the rest $v = 1-\sigma_0^2$.
+% where I column-normalise all terms so that the total variance sums to 1.
+% Next, I set the variance explained by both genetic terms $var_G+var_{GxE}=\sigma_0^2$, and call the rest $v = 1-\sigma_0^2$.
 
-Further, I regulate the amount of variance driven by GxE using an additional weighting factor $\rho_0$, such that: $var_G = (1-\rho_0)\sigma_0^2$ and $var_{GxE} = \rho_0\sigma_0^2$
-For simplicity, I set the variances explained by the last three terms to be the same:
-$\sigma_E^2 = \sigma_g^2 = \sigma_n^2 = v/3$. \\
+% Further, I regulate the amount of variance driven by GxE using an additional weighting factor $\rho_0$, such that: $var_G = (1-\rho_0)\sigma_0^2$ and $var_{GxE} = \rho_0\sigma_0^2$
+% For simplicity, I set the variances explained by the last three terms to be the same:
+% $\sigma_E^2 = \sigma_g^2 = \sigma_n^2 = v/3$. \\
 
-More specifics on how I simulate the betas, and how i set the variance explained to whatever value.
+% More specifics on how I simulate the betas, and how i set the variance explained to whatever value.
 
-\subsection{Calibration analysis}
+% \subsection{Calibration analysis}
 
-Using the data simulated as above, I first checked whether the model was calibrated both in the case of no genetic effects at all (i.e. $\sigma_0^2 = 0$) and in the case of persistent effects only (no GxE, i.e. $\rho_0 = 0$) (Fig. \ref{fig:sc_structlmm_calibration}).
-Specify number of donors, cells, snps used here.
+% Using the data simulated as above, I first checked whether the model was calibrated both in the case of no genetic effects at all (i.e. $\sigma_0^2 = 0$) and in the case of persistent effects only (no GxE, i.e. $\rho_0 = 0$) (\textbf{Fig. \ref{fig:sc_structlmm_calibration}}).
+% Specify number of donors, cells, snps used here.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=15.5cm]{Chapter6/Fig/sc_structlmm_calibration.png}
-\caption[Calibration QQ-plots]{\textbf{Calibration QQ-plots}.\\
-(a) No genetic effect at all.
-(b) No GxE effect (persistent only).}
-\label{fig:sc_structlmm_calibration}
-\end{figure}
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=15.5cm]{Chapter6/Fig/sc_structlmm_calibration.png}
+% \caption[Calibration QQ-plots]{\textbf{Calibration QQ-plots}.\\
+% (a) No genetic effect at all.
+% (b) No GxE effect (persistent only).}
+% \label{fig:sc_structlmm_calibration}
+% \end{figure}
 
-% \subsection{Comparison with Struct LMM v0}
+% % \subsection{Comparison with Struct LMM v0}
 
-% Next, we compared our model to the original StructLMM model.
-% StructLMM is expected to have issues in the presence of extended repeated structure, which it is not equipped to deal with.
-% To address this, we simulated various numbers of repeats per donor - mimicking cells -  ranging from 10 to 500.
-% Indeed, we observe over-inflation of StructLMM in the presence of many repeats making the model not calibrated (Fig. Xa).
-% sc-StructLMM, on the other hand, is nicely calibrated (Fig. Xb).
+% % Next, we compared our model to the original StructLMM model.
+% % StructLMM is expected to have issues in the presence of extended repeated structure, which it is not equipped to deal with.
+% % To address this, we simulated various numbers of repeats per donor - mimicking cells -  ranging from 10 to 500.
+% % Indeed, we observe over-inflation of StructLMM in the presence of many repeats making the model not calibrated (Fig. Xa).
+% % sc-StructLMM, on the other hand, is nicely calibrated (Fig. Xb).
 
-% \subsection{Comparison with standard interaction test}
+% % \subsection{Comparison with standard interaction test}
 
-% We then performed power analysis when comparing our model with one where the environments are modelled as fixed effects (see Section 2.4.2).
+% % We then performed power analysis when comparing our model with one where the environments are modelled as fixed effects (see Section 2.4.2).
 
-\clearpage
+% \clearpage
 
 % \section{Real data}
 \section{Application to differentiating iPS cells}
 
-Next, I applied the model on the data described in Chapter 
+% Next, 
+I applied sc-StructLMM on the data described in \textbf{Chapter 
 % \ref{chapter4}
-4 (and published in \cite{cuomo2020single}).
+4} (and published in \cite{cuomo2020single}).
 % We applied our model on a recently published dataset.
-Briefly, human iPS cells (section 
+Briefly, human iPS cells (\textbf{section 
 % \ref{sec:ipsc}
-1.2) from 125 donors are differentiated from a pluripotent state, to definitive endoderm. 
+1.2}) from 125 donors are differentiated from a pluripotent state, to definitive endoderm. 
+% \subsection{Analysis of factors using MOFA}
 I use 
-principal components (PCs) 
+% principal components (PCs) 
+multi-factor analysis (MOFA \cite{argelaguet2018multi}) to identify factors that
 % 10 MOFA factors estimated from the data \cite{argelaguet2018multi}
 % 500 independent ($r^2<0.2$) highly variable genes (HVGs)
-to capture various aspects of the variation in gene expression in the dataset, which represent cell states and types. 
-In particular, PC1 nicely aligns with the differentiation axis (see section 
+% to 
+capture various aspects of the variation in gene expression in the dataset, which represent cell states and types. 
+In particular, the MOFA factor1 aligns with the differentiation axis (similar to PC1, see \textbf{section 
 % \ref{sec:endodiff_sources_of_variation}
-4.3.1). \\
+4.3.1}). 
+Factor 3, on the other hand, captures cells in different phases along the cell cycle, as estimated using Seurat \cite{stuart2019comprehensive} (\textbf{Fig. \ref{fig:sc_structlmm_endo_mofa_factors}}). 
+\\
 
-First, we test the combined set of eQTL identified at any of the developmental stages defined in Chapter 
+\begin{figure}[h]
+\centering
+\includegraphics[width=15.5cm]{Chapter6/Fig/MOFA_factors.png}
+\caption[MOFA factors used as contexts]{\textbf{MOFA factors used as contexts}.\\
+Evaluation of some of the factors identified using multi-omics factor analysis (MOFA \cite{argelaguet2018multi}).
+(left) MOFA1 and MOFA2 mostly reflect the developmental stage of our cells, with MOFA1 (x axis) recapitulating a differentiation trajectory from iPSCs (day0) to definitive endoderm (day3).
+MOFA3 vs MOFA6: cell cycle.}
+\label{fig:sc_structlmm_endo_mofa_factors}
+\end{figure}
+
+First, I used the first 10 factors calculated using MOFA as cellular states in the model (i.e. as columns of $\mathbf{E}$ from eq. \eqref{eq:scStructLMM}).
+For numerical reasons, the factors were quantile normalised, prior to building the covariance matrix (as $\mathbf{E}\mathbf{E}^T$). 
+% \\
+Next, I tested the combined set of eQTL identified at any of the developmental stages defined in \textbf{Chapter 
 % \ref{chapter4}
-4 (iPSC, mesendo, defendo - for a total of 4,470 gene-SNP pairs) for GxE interactions.
-We observe an increase in our power to identify `interaction eGenes' (i.e. genes with at least one GxE interaction eQTL) as we increase the number of PCs used as environments, with then a plateau at 50 PCs (Fig. \ref{fig:sc_structlmm_endo_barplots}).
+4} (iPSC, mesendo, defendo - for a total of 4,470 gene-SNP pairs) for GxE interactions.
+Single cell expression of each of the eGenes tesed ($\mathbf{y}$) was also quantile-normalised. \\
+
+To assess the effect of including more cell states in the model, I tested the model using only one factor, the first two factors, the first five, and finally all ten factors (\textbf{Fig. \ref{fig:sc_structlmm_endo_barplots}}).
+
+\newpage
+
+% \subsection{Data prep}
+
+% Both y and E are quantile normalised,..
+
+\subsection{Permutation strategy for multiple testing correction}
+
+To correct for multiple testing correction, I used a permutation approach similar to that described in \cite{ongen2016fast}.
+In particular, I ran 100 permutations for each of the eQTL tested, where I permuted the values of the cell states (i.e. the MOFA factors) within each donor, across cells.
+Next, for each set of permutations, I select the minimum (permuted) p value, across all eQTL.
+I then use these 100 permuted p values to estimate a beta distribution and correct the original real p values.
+
+\subsection{Results}
+
+We observe an increase in our power to identify `interaction eGenes' (i.e. genes with at least one GxE interaction eQTL) as we increase the number of 
+factors included as contexts 
+% PCs used as environments, with then a plateau at 50 PCs
+(\textbf{Fig. \ref{fig:sc_structlmm_endo_barplots}}). \\
 
 \begin{figure}[htbp]
 \centering
@@ -408,14 +450,14 @@ Chromosome 22 only (88 genes).}
 \label{fig:sc_structlmm_endo_barplots}
 \end{figure}
 
-Reassuringly, we can recapitulate most (XX\%) of the dynamic eQTL described in the original study (section 
-% \ref{sec:endodiff_dynamic_eqtl}
-4.5), which were detected using solely PC1, 
-% and using ASE and a linear model (see eq. \eqref{eq:endodiff_ase_pseudotime}
-4.1).
-% and a fixed effect linear mixed model (Methods). 
-However, we show that we have increased power using our model. 
-Furthermore, the overlap with our interaction eQTL and the dynamic eQTL identified in Cuomo \textit{et al}. decreases, the more PCs we include (Fig. XX).\\
+% Reassuringly, we could recapitulate most (XX\%) of the dynamic eQTL described in the original study (\textbf{section 
+% % \ref{sec:endodiff_dynamic_eqtl}
+% 4.5}), which were detected using solely PC1, 
+% % and using ASE and a linear model (see eq. \eqref{eq:endodiff_ase_pseudotime}
+% % 4.1).
+% % and a fixed effect linear mixed model (Methods). 
+% However, we show that we have increased power using our model. 
+% Furthermore, the overlap with our interaction eQTL and the dynamic eQTL identified in Cuomo \textit{et al}. decreases, the more PCs we include (Fig. XX).\\
 
 
 
@@ -442,11 +484,11 @@ Furthermore, the overlap with our interaction eQTL and the dynamic eQTL identifi
 % MOFA (single omic)
 
 % \section{Downstream analysis} 
-
+\newpage
 % \subsection{Estimate cell-specific genetic effects}
 \section{Predicting cell-specific effect sizes driven by GxE}
 
-Using our model it is also possible to estimate a cell-specific genetic effect size due to GxE (thus estimating $\boldsymbol{\beta_{GxE}}$) for each gene-SNP pair tested.
+Using our model it is also possible to estimate a cell-specific genetic effect size due to GxE (thus estimating $\boldsymbol{\beta_{GxE}}$ from eq. \eqref{eq:scStructLMM}) for each gene-SNP pair tested.
 Because this is not optimised, we only perform this as downstream analysis, on gene-SNP pairs that pass a significance threshold.\\
 
 Briefly, we note that given a generic gaussian process ($\mathrm{GP}$) of the form:
@@ -491,7 +533,7 @@ and how do you go from here to beta gxe?
 
 
 We perform this analysis only for the subset of XXX eQTL that exhibit some GxE effects (FDR < 10\%).
-Reassuringly, we see that Oct4, .. (Fig. \ref{fig:sc_structlmm_pcas}).\\
+Reassuringly, we see that Oct4, .. (\textbf{Fig. \ref{fig:sc_structlmm_pcas}}).\\
 
 \begin{figure}[htbp]
 \centering
@@ -505,7 +547,7 @@ Cells are coloured by estimated effect sizes.}
 \clearpage
 
 One important axis of variation is time, thus we cluster using Palantir \cite{setty2019characterization}
-(Fig. \ref{fig:sc_structlmm_clusters}).
+(\textbf{Fig. \ref{fig:sc_structlmm_clusters}}).
 
 \begin{figure}[h]
 \centering
@@ -519,13 +561,15 @@ Clusters using Palantir.}
 
 \section{Discussion}
 
-Here, I have presented a method that...
+Here, I have presented a method that allows for the joint testing of multivariate context-specific eQTL mapping across cellular states and types, as estimated from single cell RNA-seq expression profiles.\\
 
-summarise and refer to figures
+In particular, the method is able to .. (\textbf{Fig. \ref{fig:sc_structlmm_overview}})
 
-I have shown preliminary results on..\\
+Next..
 
+I have shown preliminary results on simulated data, showing calibration and..\\
 
+This work is still in early stages, with significant work still to do to validate the results...
 Address things still to do 
 run on 10x data
 validate results
