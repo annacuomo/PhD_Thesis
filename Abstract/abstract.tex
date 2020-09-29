@@ -2,31 +2,36 @@
 % Use `abstract' as an option in the document class to print only the titlepage and the abstract.
 \begin{abstract}
 
-Over the last fifteen years, genome-wide association studies (GWAS) have been used
-to identify genetic variants associated with thousands of traits and diseases by exploiting naturally occurring genetic variation in large cohorts of individuals. 
-More recently, similar approaches have been applied to high-throughput RNA sequencing data to find variants associated with expression level, called expression quantitative trait loci (eQTL).
+Over the last fifteen years, genome-wide association studies (GWAS) have been used to identify thousands of DNA variants associated with complex traits and diseases, by exploiting naturally occurring genetic variation in large populations of individuals. 
+More recently, similar approaches have been applied to RNA sequencing data to find variants associated with expression level, called expression quantitative trait loci (eQTL).
 Recent advances in experimental techniques have provided an unprecedented opportunity to measure gene expression at the single cell level, and the chance to study cellular heterogeneity. 
 This represents a remarkable advance over traditional bulk sequencing methods, particularly to study cell fate commitment events in development.
-
 The challenge of studying early development in human is partially overcome by advances in stem cell technologies.
-In particular, induced pluripotent stem cells (iPSCs) and cells derived from them represent a fantastic system to study development \textit{in vitro}.
-
+In particular, induced pluripotent stem cells (iPSCs) and cells derived therefrom represent a fantastic system to study development \textit{in vitro}.
 % To map eQTL, linear mixed models (LMMs) represent a popular approach as their flexible framework allows to accounting for confounding effects such as the population structure between samples.
+In this thesis, I investigate the computational challenges of using single cell expression profiles to perform \gls{eqtl} mapping, and provide suitable approaches for the identification of cell type and context-specific eQTL using single cell expression profiles.
+I further explore the application of such methods across a range of human iPSC-derived cell types, using data from the \gls{hipsci} project. \\
 
-In this thesis, I investigate the computational challenges of using single cell expression profiles to perform \gls{eqtl} mapping, focusing on the expansion and development of analytical frameworks that are necessary to take advantage of such data.
+% I use \textbf{Chapter \ref{chapter1}} to provide an introduction that spans a brief history of human genetics and models for genetics associations, with a focus on eQTL mapping, as well as an overview of the use of human induced pluripotent stem cells. \\
 
-In Chapter 1 we provide an introduction that spans a brief history of human genetics and models for genetics associations, with a focus on eQTL mapping, as well as an overview of the use of human stem cells.
+% In \textbf{Chapter \ref{chapter2}}, I set the analytical foundations of linear and linear mixed models for eQTL mapping, on which all subsequent methods described in this thesis will be based on. \\
 
-In Chapter 2 we set the analytical foundations of linear mixed models, on which all subsequent methods described in this thesis will be based on.
+% In \textbf{Chapter \ref{chapter3}}, I use matched bulk and single cell RNA-sequencing from the same iPSC lines to compare eQTL mapping results across the two technologies.
+% As iPS cells typically represent a homogeneous cell type, this is the ideal system to benchmark methods to 
+% best-practice
 
-In Chapter 3 we present the two population-level single cell datasets that will be analysed in this thesis.
+% In Chapter \ref{chapter4}, endodiff
 
-In Chapter 4 we expand on adapting existing expression level QTL mapping methods to single cell expression profiles, and compare across technologies.
+% In Chapter \ref{chapter5}, neuroseq
 
-In Chapter 5 we introduce new types of QTL mapping especially enabled by the single cell resolution.
+% % In Chapter 3 we present the two population-level single cell datasets that will be analysed in this thesis.
 
-In Chapter 6 we present scStructLMM, an extension on an existing method for multivariate GxE interactions which is significantly improved over the original and is especially suited for single cell data.
+% % In Chapter 4 we expand on adapting existing expression level QTL mapping methods to single cell expression profiles, and compare across technologies.
 
-Finally, Chapter 7 summarises this thesis and provides an outlook of future research.
+% % In Chapter 5 we introduce new types of QTL mapping especially enabled by the single cell resolution.
+
+% % In Chapter 6 we present scStructLMM, an extension on an existing method for multivariate GxE interactions which is significantly improved over the original and is especially suited for single cell data.
+
+% Finally, Chapter 7 summarises this thesis and provides an outlook of future research.
 
 \end{abstract}

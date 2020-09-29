@@ -2,11 +2,27 @@
 % ******************************* Thesis Appendix A ****************************
 \chapter{Supplementary Tables} 
 
-% \section{Additional results Chapter 3}
+\section{Additional results Chapter 3}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c c c c c}
+    &       5 & 10 & 15 & 20 & 25  \\
+    \hline
+    PCA   & 107 & 109 &  125 & 122 & 113 \\
+    MOFA  &  92 &  95 &   99 & 103 & -   \\
+    PEER  &  92 &  90 &   97 &  83 & -   \\
+    SVD   & 119 & 116 &  119 & 114 & 110 \\
+    \end{tabular}
+    \caption[Covariate comparison in terms of replication of matched bulk results]{\textbf{Number of matched bulk-replicated eQTL across covariates.} \\
+    Equivalent to \textbf{Table \ref{tab:covariates_replication}} (i.e. mean as aggregation method, 1,421 chromosome 2 genes tested only, p value < 0.05 and same direction of effect as replication), except considering replication using bulk with matched samples only.}
+    \label{tab:covariates_replication_matched_bulk}
+\end{table}
 
 % results on smaller gene selection?
+\newpage
 
-\section{Additional results Chapter 4}
+\section{Additional results for Chapter 4}
 
 \begin{table}[h]
     \centering
@@ -32,6 +48,7 @@
 \end{table}
 % number of eqtl, sample size etc?
 
+\vspace{10mm}
 
 \begin{table}[h]
     \centering
@@ -46,8 +63,8 @@
     Histone H3 (acetyl K27) & ab4729 & Abcam \\
     Histone H3 (tri methyl K36) & ab9050 & Abcam \\
     \end{tabular}
-    \caption[Antibodies used for ChIP-seq experiments]{\textbf{Antibodies used for ChIP-seq experiments}.\\
-    .}
+    \caption[Antibodies used for ChIP-seq experiments]{\textbf{Antibodies used for the ChIP-seq experiments}.\\
+    Experimental methods for this analysis are described in \textbf{section \ref{sec:endodiff_chipseq}}, and these data were used for analysis shown in \textbf{Fig. \ref{fig:endodiff_stage_specific_eqtl}} and \textbf{\ref{fig:endodiff_dynamic_eqtl_enrichment}}.} 
     \label{tab:endodiff_chipseq_antibodies}
 \end{table}
 

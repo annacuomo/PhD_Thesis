@@ -21,6 +21,10 @@ The work presented in this thesis has been done by me in collaboration with the 
 When using to information of this thesis, please cite the associated papers:
 
 <!--**Chapter 3:**-->
+<!--Anna S.E. Cuomo\*, Christina Azodi\*, Giordano Alvari\*, Davis J. McCarthy, Marc Jan Bonder.-->
+
+<!--_Best practices for single cell eQTL mapping._-->
+
 
 **Chapter 4:** [Chapter 4](https://www.nature.com/articles/s41467-020-14457-z)
 
@@ -42,3 +46,4 @@ Cuomo, A.S.E. (2020). _Using single-cell RNA-seq to assess the effect of common 
 ## Acknowlegments
 
 *   Krishna Kumar - [Original CUED PhD thesis template](https://github.com/kks32/phd-thesis-template)
+*   Nils Eling - [Improved formatted template](https://github.com/nilseling/Thesis)

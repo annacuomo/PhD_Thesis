@@ -86,6 +86,7 @@
 
 % Captions: This makes captions of figures use a boldfaced small font.
 \usepackage[font=small,labelfont=bf]{caption}
+\DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
 
 %\RequirePackage[labelsep=space,tableposition=top]{caption}
 \renewcommand{\figurename}{Fig.} %to support older versions of captions.sty

@@ -3,13 +3,13 @@
 
 \chapter{Supplementary Figures}
 
-\section{Additional results from Chapter 3}
+\section{Additional results for Chapter 3}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=10cm]{Appendix2/Fig/supplement_genotype_pcs.png}
     \caption[Population structure of donors included in the study]{\textbf{Population structure of donors included in the study.} \\
-    Principal component (PC) decomposition of the kinship matrix (calculated using plink \cite{purcell2007plink}) across all cell lines included in our study.
+    Principal component (PC) decomposition of the kinship matrix (calculated using PLINK \cite{purcell2007plink}) across all cell lines included in our study.
     The four outlier cell lines were excluded from the analyses described in \textbf{section \ref{sec:best_practice}}.}
     \label{suppl_fig:kinship_pcs}
 \end{figure}
@@ -26,20 +26,21 @@
     \centering
     \includegraphics[width=16cm]{Appendix2/Fig/suppl_scran_vs_baynorm.png}
     \caption[Correlation of results between scran and baynorm normalisation]{\textbf{Correlation of results between scran and baynorm normalisation.}\\
-    Scatter plots of eQTL effect sizes (left) and p values (right) obtained when testing association of iPSC mean eQTL discovered after normalising counts using scran (x axis) or baynorm (y axis).}
+    Related to results from \textbf{Table \ref{tab:egenes}}.
+    Scatter plots of eQTL effect sizes (left) and p values (right) obtained when testing association of iPSC single cell eQTL discovered using the mean as aggregation method and after normalising counts using two alternative methods: scran/scater \cite{mccarthy2017scater} (x axis) and baynorm \cite{tang2020baynorm} (y axis).}
     \label{suppl_fig:scran_vs_baynorm}
 \end{figure}
 
 \clearpage
 
-\section{Additional results Chapter 4}
+\section{Additional results for Chapter 4}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=16cm]{Appendix2/Fig/suppl_protocol.png}
     \caption[Endoderm differentiation protocol]{\textbf{Endoderm differentiation protocol.}\\
     Schematic representation of the chemically defined protocol used to initiate differentiation towards  definitive endoderm (adapted from \cite{touboul2010generation}). 
-    Tra-1-60 and CXCR4 are canonical cell surface markers used to sort live cells by differentiation stage. }
+    Tra-1-60 and CXCR4 are canonical cell surface markers of pluripotent and definitive endoderm stages, respectively, which were used to sort live cells by differentiation stage. }
     \label{suppl_fig:endodiff_exp_protocol}
 \end{figure}
 
@@ -48,8 +49,8 @@
     \includegraphics[width=15cm]{Appendix2/Fig/suppl_diabetes_lines.png}
     \caption[PCA of healthy and diseased cell lines]{Comparison of expression patterns between healthy and diseased cell lines.
     PCA and t-SNE representations of cells from neonatal diabetes lines, compared to healthy lines from the same experiments. 
-    (A) PCA plot for cells from the neonatal diabetes cell lines (red), cells from healthy lines from the same seven experiments (dark blue), against the background of all cells (grey). 
-    (B) t-SNE plot of the same cells as in A.}
+    (A) PCA plot of cells from cell lines derived from monogenic diabetes donors (red), cells from healthy donors from the same seven experiments (dark blue), against the background of all cells (grey). 
+    (B) t-SNE plot for the same cells as in (A).}
     \label{suppl_fig:pca_diabetes_lines}
 \end{figure}
 
@@ -57,12 +58,20 @@
 
 \clearpage
 
-\section{Additional results Chapter 5}
+\section{Additional results for Chapter 5}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=14cm]{Appendix2/Fig/suppl_neuroseq_immunostaining.png}
-    \caption[Immunostaining of midbrain neural progenitors and dopaminergic neurons]{\textbf{Immunostaining of midbrain neural progenitors and dopaminergic neurons.}\\
+\begin{figure}[htb!]
+    % \centering
+    \includegraphics[width=14.5cm]{Appendix2/Fig/suppl_neuroseq_immunostaining.png}
+    \caption[Immunostaining of midbrain neural progenitors and dopaminergic neurons]{\textbf{Immunostaining of midbrain neural progenitors and DA neurons (Full legend on next page).}\\}
+    \label{suppl_fig:immunostaining}
+\end{figure}
+
+\newpage
+
+\captionsetup[figure]{list=no}
+\addtocounter{figure}{-1}   
+\captionof{figure}{\textbf{Immunostaining of midbrain neural progenitors and DA neurons (continued).\\}
     Figure by Julie Jerber.
     (a) Immunostaining for known midbrain progenitor markers LMX1A and FOXA2 at day 11. 
     Nuclei were counterstained with Hoechst. 
@@ -70,26 +79,37 @@
     (b) Immunostaining of differentiated dopaminergic neurons for  the neuronal marker MAPT2 (white) and the dopaminergic neuronal markers TH and LMX1A. 
     Scale bar: 25µm. 
     Data is shown for two example individual cell lines (HPSI0155i-hecn\_6 and HPSI0514i-uenn\_3) as well as three entire differentiation pools (Pools 1,2,3).}
-    \label{suppl_fig:immunostaining}
-\end{figure}
+\captionsetup[figure]{list=yes}
 
+\vspace{10mm}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{Appendix2/Fig/suppl_donor_effects.png}
+    \caption[Predicted differentiation scores]{\textbf{Predicted differentiation scores}.\\
+    (a) Histogram of predicted differentiation scores across all HipSci cell lines. 
+    The bimodal distribution is especially extreme in this case, and 0.5 was used as the threshold to split bad from good differentiator lines. 
+    (b) Scatter plot of predicted differentiation scores for donor for which we have data for two different cell lines. Replicate1 (rep1) is chosen as the line with lower predicted score (n=270). 
+    Colours indicate three categories of donors, according to whether both lines from the same donor are predicted to fail differentiation (blue), both are predicted to succeed (green), the two lines are discordant (one is predicted to successfully differentiate, but not the other, yellow). (c) Bulk RNA-seq expression of \textit{UTF1, TAC3} for the two replicate lines per donor stratified by the categorization described in (b).}
+    \label{suppl_fig:predicted_scores_donors}
+\end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm]{Appendix2/Fig/suppl_ips_cluster2.png}
-    \caption[An iPSC sub-population is associated with lower differentiation efficiency]{\textbf{Re-analysis of iPSC scRNA-seq data reveals a subpopulation characterised by expression of predictive marker genes associated with lower neural differentiation efficiency.}\\
+    \caption[An iPSC sub-population is associated with lower differentiation efficiency]{\textbf{Re-analysis of iPSC scRNA-seq data reveals a subpopulation characterised by expression of predictive marker genes associated with lower neuronal differentiation efficiency.}\\
      (a) UMAP overview of the dataset. 
      iPSC scRNA-seq data from \cite{cuomo2020single} were re-analysed following the same batch correction and clustering steps applied to our neural differentiation data, identifying 5 clusters. 
      (b) Violin plots of gene expression for genes related to pluripotency (\textit{NANOG, SOX2, POU5F1}) and two gene markers that are respectively upregulated and downregulated in cluster 2 (\textit{UTF1, TAC3}, from \textbf{Fig. \ref{fig:neuroseq_ips_expression_signature}}). 
      (c) Scatter plot showing the proportion of cells assigned to cluster 2 between replicates (n=23). 
-     (d) Scatterplot between the proportion of cells assigned to cluster 2 (y-axis) and differentiation efficiency (x-axis) similar to \textbf{Fig \ref{fig:neuroseq_ips_sc_genes}c} but where we use imputed proportions of cluster 2 cells from bulk RNA-seq available for most cell lines (n=182).}
+     (d) Scatter plot between the proportion of cells assigned to cluster 2 (y-axis) and differentiation efficiency (x-axis) similar to \textbf{Fig \ref{fig:neuroseq_ips_sc_genes}}, panel c, but where we use imputed proportions of cluster 2 cells from bulk RNA-seq available for most cell lines (n=182, out of 199 lines for which we have day 52 data and thus a measure of neuronal differentiation efficiency).}
     \label{suppl_fig:ipsc_cluster2}
 \end{figure}
 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=16cm]{Appendix2/Fig/suppl_ipsc_cluster2_sarkar.png}
+    \includegraphics[width=15cm]{Appendix2/Fig/suppl_ipsc_cluster2_sarkar.png}
     \caption[Analysis of a single cell iPSC dataset from Sarkar \textit{et al.}]{\textbf{Analysis of a single cell iPSC dataset from Sarkar \textit{et al.}}\\
     (a) UMAP overview of the dataset. 
     iPSC scRNA-seq data from \cite{sarkar2019discovery} were re-analysed following the same data normalisation and clustering steps applied to our neural differentiation data, identifying 4 clusters. 
@@ -100,8 +120,12 @@
     \label{suppl_fig:ipsc_cluster2_sarkar}
 \end{figure}
 
-
-
-% figure on Sarkar et al iPSC population
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=14cm]{Appendix2/Fig/suppl_pop_struct_pc.png}
+    \caption[Absence of population structure]{\textbf{Absence of population structure}.\\
+    Principal component (PC) decomposition of the kinship matrix (calculated using PLINK \cite{purcell2007plink}) across all cell lines included in the study described in \textbf{Chapter \ref{chapter5}}, coloured by batch.}
+    \label{suppl_fig:no_pop_struct}
+\end{figure}
 
 % cell lines from same donor prediction efficiency
