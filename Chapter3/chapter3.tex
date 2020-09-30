@@ -124,7 +124,7 @@ This project was designed by Marc Jan Bonder and myself, to extend the results p
 Giordano performed most of the analyses, under mine and Marc Jan Bonder's supervision.
 Marc Jan Bonder and I performed the remaining analyses and summarised the results.\\
 
-I generated all figures included in this chapter, except where indicated otherwise in figure legends.
+I generated all figures included in this chapter.
 % between the Stegle, Bonder and McCarthy labs.
 % The project was lead by Giordano Alvari under Marc Jan Bonder's supervision and mine.
 % Christina Azodi supervised by Davis McCarthy performed the simulation analyses.
@@ -137,7 +137,7 @@ I generated all figures included in this chapter, except where indicated otherwi
 
 As outlined in \textbf{section 
 % 1.1.8},
-\ref{sec:eqtl}} 
+\ref{sec:eqtl}} ,
 since the publication of the first human \gls{eqtl} map in 2003 \cite{schadt2003genetics}, the field has adapted to adopt technological advances as they emerged, both in terms of statistical approaches (from linkage analysis to genome-wide scans), and of new technologies for the estimation of gene expression (from microarrays to RNA-seq).
 I use this section to give a brief overview of methods to estimate gene expression (\textbf{section \ref{sec:gene_expression}}), the advent of single cell RNA-seq (\textbf{section \ref{sec:scrnaseq}}) and the consequent birth of the (very new) single cell-\gls{eqtl} mapping field of research (\textbf{section \ref{sec:sc_eqtl}}). 
 
@@ -152,8 +152,8 @@ A key limitation of Northern blots is that they require large amounts of input m
 % , at most semi-quantitative.
 In qRT-PCR, RNA is reverse-transcribed into complementary DNA (cDNA) and then amplified using PCR, after each cycle of which the concentration of DNA is measured using a fluorescent dye. 
 This required normalisation relative to a standard gene (e.g. 
-housekeeping genes, or 
-ribosomal genes) which was assumed to be `stable', making this method also not very quantitative.
+a housekeeping gene, or 
+a ribosomal gene) which was assumed to be `stable', making this method also not very quantitative.
 % both are low-throughput
 Additionally, both of these methods were very low-throughput, typically used only to quantify one, or at most few genes - hence being referred to as `single gene approaches'.
 % Additionally, these methods were not very accurate, as the quantification of each gene required normalisation relative to a standard gene
@@ -811,7 +811,7 @@ data (108 individuals) using single cell (left, from \cite{cuomo2020single}) and
 
 % Add differences in number of total reads, read distribution, describe “double sampling” process.
 
-\newpage
+% \newpage
 
 % \section{Data}
 \section{Single cell and bulk RNA-seq profiling of iPSCs}
@@ -874,7 +874,7 @@ To map \glspl{eqtl}, I use a pipeline primarily written by Marc Jan Bonder, to w
 It is a wrapper around LIMIX \cite{lippert2014limix, casale2015efficient}, and it is publicly available at \url{https://github.com/single-cell-genetics/limix_qtl}. \\
 
 For all three eQTL maps (single cell SmartSeq2, bulk, single cell 10X), I used the same exact pipeline and tested the same set of genes (n=10,840).
-In particular, I performed \textit{cis} \gls{eqtl} mapping, considering common (minor allele frequency > 5\%), in HWE (p value > 0.001)\footnote{HWE: Hardy-Weinberg equilibrium.}, variants within a \textit{cis}-region spanning 250 kb up- and down-stream of the gene body.
+In particular, I performed \textit{cis} \gls{eqtl} mapping, considering common (minor allele frequency > 5\%), in HWE (p value > 0.001)\footnote{HWE: Hardy-Weinberg equilibrium.}, variants within a \textit{cis}-region spanning 250 kb upstream and downstream of the gene body.
 % for \textit{cis} QTL analysis. 
 For each gene-SNP pair, the association test was performed using an LMM (\textbf{section
 \ref{sec:linear_mixed_models}}):
@@ -931,7 +931,7 @@ In particular, expression level is measured as log2(CPM+1)\footnote{CPM: counts 
 % size factor?
 \\
 
-Since we did not use any batch correction method on the single cell expression data \textit{a priori}, we cannot exclude differences across batches.
+Since we did not use any batch correction method on the single cell expression data a priori, we cannot exclude differences across batches.
 As internal control we have, for a subset of donors (23/112), data from two (or three, in one case) distinct experimental batches.
 We therefore compute average expression levels not for each individual line, but for each line-experiment combination (i.e. cell\_lineA-experiment1, cell\_lineA-experiment2), which enables effective correction for batch-to-batch differences using PCs as covariates (see above and \textbf{section
 \ref{sec:confounders}}).
@@ -975,19 +975,19 @@ On the right, zoom-in to only consider the first 20 \gls{ipsc} lines, highlighti
 
 For comparison, I performed \textit{cis}-\gls{eqtl} mapping using the matched bulk RNA-seq data.
 % considering only the cell lines that had been used to map \gls{ipsc} \glspl{eqtl} from the scRNA-seq data (bulk data was available for 108 donors out of the 112 day0 single cell donors), 
-I used the same pipeline (eq. \eqref{eq:LMM_ipsc_eqtl})\footnote{The only difference of course is that there were not multiple replicates from the same line in the bulk RNA-seq data, but the model in eq. \eqref{eq:LMM_ipsc_eqtl} still holds.} 
-and tested the same set of genes. 
+I used the same pipeline (eq. \eqref{eq:LMM_ipsc_eqtl})\footnote{The only difference of course is that there were not multiple replicates from the same line in the bulk RNA-seq data, but the model in eq. \eqref{eq:LMM_ipsc_eqtl} still holds.} and tested the same set of genes. 
 This yielded 2,908 significant genes at an FDR of 10\%
 % (out of 10,736 genes tested, 27\%)
-(27\% of genes tested). \\
+(27\% of genes tested).
+Such difference in power can be explained, at least in part, by the reduced noise in the gene expression estimates when using bulk RNA-seq, partly due to the more consistent number of cells, and as a consequence reads, across individuals (\textbf{Fig. \ref{fig:sc_bulk_counts}}).
+\\
 
-I found that over 70\% of \glspl{eqtl} identified using scRNA-seq data were replicated in the bulk study, where a single-cell \gls{eqtl} lead variant (top variant per gene) was replicated if it achieved nominal significance (p value < 0.05) and had consistent direction of effect in the full set of results from the bulk \gls{eqtl} analysis (\textbf{Fig. \ref{fig:sc_bulk_egenes}}). \\
-
+In terms of agreement between the sets of results, I found that over 70\% of \glspl{eqtl} identified using scRNA-seq data were replicated in the bulk study, where a single-cell \gls{eqtl} lead variant (top variant per gene) was replicated if it achieved nominal significance (p value < 0.05) and had consistent direction of effect in the full set of results from the bulk \gls{eqtl} analysis (\textbf{Fig. \ref{fig:sc_bulk_egenes}}). 
+% \\
 On the other hand, only around 50\% of the \gls{eqtl} identified (at FDR < 10\%) using bulk RNA-seq could be replicated
 % \footnote{Defined as above: nominal significance (p value < 0.05) and same direction of effect.} 
 in our single cell \gls{eqtl} map.
 However, when we subsetted to \gls{eqtl} identified using bulk data at a more stringent FDR threshold (1\%), the replication proportion was much larger (76\%), and the more stringent the FDR threshold, the more bulk \gls{eqtl} we could replicate using single cell data (\textbf{Fig. \ref{fig:sc_bulk_egenes}}).
-This result suggests that we are able to detect the stronger \gls{eqtl} signals, but lack the power (compared the corresponding test using bulk RNA-seq profiles) to identify smaller effects.
 % \\
 
 \begin{figure}[h]
@@ -1001,11 +1001,13 @@ sc: single cell.}
 \label{fig:sc_bulk_egenes}
 \end{figure}
 
+This result suggests that we are able to detect the stronger \gls{eqtl} signals, but lack the power (compared the corresponding test using bulk RNA-seq profiles) to identify smaller effects.
+% \\
 % To compare the \gls{ipsc} \gls{eqtl} maps derived from bulk and single-cell RNA-seq data, we assessed the nominal significance (p value < 0.05) as well as the consistent direction of effect of single-cell \gls{ipsc} \gls{eqtl} lead variants (top variant per gene) in the full set of results from the bulk \gls{ipsc} \gls{eqtl} analysis and vice versa.
 
 % To validate our approach, we also performed \gls{eqtl} mapping using deep bulk RNA-sequencing profiles from the same set of \gls{ipsc} lines (`iPSC bulk'; 10,736 genes tested) generated as part of the \gls{hipsci} project \cite{kilpinen2017common}, yielding consistent \gls{eqtl} ($\sim$70\% replication of lead \gls{eqtl} effects; nominal p value < 0.05).\\ 
 
-\newpage
+% \newpage
 
 \section{Replication of iPSC eQTL using 10X data}
 
@@ -1013,10 +1015,7 @@ Next, to further confirm our \gls{ipsc} \gls{eqtl} map, we performed \gls{eqtl} 
 
 Similar to before, we assessed how many bulk-identified \gls{ipsc} \gls{eqtl} could be replicated using 10X samples.
 Since this study is fairly underpowered with only 29 samples, we did not consider the opposite analysis, i.e. 10X discoveries replicated in bulk.
-We did, however, compare results to an \gls{ipsc} \gls{eqtl} map using the SmartSeq2 data, when sub-setted to the same 5 experiments (and 29 lines). \\
-
-Overall, we observe that replication of bulk \gls{eqtl} using scRNA-seq is reduced when we reduce sample size (for example, at FDR < 10\% replication was 41\% using 29 lines compared to 54\% using all 111 lines in \textbf{Fig. \ref{fig:sc_bulk_egenes}}), but comparable across technologies (SmartSeq2, 10X Genomics), with SmartSeq2 slightly outperforming 10X (\textbf{Fig. \ref{fig:sc_bulk_10x_egenes}}).
-% \\
+We did, however, compare results to an \gls{ipsc} \gls{eqtl} map using the SmartSeq2 data, when sub-setted to the same 5 experiments (and 29 lines, \textbf{Fig. \ref{fig:sc_bulk_10x_egenes}}). 
 
 \begin{figure}[h]
 % \centering
@@ -1027,6 +1026,13 @@ The total number of bulk eGenes discovered is shown, along with the number of di
 As before, replication was defined as nominal significance, at p value < 0.05, and same direction of effect.}
 \label{fig:sc_bulk_10x_egenes}
 \end{figure}
+
+Overall, we observe that replication of bulk \gls{eqtl} using scRNA-seq is reduced when we reduce sample size (for example, at FDR < 10\% replication was 41\% using 29 lines compared to 54\% using all 111 lines in \textbf{Fig. \ref{fig:sc_bulk_egenes}}), but comparable across technologies (SmartSeq2, 10X Genomics), with SmartSeq2 slightly outperforming 10X (\textbf{Fig. \ref{fig:sc_bulk_10x_egenes}}).
+\\
+
+Once again, we can explain these differences in power at least partly as the result of differences in sequencing depth.
+If the variability between donors was the main difference between bulk and plate-based scRNA-seq (\textbf{Fig. \ref{fig:sc_bulk_counts}}), here the key difference is the reduced number of reads obtained using the 10X technology, compared to SmartSeq2.
+Indeed, despite the higher number of cells (15,168 vs 2,275 for the same set of 29 lines), the total read count is significantly lower (median of 9 compared to 36 million reads per donor on average\footnote{For reference, the equivalent median reads per donor using bulk is 44.}, \textbf{Fig. \ref{suppl_fig:counts_sc_technologies}}).
 
 \newpage
 
@@ -1079,7 +1085,7 @@ First, to make the data most comparable between the scRNA-seq data and the bulk 
 Additionally, to remove further possible confounding effects, a small group of lines from monogenic diabetes donors were excluded, as well as four lines which were slight outliers in the genotype space (\textbf{Fig. \ref{suppl_fig:kinship_pcs}}).
 % excluded one line slightly off ethnicty-wise, other? i.e. at least X cells? (n=88?)
 In total, we map single cell eQTL for 88 cell lines (from 88 donors).
-As a cell QC step, we calculated the average correlation of each cell with all other cells.
+As a cell-QC step, we calculated the average correlation of each cell with all other cells.
 Then, for each sequencing run, we calculated the median of the resulting cell-correlation values.
 If a run had median cell-correlation < 0.7, all cells from the run were discarded (\textbf{Fig. \ref{fig:sc_eqtl_autocorrelation}}, panel a).
 In a second step, cell-cell correlations were calculated again, between cells from the remaining runs only.
@@ -1100,7 +1106,7 @@ Runs with median cell-correlation < 0.7 were discarded.
 
 Moreover, in order to compare eQTL results across genes at different expression levels, we chose to be more lenient on the criteria for gene inclusion.
 % , such that we could test up to 50,425 genes in total. 
-Indeed, we considered all variable genes as obtained by ranking all genes (n=50,425) by their squared coefficient of variation ($CV^2$)\footnote{$CV^2=\sigma^2/\mu^2$.} across all cells, and selecting the upper two quartiles.
+Indeed, we considered all variable genes as obtained by ranking all genes (n=50,425\footnote{This includes all genes annotated in the Ensembl reference \cite{yates2020ensembl}, which include protein-coding genes, non-coding genes (e.g. transfer RNAs, ribosomal RNAs, long intergenic non-coding RNAs, etc.) and pseudogenes.}) by their squared coefficient of variation ($CV^2$)\footnote{$CV^2=\sigma^2/\mu^2$.} across all cells, and selecting the upper two quartiles.
 As a result, 20,545 genes were included in the analysis. 
 On the other hand, to reduce the multiple testing burden, we only tested SNPs with MAF >10\% and within a smaller window around the gene (100kb on either side of the gene body).
 
@@ -1146,7 +1152,7 @@ To do so, we tested the following approaches:
 
 \begin{itemize}
     \item \textbf{Mean}: average expression across cells from each donor and sequencing run\footnote{This is very similar to the approach used in the first part of this chapter, i.e. using the same principle of accounting for batches.
-    The difference is that this is done at an even deeper level of batch, i.e. cells from the same experimental pool were sometimes sequenced in more than one run.},
+    The difference is that this is done at an even deeper level of batch, noting that cells from the same experimental pool were sometimes sequenced in more than one run.},
     \item \textbf{Median}: median expression across cells from each donor and sequencing run,
     \item \textbf{Sum}: summed expression across cells from each donor and sequencing run,
     \item \textbf{Total mean}: average expression across all cells from each donor, aggregated across sequencing runs, and finally
@@ -1309,7 +1315,7 @@ We speculate that whilst the sum would perhaps be the most obvious approach to r
 Indeed, the normalisation at the cell-level may better balance the differences in read counts across cells prior to the aggregation at individual-level. 
 Next, we also tested an alternative single cell normalisation approach, baynorm \cite{tang2020baynorm}, and mapped eQTL using the mean aggregation method, finding that the results were virtually indistinguishable (1,834 eGenes vs 1,831, and Pearson's correlation between both p values and effect sizes: R=1, p value < 2.2$\times 10^{-16}$, \textbf{Fig. \ref{suppl_fig:scran_vs_baynorm}}). \\
 
-Reassuringly, we broadly replicated the key results found in the first part of this chapter, confirming that eQTL maps using bulk RNA-seq are better powered that those using single cells, at identical sample size.
+Overall, reassuringly, we broadly replicated the key results found in the first part of this chapter, confirming that eQTL maps using bulk RNA-seq are better powered that those using single cells, at identical sample size.
 Additionally, mean and sum (i.e. aggregating at donor and batch) outperformed total mean and total sum (\textbf{Table \ref{tab:egenes}}), re-iterating the importance of considering replicated experimental designs for eQTL studies.
 
 % add here maybe ROC curve etc
@@ -1365,7 +1371,7 @@ To evaluate performance, as before, we first considered the number of eGenes (\t
     SVD   & 179 & 177 &  171 & 166 & 160 \\
     \end{tabular}
     \caption[Number and type of covariate comparison]{\textbf{Number of eGenes for various types and numbers of covariates.}\\
-    Rows are methods to calculate covariates, columns number of covariates considered for the eQTL test.
+    Rows are methods to calculate expression covariates, columns number of covariates considered for the eQTL test.
     The numbers of eGenes are to be considered out of 1,421 (chromosome 2) genes tested.
     The mean is used as aggregation method, normalised using scran.}
     \label{tab:covariates}
@@ -1419,7 +1425,7 @@ To evaluate performance, as before, we first considered the number of eGenes (\t
 %     \label{tab:covariates_replication}
 % \end{table}
 
-Next, we considered the number of eQTL that were replicated using bulk (using all samples, nominal significance and same direction of effect, \textbf{Table \ref{tab:covariates_replication}}, for the equivalent results using `matched bulk' see \textbf{Table \ref{tab:covariates_replication_matched_bulk}}):
+Next, we considered the number of eQTL that were replicated using bulk (using all samples, nominal significance and same direction of effect, \textbf{Table \ref{tab:covariates_replication}}; for the equivalent results using `matched bulk' see \textbf{Table \ref{tab:covariates_replication_matched_bulk}}):
 
 \begin{table}[h]
     \centering
@@ -1432,20 +1438,20 @@ Next, we considered the number of eQTL that were replicated using bulk (using al
     SVD   & 139 & 134 & 129 & 127 & 126 \\
     \end{tabular}
     \caption[Covariate comparison in terms of replication of bulk results]{\textbf{Number of bulk-replicated eQTL for various types and numbers of covariates.} \\
-    Similar to \textbf{Table \ref{tab:covariates}} (mean as aggregation method, 1,421 chromosome 2 genes only), but considering replication in the set of results using bulk (all samples, p value < 0.05 and same direction of effect).}
+    Similar to \textbf{Table \ref{tab:covariates}} (mean as aggregation method, 1,421 chromosome 2 genes tested only), but considering replication in the set of results using bulk (all samples, p value < 0.05 and same direction of effect).}
     \label{tab:covariates_replication}
 \end{table}
 
 % Add same but in terms of bulk replication
 Overall, we observe that in this application the two arguably simplest methods, PCA and SVD, slightly outperform other methods.
-However, we note that this choice may depend more on the data used.
+However, we note that this choice may sometimes depend on the data used.
 For example, PEER allows to incorporate known covariates, which in some cases (e.g. large group effects) may increase performance.
-Additionally, the values of both MOFA and PEER factors depend on some of the settings such as sparsity, and number of factors imputed, which we have yet to optimise.
+Additionally, the values of both MOFA and PEER factors depend on some of the settings such as sparsity, and number of factors imputed, which we have not optimised here.
 Nevertheless, at the very least PCA performs as well as other methods, particularly here, where the cell population is homogeneous and the batch effects are minimal (and addressable, thanks to the replicated design).
 In particular, the ideal number of PCs to include seems to be 15-20 (\textbf{Tables \ref{tab:covariates}, \ref{tab:covariates_replication}}). 
 \\
 
-In summary, our recommendation for optimising yield of eQTL mapping using single cell expression profiles is to normalise counts at the cell-level, using single cell specific methods such as scran \cite{lun2016step}(or baynorm \cite{tang2020baynorm}, which performed similarly well), then aggregate such counts by considering the mean expression across cells.
+In summary, our recommendation for optimising yield of eQTL mapping using single cell expression profiles is to normalise counts at the cell-level, using single cell specific methods such as scran \cite{lun2016step} (or baynorm \cite{tang2020baynorm}, which performed similarly well), then aggregate such counts by considering the mean expression across cells.
 Depending on the experimental design, if data from a given donor is present across multiple technical batches, we recommend considering those batches as separate replicates for the donor, and calculating the mean for the two separately.
 Next, principal components can be calculated from such aggregated expression matrix, and the first 15-20 PCs should be included as covariates in the model.
 We also acknowledge that the number of PCs to include will depend on the sample size of the study.
@@ -1453,9 +1459,7 @@ For example, in the case of several hundreds of individuals, 25 or 50 PCs may be
 
 \newpage
 
-Future work towards establishing a best-practice pipeline for single cell eQTL studies includes confirming such recommendations using droplet-based data, for example data I will introduce in \textbf{Chapter 
-% 5
-\ref{chapter5}}, which have been sequenced using the 10X Genomics Chromium technology \cite{zheng2017massively}. 
+Future work towards establishing a best-practice pipeline for single cell eQTL studies includes confirming such recommendations using droplet-based data, for example using data I will introduce in \textbf{Chapter \ref{chapter5}}, which have been sequenced using the 10X Genomics Chromium technology \cite{zheng2017massively}. 
 Moreover, future avenues involve the use of experimental-data informed simulation experiments to assess the impact of additional variables including varying numbers of cells per donor, varying sample size, batch effects and genetic effects of varying strength, on our ability (and statistical power) to detect eQTL using single cell expression data.
 
 % \clearpage
@@ -1509,7 +1513,7 @@ Now that we have established that such `mean-level' \gls{eqtl} maps are feasible
 One such analyses is variance \gls{eqtl} (varQTL, vQTL \cite{ayroles2015behavioral}) mapping, where one can assess the effect of common genetic variants on cell-to-cell transcriptional variability, rather than on expression abundance.
 Unfortunately, these analyses have proven especially challenging, largely because the variance of gene expression is strongly dependent on its mean, making it hard to disentangle the two effects \cite{vallejos2016beyond}.
 Moreover, variance QTL effects may be smaller than anticipated.
-As a result, studies at current sample sizes are under-powered to detect any variance QTL, as 
+As a result, studies at current sample sizes are underpowered to detect any variance QTL, as 
 % we (not shown) and others
 shown by \cite{sarkar2019discovery}. \\
 

@@ -628,7 +628,7 @@ Inflated \gls{qq} plots are typically associated with the presence of such confo
 \centering
 \includegraphics[width=15cm]{Chapter2/Fig/qqplots.png}
 \caption[QQ plots]{\textbf{Example QQ plots}.\\
-Examples of quantile-quantile (QQ) plots, displaying the expected quantiles (x-axis) versus the observed quantiles (y-axis) of the test statistics under the null (blue line) and observed (red circles) in (a) when no associations are present, such that there is no departure from the null distribution,  (b,c) in the presence of confounding factors (cryptic relatedness and population stratification, respectively), such that there is constant departure from the null distribution and (d) in the presence of a genuine genetic association, such that there is departure from the null in the tail of the test statistics.
+Examples of quantile-quantile (QQ) plots, displaying the expected negative log p values (x axis) versus the observed negative log p values (y axis) under the null hypothesis (diagonal blue line) and observed (red circles) in (a) when no associations are present, such that there is no departure from the null distribution,  (b) in the presence of confounding factors, such that there is constant departure from the null distribution and (c) in the presence of a genuine genetic association, such that there is departure from the null in the tail of the test statistics.
 Adapted from 
 % McCarthy et al.
 % Placeholder adapted from
@@ -719,7 +719,7 @@ This is because both phenotypic prevalence (proportion of individuals exhibiting
 
 Various approaches have been proposed to account for population structure.
 An early solution was genomic control \cite{devlin1999genomic}.
-Genomic control correction adjusts for inflation by dividing the test statistic of each marker by the genomic control parameter ($\lambda_{GC}$\footnote{$\lambda_{GC}$ compares the test-statistic value with the median value, such that $\lambda_{GC} \approx 1$ means there is no evidence for confounding, $\lambda_{GC} \gg 1$ indicates that the presence of confounding is likely.}). 
+Genomic control correction adjusts for inflation due to confounding effects by dividing the test statistic of each marker by the genomic control parameter ($\lambda_{GC}$\footnote{$\lambda_{GC}$ compares the test-statistic value with the median value, such that $\lambda_{GC} \approx 1$ means there is no evidence for confounding, $\lambda_{GC} \gg 1$ indicates that the presence of confounding is likely.}). 
 However, as different markers have different abilities to distinguish between populations, this uniform adjustment is far from optimal. 
 Indeed, as a result, markers that strongly segregate across different population groups are only partially corrected, whereas markers that do not segregate tend to be over-corrected \cite{marchini2004effects, price2006principal}.
 Alternatively, a method that attempts to correct the underlying problem is STRUCTURE, which assigns individuals to discrete population subgroups and then combines the evidence for association across the different subgroups \cite{pritchard2000inference}. 
@@ -730,7 +730,7 @@ The analysis of genotype data from large population studies, showed that genome-
 accurately infer population structure 
 % Bauchet 2007, Jakobsson 2008, 
 \cite{li2008worldwide, tian2008analysis, price2008discerning}.
-In particular, they showed that the first principal components (PCs) calculated from the genotypic data were correlated with geographic axes \cite{novembre2008interpreting}.
+In particular, it could be shown that the first principal components (PCs) calculated from the genotypic data were correlated with geographic axes \cite{novembre2008interpreting}.
 
 As a result, one approach to account for population structure is to add the first genotypic PCs as covariates in the model (or to regress them out \cite{price2006principal}): 
 
@@ -828,9 +828,11 @@ However, regressing all PCs or including all PCs as covariates is not feasible i
 \caption[Confounders and covariates]{\textbf{Confounders and covariates}.\\
 Traditionally `confounders' are variables that are correlated with both the genotype vector and the phenotype, i.e. hidden common causes of both $\mathbf{g}$ and  $\mathbf{y}$. 
 For example, population structure ($\mathbf{K}$) is a confounder in population genetics studies. 
-On the other hand, other covariates such as sex (unless we are testing genes on the X or Y chromosomes) and batch, only have an effect on $\mathbf{y}$.
+On the other hand, other covariates such as sex (unless we are testing genes on the X or Y chromosomes) and batch ($\mathbf{W}$), only have an effect on $\mathbf{y}$.
 By including them as covariates in the model, we control for additional phenotypic variation and thereby increase association power. 
-We note that mathematically both can be treated in the same way (i.e. they both can be included as fixed or random effects), however the motivation for including them, and the effect their inclusion has, are different.}
+We note that in the illustration, a linear mixed model is used to illustrate how to account for both effects, with a random effect term used to correct for population structure, and covariates included as fixed effects. 
+However, mathematically, both can be treated in the same way (i.e. they both can be included as fixed or random effects). 
+In contrast the motivation for including them, and the effect their inclusion has, are different.}
 \label{fig:conf_cov}
 \end{figure}
 
@@ -842,7 +844,7 @@ The covariance matrix $\mathbf{K}$ captures the latent population sub-structure 
 
 Several approaches have been proposed to compute this matrix, which is sometimes called the genetic relatedness matrix (GRM).
 % \\
-Fisher’s infinitesimal model (see \textbf{page \ref{sec:Fisher}}) \cite{fisher1919xv} demonstrated that under an additive model with an infinite number of infinitesimal genetic effects, the phenotype follows a normal distribution, and the correlation of phenotypes between individuals is proportional to the fraction of genetic material that is `identical-by-descent' (IBD)\footnote{A genetic locus is IBD between two individuals if it has been inherited by a common ancestor.}. 
+Fisher’s infinitesimal model (see \textbf{section \ref{sec:Fisher}}) \cite{fisher1919xv} demonstrated that under an additive model with an infinite number of infinitesimal genetic effects, the phenotype follows a normal distribution, and the correlation of phenotypes between individuals is proportional to the fraction of genetic material that is `identical-by-descent' (IBD)\footnote{A genetic locus is IBD between two individuals if it has been inherited by a common ancestor.}. 
 A consequence of this observation is that we can define the genetic relatedness between two individuals by using the predicted proportion of the genome that is IBD between them. 
 Traditionally, an IBD (relatedness) matrix was estimated using known pedigrees (see \textbf{Box \ref{box:genetic_terms}}) \cite{lange1976extensions}. 
 % Note that the definition of IBD requires the specification of a base population (i.e. the ancestors, which are assumed to have average relationship equal to zero), which in the case of pedigree designs is the population of the founders \cite{powell2010reconciling}.
@@ -923,10 +925,10 @@ However, for the model in eq. \eqref{eq:Linear_mixed_model}, i.e. when the covar
  \mathbf{y} \sim  \mathcal{N}(\mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta, \sigma_g^2\mathbf{K} + \sigma_n^2\mathbf{I}),
 \end{equation}
 
-it is possible to speed up computations \cite{kang2008efficient, kang2010variance, lippert2011fast, zhou2012genome} thus enabling application to large population studies. 
+it is possible to speed up computations \cite{kang2008efficient, kang2010variance, lippert2011fast, zhou2012genome} ,thus enabling application to large population studies. 
 These stratagems reduce the computational complexity from $\mathcal{O}(N^3)$
-per-SNP to a single  $\mathcal{O}(N^3)$ cost up-front, and a per-SNP complexity of  $\mathcal{O}(N^2)$.
-The complexity can be further reduced to $\mathcal{O}(N^2)$ for the up-front computation and a per-test complexity of  $\mathcal{O}(N)$, provided the genetic relatedness matrix is low-rank. \\
+per-SNP to a single  $\mathcal{O}(N^3)$ cost upfront, and a per-SNP complexity of  $\mathcal{O}(N^2)$.
+The complexity can be further reduced to $\mathcal{O}(N^2)$ for the upfront computation and a per-test complexity of  $\mathcal{O}(N)$, provided the genetic relatedness matrix is low-rank. \\
 % In practice, this can be achieved through a feature selection approach, selecting a small proportion of all genome-wide variants to estimate $\mathbf{K}$ \cite{listgarten2012improved} or by randomly selecting a subset of the genome-wide variants. 
 
 
@@ -947,14 +949,17 @@ The complexity can be further reduced to $\mathcal{O}(N^2)$ for the up-front com
 % For a discussion on the different optimisation algorithms for inference in \gls{lmm}s, I refer to the supplementary information of Loh et al. (2015a).
 
 I use this section to  briefly describe the efficient FaST-LMM algorithm proposed by Lippert \textit{et al} \cite{lippert2011fast}.
-This is the algorithm implemented within the LIMIX toolset \cite{lippert2014limix,casale2015efficient} which I use throughout this thesis.\\
+This is the algorithm implemented within the LIMIX toolset \cite{lippert2014limix,casale2015efficient} which I use throughout this thesis.
+\\
 
-
-% ??
-
-The intuition is to project all data into a space where phenotypic variables ($\mathbf{y}$) and covariates ($\mathbf{W}, \mathbf{g}$) are uncorrelated so that the parameters in the rotated data can be solved in closed-form.
+The intuition is to project all data into a space where phenotypic variables ($\mathbf{y}$) and covariates ($\mathbf{W}, \mathbf{g}$) are uncorrelated so that 
+% the parameters 
+in the rotated 
+space the joint system to estimate the optimal model parameters 
+% data 
+can be solved in closed-form.
 % , i.e. with a diagonal covariance matrix. 
-To do so, we perform eigen decomposition of $\mathbf{K}$ from eq. \eqref{eq:LMM_MVN}, such that: $\mathbf{K} = \mathbf{Q}\mathbf{S}\mathbf{Q}^T$, where $\mathbf{S}$ is a diagonal matrix containing the eigenvalues of $\mathbf{K}$ on the diagonal and 0s elsewhere, and $\mathbf{Q}$ is orthonormal ($\mathbf{Q}\mathbf{Q}^T = \mathbf{I}$), with columns corresponding to the eigenvectors of $\mathbf{K}$. 
+To do so, we perform eigen decomposition of $\mathbf{K}$ from eq. \eqref{eq:LMM_MVN}, such that: $\mathbf{K} = \mathbf{Q}\mathbf{S}\mathbf{Q}^T$, where $\mathbf{S}$ is a diagonal matrix containing the eigenvalues of $\mathbf{K}$ on the diagonal and zeroes elsewhere, and $\mathbf{Q}$ is orthonormal ($\mathbf{Q}\mathbf{Q}^T = \mathbf{I}$), with columns corresponding to the eigenvectors of $\mathbf{K}$. 
 % \\
 Then, if we define $\delta = \sigma_n^2/\sigma_g^2$ and consider it fixed, the full covariance matrix can be expressed as:
 
@@ -964,13 +969,13 @@ Then, if we define $\delta = \sigma_n^2/\sigma_g^2$ and consider it fixed, the f
 
 \vspace{4mm}
 
-To simplify notation, we use $\boldsymbol{\Sigma} = \mathbf{K} + \delta\mathbf{I}$ and $\mathbf{X} = [\mathbf{W}, \mathbf{g}$], $\boldsymbol{\beta} = [\boldsymbol{\alpha}, \beta]$ so we can express the full log likelihood as:
+To simplify notation, we use $\boldsymbol{\Sigma} = \mathbf{K} + \delta\mathbf{I}$; $\mathbf{X} = [\mathbf{W}, \mathbf{g}$] and $\boldsymbol{\beta} = [\boldsymbol{\alpha}, \beta]$, such that we can express the full log-likelihood as:
 
 \begin{equation} \label{eq:fast_lmm_log_likelihood}
  \ell(\boldsymbol{\beta}, \sigma_g^2, \delta) = -\frac{1}{2} \bigg\{N\log(2\pi\sigma_g^2) + \log{|\boldsymbol{\Sigma}|}+ \frac{1}{\sigma_g^2}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T\boldsymbol{\Sigma}^{-1}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta}) \bigg\}. 
 \end{equation}
 
-Now the two expensive operations computationally are the calculation of the inverse of the covariance matrix $\boldsymbol{\Sigma}$ (i.e. $\boldsymbol{\Sigma}^{-1}$) and its determinant ($|\boldsymbol{\Sigma}|$). 
+Computationally, the two expensive operations are the calculation of the inverse of the covariance matrix $\boldsymbol{\Sigma}$ (i.e. $\boldsymbol{\Sigma}^{-1}$) and its determinant ($|\boldsymbol{\Sigma}|$). 
 Both can be solved efficiently as follows:  
 
 \begin{equation}\label{eq:fast_lmm_Sigma_inverse}
@@ -1033,7 +1038,7 @@ When the rank of $\mathbf{K}$ is much smaller than the number of individuals $ra
 For details on this implementation I refer the reader to the Supplementary note from Lippert \textit{et al.} \cite{lippert2011fast}. \\
 
 Whilst extremely efficient, I note that the described implementation is limited to one random effect term only (besides the identity, see eq. \eqref{eq:fast_lmm_full_covariance}).
-Indeed, the stratagem used to reduce the computational complexity and calculate the inverse (eq. \eqref{eq:fast_lmm_Sigma_inverse}) and the determinant (eq. \eqref{eq:fast_lmm_Sigma_determinant}) of the covariance matrix in quadratic (or linear, in case of low-rank kinship matrix) time only works for a single kinship matrix\footnote{In case of two distinct kinship matrices, i.e. $\sigma_1^2\mathbf{K}_1 + \sigma_2^2\mathbf{K}_2 + \sigma_n^2\mathbf{I} = \sigma_1^2\mathbf{Q}\mathbf{S}\mathbf{Q}^T + \sigma_2^2\mathbf{U}\mathbf{D}\mathbf{U}^T + \sigma_n^2\mathbf{I}$, which cannot be further..}.
+Indeed, the stratagem used to reduce the computational complexity and calculate the inverse (eq. \eqref{eq:fast_lmm_Sigma_inverse}) and the determinant (eq. \eqref{eq:fast_lmm_Sigma_determinant}) of the covariance matrix in quadratic (or linear, in case of low-rank kinship matrix) time only works for a single kinship matrix\footnote{In case of two distinct kinship matrices, i.e. $\sigma_1^2\mathbf{K}_1 + \sigma_2^2\mathbf{K}_2 + \sigma_n^2\mathbf{I} = \sigma_1^2\mathbf{Q}\mathbf{S}\mathbf{Q}^T + \sigma_2^2\mathbf{U}\mathbf{D}\mathbf{U}^T + \sigma_n^2\mathbf{I}$, which cannot be further simplified.}.
 We are aware of alternative implementations that allow the use of several kinship matrices (e.g. \cite{pazokitoroudi2020efficient}) but these are optimised for SNP-heritability estimates, and the application to association testing is not trivial.
 Thus, in this thesis, we are limited to LMMs with one random effect term only.
 
@@ -1044,7 +1049,7 @@ Thus, in this thesis, we are limited to LMMs with one random effect term only.
 \subsection{Modelling non-Gaussian data}
 \label{sec:non_gaussian}
 
-As we have shown, linear regressions and linear mixed models are established approaches for mapping associations between genotype and phenotype. 
+Linear regressions and linear mixed models are established approaches for mapping associations between genotype and phenotype. 
 One limitation of these models, however, is that they assume the residual noise to be normally distributed, a premise that rarely holds in practice. 
 Deviation from normality can result in model mis-specification, which in turn can lead to false conclusions and reduced statistical power \cite{mcculloch2014generalized}.  \\
 
@@ -1150,7 +1155,7 @@ vs
  H_{1}: \beta_{GxE} \neq 0. 
 \end{equation}
 
-This model allows to directly test for a GxE interaction effect with a certain environment/factor, beyond the additive effects of the \gls{snp}s and the environment themselves. 
+This model allows to directly test for a GxE interaction effect with a certain environment/factor\footnote{Or with another genetic variant, to test for epistasis \cite{wei2014detecting}.}, beyond the additive effects of the \gls{snp}s and the environment themselves. 
 Of course, the same model can also be extended to the case of multi-environment interaction by simply adding more environments as FE terms:
 
 \begin{equation}\label{eq:multi_interaction_test_FE_LMM}
@@ -1159,7 +1164,7 @@ Of course, the same model can also be extended to the case of multi-environment 
 
 However, this becomes quickly infeasible for large numbers of environments, especially for relatively small sample sizes, because of the degrees of freedom loss when increasing the number of parameters to estimate (two additonal parameters to estimate for every environment included). \\
 
-Finally, in the specific context of measuring genetic effects on gene expression, and testing for interactions between environmental exposures and such genetic effects, an alternative approach is to model the effect that these environments have on allele-specific expression (ASE, see \textbf{Box \ref{box:ase}}).
+Finally, in the specific context of measuring genetic effects on gene expression, and testing for interactions between environmental exposures and such genetic effects, an alternative approach is to model the effect that these environments have on allele-specific expression (ASE, see \textbf{Box \ref{box:ase}} in the next chapter).
 I describe this approach in more detail upon its application in \textbf{Chapter 4} (\textbf{section \ref{sec:endodiff_dynamic_eqtl}}).
 
 

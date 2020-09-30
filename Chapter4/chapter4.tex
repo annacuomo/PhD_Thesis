@@ -34,7 +34,9 @@ The code for processing, analysing and plotting the data is open source and free
 Daniel Seaton, John Marioni, Oliver Stegle and I wrote the manuscript. 
 The paper \cite{cuomo2020single} is available at \url{https://www.nature.com/articles/s41467-020-14457-z} and has been published as:\\
 
-Anna S.E. Cuomo*, Daniel D. Seaton*, Davis J. McCarthy*, Iker Martinez, Marc Jan Bonder, Jose Garcia-Bernardo, Shradha Amatya, Pedro Madrigal, Abigail Isaacson, Florian Buettner, Andrew Knights, Kedar Nath Natarajan, the Hipsci Consortium, Ludovic Vallier, John C. Marioni, Mariya Chhatriwala, Oliver Stegle. Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic effects on gene expression. \textit{Nature Communications}, 2020, (* equal contribution)
+Anna S.E. Cuomo*, Daniel D. Seaton*, Davis J. McCarthy*, Iker Martinez, Marc Jan Bonder, Jose Garcia-Bernardo, Shradha Amatya, Pedro Madrigal, Abigail Isaacson, Florian Buettner, Andrew Knights, Kedar Nath Natarajan, the Hipsci Consortium, Ludovic Vallier, John C. Marioni, Mariya Chhatriwala, Oliver Stegle. Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic effects on gene expression. \textit{Nature Communications}, 2020, (* equal contribution) \\
+
+I generated all figures presented in this chapter, except where indicated otherwise in figure legends. 
 
 \end{Comment2}
 
@@ -116,7 +118,7 @@ Imputed genotypes (see \textbf{section \ref{sec:gwas}}) were also available for 
 \centering
 \includegraphics[width=12cm]{Chapter4/Fig/endodiff_experimental_design.png}
 \caption[Experimental Design]{\textbf{Experimental Design}.\\
-Human \gls{ipsc} lines from 125 unrelated donors were differentiated to definitive endoderm using a pooled design, where cells from 4 to 6 lines were grown and differentiated together.
+Human \gls{ipsc} lines from 125 unrelated donors were differentiated to definitive endoderm (\textbf{Fig. \ref{suppl_fig:endodiff_exp_protocol}}) using a pooled design, where cells from 4 to 6 lines were grown and differentiated together.
 Cells were collected prior to differentiation (at day0) and every 24 hours along differentiation to definitive endoderm (at day1, day2 and day3).
 Cells at day0 are expected to be pluripotent; cells at day1 are considered to be bipotent for either mesoderm or endoderm (mesendoderm); by day3, cells should have reached a definitive endoderm state.
 At each time point, cells were FAC-sorted and sequenced using the SmartSeq2 technology.
@@ -174,6 +176,7 @@ The \gls{facs} gating strategy we used is illustrated in \textbf{Fig. \ref{fig:e
 \centering
 \includegraphics[width=14cm]{Chapter4/Fig/endodiff_facs_strategy.png}
 \caption[FACS gating strategy]{\textbf{FACS gating strategy}.\\
+Figure by Mariya Chhatriwala.
 \gls{facs} gating strategy: first, single cells were stained with 7AAD to exclude dead cells. 
 Unstained live cells were then used to gate for expression of Tra-1-60 and CXCR4.}
 \label{fig:endodiff_facs_strategy}
@@ -654,6 +657,7 @@ For example, an eQTL for \textit{EIF5A}, was responsive to G2/M state, especiall
 \centering
 \includegraphics[width=15.5cm]{Chapter4/Fig/endodiff_GxExE.png}
 \caption[Second order GxE interactions with fundamental cellular processes]{\textbf{Second order GxE interactions with fundamental cellular processes.}\\
+Figure by Daniel Seaton.
 Higher order interaction example: an eQTL variant for \textit{EIF5A} (rs7503161) is affected by a GxExE higher order interaction with both pseudotime and the G2/M transition. 
 Left panel: effects of G2/M transition on ASE for cells with low and high pseudotime. 
 Regression lines are indicated with 95\% confidence intervals for the 30\% of cells with lowest and highest pseudotime values. 
@@ -723,9 +727,9 @@ Displayed are negative log (nominal) p values signed by the direction of the eff
 The horizontal blue lines denote the significance threshold (FDR = 10\%, Benjamini-Hochberg adjusted). 
 Significant associations are shown in blue for autosomal genes and in red for X chromosome genes. 
 (b) Scatter plot comparing, for all genes, the statistical significance of associations with differentiation efficiency for their expression on day0 and day3. 
-The y-axis shows the association between the expression of the gene on day0 (i.e. in iPSC) and differentiation efficiency of cell lines. 
-The x-axis shows the association between the expression of the gene on day3 and differentiation efficiency. 
-The correlation between these associations is R = 0.06, demonstrating that the genes identified as predictive markers of differentiation efficiency (i.e. those with high values on the y-axis) are not the genes that define differentiation capacity (i.e. those with high values on the x-axis). 
+The y axis shows the association between the expression of the gene on day0 (i.e. in iPSC) and differentiation efficiency of cell lines. 
+The x axis shows the association between the expression of the gene on day3 and differentiation efficiency. 
+The correlation between these associations is R = 0.06, demonstrating that the genes identified as predictive markers of differentiation efficiency (i.e. those with high values on the y axis) are not the genes that define differentiation capacity (i.e. those with high values on the x axis). 
 Significance measured as -log10(p value). 
 Significant genes are coloured as in (a): autosomal genes in blue, X chromosome genes in red.}
 \label{fig:endodiff_manhattan_differentiation}

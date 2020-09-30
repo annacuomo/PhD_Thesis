@@ -185,7 +185,7 @@ In the decades that followed, a critical combination of scientific discoveries a
 The initial description of the structure of DNA in the early 1950s was a major advance for the field of molecular biology. 
 At that time, technology did not exist for isolating a gene, determining its nucleotide sequence, or relating that sequence to the amino acid sequence of the corresponding protein \cite{yanofsky2007establishing}. 
 % combine the below
-Messenger RNA had not yet been discovered, and very little was known about protein synthesis. 
+Messenger \gls{rna} had not yet been discovered, and very little was known about protein synthesis. 
 % It was evident that there were many different proteins in the cells of each organism, and it was becoming apparent that most proteins consisted of a linear sequence of amino acids. 
 In 1941, George Beadle and Edward Tatum in their pioneering work with the fungus \textit{Neurospora} had suggested a one-to-one correspondence between genes and enzymes \cite{beadle1941genetic}; 
 yet how the nucleotide sequence of each gene was related to the amino acid sequence of its encoded protein was not yet understood.\\
@@ -234,7 +234,7 @@ Finally, in 1961 Nirenberg deciphered the genetic code, discovering that combina
 % Phe: Phenilalanine (F); Leu: Leucine (L); Ser: Serine (S); Tyr: Tyrosine (Y); Cys: Cysteine (C); Trp: Tryptophan (W); Pro: Proline (P); His: Histidine (H); Gln: Glutamine (Q); Arg: Arginine (R); Ile: Isoleucine (I); Thr: Threonine (T); Asn: Asparagine (N); Lys: Lysine (K); Val: Valine (V); Ala: Alanine (A); Asp: Aspartic acid (D); Glu: Glutamic acid (E); Gly: Glycine (G).}
 % \label{tab:genetic_code}
 % \end{table}
-Today, we know that \gls{dna} gets transcribed into RNA aided by the \gls{dna} polymerase molecule, and RNA gets translated to amino-acids making up proteins in the ribosome with the help of \gls{trna} \cite{alberts2018molecular}.\\
+Today, we know that \gls{dna} gets transcribed into \gls{rna} aided by the \gls{dna} polymerase molecule, and RNA gets translated to amino-acids making up proteins in the ribosome with the help of \gls{trna} \cite{alberts2018molecular}.\\
 
 In addition to cracking the genetic code, many other advances were made around this time and in the following years, contributing to the knowledge of the molecular machinery we have today (\textbf{Fig. \ref{fig:genetic_timeline}}).
 
@@ -348,7 +348,7 @@ These common, multifactorial diseases have a genetic architecture that is highly
 They are known to be heritable (heritability estimates for most common diseases are estimated at 40-60\% \cite{manolio2009finding, prokopenko2009variants, kathiresan2008six, zeggini2008meta, harley2008genome}), but their full etiology contains both a genetic and an environmental component.
 Consequently, it is the cumulative effect of many subtle genetic variants and environmental risk factors working in concert, that trigger disease onset.
 % Complex traits include quantitative traits, such as height, weight and blood pressure and complex diseases typically modelled as binary outcomes (i. e. either diseased or not). 
-Complex diseases include heart disease, type 2 diabetes, asthma, cancer, schizophrenia and Parkinson's disease.\\
+Complex diseases include, for example, heart disease, type 2 diabetes, asthma, cancer, schizophrenia and Parkinson's disease.\\
 
 Whilst there was some success in using linkage studies to identify genetic regions involved in common diseases\footnote{For example BRCA1 for breast and ovarian cancer  \cite{bailey2011linkage, miki1994strong}.},
 % including NOD2 for inflammatory bowel disease34-38 and BRACA1 for breast and ovarian cancer38,39, 
@@ -518,7 +518,7 @@ I describe these models in detail in the next chapter (\textbf{Chapter
 
 \newpage
 
-\gls{gwas} results are often visualised using a Manhattan plot \cite{mccarthy2008genome}, where the negative log p value (as a measure of significance) is plotted on the y-axis, against the corresponding genomic position (ordered by chromosome and position) on the x-axis (\textbf{Fig. \ref{fig:manhattan}}). 
+\gls{gwas} results are often visualised using a Manhattan plot \cite{mccarthy2008genome}, where the negative log p value (as a measure of significance) is plotted on the y axis, against the corresponding genomic position (ordered by chromosome and position) on the x axis (\textbf{Fig. \ref{fig:manhattan}}). 
 Peaks on these plots represent loci (multiple variants in \gls{ld}) that display evidence of association with the analysed phenotype. 
 Variants are deemed to be significantly associated with a trait if they exceed an appropriately chosen p value threshold. 
 % \\
@@ -641,7 +641,7 @@ Highlighted in green are statistically significant SNPs (p value < $5 \times 10^
 Despite the success,
 the path from \gls{gwas} to biology is not straightforward, because an association between a genetic variant at a genomic locus and a trait is not directly informative of the causal mechanisms whereby the variant is associated with phenotypic differences \cite{visscher201710}. 
 \gls{gwas} have robustly associated thousands of genomic loci with complex traits. 
-However, the interpretation of the identified variants is often far from trivial - the true causal variants are often oscured by LD, and the genes mediating a variant's effect on the trait are rarely ascertainable from \gls{gwas} results alone, especially for non-coding variants, which account for the majority of \gls{gwas}-identified risk alleles \cite{manolio2009finding, gallagher2018post, wainberg2019opportunities}. 
+However, the interpretation of the identified variants is often far from trivial: the true causal variants are often oscured by LD, and the genes mediating a variant's effect on the trait are rarely ascertainable from \gls{gwas} results alone, especially for non-coding variants, which account for the majority of \gls{gwas}-identified risk alleles \cite{manolio2009finding, gallagher2018post, wainberg2019opportunities}. 
 % \\
 Maps of regulatory annotations and connections in disease-relevant tissues, generated by projects such as ENCODE (ENCyclopdia Of DNA Elements, \cite{encode2004encode}) and Epigenome RoadMap \cite{kundaje2015integrative} can help the interpretation of these (putative) regulatory variants.
 Additionally, molecular quantitative trait loci (QTL) mapping, where genomic variants are associated with changes in expression (eQTL \cite{schadt2003genetics}), chromatin accessibility (caQTL \cite{degner2012dnase}), DNA methylation (mQTL \cite{gaunt2016systematic}), histone modifications (hQTL \cite{grubert2015genetic}), or  protein level (pQTL \cite{melzer2008genome}), have added an interpretative layer to the molecular mechanisms associated with disease-associated variants.
@@ -719,19 +719,16 @@ It soon became clear that gene expression levels are strongly heritable: for all
 
 RNA-sequencing\footnote{Today we would call this technique `bulk' RNA-sequencing as opposed to the more recent single cell RNA-sequencing; yet back then it was simply called RNA-sequencing, or `RNA-seq'.}, or RNA-seq, was a major breakthrough in the late 2000s 
 and has been widely used since, substituting microarrays as the go-to technique to measure gene expression \cite{weber2015discovering}.
-It allows the measurement of the average expression abundance for each gene across a large population 
+RNA-seq allows the measurement of the average expression abundance for each gene across a large population 
 % (N=XX) 
-of input cells (see \textbf{Chapter 
-\ref{chapter3}}
-% 3} 
-for further discussion).
+of input cells (\textbf{section 
+\ref{sec:gene_expression}}).
 The quantitative genetics field adapted quickly, and the first studies to perform \gls{eqtl} mapping using RNA-seq data to measure expression level were published back-to-back in 2010, by groups in Chicago and Geneva
 \cite{montgomery2010transcriptome, pickrell2010understanding}.
 Today, (bulk) RNA-seq is the standard method to measure gene expression for eQTL mapping \cite{lappalainen2013transcriptome, gtex2015genotype, chen2016genetic}.
 % \\
-One of the advantages of RNA-seq compared to microarrays is that, in addition to the quantification of protein-coding genes, it also  gives insights about other RNA traits, including splicing, exon level and increasingly also transcript level (see also \textbf{Chapter
-\ref{chapter3}}).
-% 3}).
+One of the advantages of RNA-seq compared to microarrays is that, in addition to the quantification of protein-coding genes, it also  gives insights about other RNA traits, including splicing, exon level and increasingly also transcript level (see also\textbf{ section 
+\ref{sec:gene_expression}}).
 As a consequence, splicing QTL (sQTL), can be mapped alongside standard (protein-coding) gene-level eQTL \cite{pickrell2010understanding, montgomery2010transcriptome}, as well as exon eQTL (eeQTL), transcript ratio QTL (trQTL) and miRNA eQTL, among others \cite{lappalainen2013transcriptome, bonder2019systematic}.
  
 % decide whether to include this at all and modify
@@ -1447,8 +1444,8 @@ Second, the over-expression of oncogenes (genes that have the potential to cause
 % By ... the efficiency can be as high as 50\% but with.. higher somatic mutation rate\\
 Indeed, in the original report of germline-competent \glspl{ipsc}, $\sim$20\% of the offspring developed tumors that could be traced back to the reactivation of the \textit{c-Myc} transgene \cite{okita2007generation}. 
 Furthermore, there is the risk of insertional mutagenesis due to virus-based delivery methods \cite{takahashi2006induction, takahashi2007induction, yu2007induced}. 
-Finally, several studies have reported incomplete reprogramming, with cells maintaining some degree of `epigenetic memory'\footnote{Epigenetics, from the greek prefix epi- (meaning on top, around, in addition), refers to heritable changes of gene expression that do not involve variation in the genetic sequence of DNA.
-For example, DNA methylation and histone modifications are common epigenetic changes.} from their somatic cell of origin, which can lead to their biased differentiation potential into certain cell types depending on the donor cell source \cite{kim2010epigenetic, polo2010cell}.\\
+Finally, several studies have reported incomplete reprogramming, with cells maintaining some degree of `epigenetic\footnote{Epigenetics, from the Greek prefix epi- (meaning on top, around, in addition), refers to heritable changes of gene expression that do not involve variation in the genetic sequence of DNA.
+For example, DNA methylation and histone modifications are common epigenetic changes.} memory' from their somatic cell of origin, which can lead to their biased differentiation potential into certain cell types depending on the donor cell source \cite{kim2010epigenetic, polo2010cell}.\\
 
 Much progress has been made in the past decade to address these limitations and to improve the reprogramming technique, including the development of new methods to induce reprogramming. 
 In the following sections I present an overview of the advances made to improve the reprogramming technique, and discuss

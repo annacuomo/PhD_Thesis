@@ -18,8 +18,16 @@
     \centering
     \includegraphics[width=12cm]{Appendix2/Fig/suppl_distribution_fixed_ncells.png}
     \caption[Distribution of total reads scRNA-seq same number of cells per donor]{Distribution of total reads from a scRNA-seq dataset, when considering the same number of cells for each donor.
-    Same as \textbf{Fig. \ref{fig:sc_bulk_counts}}, but downsampling to the same number of cells (n=10) from each donor.}
+    Same as the left panel from \textbf{Fig. \ref{fig:sc_bulk_counts}}, but downsampling to the same number of cells (n=10) from each donor.}
     \label{suppl_fig:counts_sc_ncells}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{Appendix2/Fig/suppl_distribution_10x_ss2.png}
+    \caption[Distribution of total reads between scRNA-seq technologies]{Distribution of total reads between scRNA-seq technologies, when considering the same 29 lines.
+    Similar to \textbf{Fig. \ref{fig:sc_bulk_counts}}, but considering SmartSeq2 and 10x data from the same 29 cell lines.}
+    \label{suppl_fig:counts_sc_technologies}
 \end{figure}
 
 \begin{figure}[h]
@@ -39,7 +47,9 @@
     \centering
     \includegraphics[width=16cm]{Appendix2/Fig/suppl_protocol.png}
     \caption[Endoderm differentiation protocol]{\textbf{Endoderm differentiation protocol.}\\
-    Schematic representation of the chemically defined protocol used to initiate differentiation towards  definitive endoderm (adapted from \cite{touboul2010generation}). 
+    Adapted from Touboul \textit{et al.} \cite{touboul2010generation}.
+    Related to \textbf{Chapter \ref{chapter4}, section \ref{sec:endodiff_summary}}.
+    Schematic representation of the chemically defined protocol used to initiate differentiation towards  definitive endoderm. 
     Tra-1-60 and CXCR4 are canonical cell surface markers of pluripotent and definitive endoderm stages, respectively, which were used to sort live cells by differentiation stage. }
     \label{suppl_fig:endodiff_exp_protocol}
 \end{figure}
@@ -47,10 +57,8 @@
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm]{Appendix2/Fig/suppl_diabetes_lines.png}
-    \caption[PCA of healthy and diseased cell lines]{Comparison of expression patterns between healthy and diseased cell lines.
-    PCA and t-SNE representations of cells from neonatal diabetes lines, compared to healthy lines from the same experiments. 
-    (A) PCA plot of cells from cell lines derived from monogenic diabetes donors (red), cells from healthy donors from the same seven experiments (dark blue), against the background of all cells (grey). 
-    (B) t-SNE plot for the same cells as in (A).}
+    \caption[PCA of healthy and diseased cell lines]{\textbf{Comparison of expression patterns between healthy and diseased cell lines.}\\
+    PCA plot (similar to \textbf{Fig. \ref{fig:endodiff_pca}}) of cells from cell lines derived from monogenic diabetes donors (red), cells from healthy donors from the same seven experiments (dark blue), against the background of all cells (grey). }
     \label{suppl_fig:pca_diabetes_lines}
 \end{figure}
 
@@ -83,10 +91,20 @@
 
 \vspace{10mm}
 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{Appendix2/Fig/supl_neuroseq_markers.png}
+    \caption[Neuronal cell type markers]{\textbf{Neuronal cell type markers}.\\
+    Heat map showing the average expression of the 48 literature-curated neuronal marker genes used to annotate the identified clusters as cell types (columns) by the annotated cell types at different time points (rows, as in \textbf{Fig. \ref{fig:neuroseq_clusters}}).}
+    \label{fig:suppl_celltype_markers}
+\end{figure}
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=15cm]{Appendix2/Fig/suppl_donor_effects.png}
     \caption[Predicted differentiation scores]{\textbf{Predicted differentiation scores}.\\
+    Results related to \textbf{section \ref{sec:neuro_diff_eff_predictor}}.
     (a) Histogram of predicted differentiation scores across all HipSci cell lines. 
     The bimodal distribution is especially extreme in this case, and 0.5 was used as the threshold to split bad from good differentiator lines. 
     (b) Scatter plot of predicted differentiation scores for donor for which we have data for two different cell lines. Replicate1 (rep1) is chosen as the line with lower predicted score (n=270). 
@@ -102,7 +120,7 @@
      iPSC scRNA-seq data from \cite{cuomo2020single} were re-analysed following the same batch correction and clustering steps applied to our neural differentiation data, identifying 5 clusters. 
      (b) Violin plots of gene expression for genes related to pluripotency (\textit{NANOG, SOX2, POU5F1}) and two gene markers that are respectively upregulated and downregulated in cluster 2 (\textit{UTF1, TAC3}, from \textbf{Fig. \ref{fig:neuroseq_ips_expression_signature}}). 
      (c) Scatter plot showing the proportion of cells assigned to cluster 2 between replicates (n=23). 
-     (d) Scatter plot between the proportion of cells assigned to cluster 2 (y-axis) and differentiation efficiency (x-axis) similar to \textbf{Fig \ref{fig:neuroseq_ips_sc_genes}}, panel c, but where we use imputed proportions of cluster 2 cells from bulk RNA-seq available for most cell lines (n=182, out of 199 lines for which we have day 52 data and thus a measure of neuronal differentiation efficiency).}
+     (d) Scatter plot between the proportion of cells assigned to cluster 2 (y axis) and differentiation efficiency (x axis) similar to \textbf{Fig \ref{fig:neuroseq_ips_sc_genes}}, panel c, but where we use imputed proportions of cluster 2 cells from bulk RNA-seq available for most cell lines (n=182, out of 199 lines for which we have day 52 data and thus a measure of neuronal differentiation efficiency).}
     \label{suppl_fig:ipsc_cluster2}
 \end{figure}
 
@@ -111,6 +129,7 @@
     \centering
     \includegraphics[width=15cm]{Appendix2/Fig/suppl_ipsc_cluster2_sarkar.png}
     \caption[Analysis of a single cell iPSC dataset from Sarkar \textit{et al.}]{\textbf{Analysis of a single cell iPSC dataset from Sarkar \textit{et al.}}\\
+    Similar to \textbf{Fig. \ref{suppl_fig:ipsc_cluster2}}.
     (a) UMAP overview of the dataset. 
     iPSC scRNA-seq data from \cite{sarkar2019discovery} were re-analysed following the same data normalisation and clustering steps applied to our neural differentiation data, identifying 4 clusters. 
     (b) Violin plots of gene expression for genes related to pluripotency (\textit{NANOG, SOX2, POU5F1}) and a subset of markers of the cluster 2 population (\textit{UTF1, TAC3}). 
