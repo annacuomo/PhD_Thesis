@@ -9,21 +9,17 @@ Anna Cuomo
 
 ## Title
 
-Using single-cell RNA-seq to assess the effect of common genetic variants on cell-to-cell variability
-
-## How to compile this thesis
-
-to do - or maybe just give link to pdf once it's uploaded to Cambridge system
+Using single-cell RNA-seq to assess the effect of common genetic variants on gene expression during development
 
 ## How to cite this thesis
 
 The work presented in this thesis has been done by me in collaboration with the persons listed in each section. 
 When using to information of this thesis, please cite the associated papers:
 
-<!--**Chapter 3:**-->
-<!--Anna S.E. Cuomo\*, Christina Azodi\*, Giordano Alvari\*, Davis J. McCarthy, Marc Jan Bonder.-->
+**Chapter 3:** [Chapter 3](https://www.biorxiv.org/content/10.1101/2021.01.20.427401v1)
+Anna S.E. Cuomo\*, Giordano Alvari\*, Christina B. Azodi\*, single-cell eQTLGen consortium, Davis J. McCarthy, Marc Jan Bonder.
 
-<!--_Best practices for single cell eQTL mapping._-->
+_Optimising expression quantitative trait locus mapping workflows for single-cell studies._ bioRxiv, 2021, (\* equal contributions) 
 
 
 **Chapter 4:** [Chapter 4](https://www.nature.com/articles/s41467-020-14457-z)
