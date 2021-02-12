@@ -30,7 +30,7 @@ _Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic
 
 **Chapter 5:** [Chapter 5](https://www.biorxiv.org/content/10.1101/2020.05.21.103820v1)
 
-Julie Jerber\*, Daniel D. Seaton\*, Anna S.E. Cuomo\*, Natsuhiko Kumasaka, James Haldane, Juliette Steer, Minal Patel, Daniel Pearce, Malin Andersson, Marc Jan Bonder, Ed Mountjoy, Maya Ghoussaini, Madeline A. Lancaster, HipSci Consortium, John C. Marioni, Florian T. Merkle, Oliver Stegle, Daniel J Gaffney.
+Julie Jerber\*, Daniel D. Seaton\*, Anna S.E. Cuomo\*, Natsuhiko Kumasaka, James Haldane, Juliette Steer, Minal Patel, Daniel Pearce, Malin Andersson, Marc Jan Bonder, Ed Mountjoy, Maya Ghoussaini, Madeline A. Lancaster, HipSci Consortium, John C. Marioni, Florian T. Merkle, Oliver Stegle, Daniel J. Gaffney.
 
 _Population-scale single-cell RNA-seq profiling across dopaminergic neuron differentiation._ bioRxiv, 2020, (\* equal contributions)
 
