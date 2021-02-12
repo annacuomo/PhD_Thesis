@@ -32,10 +32,45 @@
 
 \begin{figure}[h]
     \centering
+    \includegraphics[width=15cm]{Appendix2/Fig/supp_aggregated_figures_dr.png}
+    \caption[Comparison of `dr' aggregated measures]{\textcolor{blue}{\textbf{Comparison of `dr' aggregated measures.}\\
+    (a) For a random selection of 4 donors (two of which present in two sequencing runs, resulting in 6 donor-run combinations, or samples), scatter plots between aggregation metrics, across the set of common genes (n=12,720).
+    First row is dr-mean vs dr-sum, second dr-mean vs dr-median, third dr-median vs dr-sum.
+    The last column represents, for each of the comparisons a histogram of the distribution of correlations, across donors.
+    (b) Histograms representing the distribution of correlations across donors, for each genes, for the same three comparisons as in (a).}}
+    \label{suppl_fig:aggregation_comparison_dr}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm]{Appendix2/Fig/supp_aggregated_figures_d.png}
+    \caption[Comparison of `d' aggregated measures]{\textcolor{blue}{\textbf{Comparison of `d' aggregated measures.}\\
+    (a) Histograms of correlations between `dr' and `d' aggregation measures, for each of mean, sum, median.
+    (b,c) Similar to \textbf{Fig. \ref{suppl_fig:aggregation_comparison_dr}}, panels a and b, but across `d' aggregation methods (instead of `dr'; the same donors are considered).}}
+    \label{suppl_fig:aggregation_comparison_d}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=16cm]{Appendix2/Fig/supplement_sc_vs_bulk.png}
+    \caption[Comparison of results between single cell and bulk iPSC eQTL]{\textcolor{blue}{\textbf{Comparison of results between single cell and bulk iPSC eQTL.}\\
+    Scatter plots of eQTL effect sizes obtained when testing association of iPSC eQTL discovered using single cell (SmartSeq2) and bulk RNA-seq.
+    The bulk eQTL results considered are obtained using all samples available (`a-bulk')
+    The same set of n=12,720 genes that were assessed in all maps are considered.
+    First two columns, `dr'-aggregations (dr-mean, dr-sum, dr-median; aggregated at donor and sequencing run). 
+    Left, top SNP per gene (such that there are exactly as many points as there are genes) from the single cell data (`discovery set'; x axis) in bulk results (`replication set'; y axis). 
+    Right, vice versa (i.e. top SNP per gene in bulk results (now `discovery set' y axis), in single cell results, now `replication set', x axis).
+    In blue, for each pair of sets of results are the `replicated' eQTL, i.e. eQTL at FDR<5\% in the discovery set, replicated in the replication set (FDR<10\% and same direction of effect; consistently with the results presented in \textbf{section \ref{sec:best_practice}}).
+    Third and fourth columns, same as first two but for `d' methods, i.e. d-mean, d-sum, d-median (aggregated at donor level).}}
+    \label{suppl_fig:sc_vs_bulk}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
     \includegraphics[width=16cm]{Appendix2/Fig/suppl_scran_vs_baynorm.png}
-    \caption[Correlation of results between scran and baynorm normalisation]{\textbf{Correlation of results between scran and baynorm normalisation.}\\
+    \caption[Correlation of results between scran and bayNorm normalisation]{\textbf{Correlation of results between scran and bayNorm normalisation.}\\
     Related to results from \textbf{Table \ref{tab:egenes}}.
-    Scatter plots of eQTL effect sizes (left) and p values (right) obtained when testing association of iPSC single cell eQTL discovered using the mean as aggregation method and after normalising counts using two alternative methods: scran/scater \cite{mccarthy2017scater} (x axis) and baynorm \cite{tang2020baynorm} (y axis).}
+    Scatter plots of eQTL effect sizes (left) and p values (right) obtained when testing association of iPSC single cell eQTL discovered using dr-mean as aggregation method and after normalising counts using two alternative methods: scran/scater \cite{mccarthy2017scater} (x axis) and bayNorm \cite{tang2020baynorm} (y axis).}
     \label{suppl_fig:scran_vs_baynorm}
 \end{figure}
 

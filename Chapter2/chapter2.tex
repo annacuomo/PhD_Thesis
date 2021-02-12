@@ -84,7 +84,7 @@ as:
 \mathbf{y} \sim \mathcal{N}(\mathbf{X}\boldsymbol{\beta}, \sigma_n^2 \mathbf{I_N}). 
 \end{equation}
 
-In parameter inference, the \gls{mle} of the model parameters is defined as the set of parameter values that maximise the likelihood.
+In parameter inference, the maximum likelihood estimator (MLE) of the model parameters is defined as the set of parameter values that maximise the likelihood.
 % Intuitively, this selects the parameter values that make the observed data most probable.
 In practice, it is often convenient to work with the natural logarithm of the likelihood function, called the log likelihood ($\ell = \log \mathcal{L}$), noting that both functions will be maximised by the same parameter values.
 The log likelihood of the model can be explicitly specified as:\\
@@ -181,7 +181,7 @@ Additionally, these tests are not equipped to account for confounding factors (t
 As a consequence, regression-based models became the preferred approach, because they allow covariate adjustment, and can directly provide a measure of the effect size for each tested variant \cite{bush2012genome}.\\
 
 When applying regression models in genetic association studies, the phenotype of interest is modeled as the outcome variable ($\mathbf{y}$). 
-In \gls{gwas}, we typically look at `global phenotypes', including traits such as height and eye colour or disease status/risk for complex disorders \cite{mccarthy2008genome}.
+In \gls{gwas}, we typically look at \textcolor{blue}{`organismal phenotypes'}, including traits such as height and eye colour or disease status/risk for complex disorders \cite{mccarthy2008genome}.
 In (molecular) \gls{qtl} mapping, we consider `molecular phenotypes', such as gene expression (i.e. e\gls{qtl}), or protein level (p\gls{qtl}).
 \\
 
@@ -501,17 +501,19 @@ First of all, it can be shown that \cite{engle1984wald}:
 which guarantees that the Wald tests statistic is always equal to or greater than the log-likelihood ratio, which in turn is always equal to or greater than the Lagrange multiplier.
 The Neyman-Pearson lemma \cite{neyman1933ix} proves that, as a consequence, the power  of the Wald test, defined as the probability of rejecting the null hypothesis when it is false: $P = P($reject $H_0 | H_1)$ (\textbf{Box \ref{box:confusion_mat}}) is the same or higher than the power of the \gls{lrt}, which is the same or higher than the power of the score test:
 
-\begin{equation}
+\begin{equation}\label{eq:power_tests}
     P_W \geq P_{\mathrm{LLR}} \geq P_{\mathrm{LM}}.
 \end{equation}
 
 On the other hand, the false positive rate (FPR, \textbf{Box \ref{box:confusion_mat}}) of the \gls{lrt}, defined as the probability of rejecting the null hypothesis when it is true: FPR $= P($reject $H_0 | H_0)$ is also the same or higher than the FPR of the score test (but the same or lower than the Wald test).
 The \gls{lrt} can be therefore considered as a good compromise between statistical power and accuracy.
 % The score test is therefore the most accurate, making a smaller (or equal) number of Type I errors. \\
-Moreover, one advantage of the \gls{lrt} is that it is robust to re-parametrisation of the parameters, whereas the score and Wald test are not. 
+Moreover, one advantage of the \gls{lrt} is that it is robust to re-parametrisation of the parameters, whereas the score and Wald tests are not. 
 On the other hand, one main 
 % One
 advantage of the score test is that it does not require the evaluation of the \gls{mle} of the parameters under the alternative hypothesis, but only under the null hypothesis.
+\textcolor{blue}{Additionally, while eq. \eqref{eq:power_tests} is generally true, close to the null the score test is considered “locally most powerful”.}
+% (ref).
 Finally, the $\mathrm{LLR}$ follows a $\chi^2$ distribution (asymptotically) only under the assumptions of the Wilks' theorem, which can be violated in certain applications.
 Namely, the value of parameters tested should be far away from the boundaries of the possible values the parameter can assume.
 For example, $-\infty < \beta < \infty$, so testing $H_1: \beta \neq 0$ satisfies the assumption.
@@ -553,8 +555,8 @@ This way, we disrupt a possible association between phenotype and genotype whils
 % \\
 % One first approach is to use permute each SNP M times, and per
 For each association test (resulting in an observed p value $p_i$), we can perform the same test M times, each time considering a different permutation of the genotype data across individuals. 
-The resulting p values $q_i,m$ represent the null distribution, i.e. the p values we might expect in the absence of any associations.\\
-
+The resulting p values $q_i,m$ represent the null distribution, i.e. the p values we might expect in the absence of any associations.
+% \\
 One first approach is to use the
 % The 
 p values from these M additional experiments
@@ -586,10 +588,10 @@ This is the method I will use in the following chapters (\textbf{Chapters \ref{c
 \subsubsection{False discovery rate correction}
 
 An alternative solution for multiple testing correction is to control the \gls{fdr}, i.e. the expected percentage of false discoveries (\textbf{Box \ref{box:confusion_mat}}).
-The most widely used FDR-based correction method is the Benjamini-Hochberg (BH) procedure \cite{benjamini1995controlling}, which again assumes independence between tests. 
+The most widely used FDR-based correction method is the Benjamini-Hochberg (BH) procedure \cite{benjamini1995controlling}, which again assumes independence between tests\footnote{\textcolor{blue}{Although, more recently, the BH procedure has actually been shown to hold under positive dependency \cite{benjamini2001control}.}}. 
 Let us consider T tests with p values $p_1, p_2, ..., p_T$ and let $r_1, r_2, ..., r_T$ be their ranks (the smallest p value has rank 1, the largest has rank T), defining adjusted p values as $P_{adj,i} = \frac{T*p_i}{r_i} $ and setting $P_{adj,i} <\alpha$ ensures FDR < $\alpha$ \cite{yekutieli1999resampling}.
-Alternatively, the Storey procedure (proposed in 2002 \cite{storey2002direct, storey2003statistical}) optimises the BH procedure by taking into account the distribution of the p values in the experiment.\\
-
+Alternatively, the Storey procedure (proposed in 2002 \cite{storey2002direct, storey2003statistical}) optimises the BH procedure by taking into account the distribution of the p values in the experiment.
+% \\
 FDR-corrected p values 
 % using the Storey procedure 
 are sometimes called `q values'.
@@ -628,7 +630,7 @@ Inflated \gls{qq} plots are typically associated with the presence of such confo
 \centering
 \includegraphics[width=15cm]{Chapter2/Fig/qqplots.png}
 \caption[QQ plots]{\textbf{Example QQ plots}.\\
-Examples of quantile-quantile (QQ) plots, displaying the expected negative log p values (x axis) versus the observed negative log p values (y axis) under the null hypothesis (diagonal blue line) and observed (red circles) in (a) when no associations are present, such that there is no departure from the null distribution,  (b) in the presence of confounding factors, such that there is constant departure from the null distribution and (c) in the presence of a genuine genetic association, such that there is departure from the null in the tail of the test statistics.
+Examples of quantile-quantile (QQ) plots, displaying the expected negative log p values (x axis) versus the observed negative log p values (y axis) under the null hypothesis (diagonal blue line) and observed (red circles) in (a) when no associations are present, such that there is no departure from the null distribution,  (b) in the presence of confounding factors, such that there is constant departure from the null distribution and (c) in the presence of a genuine genetic association, such that there is departure from the null in the tail of the distribution.
 Adapted from 
 % McCarthy et al.
 % Placeholder adapted from
@@ -648,7 +650,7 @@ Adapted from
 \label{sec:confounders}
 
 The model in eq. \eqref{eq:Linear_regression_genetics} models the \gls{snp} tested as the only factor affecting the measured phenotype.
-However, if available, additional relevant information for the samples tested (such as the sex or the age of the individuals) can be added to the model as covariates ($\mathbf{W}$), and often improve power by controlling for additional phenotypic variation. 
+However, if available, additional relevant information for the samples tested (such as the sex or the age of the individuals) can be added to the model as covariates ($\mathbf{W}$), and often improve discovery power by controlling for additional phenotypic variation. 
 The model becomes:
 
 \begin{equation}\label{eq:Linear_regression_genetics_covariates}
@@ -665,8 +667,7 @@ or other factors that might
 affect $\mathbf{y}$, 
 increasing the accuracy of our model.
 % and thus skew the results. 
-\\
-
+% \\
 In \gls{eqtl} mapping, we can often take advantage of the 
 full transcriptome
 % expression profiles across all genes 
@@ -678,8 +679,8 @@ affecting
 gene expression in a global manner, 
 thus efficiently capturing known and potentially hidden covariates affecting expression across all genes.
 % even when we do not necessarily know the origin of the confounding.
-For example, we can perform principal component analysis (PCA) on the full expression matrix (genes x samples) and include the first 10 or 20 PCs as covariates in the model.
-Alternative more sophisticated methods to compute factors capturing global trends include, among others, 
+For example, we can perform principal component analysis (PCA) on the full expression matrix (genes x samples) and include such expression PCs as covariates in the model.
+Alternative more sophisticated methods to compute factors capturing global trends include, among others,
 % surrogate variable analysis (
 SVA \cite{leek2007capturing}, 
 % probabilistic estimation of expression residuals (
@@ -695,31 +696,55 @@ scVI \cite{lopez2018deep, svensson2020interpretable}
 and 
 % multi-omics factor analysis (
 MOFA \cite{argelaguet2018multi}. 
+% \\
 
-% add that assumption here is that covariates explain variability of y and thus improve power, don't have effects on g
+\textcolor{blue}{Different approaches can be used to determine the optimal number of PCs (or other factors) to include in the model.
+A popular approach is to choose the number of factors that maximises the number of eQTL discoveries \cite{westra2014genome, gtex2017genetic, aguet2019gtex}.
+The assumption is that global effects captured by PCs are orthogonal to the effects of a single variant on the expression of one gene, and thus there is no risk of generating false positives. 
+There remains however a risk of over-correction, which can introduce synthetic associations as a result of collider bias \cite{aschard2017covariate}.
+% This is the approach used in this thesis.
+Alternatively, 
+% one could determine the number of optimal PCs to include based on the cumulative variance explained (e.g. at least 50\%), while not exceeding XX (sample size available) to retain sufficient degrees of freedom. 
+% Finally, 
+to verify that specific covariates of interest (not modelled explicitly) are accounted for in the PCs, one may verify that PCs explain enough variance for those covariates (see for example the analysis I describe in \textbf{Chapter \ref{chapter5}, section \ref{sec:neuroseq_eqtl_methods}}).}
 
 
-
-\newpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=10cm]{Chapter2/Fig/confounders_covariates.png}
+\caption[Confounders and covariates]{\textbf{Confounders and covariates}.\\
+Traditionally `confounders' are variables that are correlated with both the genotype vector and the phenotype, i.e. hidden common causes of both $\mathbf{g}$ and  $\mathbf{y}$. 
+For example, population structure ($\mathbf{K}$) is a confounder in population genetics studies. 
+On the other hand, other covariates such as sex (unless we are testing genes on the X or Y chromosomes) and batch ($\mathbf{W}$), only have an effect on $\mathbf{y}$.
+By including them as covariates in the model, we control for additional phenotypic variation and thereby increase association power. 
+We note that in the illustration, a linear mixed model is used to illustrate how to account for both effects, with a random effect term used to correct for population structure, and covariates included as fixed effects. 
+However, mathematically, both can be treated in the same way (i.e. they both can be included as fixed or random effects). 
+In contrast the motivation for including them, and the effect their inclusion has, are different.}
+\label{fig:conf_cov}
+\end{figure}
+% \newpage
 
 %********************************** %Third Section  **************************************
 
 \section{Population structure and linear mixed models}
 \label{sec:linear_mixed_models}
 
-One major source of confounding effects in genetic analysis - that I have purposefully not discussed thus far -  is latent population substructure, which includes population stratification (i.e. the presence in the study sample of individuals with different ancestral and demographic histories) and relatedness between individuals, both known and cryptic (i.e. evidence that individuals in the study sample have residual, non-trivial degrees of relatedness) \cite{mccarthy2008genome}.
+One major source of confounding effects in genetic analysis - that I have purposefully not discussed thus far -  is latent population substructure, which includes population stratification (i.e. the presence in the study sample of individuals with different ancestral and demographic histories) and relatedness between individuals, both known relatedness (e.g. known familial relations within a sample) and \textcolor{blue}{cryptic relatedness (i.e. evidence that individuals in the study sample have residual, non-trivial degrees of relatedness) \cite{mccarthy2008genome}.}
 It was acknowledged, even before the first \gls{gwas} was conducted, that there was a possibility of identifying false positives (or that true positives may be masked) when using population based association studies (instead of family based linkage studies), due to those confounding effects \cite{burton2005key}. 
 This is because both phenotypic prevalence (proportion of individuals exhibiting the phenotype) and allele frequencies (frequencies of a specific allele within a population) vary across different populations, which may result in the identification of spurious association between variants and the phenotype of interest due to ethnicity or population sub-structure (including relatedness) \cite{burton2005key} (\textbf{Fig. \ref{fig:conf_cov}}).
 
 % name examples
 % and mention differences as compared to covariates: pop struct affects both y and g
 
-\subsection{Approaches to account for population structure}
+\subsection{Early approaches to account for population structure}
 \label{sec:pop_struct_noLMM}
 
 Various approaches have been proposed to account for population structure.
 An early solution was genomic control \cite{devlin1999genomic}.
-Genomic control correction adjusts for inflation due to confounding effects by dividing the test statistic of each marker by the genomic control parameter ($\lambda_{GC}$\footnote{$\lambda_{GC}$ compares the test-statistic value with the median value, such that $\lambda_{GC} \approx 1$ means there is no evidence for confounding, $\lambda_{GC} \gg 1$ indicates that the presence of confounding is likely.}). 
+Genomic control correction adjusts for inflation due to confounding effects by dividing the test statistic of each marker by the genomic control parameter ($\lambda_{GC}$\footnote{$\lambda_{GC}$ compares the test-statistic value with the median value, such that $\lambda_{GC} \approx 1$ means there is no evidence for confounding, $\lambda_{GC} \gg 1$ indicates that the presence of confounding is likely.}). \\
+
+\newpage
+
 However, as different markers have different abilities to distinguish between populations, this uniform adjustment is far from optimal. 
 Indeed, as a result, markers that strongly segregate across different population groups are only partially corrected, whereas markers that do not segregate tend to be over-corrected \cite{marchini2004effects, price2006principal}.
 Alternatively, a method that attempts to correct the underlying problem is STRUCTURE, which assigns individuals to discrete population subgroups and then combines the evidence for association across the different subgroups \cite{pritchard2000inference}. 
@@ -731,26 +756,27 @@ accurately infer population structure
 % Bauchet 2007, Jakobsson 2008, 
 \cite{li2008worldwide, tian2008analysis, price2008discerning}.
 In particular, it could be shown that the first principal components (PCs) calculated from the genotypic data were correlated with geographic axes \cite{novembre2008interpreting}.
-
 As a result, one approach to account for population structure is to add the first genotypic PCs as covariates in the model (or to regress them out \cite{price2006principal}): 
 
 \begin{equation}\label{eq:LM_PC_confounding}
     \mathbf{y} =  \mathbf{W}\boldsymbol{\alpha} + \sum_{i=1}^{p} PC_i b_i + \mathbf{g}\beta + \boldsymbol{\psi}. 
 \end{equation}
 
-The number of leading PCs p can be determined as the number of \gls{pc}s that cumulatively describe a certain proportion of the total variance.
+The number of leading PCs p can be determined as the number of \gls{pc}s that cumulatively describe a certain proportion of the total genotypic variance.
 % , or ..
 This approach (eq. \eqref{eq:LM_PC_confounding}) was shown to perform relatively well in removing global population structure, but often failed to detect the more subtle relatedness effects.
 Therefore, when PCs are used to correct for population structure, closely related individuals have to be removed from the association analyses, prior to PCA calculations.
 Even then, cryptic relatedness might still be present and would not be properly accounted for by this method. 
 
+% \newpage
+
 \subsection{Linear mixed models for genetic analyses}
 \label{sec:LMM}
 
-Alternatively, \gls{lmm}s can be used to successfully account for confounding effects linked to both population stratification and relatedness 
-% zhao 2007 , 
-\cite{yu2006unified, kang2008efficient,kang2010variance, price2010new, zhou2012genome, lee2018genome}.
-Instead of being used to calculate principal components, the genotype data is used directly to estimate an $N \times N$ kinship matrix, $\mathbf{K}$, that describes the genetic similarity between pairs of individuals (see section below for a description of commonly used approaches to generate $\mathbf{K}$). 
+\textcolor{blue}{Alternatively, linear mixed models (LMMs) can be used to successfully account for confounding effects linked to both population stratification and cryptic relatedness 
+\cite{yu2006unified, kang2008efficient,kang2010variance, price2010new, zhou2012genome, lee2018genome}.}
+In an LMM, istead of being used to calculate principal components, the genotype data is used directly to estimate an $N \times N$ kinship matrix, $\mathbf{K}$, that describes the genetic similarity between pairs of individuals (see section below for a description of commonly used approaches to generate $\mathbf{K}$). \\
+
 This genetic similarity is modelled through the use of an additional random effect term in the linear model described by eq. \eqref{eq:Linear_regression_genetics_covariates}, as follows:
 
 \begin{equation}\label{eq:Linear_mixed_model}
@@ -822,26 +848,14 @@ However, regressing all PCs or including all PCs as covariates is not feasible i
 
 % However, for the model in eq. \eqref{eq:LMM_u_confounding} (i.e. when $\boldsymbol{\Sigma_b}$ factors as $\mathbf{G}\mathbf{G}^T$) it is possible to speed up computations, provided that we can perform feature selection on genomic variants and therefore make the genetic relatedness matrix low rank \cite{lippert2014greater}: 
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=10cm]{Chapter2/Fig/confounders_covariates.png}
-\caption[Confounders and covariates]{\textbf{Confounders and covariates}.\\
-Traditionally `confounders' are variables that are correlated with both the genotype vector and the phenotype, i.e. hidden common causes of both $\mathbf{g}$ and  $\mathbf{y}$. 
-For example, population structure ($\mathbf{K}$) is a confounder in population genetics studies. 
-On the other hand, other covariates such as sex (unless we are testing genes on the X or Y chromosomes) and batch ($\mathbf{W}$), only have an effect on $\mathbf{y}$.
-By including them as covariates in the model, we control for additional phenotypic variation and thereby increase association power. 
-We note that in the illustration, a linear mixed model is used to illustrate how to account for both effects, with a random effect term used to correct for population structure, and covariates included as fixed effects. 
-However, mathematically, both can be treated in the same way (i.e. they both can be included as fixed or random effects). 
-In contrast the motivation for including them, and the effect their inclusion has, are different.}
-\label{fig:conf_cov}
-\end{figure}
+
 
 
 \subsubsection{Kinship matrices}
 \label{sec:kinship_matrices}
 
-The covariance matrix $\mathbf{K}$ captures the latent population sub-structure of the samples considered, including population stratification and genetic relatedness.\\
-
+The covariance matrix $\mathbf{K}$ captures the latent population sub-structure of the samples considered, including population stratification and genetic relatedness.
+% \\
 Several approaches have been proposed to compute this matrix, which is sometimes called the genetic relatedness matrix (GRM).
 % \\
 Fisher’s infinitesimal model (see \textbf{section \ref{sec:Fisher}}) \cite{fisher1919xv} demonstrated that under an additive model with an infinite number of infinitesimal genetic effects, the phenotype follows a normal distribution, and the correlation of phenotypes between individuals is proportional to the fraction of genetic material that is `identical-by-descent' (IBD)\footnote{A genetic locus is IBD between two individuals if it has been inherited by a common ancestor.}. 
@@ -898,7 +912,7 @@ Throughout this thesis, we use the $\mathrm{RRM}$ described in \cite{yang2011gct
 % to PC-based linear models. For further details on the relationship between PC-based
 % models and random effect models I refer to Hoffman \cite{hoffman2013correcting}.
 
-\newpage
+% \newpage
 
 \subsection{Fast implementation of LMMs}
 \label{sec:fast_lmm}
@@ -928,25 +942,21 @@ However, for the model in eq. \eqref{eq:Linear_mixed_model}, i.e. when the covar
 it is possible to speed up computations \cite{kang2008efficient, kang2010variance, lippert2011fast, zhou2012genome} ,thus enabling application to large population studies. 
 These stratagems reduce the computational complexity from $\mathcal{O}(N^3)$
 per-SNP to a single  $\mathcal{O}(N^3)$ cost upfront, and a per-SNP complexity of  $\mathcal{O}(N^2)$.
-The complexity can be further reduced to $\mathcal{O}(N^2)$ for the upfront computation and a per-test complexity of  $\mathcal{O}(N)$, provided the genetic relatedness matrix is low-rank. \\
+The complexity can be further reduced to $\mathcal{O}(N^2)$ for the upfront computation and a per-test complexity of  $\mathcal{O}(N)$, provided the genetic relatedness matrix is low-rank. 
+% \\
 % In practice, this can be achieved through a feature selection approach, selecting a small proportion of all genome-wide variants to estimate $\mathbf{K}$ \cite{listgarten2012improved} or by randomly selecting a subset of the genome-wide variants. 
-
-
-
 % As I will show in Section 2.3.3, an efficient derivative-free inference scheme can be used for association testing in univariate models 
 % % \cite{}. 
 % However, the number of variance parameters in variance component analyses and multi-trait models is typically too large for the efficient use of derivative-fee methods. 
-
 % Multiple optimisation schemes have been proposed to optimise the restricted marginal likelihood in these cases
-
 % However, in recent years, a lot of research has focused on methods to improving the efficiency of these methods.
 % Whilst naively the LMM scales cubically with the number of samples, there are now methods available that scale linearly with the number of samples, once some up front computations that scale quadratically with the number of samples have been performed.
 % These include FaST-LMM \cite{lippert2011fast}, BOLT-LMM \cite{loh2015efficient} and LIMIX \cite{lippert2014limix}, the latter built using a flexible framework such that different types of testing procedure can be easily and efficiently implemented, including interaction tests (see section \ref{sec:lmm_gxe}).\\
 % FaST-LMM, BOLT-LMM, LIMIX.
-
 % , including first-derivative methods, such as expectation maximisation (EM, Dempster et al., 1977) and its improved version PX-EM (Liu et al., 1998; Foulley and Van Dyk, 2000), and second-derivative methods, such as the Newton-Ralphson algorithm (Zhou and Stephens, 2014), the average information REML algorithm (Gilmour et al., 1995) and the Broyden’s method (Groeneveld, 1994). In this thesis, we follow (Groeneveld, 1994) and consider the Broyden’s method for parameters inference. 
-
 % For a discussion on the different optimisation algorithms for inference in \gls{lmm}s, I refer to the supplementary information of Loh et al. (2015a).
+
+\newpage
 
 I use this section to  briefly describe the efficient FaST-LMM algorithm proposed by Lippert \textit{et al} \cite{lippert2011fast}.
 This is the algorithm implemented within the LIMIX toolset \cite{lippert2014limix,casale2015efficient} which I use throughout this thesis.
@@ -992,6 +1002,7 @@ Next,
 
 where we used the property of orthonormality of $\mathbf{Q}$ ($|\mathbf{Q}|=1$), and the determinant of a diagonal matrix ($|diag(\boldsymbol{\lambda)}| = \prod_{i=1}^{N} \lambda_i$) as well as properties of the logarithm\footnote{$\log |\mathbf{D_{\delta}}^{-1}|=\log |\mathbf{S} + \delta\mathbf{I}|=\log (\prod_{i=1}^{N} (S_{ii} + \delta))=\sum_{i=1}^{N} (\log (S_{ii} + \delta))=- \sum_{i=1}^{N} \frac{1}{\log (S_{ii} + \delta)}=-\log \prod_{i=1}^{N} \frac{1}{(S_{ii} + \delta)}=- \log |\frac{1}{\mathbf{S} + \delta\mathbf{I}}|=-\log |\mathbf{D_{\delta}}|$}.\\
 
+\newpage
 % a bit of a gap here
 We can now re-write the log-likelihood as:
 
@@ -1015,7 +1026,8 @@ Then, we can compute $\hat{\boldsymbol{\beta}}$ and $\hat{\sigma_g^2}$ using eq.
 
 \begin{equation}
     \mathbf{D}^{\frac{1}{2}}_{\delta}\mathbf{Q}^{T}\mathbf{y} \sim \mathcal{N}(\mathbf{D}^{\frac{1}{2}}_{\delta}\mathbf{Q}^{T}\mathbf{X}\boldsymbol{\beta}, \sigma_g^2\mathbf{I}).
-\end{equation} \\
+\end{equation} 
+% \\
 
 To further speed up computations, $\boldsymbol{\alpha}$ and $\delta$ are only optimised once, under $H_0$, which is the same for all \gls{snp}s for a given trait.
 Since there is no closed-form for $\delta$, we use the Brent search numerical procedure \cite{goddard2009estimating} to find the optimal $\hat{\delta}$.
@@ -1039,8 +1051,8 @@ For details on this implementation I refer the reader to the Supplementary note 
 
 Whilst extremely efficient, I note that the described implementation is limited to one random effect term only (besides the identity, see eq. \eqref{eq:fast_lmm_full_covariance}).
 Indeed, the stratagem used to reduce the computational complexity and calculate the inverse (eq. \eqref{eq:fast_lmm_Sigma_inverse}) and the determinant (eq. \eqref{eq:fast_lmm_Sigma_determinant}) of the covariance matrix in quadratic (or linear, in case of low-rank kinship matrix) time only works for a single kinship matrix\footnote{In case of two distinct kinship matrices, i.e. $\sigma_1^2\mathbf{K}_1 + \sigma_2^2\mathbf{K}_2 + \sigma_n^2\mathbf{I} = \sigma_1^2\mathbf{Q}\mathbf{S}\mathbf{Q}^T + \sigma_2^2\mathbf{U}\mathbf{D}\mathbf{U}^T + \sigma_n^2\mathbf{I}$, which cannot be further simplified.}.
-We are aware of alternative implementations that allow the use of several kinship matrices (e.g. \cite{pazokitoroudi2020efficient}) but these are optimised for SNP-heritability estimates, and the application to association testing is not trivial.
-Thus, in this thesis, we are limited to LMMs with one random effect term only.
+While I am aware of alternative implementations that allow the use of several kinship matrices (e.g. \cite{pazokitoroudi2020efficient}), these are currently optimised for SNP-heritability estimates, and the application to association testing is not trivial.
+Thus, in this thesis, I only present LMMs with one single random effect term.
 
 
 
@@ -1054,18 +1066,20 @@ One limitation of these models, however, is that they assume the residual noise 
 Deviation from normality can result in model mis-specification, which in turn can lead to false conclusions and reduced statistical power \cite{mcculloch2014generalized}.  \\
 
 To alleviate this issue, it is common to preprocess the phenotype vector ($\mathbf{y}$) to 'gaussianise' it. 
-\\
-
+% \\
 For example, common approaches involve applying different kinds of non-linear transformations to $\mathbf{y}$. 
 Log-transformations are universally used on gene expression values (measured using RNA-seq) to reduce the range of possible assumed values.
 In addition, several other `variance-stabilising' transformations can be applied later, including Box-Cox transformations \cite{box1964analysis} or rank transformations \cite{zhou2014efficient}.
 More recently, warped LMM \cite{fusi2014warped} was proposed, which learns from the data the optimal phenotype transformation to be applied prior to testing for associations using an LMM. 
 \\
 
-We note that these models assume that the noise level in the transformed phenotype space is constant, which may not be an appropriate assumption in some cases. 
-In such instances, it will remain appropriate to use generalised LMMs with non-Gaussian likelihoods that enable to incorporate stronger assumptions about the nature of the data \cite{fusi2014warped, lee2011estimating}. 
+Note that these models assume that the noise level in the transformed phenotype space is constant, which may not be an appropriate assumption in some cases. 
+In such instances, it will remain appropriate to use generalised LMMs (GLMMs\footnote{Generalised linear mixed models (or GLMMs) are an extension of linear mixed models to allow response variables from different distributions, as long as those belong to the exponential family.
+Common example of exponential family distributions are the Bernoulli, Exponential, Gamma, Normal and Poisson distributions.}) with non-Gaussian likelihoods that enable to incorporate stronger assumptions about the nature of the data \cite{fusi2014warped, lee2011estimating}. 
 % Generalised linear and linear mixed models...
 % logistic regression briefly mentioned is an example
+
+\newpage
 
 \subsection{Linear mixed models for eQTL mapping}
 \label{sec:lmm_eqtl}
@@ -1085,7 +1099,11 @@ Typically, for each gene-\gls{snp} pair tested the reported values are i) the p 
 
 Subsequently, multiple testing correction is applied, first at the gene level (using FWER) and then globally (using FDR, as described in \textbf{section \ref{sec:multiple_testing}}).
 The resulting adjusted p values are also reported.
-To summarise a typical eQTL map, a number frequently reported is the number of genes with at least one \gls{eqtl} (from now on `eGenes'), often reported together (or as a fraction of) the number of genes tested. 
+To summarise a typical eQTL map, a number frequently reported is the number of genes with at least one \gls{eqtl} (from now on `eGenes'), often reported together (or as a fraction of) the number of genes tested. \\
+
+\textcolor{blue}{In the analyses in \textbf{Chapters 3-5} of this thesis, I report significant results (i.e. number of discoveries) at FDR<5\% or 10\%, which are commonly used in the field \cite{kilpinen2017common, gtex2017genetic, aguet2019gtex}.
+This allows me to put these numbers in context, particularly to assess differences in number of discoveries between results obtained using single cell data (from this thesis) with existing eQTL results (typically obtained using bulk RNA-seq data).}
+
 
 % \subsection{\gls{lmm}s for variance component analysis}
 
@@ -1093,7 +1111,7 @@ To summarise a typical eQTL map, a number frequently reported is the number of g
 
 % \subsubsection{gene expression variance components}
 
-\newpage 
+% \newpage 
 
 %********************************** %Fourth Section  **************************************
 
@@ -1109,7 +1127,7 @@ In particular, a significant statistical \gls{gxe} interaction is defined when t
 \centering
 \includegraphics[width=16cm]{Chapter1/Fig/GxE.png}
 \caption[Illustration of GxE]{\textbf{Illustration of GxE effect for two environmental groups}.\\
-Illustrated are the mean phenotype values across three genotypic groups for a given locus (aa: homozygous minor allele, aA: heterozygous individuals, AA: homozygous major allele).
+Illustrated are the mean phenotype values across three genotypic groups for a given locus (AA: homozygous major allele, aA: heterozygous individuals, aa: homozygous minor allele).
 The first plot (left) describes the case of a genetic effect of the variant on all individuals. 
 $\beta$ represents the (in this case positive) effect size of the locus tested. 
 The second plot (middle) shows that two groups of individuals characterised by different environmental exposure (represented by the colours). 
@@ -1119,14 +1137,11 @@ There is an interaction effect between the individuals' genotypes and their envi
 \label{fig:gxe}
 \end{figure}
 
-In the following, I describe various approaches to test for GxE interactions, which all build on the \gls{lmm} framework. \\
-
-\newpage
-
-% \subsection{Stratified interaction test}
-
-One possible way to detect interaction effects is to stratify samples into discrete subgroups based on their environmental exposure. \\
-
+% \newpage
+In the following, I describe various approaches to test for GxE interactions, which all build on the \gls{lmm} framework. 
+% \\
+One possible way to detect interaction effects is to stratify samples into discrete subgroups based on their environmental exposure. 
+% \\
 In \gls{eqtl} mapping, one might for example cluster cells into cell types, or separate samples into different condition groups.
 Then, an LM (eq. \eqref{eq:Linear_regression_genetics_covariates}) or \gls{lmm} (eq. \eqref{eq:Linear_mixed_model}) can be applied to each stratum and the marginal variant effects can be compared to assess whether there is a significant difference in these effects across the sub-populations.
 This method can be defined as a `stratified interaction test'.
@@ -1215,7 +1230,7 @@ I describe this approach in more detail upon its application in \textbf{Chapter 
 % show preliminary results on a \gls{scrnaseq} dataset.
 % % apply the model on a variety of simulated and real \gls{scrnaseq} datasets.
 
-
+\newpage
 
 \section{Discussion}
 

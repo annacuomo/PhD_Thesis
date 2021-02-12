@@ -6,16 +6,17 @@
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{c|c c c c c}
-    &       5 & 10 & 15 & 20 & 25  \\
+    \begin{tabular}{c|c c c c c c}
+    &          0 & 5 & 10 & 15 & 20 & 25  \\
     \hline
-    PCA   & 107 & 109 &  125 & 122 & 113 \\
-    MOFA  &  92 &  95 &   99 & 103 & -   \\
-    PEER  &  92 &  90 &   97 &  83 & -   \\
-    SVD   & 119 & 116 &  119 & 114 & 110 \\
+    PCA      & 41 & 77 & 78 & 88 & 86 & 84 \\
+    PEER     & 41 & 70 & 70 & 71 & 63 & 87 \\
+    MOFA     & 41 & 64 & 76 & 75 & 77 & 73 \\
+    MOFA-ns  & 41 & 74 & 78 & 73 & 74 & 72 \\
+    LDVAE    & 41 & 58 & 54 & 71 & 74 & 73 \\
     \end{tabular}
-    \caption[Covariate comparison in terms of replication of matched bulk results]{\textbf{Number of matched bulk-replicated eQTL across covariates.} \\
-    Equivalent to \textbf{Table \ref{tab:covariates_replication}} (i.e. mean as aggregation method, 1,421 chromosome 2 genes tested only, p value < 0.05 and same direction of effect as replication), except considering replication using bulk with matched samples only (n=88).}
+    \caption[Covariate comparison in terms of replication of matched bulk results]{\textbf{Number of m-bulk-replicated eQTL across covariates.} \\
+    Equivalent to \textbf{Table \ref{tab:covariates_replication}} (i.e. mean as aggregation method, 1,421 chromosome 2 genes tested only, FDR<10\% and same direction of effect as replication), except considering replication using bulk with matched samples only (m-bulk; n=88).}
     \label{tab:covariates_replication_matched_bulk}
 \end{table}
 

@@ -168,7 +168,7 @@ Future work is required to gain a better understanding of the mechanisms and cau
 In particular, we note that since in both studies we only chose to differentiate one cell line per individual, we could not distinguish between cell line effects and donor effects.
 In future efforts, it will be important to include multiple lines per individual, to be able to effectively separate the two sources of variation.
 Moreover, all lines used here are skin-derived, thus the differences observed could not be driven by the somatic cell type of origin.
-A future area of study would involve investigating differences in the differentiation outcome of iPSC lines derived from different cell types, as well as across donor characteristics including sex, age and ethnicity.
+\textcolor{blue}{A future area of study would involve investigating differences in the differentiation outcome of iPSC lines derived from different cell types, as well as across donor characteristics including sex, age and ethnicity.}
 As highlighted on \textbf{page \pageref{sec:HipSci}}, several human iPSC cohorts derived from different cell types, and for donors of different ethnicities and varying degrees of relatedness, are already available for research purposes, and could be used to address some of these aspects.
 Finally, in work presented here we did not have the appropriate sample size to detect genetic variants affecting differentiation efficiency.
 In the future, as protocols become more efficient and pooling strategies combined with single cell readouts become common-practice, it will be possible to perform \textit{in vitro} differentiation experiments at increasingly large sample sizes.
@@ -235,13 +235,14 @@ Moreover, these studies failed to recapitulate eQTL results obtained using bulk 
 Here, on the other hand, we identify thousands of eQTL across a range of cell types (\textbf{Tables \ref{tab:endodiff_eqtl_summary}, \ref{tab:eqtl_results}}), and could re-discover a larger portion of bulk-discovered eQTL (\textbf{Fig. \ref{fig:sc_bulk_egenes}, \ref{fig:neuroseq_and_gtex_rediscovery}}). 
 Moreover, we demonstrated feasibility of single cell eQTL mapping using both plate-based (SmartSeq2, \textbf{Chapters \ref{chapter3}, \ref{chapter4}}) and droplet-based (10X Genomics, \textbf{Chapter \ref{chapter5}}) scRNA-seq data. \\
 
-To systematically compare the performance of using scRNA-seq as opposed to bulk RNA-seq to map eQTL, in \textbf{Chapter \ref{chapter3}} we selected human iPSCs as a homogeneous cell type, and compared results when mapping iPSC eQTL using a common set of samples (\textbf{Fig. \ref{fig:sc_bulk_egenes}}). This analysis revealed increased power to discover eQTL when using bulk RNA-seq profiles in this well defined, pure cell population, probably due to decreased noise in expression estimates.
+To systematically compare the performance of using scRNA-seq as opposed to bulk RNA-seq to map eQTL, in \textbf{Chapter \ref{chapter3}} we selected human iPSCs as a homogeneous cell type, and compared results when mapping iPSC eQTL using a common set of samples (\textbf{Fig. \ref{fig:sc_bulk_egenes}}). 
+This analysis revealed an increased number of discovered eQTL when using bulk RNA-seq profiles in this well defined, pure cell population, probably due to decreased noise in expression estimates.
 On the other hand, we appreciated the power of the single cell transcriptomics to isolate several cell types within more heterogeneous populations, quantify expression and map eQTL within them, without the need for any gating or other experimental techniques to separate cell populations (\textbf{Fig. \ref{fig:endodiff_stage_eqtl}, \ref{fig:neuroseq_eqtl_examples}}). \\
 
 In addition, we provide here the first hints towards the establishment of a best-practice workflow to maximise yield of single cell eQTL studies (\textbf{section \ref{sec:best_practice}}), identifying the mean (after single cell-specific normalisation) as the optimal aggregation method, and principal component analysis as the preferable approach to capture global expression trends which should be included in the model as covariates. 
 From a methodological perspective, linear mixed models were confirmed as the appropriate tool to identify genetic associations, given their ability to deal with confounding effects (\textbf{section \ref{sec:confounders}}).
 In particular, LMMs can control for effects due to population structure, including replicate measurements across donors (for example across multiple differentiation experiments, \textbf{Chapters \ref{chapter3}} and \textbf{\ref{chapter4}}).
-In addition, LMMs enabled the introduction of a variance term to account for number of cells across individuals, which varied widely thus rendering the expression estimates less precise (\textbf{Chapter \ref{chapter5}}); this expedient resulted in a great boost in power. 
+In addition, LMMs enabled the introduction of a variance term to account for number of cells across individuals, which varied widely thus rendering the expression estimates less precise (\textbf{Chapter \ref{chapter5}}); this expedient resulted in a great boost in the number of eQTL discoveries. 
 In future work, models which enable the incorporation of multiple random effect terms, to effectively correct for several confounders simultaneously, should be developed. 
 \\
 
@@ -278,9 +279,10 @@ Future work should include the evaluation of the feasibility of integrating non-
 
 Moreover, in this thesis I have focused on the study of context-specific eQTL by either first discretising cells into populations and mapping eQTL in each, or by considering interactions with one single continuous cell state (or at most two, \textbf{Fig. 
 \ref{fig:endodiff_gxexe}}).
-% 4.17}).
 In the future, it will be important to develop methods to jointly test for context-specificity of eQTL across several (continuous and discrete) cell states simultaneously.
-For example, methods to assess GxE using larger numbers of conditions originally proposed in the context of population studies \cite{moore2019linear}, could be adapted to this context. These advanced models will enable us to leverage the rich information from single cell-resolved, transcriptome-wide population-scale datasets, to further improve our understanding of the genetic architecture of traits. 
+\textcolor{blue}{For example, a recently proposed method, Struct-LMM \cite{moore2019linear} allows the assessment of GxE interactions using larger numbers of conditions.
+While originally proposed in the context of population studies, the same principles could be adopted here, where one could map sc-eQTL that vary jointly across up to hundreds different cell states and types. 
+These advanced models will enable us to leverage the rich information from single cell-resolved, transcriptome-wide population-scale datasets, to further improve our understanding of the genetic architecture of traits.} 
 
 % In \textbf{Chapter 
 % \ref{chapter3}
