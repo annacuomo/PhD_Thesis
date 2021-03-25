@@ -20,7 +20,6 @@
     \label{tab:covariates_replication_matched_bulk}
 \end{table}
 
-% results on smaller gene selection?
 \newpage
 
 \section{Additional results for Chapter 4}
@@ -112,19 +111,4 @@
     \label{tab:coloc_neuro_traits}
 \end{table}
 
-% \newpage
-
 \footnotetext{Number of fluid intelligence questions attempted within time limit.}
-
-% \section{Additional results Chapter 5}
-
-
-
-% \subsection*{Detailed QC steps}
-
-% \subsection*{scRNA-seq quality control and processing}
-
-% Adaptors of raw scRNA-seq reads were trimmed using Trim Galore! (refs), using default settings. Trimmed reads were mapped to the human reference genome build 37 using STAR (ref) (version: 020201) in two-pass alignment mode, using the default settings proposed by the ENCODE consortium (STAR manual). Gene-level expression quantification was performed using Salmon (ref) (version: 0.8.2), using the “--seqBias”, “--gcBias” and “VBOpt” options using ENSEMBL transcripts (built 75)(ref)
-
-% Gene-level expression quantification was performed using Salmon (ref) (version: 0.8.2), using the “--seqBias”, “--gcBias” and “VBOpt” options using ENSEMBL transcripts (built 75)(ref). Transcript-level expression values were summarised at a gene level (estimated counts per million (CPM)) and quality control of scRNA-seq data was performed with the scater Bioconductor package in R (ref). Cells were retained for downstream analyses if they had at least 50,000 counts from endogenous genes, at least 5,000 genes with non-zero expression, less than 90pct of counts came from the 100 highest-expressed genes, less than 15pct of reads mapping to mitochondrial (MT) genes, they had a Salmon mapping rate of at least 60pct, and if the cell was successfully assigned to a donor. Dead cells as identified based on 7AAD staining were discarded. Size factor normalisation of counts was performed using the scran Bioconductor package in R (ref). Expressed genes with an HGNC symbol were retained for analysis, where expressed genes in each batch of samples were defined based on (i) raw count >100 in at least one cell prior to QC and (ii) average log2(CPM+1) >1 after QC. Normalised CPM data were log transformed (log2(CPM+1)) for all downstream analyses. The joint dataset was investigated for outlying cell lines or experimental batches, which identified no clear groups of outlying cells (Supplementary Fig. 21, 22). 
-
