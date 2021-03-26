@@ -7,8 +7,6 @@ PhD thesis
 
 Anna Cuomo
 
-Supervisors: Oliver Stegle, John Marioni
-
 ## Title
 
 Using single-cell RNA-seq to assess the effect of common genetic variants on gene expression during development
