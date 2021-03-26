@@ -6,6 +6,7 @@ PhD thesis
 ## Author
 
 Anna Cuomo
+Supervisors: Oliver Stegle, John Marioni
 
 ## Title
 
