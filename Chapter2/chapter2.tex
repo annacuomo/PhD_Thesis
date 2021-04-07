@@ -7,7 +7,7 @@
 \label{chapter2}
 
 In \textbf{Chapters \ref{chapter3}-\ref{chapter5}} I describe various models for \glspl{eqtl} mapping using single cell expression profiles. 
-All of these models build on a linear mixed model (LMM)framework. 
+All of these models build on a linear mixed model (LMM) framework. 
 I use this chapter to provide an overview of linear and linear mixed models and their application in quantitative genetics, with a focus on their use for \gls{eqtl} mapping. 
 I will also briefly introduce \gls{lmm}-based models to test for \gls{gxe} interactions, to provide the necessary theoretical foundations for some of the analyses in \textbf{Chapter \ref{chapter4}}. \\
 
@@ -340,7 +340,6 @@ The score test statistic is the Lagrange Multiplier (LM) and is defined as follo
 \end{equation}
 
 It can be shown that the $\mathrm{LM}$, too, follows a $\chi^2$ distribution with $d$ dof ($\mathrm{LM} \sim \chi^2_d$).
-
 To understand the intuition behind this test let us consider again the univariate case (d = 1):
 
 \begin{equation}\label{eq:lagrange_multiplier_univariate}
@@ -417,13 +416,11 @@ For test i, the experimental adjusted p value after M permutations is calculated
 
 where $q_{i,m}$ is the p value obtained at the m$^{th}$ permutation run equivalent to test i, and ones are added to avoid zero divisions.  
 This strategy accounts for local \gls{ld}, thereby increasing the statistical power, and has been widely used in $cis$ molecular \gls{qtl} mapping to estimate gene-level p values \cite{gtex2015genotype, sudmant2015integrated}. 
-
 However, as evident from eq. \eqref{eq:permutation_adjusted_pvalue}, the lower bound of $P_{adj,i}^{perm}$ depends on the number of selected permutations\footnote{For example, for M=1,000 the smallest adjusted p value we can obtain is only $P_{adj,i}^{perm}$=0.001 (when no permuted p value is smaller than the p value observed).} for which the test statistic is calculated, and thus a higher number of permutations may be required to estimate a p value with high enough accuracy \cite{sul2015accurate}.
 This can be improved by increasing the number of permutations, e.g. using M as large as 100,000, but that entails a great computational burden and can become unpractical in molecular analyses of large cohorts.
 \\
 
 A second approach is to adjust for multiple testing when considering a more complex hypothesis, for example by pooling across variants, thus requiring fewer permutations.
-
 As an example, in the method described in \cite{ongen2016fast}, the minimal p values for each permutation across all SNPs are selected, and used to build a beta distribution of background p values, against which to compare the real p values.
 This method has been shown to robustly work for as little as (M=) 50-100 permutations, making use of the benefits of the assumption-free permutation approach without too much of the computational burden \cite{ongen2016fast}. 
 This is the method I will use in the following chapters (\textbf{Chapters \ref{chapter3}}, \textbf{\ref{chapter4}} and \textbf{\ref{chapter5}}) of this thesis to control for FWER at gene level when performing large scale \gls{eqtl} mapping.
@@ -622,7 +619,7 @@ However, for the model in eq. \eqref{eq:Linear_mixed_model}, i.e. when the covar
  \mathbf{y} \sim  \mathcal{N}(\mathbf{W}\boldsymbol{\alpha} + \mathbf{g}\beta, \sigma_g^2\mathbf{K} + \sigma_n^2\mathbf{I}),
 \end{equation}
 
-it is possible to speed up computations \cite{kang2008efficient, kang2010variance, lippert2011fast, zhou2012genome} ,thus enabling application to large population studies. 
+it is possible to speed up computations \cite{kang2008efficient, kang2010variance, lippert2011fast, zhou2012genome}, thus enabling application to large population studies. 
 These stratagems reduce the computational complexity from $\mathcal{O}(N^3)$
 per-SNP to a single  $\mathcal{O}(N^3)$ cost upfront, and a per-SNP complexity of  $\mathcal{O}(N^2)$.
 The complexity can be further reduced to $\mathcal{O}(N^2)$ for the upfront computation and a per-test complexity of  $\mathcal{O}(N)$, provided the genetic relatedness matrix is low-rank. 

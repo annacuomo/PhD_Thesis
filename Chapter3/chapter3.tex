@@ -155,7 +155,7 @@ Finally, single cell-specific methods have been developed for gene-level analyse
 
 A typical workflow for single cell RNA-seq data implemented in R can be found on Bioconductor\footnote{at \url{https://bioconductor.org/packages/devel/bioc/vignettes/scran/inst/doc/scran.html} and
 
-\url{https://osca.bioconductor.org}} using scRNA-seq specific R packages scran \cite{lun2016step, risso2016scrnaseq}, scater \cite{mccarthy2017scater}, and SingleCellExperiment 
+\url{https://osca.bioconductor.org}.} using scRNA-seq specific R packages scran \cite{lun2016step, risso2016scrnaseq}, scater \cite{mccarthy2017scater}, and SingleCellExperiment 
 \cite{lun2019singlecellexperiment}.
 Other pipelines for scRNAseq data analysis include 
 Seurat \cite{butler2018integrating},
@@ -267,7 +267,7 @@ In particular, expression level is measured as log2(CPM+1)\footnote{CPM: counts 
 \\
 
 Since we did not use any batch correction method on the single cell expression data a priori, we cannot exclude differences across batches.
-As internal control we have, for a subset of donors (23/112), data from two (or three, in one case) distinct experimental batches.
+As internal control we have, for a subset of donors (23/111), data from two (or three, in one case) distinct experimental batches.
 We therefore compute average expression levels not for each individual line, but for each line-experiment combination (i.e. cell\_lineA-experiment1, cell\_lineA-experiment2), which enables effective correction for batch-to-batch differences using PCs as covariates (see above and \textbf{section \ref{sec:confounders}}).
 The linear mixed model described in eq. \eqref{eq:LMM_ipsc_eqtl} can be readily adapted to include the resulting replicate measures from the same line: $N$ will now be not the number of unique lines but that of line-experiment combinations.
 Additionally, both the genotype vector $\mathbf{g}$ and the kinship matrix $\mathbf{K}$ need to be adjusted\footnote{i.e. expanded, by duplicating genotype values across pool replicates.}, such that the latter is now in fact accounting at once for the population structure and the repeatedness of the samples tested (\textbf{Fig. \ref{fig:kinship_repeats}}). \\
@@ -498,7 +498,7 @@ Replication was assessed by considering significance (FDR<10\%) and consistent d
     dr-median &  1,337 & 10.51\% & 650 & 48.62\% &   952 & 71.20\% \\
     dr-sum    &  1,463 & 11.50\% & 819 & 55.98\% & 1,153 & 78.81\% \\
     d-mean    &  1,305 & 10.26\% & 768 & 55.85\% & 1,046 & 80.15\% \\
-    d-median  &    602 &  4.73\% & 378 & 62.79\% &   476 & 79.07\% \\
+    d-median  &    776 &  6.10\% & 470 & 60.57\% &   625 & 80.54\% \\
     d-sum     &  1,174 &  9.23\% & 709 & 60.39\% &   951 & 81.01\% \\
     \hline
     m-bulk    &  2,590 & 20.36\% & - & - & 2,448 & 94.52\% \\
@@ -512,7 +512,7 @@ Replication was assessed by considering significance (FDR<10\%) and consistent d
     \label{tab:egenes}
 \end{table}
 
-We identified between 602 and 1,835 genes with at least one eQTL (i.e. eGenes, at FDR<5\%) using the different aggregation methods (out of 12,720 genes tested). 
+We identified between 776 and 1,835 genes with at least one eQTL (i.e. eGenes, at FDR<5\%) using the different aggregation methods (out of 12,720 genes tested). 
 To put these numbers in context, the equivalent eQTL map using matched samples with bulk RNA-seq (m-bulk) identified 2,590 eGenes (\textbf{Table \ref{tab:egenes}}). 
 These results show two main trends. 
 First, aggregation at the donor-run level outperforms aggregation at the donor level only (e.g. dr-mean vs d-mean). 
@@ -646,7 +646,7 @@ Now that we have established that such `mean-level' \gls{eqtl} maps are feasible
 One such analyses is variance \gls{eqtl} (varQTL, vQTL \cite{ayroles2015behavioral}) mapping, where one can assess the effect of common genetic variants on cell-to-cell transcriptional variability, rather than on expression abundance.
 Unfortunately, these analyses have proven especially challenging, largely because the variance of gene expression is strongly dependent on its mean, making it hard to disentangle the two effects \cite{vallejos2016beyond}.
 Moreover, variance QTL effects may be smaller than anticipated.
-As a result, studies at current sample sizes are underpowered to detect any variance QTL, as shown by \cite{sarkar2019discovery}. \\
+As a result, studies at current sample sizes are underpowered to detect any variance QTL, as shown for instance by \cite{sarkar2019discovery}. \\
 
 On the other hand, a single-cell approach allows detailed annotation of changing \gls{eqtl} effects across heterogeneous cell types and cell states, with the ability to better interpret the context-specific role of individual genetic variants. 
 In particular, dynamic \gls{eqtl}, where the effect of a genetic variant on gene expression is modulated by differentiation time \cite{francesconi2014effects, strober2019dynamic} can be extended to single cell-resolved data, and expanded to include not only differentiation trajectories, but any cellular state.

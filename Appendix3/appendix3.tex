@@ -16,15 +16,14 @@ The gelatine was then aspirated and plates were incubated in MEF medium overnigh
 Immediately prior to plating cells, plates were washed once with D-PBS to remove any residual MEF medium.  
 To plate for endoderm differentiation, cells were washed once with D-PBS and dissociated using StemPro Accutase (Life Technologies, A1110501) at 37°C for 3 - 5 min. 
 Colonies were fully dissociated through gentle pipetting. 
-Cells were resuspended in MEF medium, passed through a 40 µm cell strainer, and pelleted gently by centrifuging at 300 x g for 5 min. Cells were re-suspended in E8 media and plated at a density of 15,000 cells per cm2  on gelatin/MEF coated plates [6,26] in the presence of 10 µM Rock inhibitor – Y27632 (Sigma, \#Y0503 - 5 mg). 
+Cells were resuspended in MEF medium, passed through a 40 µm cell strainer, and pelleted gently by centrifuging at 300 x g for 5 min. Cells were re-suspended in E8 media and plated at a density of 15,000 cells per cm2  on gelatin/MEF coated plates \cite{hannan2013production, yiangou2018human} in the presence of 10 µM Rock inhibitor – Y27632 (Sigma, \#Y0503 - 5 mg). 
 Media was replaced with fresh E8 free of Rock inhibitor every 24 hours post plating. 
 Differentiation into definitive endoderm commenced 72 hours post plating.  
 Cells were washed 1x gently with D-PBS to remove residual E8.  
 Cells were then incubated in CDM-PVA containing 100 ng/mL ActivinA (made in house), 80 ng/mL FGF2 (made in house), 10 ng/mL BMP4 (R\&D systems, \#314-BP-050), 10 µm Ly294002 (Promega, \#V1201), and 3 µM CHIR99201 (Selleckchem, \#S1263) for 24 hours (day 1).  
 After 24 hours, the day 1 media was replaced with CDM-PVA containing 100 ng/mL ActivinA, 80 ng/mL FGF2, 10 ng/mL BMP4, and 10 µm Ly294002 for another 24 hours (day 2).  
 Day 2 media was then replaced with RPMI/B27 containing 100 ng/mL ActivinA and 80 ng/mL FGF2 for another 24 hours (day 3) \cite{hannan2013production}. 
-The overall efficiency of the differentiation protocol was validated using reference lines with good and poor differentiation capacity, respectively (Fig. \ref).  
-Please refer to the table below (Table S16) for compositions of gelatine, MEF media, CDM-PVA, and RPMI/B27.  
+The overall efficiency of the differentiation protocol was validated using reference lines with good and poor differentiation capacity, respectively.  
 All media was filtered through 0.22 µm filters prior to use.
 
 \subsection{Single cell preparation and sorting for scRNAseq}
@@ -65,7 +64,6 @@ Peak calling analysis \cite{bailey2013practical} was performed using PeakRanger 
 Peak calling was done using appropriate controls with the tool peakranger 1.18 in modes ranger (H3K4me3, H3K27ac; `-l 316 -b 200 -q 0.05'), ccat (H3K27me3; ‘-l 316 --win\_size 1000 --win\_step 100 --min\_count 70 --min\_score 7 -q 0.05’) and bcp (H3K4me1, H3K36me3; ‘-l 316’). 
 Adjacent peak regions closer than 40 bp were merged using the BEDTools suite \cite{quinlan2010bedtools}, and those overlapping ENCODE blacklisted regions were filtered out (ENCODE Excludable Mappability Regions \cite{encode2012integrated}). 
 Finally, peaks were converted to GRCh37 coordinates using UCSC LiftOver. 
-% [68].
 
 \section{Experimental methods for Chapter 5}
 Experimental methods written by Julie Jerber, as in \cite{jerber2020population}.
@@ -106,9 +104,9 @@ Dissociated organoids were transferred into a new tube capped with a 40 µm cell
 After centrifugation, the cells were resuspended in EBSS containing 50μg/mL of DNase I and 2 mg/mL ovomucoid (Worthington, LK003150). 
 0.5 volume of EBSS, followed by 0.5 volume of 20 mg/mL ovomucoid were added to the top of the cell suspension and the cells were mixed by flicking the tube. 
 After centrifugation, the cells were resuspended in 1X DPBS containing 0.04\% BSA. 
-Single-cell suspensions were counted using an automated cell counter and concentrations adjusted to 5 x105 cells/mL.
+Single-cell suspensions were counted using an automated cell counter and concentrations adjusted to 5 x105 cells/mL. 
 
-Immunohistochemistry 
+\subsection{Immunohistochemistry}
 Cells were fixed in 4\% paraformaldehyde (Thermo Fisher Scientific, 28908) for 15 min, rinsed 3 times with PBS1X (Sigma, D8662) and blocked with 5\% normal donkey serum (NDS; AbD Serotec, C06SBZ) in PBST (PBS1X + 0.1\% Triton X-100, Sigma, 93420) for 2h at room temperature. Primary antibodies were diluted in PBST containing 1\% NDS and incubated overnight at 4°C.
 Cells were washed 5 times with PBS1X and incubated with secondary antibodies diluted in PBS1X for 45 min at room temperature.  
 Cells were washed 3 more times with PBS1X and Hoechst (Thermo Fisher Scientific, H3569) was used to visualize cell nuclei. Image acquisition was performed using Cellomics array scan VTI (Thermo Fisher Scientific).
@@ -125,6 +123,6 @@ Donkey anti-rabbit AF555 (Thermo Fisher Scientific, A27039)
 
 \subsection{Chromium 10x Genomics library and sequencing}
 Single cell suspensions were processed by the Chromium Controller (10x Genomics) using Chromium Single Cell 3’ Reagent Kit v2 (PN-120237). 
-On average, 15,000 cells from each 10x reaction were directly loaded into one inlet of the 10x Genomics chip (Suppl Table 1 (add)). 
+On average, 15,000 cells from each 10x reaction were directly loaded into one inlet of the 10x Genomics chip. 
 All the steps were performed according to the manufacturer's specifications. 
 Barcoded libraries were sequenced using HiSeq4000 (Illumina, one lane per 10x chip position) with 50bp or 75bp paired end reads to an average depth of 40,000-60,000 reads per cell.

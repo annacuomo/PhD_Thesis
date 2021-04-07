@@ -183,18 +183,22 @@ This stage removed far fewer cells, with 96\% of cells considered passing QC2.}
 \label{fig:endodiff_qc_workflow}
 \end{figure}
 
+
 \subsubsection{scRNA-seq processing}
 
 SmartSeq2 data do not include \glspl{umi}, which can be used to accurately detect PCR duplicates and quantify transcript abundance \cite{smith2017umi, islam2014quantitative, kivioja2012counting}. 
 In the absence of \glspl{umi}, we can borrow information from cells with similar total number of reads and correct for overall library size. 
-Such size factor normalisation of counts was performed using \textit{scater} \cite{mccarthy2017scater}. \\
-
+Such size factor normalisation of counts was performed using \textit{scater} \cite{mccarthy2017scater}. 
+%  \\
+ % footnote from qc examples figure (to make it appear on right page)
+\footnotetext{e.g. cells from day0, experiment 42.}
 Expressed genes with an HGNC symbol were retained for analysis, where expressed genes in each batch of samples were defined based on (i) raw count >100 in at least one cell prior to cell QC (i.e. \textbf{Fig. \ref{fig:endodiff_qc_workflow}}) and (ii) average log2(CPM+1) >1 after cell QC. 
 Normalised CPM data were log transformed (log2(CPM+1)) for all downstream analyses. 
 As a last QC step, we considered possible differences between cell lines derived from healthy and diseased donors. 
 Specifically, a subset of 11 cell lines in our dataset were derived from monogenic neonatal diabetes patients, and differentiated together with cell lines from healthy donors across 7 differentiation experiments (out of 28). 
 There was no significant difference in differentiation efficiency (see \textbf{section \ref{sec:endodiff_differentiation_efficiency}}) between healthy and neonatal diabetes lines in these experiments (p value > 0.05), and cells from both sets of donors overlapped in principal component space (\textbf{Fig. \ref{suppl_fig:pca_diabetes_lines}}). 
 Thus, we included cells from all donors in our analyses, irrespective of disease state.
+
 
 \newpage
 
@@ -215,8 +219,7 @@ Additionally, shown are the percentages of cells that are positive for TRA-1-60,
 \label{fig:endodiff_stats}
 \end{figure}
 
- % footnote from qc examples figure (to make it appear on right page)
-\footnotetext{e.g. cells from day0, experiment 42. }
+
 
 \newpage
 
@@ -277,7 +280,7 @@ Next, cells were assigned to the mesendoderm stage if they were collected at eit
 Similarly, cells were assigned to definitive endoderm if they were collected at day2 or day3 and had pseudotime values higher than 0.7, corresponding to a pseudotime window with maximal expression of \textit{GATA6} (\textbf{Fig. \ref{fig:endodiff_stages}}).
 In total, we assigned 28,971 cells (about $\sim$80\% of all cells) to one of the three stages. 
 A smaller fraction of cells with intermediate pseudotime (between 0.5 and 0.7, n=7,073) could not be confidently assigned to a canonical stage of differentiation; these cells were largely collected at day2, at which stage rapid changes in expression profiles are expected, reflecting a transitional population of cells.
-We note that these cells were excluded for the purposes of the initial stage eQTL mapping (results in \textbf{section \ref{sec:endodiff_eqtl}}), but are included in all other analyses. 
+I note that these cells were excluded for the purposes of the initial stage eQTL mapping (results in \textbf{section \ref{sec:endodiff_eqtl}}), but are included in all other analyses. 
 
 \vspace{2mm}
 
@@ -293,10 +296,10 @@ Developmental stages were defined taking into consideration i) the day of collec
 \section{Mapping eQTL in iPSCs, mesendo and defendo}
 \label{sec:endodiff_eqtl}
 
-By combining single cell expreesion profiling and common genetic variation of over one hundred individuals we can begin to assess the impact of genetic variability on expression in a continuous manner across early human development.
+By combining single cell expression profiling and common genetic variation of over one hundred individuals we can begin to assess the impact of genetic variability on expression in a continuous manner across early human development.
 We have imputed genotypes for all of our 125 samples \cite{kilpinen2017common}, so this study allows discovery of single cell eQTL along differentiation. 
 Using the developmental stages just described and methods similar to those described in the previous chapter, we mapped eQTL in each of the \gls{ipsc}, mesendo and defendo populations, yielding 1,833, 1,702 and 1,342 eGenes, respectively. 
-Briefly, we quantified each gene’s average expression level for each donor, experiment, and differentiation stage\footnote{This approach is the same as what is described in the first part of \textbf{Chapter \ref{chapter3}}, and similar to the `mean' described in \textbf{section \ref{sec:best_practice}}, except that the aggregation is done at the experiment level rather than the sequencing run level.}, before using a linear mixed model to test for \textit{cis} eQTL, adapting approaches used for bulk RNA-seq profiles (+ and - 250 kb, MAF >5\% \cite{kilpinen2017common}).\\
+Briefly, we quantified each gene’s average expression level for each donor, experiment, and differentiation stage\footnote{This approach is the same as what is described in the first part of \textbf{Chapter \ref{chapter3}}, and similar to the `dr-mean' described in \textbf{section \ref{sec:best_practice}}, except that the aggregation is done at the experiment level rather than the sequencing run level.}, before using a linear mixed model to test for \textit{cis} eQTL, adapting approaches used for bulk RNA-seq profiles (+ and - 250 kb, MAF >5\% \cite{kilpinen2017common}).\\
 
 For comparison, we also performed eQTL mapping in cells collected on day1 and day3, i.e. the experimental time points commonly used to identify cells at mesendo and defendo stages \cite{hannan2013production}.
 Interestingly, this approach identified markedly fewer eGenes: 1,181 eGenes at day1, and 631 eGenes at day3.
@@ -452,7 +455,7 @@ These examples illustrate how common genetic variation is closely linked to the 
 % \\
 
 We next asked whether dynamic eQTL were located in specific regulatory regions. 
-To do this, we evaluated the overlap of our identified dynamic eQTL with epigenetic marks defined using the hESC differentiation time series\footnote{using bulk, at equivalent time points along endoderm differentiation, see \textbf{section \ref{sec:endodiff_chipseq}} for methods.}(\textbf{Fig. \ref{fig:endodiff_dynamic_eqtl_enrichment}}). 
+To do this, we evaluated the overlap of our identified dynamic eQTL with epigenetic marks defined using the hESC differentiation time series\footnote{using bulk, at equivalent time points along endoderm differentiation, see \textbf{section \ref{sec:endodiff_chipseq}} for methods.} (\textbf{Fig. \ref{fig:endodiff_dynamic_eqtl_enrichment}}). 
 This revealed an enrichment of dynamic eQTL in enhancer (i.e. H3K27ac and H3K4me1), and promoter (H3K4me3) marks as compared to non-dynamic eQTL (i.e. eQTL we identified which did not display dynamic changes along pseudotime, \textbf{Fig. \ref{fig:endodiff_dynamic_eqtl_enrichment}}), consistent with these SNPs being located in active regulatory elements.
 
 \vspace{2mm}
