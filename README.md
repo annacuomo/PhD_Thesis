@@ -44,6 +44,10 @@ When using or adapting them, please cite this thesis as follows:
 
 Cuomo, A.S.E. (2020). _Using single-cell RNA-seq to assess the effect of common genetic variants on gene expression during development_
 
+## How to access my thesis
+
+A PDF of my thesis can be found on the EBI website: https://www.ebi.ac.uk/sites/ebi.ac.uk/files/shared/documents/phdtheses/Cuomo_PhD_Thesis.pdf
+
 ## Acknowlegments
 
 *   Krishna Kumar - [Original CUED PhD thesis template](https://github.com/kks32/phd-thesis-template)
