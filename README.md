@@ -46,7 +46,7 @@ Cuomo, A.S.E. (2020). _Using single-cell RNA-seq to assess the effect of common 
 
 ## How to access my thesis
 
-A PDF of my thesis can be found on the EBI website: https://www.ebi.ac.uk/sites/ebi.ac.uk/files/shared/documents/phdtheses/Cuomo_PhD_Thesis.pdf
+A PDF of my thesis can be found on the EBI website: [link](https://www.ebi.ac.uk/sites/ebi.ac.uk/files/shared/documents/phdtheses/Cuomo_PhD_Thesis.pdf) 
 
 ## Acknowlegments
 
