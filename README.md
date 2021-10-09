@@ -20,11 +20,11 @@ Oliver Stegle, John Marioni
 The work presented in this thesis has been done by me in collaboration with the persons listed in each section. 
 When using to information of this thesis, please cite the associated papers:
 
-**Chapter 3:** [Optimising expression quantitative trait locus mapping workflows for single-cell studies](https://www.biorxiv.org/content/10.1101/2021.01.20.427401v2)
+**Chapter 3:** [Optimizing expression quantitative trait locus mapping workflows for single-cell studies](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02407-x)
 
 Anna S.E. Cuomo\*, Giordano Alvari\*, Christina B. Azodi\*, single-cell eQTLGen consortium, Davis J. McCarthy, Marc Jan Bonder.
 
-_Optimising expression quantitative trait locus mapping workflows for single-cell studies._ bioRxiv, 2021, (\* equal contributions)
+_Optimizing expression quantitative trait locus mapping workflows for single-cell studies._ Genome Biology, 2021, (\* equal contributions)
 
 
 **Chapter 4:** [Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic effects on gene expression](https://www.nature.com/articles/s41467-020-14457-z)
