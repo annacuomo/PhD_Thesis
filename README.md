@@ -35,7 +35,7 @@ _Single-cell RNA-sequencing of differentiating iPS cells reveals dynamic genetic
 
 **Chapter 5:** [Population-scale single-cell RNA-seq profiling across dopaminergic neuron differentiation](https://www.nature.com/articles/s41588-021-00801-6)
 
-Julie Jerber\*, Daniel D. Seaton\*, Anna S.E. Cuomo\*, Natsuhiko Kumasaka, James Haldane, Juliette Steer, Minal Patel, Daniel Pearce, Malin Andersson, Marc Jan Bonder, Ed Mountjoy, Maya Ghoussaini, Madeline A. Lancaster, HipSci Consortium, John C. Marioni, Florian T. Merkle, Oliver Stegle, Daniel J Gaffney.
+Julie Jerber\*, Daniel D. Seaton\*, Anna S.E. Cuomo\*, Natsuhiko Kumasaka, James Haldane, Juliette Steer, Minal Patel, Daniel Pearce, Malin Andersson, Marc Jan Bonder, Ed Mountjoy, Maya Ghoussaini, Madeline A. Lancaster, HipSci Consortium, John C. Marioni, Florian T. Merkle, Oliver Stegle, Daniel J. Gaffney.
 
 _Population-scale single-cell RNA-seq profiling across dopaminergic neuron differentiation._ Nature Genetics, 2021, (\* equal contributions)
 
@@ -48,7 +48,7 @@ Cuomo, A.S.E. (2020). _Using single-cell RNA-seq to assess the effect of common 
 
 A PDF of my thesis can be found on the EBI website: [link](https://www.ebi.ac.uk/sites/ebi.ac.uk/files/shared/documents/phdtheses/Cuomo_PhD_Thesis.pdf), or on Apollo, the University of Cambridge repository: [link](https://doi.org/10.17863/CAM.68208). 
 
-## Acknowlegments
+## Acknowledgements
 
 *   Krishna Kumar - [Original CUED PhD thesis template](https://github.com/kks32/phd-thesis-template)
 *   Nils Eling - [Improved formatted template](https://github.com/nilseling/Thesis)
